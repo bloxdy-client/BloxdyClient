@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "description": "SHA-256 values independently read from the original mod source files on 2026-10-13, then compared with the imported release snapshots.",
+  "modules": {
+    "bloxd-visual-shader": {
+      "version": "5.6.14.2",
+      "packageSha256": "a0f0e9e2eb90fc7859e986e03ea79e6b3d004afc59fcb70165e50d17d36aa76a",
+      "files": {
+        "settings-bridge.js": "a28b73bea2c1373e69f0eed136c99d5977f8939acb0156fffb6a4924942cc239",
+        "bootstrap.js": "0330ee87a8605390031c48d6cdfe14df3e30a71ea5dbf14bf02a2563897026f9",
+        "runtime.js": "4ed84a1d415de43cbc74548139c7a6a2c02f9aee8c54f62be39ca9921df820c1",
+        "ore-lighting.js": "700a0ff8af8d269de8b9b1d1e50b8995968880027a74fce514dd1d46226b0dd4",
+        "liquid-shaders.js": "a794da3d6b9000ea2f246a6e1aa8ebe995fe5eb0d7ec40e64692565215e68534",
+        "sun-shadows.js": "97780a398dcb5e549ef516fda9dc1ada527c0535cdc2262939876834bde98a85",
+        "atmosphere.js": "a5ab14188c5cd4b90539f06d772f231a8f80bcd54354736803a84497712c1aae",
+        "day-night.js": "c98bf8bfd40bb70b18753cc3f497a312b975cce8535e4faa050197eb15e40cc1",
+        "dynamic-lighting.js": "bad814b93a1383fdb9022936a384be27fb2a2f84447d8e4ad61d844169eb76c8",
+        "shader.js": "918218a4e71f9e235f17c43e1780b743f280e4c63ad538ecc2f471d28164df22"
+      }
+    },
+    "bloxd-litematica": {
+      "version": "0.14.1",
+      "packageSha256": "dfef3996a8bea852cacbdf26cf6ead9137a19c140eb08ea12055e32d5913d684",
+      "files": {
+        "placement.js": "9d2237b909f3d3bb90fe545d705b8a720ba08bbf2ac654aabea3a469417f1ac8",
+        "block-ids.js": "61844f90c29aed75647d579829c86cb202f83aea256714e1e9ac643f5aec0592",
+        "bloxdschem.js": "d84b3bd1bf35c65fddf3a4ef8b5d9a23d7a94f0babcb5ccfbde56130ca95ac7c",
+        "selection.js": "6e6caf88ec86712f68e801263ba4dcb85eb1e1b3c1cd13a2bde8ddbb68df26a2",
+        "file-picker.js": "8ca8953feb9379fa6867496365ab556494afba95b238de9a243e3dffbb7aa86c",
+        "block-names.js": "44348ef601cd9fdda183faa122898554392570c700d2f4dce470ad77101ea44c",
+        "model.js": "a6b1d2b4837e0ef0eb973f66300f42c4ef7710ff5496a166068403ea48c350d1",
+        "runtime.js": "d66011b0922bb969892b260ddb3d794bc2be55dec1f8724b7b7a3156a92c4004",
+        "adapter.js": "e0a766e31ea6658ec470ccc4ae269183911e79b2043f3adf95a42e009987cc79",
+        "geometry.js": "0e02c60684a48b3a04d2b555cbc8b77f2b2293952d329c7d22150826b1f042b9",
+        "native-frame.js": "63ea0076c100b709c4d0f64a28ebbc6ed962477b7953bd32c945a1d7af61123b",
+        "foreground.js": "878c90930e84b65a858e9feb89d18502f66cd0d7155c2130c03ab43b97045f5e",
+        "renderer.js": "3c76171757c75ef607e1142c87b3daf80861dea6832cf0c46abf2fe36dd03354",
+        "building.js": "ca5ce3f7cc18140a6f8c5d5b03a2d3738cb62f50a8d9ad233af0b79198682057",
+        "place.js": "6ed02cbe8b35cdc624a00dab28d613749a1d468429ed015be4c663ac1b10bc1d",
+        "litematica.js": "b3413bf085cd311bec16ea509c721e83202bec7b627e9fc92e116e0b338b8092"
+      }
+    },
+    "bloxd-party-voice": {
+      "version": "0.6.1",
+      "packageSha256": "b2dbbbe75f6c050daaa44362e3629c1f1f7e493604258dcdbca1cb585ccf3ec1",
+      "files": {
+        "runtime.js": "289b14fa0ce5011b04fe9ee0e4d09c808eddfedf3f6fc7cc5f60500f8bb5a930",
+        "voice.js": "e0b4e9fc0bc31116cd061b6b8b9deee002c7968b45d464b4836f529d1e356fba",
+        "voice.css": "52c03dd9a48ed7616ce06d0b4eb562f2dfd85f6ca4d7afd7004046e65d9ab47e"
+      }
+    }
+  }
+}

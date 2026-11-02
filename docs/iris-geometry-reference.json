@@ -1,0 +1,57 @@
+{
+  "verifiedOn": "2026-10-16",
+  "minecraftVersion": "26.3",
+  "irisVersion": "1.11.7",
+  "modrinthVersion": "vTN4NRGW",
+  "artifactSHA512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+  "artifactExecuted": false,
+  "artifactInstalled": false,
+  "publicSourceCommit": "671a5c87747d33983d7ed659461a64f46dfcb1f0",
+  "exactReleaseSourceTagEstablished": false,
+  "classes": [
+    {
+      "file": "CommonUniforms.class",
+      "sha256": "24c8ae7005d6d2fe099805c45781314dc1367cfca4d48343abd6fa97f7774357"
+    },
+    {
+      "file": "HandRenderer.class",
+      "sha256": "2ff1d9e6116f4642e24196cea50eb48e9be21c8175b33a4ebc3c8c2d90f5a350"
+    },
+    {
+      "file": "IrisSamplers.class",
+      "sha256": "e19f6f028ee4000f31ae70af9f16cd9241d626d443f59f406c56b7675faf8d1d"
+    },
+    {
+      "file": "MatrixUniforms.class",
+      "sha256": "49824bb50e4d76e89c6560e3ea0be6c926192463251034d8650dad34d7d19c53"
+    },
+    {
+      "file": "ProgramId.class",
+      "sha256": "e7916cf9a8a01ebf0ae84f096053018203952360356b8ab4dc3ba1c89f4b1589"
+    },
+    {
+      "file": "ShaderKey.class",
+      "sha256": "9d5636ac35ed0089d50bb227b28ccf6e0366f8a81ddda63a33ea8fb284399787"
+    }
+  ],
+  "hand": {
+    "constants": [
+      0.125,
+      0.4375,
+      0.05000000074505806
+    ],
+    "canonicalCompression": "N * C_ZO * inverse(N) = diag(1,1,0.125,1)",
+    "inputsRequired": [
+      "HUD FOV",
+      "depthFar",
+      "hurt/view bob matrix",
+      "viewport size"
+    ],
+    "worldProjectionUnchanged": true
+  },
+  "parser": "tools/inspect-iris-reference.cjs",
+  "evidence": "outputs/iris-reference/geometry-reference-contract.json",
+  "irisGeometryContract": 1,
+  "irisContractComplete": false,
+  "productionRecipeEnabled": false
+}

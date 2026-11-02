@@ -1,0 +1,4 @@
+'use strict';
+const path=require('node:path');
+function paths(app,environment=process){const root=path.resolve(__dirname,'..'),data=path.join(environment.env.LOCALAPPDATA||app.getPath('appData'),'BloxdNative','launcher-data'),nativeFolder=app.isPackaged?path.join(environment.resourcesPath,'native'):null;return {root,data,gameExecutable:app.isPackaged?path.join(path.dirname(environment.execPath),'Bloxdy Game Client.exe'):environment.execPath,catalog:path.join(__dirname,'catalog'),runner:nativeFolder?path.join(nativeFolder,'MemoryBudgetRunner.exe'):path.join(root,'build-launcher','Release','MemoryBudgetRunner.exe'),native:nativeFolder?path.join(nativeFolder,'BloxdNative.exe'):path.join(root,'build-release','Release','BloxdNative.exe')};}
+module.exports={paths};

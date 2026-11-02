@@ -1,0 +1,458 @@
+{
+  "contract": 1,
+  "irisArtifact": "1.11.7+26.3-fabric",
+  "artifactSha512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+  "classes": [
+    {
+      "file": "net/irisshaders/iris/gl/shader/GlShader.class",
+      "sha256": "bc586c23e4598d1e8cb2c7c3ec132e3f6900a0aed53f6fb96816021118e5b66f",
+      "type": "net/irisshaders/iris/gl/shader/GlShader",
+      "parent": "net/irisshaders/iris/gl/GlResource",
+      "fields": [
+        {
+          "key": "LOGGER",
+          "descriptor": "Lorg/apache/logging/log4j/Logger;"
+        },
+        {
+          "key": "name",
+          "descriptor": "Ljava/lang/String;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "(Lnet/irisshaders/iris/gl/shader/ShaderType;Ljava/lang/String;Ljava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 4,
+              "op": 184,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.createShader(Lnet/irisshaders/iris/gl/shader/ShaderType;Ljava/lang/String;Ljava/lang/String;)I"
+            },
+            {
+              "offset": 7,
+              "op": 183,
+              "target": "net/irisshaders/iris/gl/GlResource.<init>(I)V"
+            },
+            {
+              "offset": 12,
+              "op": 181,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.nameLjava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "createShader",
+          "descriptor": "(Lnet/irisshaders/iris/gl/shader/ShaderType;Ljava/lang/String;Ljava/lang/String;)I",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.idI"
+            },
+            {
+              "offset": 4,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager.glCreateShader(I)I"
+            },
+            {
+              "offset": 10,
+              "op": 184,
+              "target": "net/irisshaders/iris/gl/shader/ShaderWorkarounds.safeShaderSource(ILjava/lang/CharSequence;)V"
+            },
+            {
+              "offset": 14,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager.glCompileShader(I)V"
+            },
+            {
+              "offset": 17,
+              "op": 18,
+              "target": "33505"
+            },
+            {
+              "offset": 22,
+              "op": 182,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.name()Ljava/lang/String;"
+            },
+            {
+              "offset": 25,
+              "op": 178,
+              "target": "java/util/Locale.ROOTLjava/util/Locale;"
+            },
+            {
+              "offset": 28,
+              "op": 182,
+              "target": "java/lang/String.toLowerCase(Ljava/util/Locale;)Ljava/lang/String;"
+            },
+            {
+              "offset": 31,
+              "op": 186,
+              "target": "bootstrap:0"
+            },
+            {
+              "offset": 36,
+              "op": 184,
+              "target": "net/irisshaders/iris/gl/GLDebug.nameObject(IILjava/lang/String;)V"
+            },
+            {
+              "offset": 40,
+              "op": 184,
+              "target": "net/irisshaders/iris/gl/IrisRenderSystem.getShaderInfoLog(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 47,
+              "op": 182,
+              "target": "java/lang/String.isEmpty()Z"
+            },
+            {
+              "offset": 53,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.LOGGERLorg/apache/logging/log4j/Logger;"
+            },
+            {
+              "offset": 59,
+              "op": 186,
+              "target": "bootstrap:1"
+            },
+            {
+              "offset": 64,
+              "op": 185,
+              "target": "org/apache/logging/log4j/Logger.warn(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 70,
+              "op": 18,
+              "target": "35713"
+            },
+            {
+              "offset": 72,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager.glGetShaderi(II)I"
+            },
+            {
+              "offset": 83,
+              "op": 187,
+              "target": "net/irisshaders/iris/gl/shader/ShaderCompileException"
+            },
+            {
+              "offset": 90,
+              "op": 183,
+              "target": "net/irisshaders/iris/gl/shader/ShaderCompileException.<init>(Ljava/lang/String;Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "getName",
+          "descriptor": "()Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.nameLjava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "getHandle",
+          "descriptor": "()I",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.getGlId()I"
+            }
+          ]
+        },
+        {
+          "key": "destroyInternal",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.getGlId()I"
+            },
+            {
+              "offset": 4,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager.glDeleteShader(I)V"
+            }
+          ]
+        },
+        {
+          "key": "<clinit>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 18,
+              "target": "net/irisshaders/iris/gl/shader/GlShader"
+            },
+            {
+              "offset": 2,
+              "op": 184,
+              "target": "org/apache/logging/log4j/LogManager.getLogger(Ljava/lang/Class;)Lorg/apache/logging/log4j/Logger;"
+            },
+            {
+              "offset": 5,
+              "op": 179,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.LOGGERLorg/apache/logging/log4j/Logger;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/gl/shader/ProgramCreator.class",
+      "sha256": "fe243fa5422a09ee5cf818bd92544fdf898862e3a6790373afb3ac9aec8a0f31",
+      "type": "net/irisshaders/iris/gl/shader/ProgramCreator",
+      "parent": "java/lang/Object",
+      "fields": [
+        {
+          "key": "LOGGER",
+          "descriptor": "Lorg/apache/logging/log4j/Logger;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            }
+          ]
+        },
+        {
+          "key": "create",
+          "descriptor": "(Ljava/lang/String;[Lnet/irisshaders/iris/gl/shader/GlShader;)I",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager.glCreateProgram()I"
+            },
+            {
+              "offset": 7,
+              "op": 18,
+              "target": "iris_Entity"
+            },
+            {
+              "offset": 9,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager._glBindAttribLocation(IILjava/lang/CharSequence;)V"
+            },
+            {
+              "offset": 15,
+              "op": 18,
+              "target": "mc_Entity"
+            },
+            {
+              "offset": 17,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager._glBindAttribLocation(IILjava/lang/CharSequence;)V"
+            },
+            {
+              "offset": 23,
+              "op": 18,
+              "target": "mc_midTexCoord"
+            },
+            {
+              "offset": 25,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager._glBindAttribLocation(IILjava/lang/CharSequence;)V"
+            },
+            {
+              "offset": 31,
+              "op": 18,
+              "target": "at_tangent"
+            },
+            {
+              "offset": 33,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager._glBindAttribLocation(IILjava/lang/CharSequence;)V"
+            },
+            {
+              "offset": 39,
+              "op": 18,
+              "target": "at_midBlock"
+            },
+            {
+              "offset": 41,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager._glBindAttribLocation(IILjava/lang/CharSequence;)V"
+            },
+            {
+              "offset": 46,
+              "op": 18,
+              "target": "Position"
+            },
+            {
+              "offset": 48,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager._glBindAttribLocation(IILjava/lang/CharSequence;)V"
+            },
+            {
+              "offset": 53,
+              "op": 18,
+              "target": "UV0"
+            },
+            {
+              "offset": 55,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager._glBindAttribLocation(IILjava/lang/CharSequence;)V"
+            },
+            {
+              "offset": 80,
+              "op": 18,
+              "target": "33505"
+            },
+            {
+              "offset": 84,
+              "op": 182,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.getHandle()I"
+            },
+            {
+              "offset": 89,
+              "op": 182,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.getName()Ljava/lang/String;"
+            },
+            {
+              "offset": 92,
+              "op": 184,
+              "target": "net/irisshaders/iris/gl/GLDebug.nameObject(IILjava/lang/String;)V"
+            },
+            {
+              "offset": 98,
+              "op": 182,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.getHandle()I"
+            },
+            {
+              "offset": 101,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager.glAttachShader(II)V"
+            },
+            {
+              "offset": 111,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager.glLinkProgram(I)V"
+            },
+            {
+              "offset": 114,
+              "op": 18,
+              "target": "33506"
+            },
+            {
+              "offset": 118,
+              "op": 184,
+              "target": "net/irisshaders/iris/gl/GLDebug.nameObject(IILjava/lang/String;)V"
+            },
+            {
+              "offset": 146,
+              "op": 182,
+              "target": "net/irisshaders/iris/gl/shader/GlShader.getHandle()I"
+            },
+            {
+              "offset": 149,
+              "op": 184,
+              "target": "net/irisshaders/iris/gl/IrisRenderSystem.detachShader(II)V"
+            },
+            {
+              "offset": 159,
+              "op": 184,
+              "target": "net/irisshaders/iris/gl/IrisRenderSystem.getProgramInfoLog(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 164,
+              "op": 182,
+              "target": "java/lang/String.isEmpty()Z"
+            },
+            {
+              "offset": 170,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ProgramCreator.LOGGERLorg/apache/logging/log4j/Logger;"
+            },
+            {
+              "offset": 175,
+              "op": 186,
+              "target": "bootstrap:0"
+            },
+            {
+              "offset": 180,
+              "op": 185,
+              "target": "org/apache/logging/log4j/Logger.warn(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 186,
+              "op": 18,
+              "target": "35714"
+            },
+            {
+              "offset": 188,
+              "op": 184,
+              "target": "com/mojang/renderpearl/backend/opengl/GlStateManager.glGetProgrami(II)I"
+            },
+            {
+              "offset": 199,
+              "op": 187,
+              "target": "net/irisshaders/iris/gl/shader/ShaderCompileException"
+            },
+            {
+              "offset": 205,
+              "op": 183,
+              "target": "net/irisshaders/iris/gl/shader/ShaderCompileException.<init>(Ljava/lang/String;Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "<clinit>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 18,
+              "target": "net/irisshaders/iris/gl/shader/ProgramCreator"
+            },
+            {
+              "offset": 2,
+              "op": 184,
+              "target": "org/apache/logging/log4j/LogManager.getLogger(Ljava/lang/Class;)Lorg/apache/logging/log4j/Logger;"
+            },
+            {
+              "offset": 5,
+              "op": 179,
+              "target": "net/irisshaders/iris/gl/shader/ProgramCreator.LOGGERLorg/apache/logging/log4j/Logger;"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "referenceBehavior": "Pinned Iris creates shader objects, submits source, compiles, inspects status/logs, attaches/links programs, inspects link status/logs and manages shader destruction. It prebinds Minecraft attribute names and detaches stages after link.",
+  "implementationScope": "Explicit owned snapshot -> existing include/macro/translation pipeline -> frozen caller-context GL API -> owned vertex/fragment program -> active interface reflection. Internal opt-in API only; no production installation.",
+  "differences": "No Minecraft semantic prebinding is copied. Actual driver attribute/uniform locations and active output locations are validated. Attached stages are marked for deletion and retained by the owned program until its deletion, preserving existing attached-stage validation. This is not full Iris lifecycle or binding parity.",
+  "contextContract": "native() only reads an already existing current GLFW context; no context/window creation or switching. Requires current owner thread and desktop GL >=4.3. CPU tests inject callbacks and identity only; identity equality is not a context-generation proof. Domain must outlive its leases, drain retirements and close on its own current context before teardown. Foreign-thread lease retirement performs no GL; owner collect deletes it. Uncollected final destruction on a foreign context never calls GL and increments a CPU diagnostic counter; this is a lifecycle-contract violation, not successful cleanup.",
+  "resourceContract": "At most 8 occupied/reserved/retired program slots per domain, two attached stages per successful program or candidate. Candidate failures clean before replacement when context is valid; context loss retains bounded pending cleanup. Bound retired programs remain occupied until the caller unbinds them. No driver compiler time/memory bound or GPU-byte estimate is claimed. Existing frame/source/material/GPU budgets are unchanged.",
+  "reflection": "Active attributes/uniforms must match declared names/types, have valid nonoverlapping locations, size one and bounded names/counts. Matrix attribute columns occupy separate slots. Optimized-away declarations remain inactive. Only vec4 output locations declared by the translator are accepted, with sparse indices unchanged; no colortex or physical attachment routes are inferred. Buffer blocks/SSBOs/atomic-counter buffers are rejected.",
+  "limits": {
+    "programSlots": 8,
+    "stagesPerProgram": 2,
+    "sourceBytesPerStage": 8388608,
+    "sourcePathsPerStage": 4096,
+    "logBytesPerStageOrProgram": 16384,
+    "sourceLegendBytesPerStage": 16384,
+    "activeAttributes": 16,
+    "activeUniforms": 512,
+    "activeNameBytes": 127,
+    "activeOutputs": 8
+  },
+  "verification": "Pure CPU frozen-driver callbacks exercise exact sources, object ownership, status/log/reflection failures, replacement, capacity, moves, queued cleanup, context/thread checks, active/inactive resources and repeated releases. glslang compiles captured submitted source and independently reflects names/types, plus rejects a cross-stage mismatch. Neither represents real-driver reflection or image/FPS acceptance.",
+  "javaExecuted": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "accountsAccessed": false,
+  "productionActivated": false,
+  "irisContractComplete": false
+}

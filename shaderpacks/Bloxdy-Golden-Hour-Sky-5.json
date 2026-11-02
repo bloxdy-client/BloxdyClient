@@ -1,0 +1,33 @@
+{
+  "metaData": {
+    "id": "custom",
+    "version": 5,
+    "name": "Bloxdy Golden Hour Sky 5",
+    "author": "Bloxdy Client contributors",
+    "fromFolderName": "Bloxdy-Golden-Hour-Sky-5"
+  },
+  "skyBoxes": {
+    "default": {
+      "type": "earth",
+      "inclination": 0.43,
+      "azimuth": 0.55,
+      "turbidity": 7.0,
+      "luminance": 0.12,
+      "rayleigh": 1.55,
+      "mieCoefficient": 0.006,
+      "mieDirectionalG": 0.76,
+      "dithering": true
+    },
+    "earth": {
+      "type": "earth",
+      "inclination": 0.43,
+      "azimuth": 0.55,
+      "turbidity": 7.0,
+      "luminance": 0.12,
+      "rayleigh": 1.55,
+      "mieCoefficient": 0.006,
+      "mieDirectionalG": 0.76,
+      "dithering": true
+    }
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "contract": 5,
+  "minecraftVersion": "26.3",
+  "irisVersion": "1.11.7",
+  "policy": "Explicit renderer identities, not gameplay equivalence or numeric registry/pack IDs. Exact source family, spelling, state and effective flags are required. Unlisted variants remain unknown. Supported horizontal slabs are type bottom/top and waterlogged=false, derived from their observed nonfluid registration and the pinned cell-ID fluid adapter, not a default for arbitrary unknown source families. Contract 3 adds ten exact stairs families with geometry-verified facing/half/corner and dry state, plus Jungle/Cherry lower and upper door roots with fixed right hinge and unknown powered. Source axes are retained with canonical +X east/-Z north naming. Other wood species are not aliased. Contract 4 adds exact Jungle/Cherry logs, barkless logs and planks plus Grass Block. Plain log registrations do not establish a Minecraft axis; Grass Block does not establish snowy. These properties remain unknown, with all reference completions required to agree for pack-ID resolution. No Minecraft default is substituted. Contract 5 adds exact Water and Lava plain roots with non-solid/non-opaque/fluid flags=4. Bloxd static cell behavior is not a Minecraft level producer; level stays unknown over 0..15, with ordered pack-ID consensus and source geometry preserved. No fluid simulation or reference flow/falling data is synthesized.",
+  "blocks": [
+    [
+      "Stone",
+      "stone",
+      "cube",
+      3
+    ],
+    [
+      "Messy Stone",
+      "cobblestone",
+      "cube",
+      3
+    ],
+    [
+      "Smooth Stone",
+      "smooth_stone",
+      "cube",
+      3
+    ],
+    [
+      "Diorite",
+      "diorite",
+      "cube",
+      3
+    ],
+    [
+      "Smooth Diorite",
+      "polished_diorite",
+      "cube",
+      3
+    ],
+    [
+      "Andesite",
+      "andesite",
+      "cube",
+      3
+    ],
+    [
+      "Smooth Andesite",
+      "polished_andesite",
+      "cube",
+      3
+    ],
+    [
+      "Granite",
+      "granite",
+      "cube",
+      3
+    ],
+    [
+      "Smooth Granite",
+      "polished_granite",
+      "cube",
+      3
+    ],
+    [
+      "Dirt",
+      "dirt",
+      "cube",
+      3
+    ],
+    [
+      "Messy Dirt",
+      "coarse_dirt",
+      "cube",
+      3
+    ],
+    [
+      "Sand",
+      "sand",
+      "cube",
+      3
+    ],
+    [
+      "Clay",
+      "clay",
+      "cube",
+      3
+    ],
+    [
+      "Gravel",
+      "gravel",
+      "cube",
+      3
+    ],
+    [
+      "Snow",
+      "snow_block",
+      "cube",
+      3
+    ],
+    [
+      "Glass",
+      "glass",
+      "cube",
+      1
+    ],
+    [
+      "Bricks",
+      "bricks",
+      "cube",
+      3
+    ],
+    [
+      "Stone Bricks",
+      "stone_bricks",
+      "cube",
+      3
+    ],
+    [
+      "Dark Red Brick",
+      "nether_bricks",
+      "cube",
+      3
+    ],
+    [
+      "Dark Red Stone",
+      "netherrack",
+      "cube",
+      3
+    ],
+    [
+      "Block of Quartz",
+      "quartz_block",
+      "cube",
+      3
+    ],
+    [
+      "Chiseled Block of Quartz",
+      "chiseled_quartz_block",
+      "cube",
+      3
+    ],
+    [
+      "Engraved Stone",
+      "chiseled_stone_bricks",
+      "cube",
+      3
+    ],
+    [
+      "Mossy Stone Bricks",
+      "mossy_stone_bricks",
+      "cube",
+      3
+    ],
+    [
+      "Cracked Stone Bricks",
+      "cracked_stone_bricks",
+      "cube",
+      3
+    ],
+    [
+      "Smooth Sandstone",
+      "smooth_sandstone",
+      "cube",
+      3
+    ],
+    [
+      "Engraved Sandstone",
+      "chiseled_sandstone",
+      "cube",
+      3
+    ],
+    [
+      "Obsidian",
+      "obsidian",
+      "cube",
+      3
+    ],
+    [
+      "Sponge",
+      "sponge",
+      "cube",
+      3
+    ],
+    [
+      "Bedrock",
+      "bedrock",
+      "cube",
+      3
+    ],
+    [
+      "Messy Stone Slab",
+      "cobblestone_slab",
+      "slab",
+      9
+    ],
+    [
+      "Stone Slab",
+      "stone_slab",
+      "slab",
+      9
+    ],
+    [
+      "Smooth Stone Slab",
+      "smooth_stone_slab",
+      "slab",
+      9
+    ],
+    [
+      "Stone Bricks Slab",
+      "stone_brick_slab",
+      "slab",
+      9
+    ],
+    [
+      "Mossy Stone Bricks Slab",
+      "mossy_stone_brick_slab",
+      "slab",
+      9
+    ],
+    [
+      "Andesite Slab",
+      "andesite_slab",
+      "slab",
+      9
+    ],
+    [
+      "Messy Stone Stairs",
+      "cobblestone_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Stone Stairs",
+      "stone_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Stone Bricks Stairs",
+      "stone_brick_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Mossy Stone Bricks Stairs",
+      "mossy_stone_brick_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Andesite Stairs",
+      "andesite_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Smooth Andesite Stairs",
+      "polished_andesite_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Diorite Stairs",
+      "diorite_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Smooth Diorite Stairs",
+      "polished_diorite_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Granite Stairs",
+      "granite_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Smooth Granite Stairs",
+      "polished_granite_stairs",
+      "stairs",
+      9
+    ],
+    [
+      "Jungle Door",
+      "jungle_door",
+      "door_lower",
+      9
+    ],
+    [
+      "_Jungle Door Top",
+      "jungle_door",
+      "door_upper",
+      9
+    ],
+    [
+      "Cherry Door",
+      "cherry_door",
+      "door_lower",
+      9
+    ],
+    [
+      "_Cherry Door Top",
+      "cherry_door",
+      "door_upper",
+      9
+    ],
+    [
+      "Jungle Log",
+      "jungle_log",
+      "log",
+      3
+    ],
+    [
+      "Barkless Jungle Log",
+      "stripped_jungle_log",
+      "log",
+      3
+    ],
+    [
+      "Cherry Log",
+      "cherry_log",
+      "log",
+      3
+    ],
+    [
+      "Barkless Cherry Log",
+      "stripped_cherry_log",
+      "log",
+      3
+    ],
+    [
+      "Jungle Wood Planks",
+      "jungle_planks",
+      "cube",
+      3
+    ],
+    [
+      "Cherry Wood Planks",
+      "cherry_planks",
+      "cube",
+      3
+    ],
+    [
+      "Grass Block",
+      "grass_block",
+      "grass",
+      3
+    ],
+    [
+      "Water",
+      "water",
+      "fluid",
+      4
+    ],
+    [
+      "Lava",
+      "lava",
+      "fluid",
+      4
+    ]
+  ],
+  "packIdsImplemented": false,
+  "irisContractComplete": false
+}

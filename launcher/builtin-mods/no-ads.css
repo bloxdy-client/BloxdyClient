@@ -1,0 +1,37 @@
+/* Exact Bloxd ad hosts, plus known advertising SDK slots. Keep React's nodes
+   mounted so its cleanup, timers and normal completion callbacks still work. */
+:is(
+  .AdBanner, .AdBannerContainer, .AdBannerLoader, .AdBannerRemoveAds,
+  .AdBannerRemoveAdsHost, .BloxdAdContainer, .HomePageAdContainer,
+  .LoadingOverlayRightAdBannerContainer, .SuperRankAd, .CosmeticPackAd,
+  #GenericVideoWrapper, #GenericVideoInner, #GamAdCountdown,
+  #aip-video-player, #aip-video-player-wrapper, #aip-preroll,
+  #preroll, #preroll-container, #ad-container, #adContainer,
+  .adsbygoogle, ins[data-ad-client], [data-ad-slot],
+  [id^="div-gpt-ad"], [id^="google_ads_iframe"], [id^="ad_iframe"],
+  iframe[src*="//doubleclick.net/"], iframe[src*=".doubleclick.net/"],
+  iframe[src*="//googlesyndication.com/"], iframe[src*=".googlesyndication.com/"],
+  iframe[src*="//adinplay.com/"], iframe[src*=".adinplay.com/"],
+  iframe[src*="//aditude.io/"], iframe[src*=".aditude.io/"]
+),
+:is(
+  .AdBanner, .AdBannerContainer, .BloxdAdContainer, .HomePageAdContainer,
+  .LoadingOverlayRightAdBannerContainer, #GenericVideoWrapper,
+  #GenericVideoInner, #aip-video-player, #aip-video-player-wrapper,
+  #aip-preroll, #preroll, #preroll-container, #ad-container, #adContainer
+) * {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}

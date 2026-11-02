@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-13T17:11:26.245Z",
+  "passed": true,
+  "tests": 86,
+  "syntaxFiles": 33,
+  "standardPreloadSyntax": true,
+  "nativeVoicePreloadSyntax": true,
+  "clientsStarted": 0,
+  "accountsAccessed": false,
+  "liveModCombinationVerified": false,
+  "minecraftPackRenderingImplemented": false,
+  "resourcepackRenderingImplemented": false,
+  "ramReductionMeasured": false,
+  "originalModules": [
+    {
+      "id": "bloxd-visual-shader",
+      "version": "5.6.14.2",
+      "sha256": "a0f0e9e2eb90fc7859e986e03ea79e6b3d004afc59fcb70165e50d17d36aa76a"
+    },
+    {
+      "id": "bloxd-litematica",
+      "version": "0.14.1",
+      "sha256": "dfef3996a8bea852cacbdf26cf6ead9137a19c140eb08ea12055e32d5913d684"
+    },
+    {
+      "id": "bloxd-party-voice",
+      "version": "0.6.1",
+      "sha256": "b2dbbbe75f6c050daaa44362e3629c1f1f7e493604258dcdbca1cb585ccf3ec1"
+    }
+  ]
+}

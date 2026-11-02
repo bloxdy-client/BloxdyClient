@@ -1,0 +1,909 @@
+{
+  "contract": 1,
+  "irisArtifact": "1.11.7+26.3-fabric",
+  "artifactSha512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+  "classes": [
+    {
+      "file": "net/irisshaders/iris/shaderpack/preprocessor/JcppProcessor.class",
+      "sha256": "1f74660d5d732abbdc1d623b5dd25e679d34f4a12a54548ef09c31d4a4155779",
+      "type": "net/irisshaders/iris/shaderpack/preprocessor/JcppProcessor",
+      "parent": "java/lang/Object",
+      "fields": [],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            }
+          ]
+        },
+        {
+          "key": "glslPreprocessSource",
+          "descriptor": "(Ljava/lang/String;Ljava/lang/Iterable;)Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 18,
+              "target": "#warning IRIS_JCPP_GLSL_VERSION"
+            },
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 10,
+              "op": 18,
+              "target": "#warning IRIS_JCPP_GLSL_EXTENSION"
+            },
+            {
+              "offset": 12,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 18,
+              "op": 187,
+              "target": "java/lang/RuntimeException"
+            },
+            {
+              "offset": 22,
+              "op": 18,
+              "target": "Some shader author is trying to exploit internal Iris implementation details, stop!"
+            },
+            {
+              "offset": 24,
+              "op": 183,
+              "target": "java/lang/RuntimeException.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 29,
+              "op": 18,
+              "target": "#version"
+            },
+            {
+              "offset": 31,
+              "op": 18,
+              "target": "#warning IRIS_JCPP_GLSL_VERSION"
+            },
+            {
+              "offset": 33,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 38,
+              "op": 18,
+              "target": "#extension"
+            },
+            {
+              "offset": 40,
+              "op": 18,
+              "target": "#warning IRIS_JCPP_GLSL_EXTENSION"
+            },
+            {
+              "offset": 42,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 47,
+              "op": 18,
+              "target": "��"
+            },
+            {
+              "offset": 49,
+              "op": 18,
+              "target": ""
+            },
+            {
+              "offset": 51,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 55,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener"
+            },
+            {
+              "offset": 59,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.<init>()V"
+            },
+            {
+              "offset": 63,
+              "op": 187,
+              "target": "org/anarres/cpp/Preprocessor"
+            },
+            {
+              "offset": 67,
+              "op": 183,
+              "target": "org/anarres/cpp/Preprocessor.<init>()V"
+            },
+            {
+              "offset": 72,
+              "op": 185,
+              "target": "java/lang/Iterable.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 81,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 91,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 104,
+              "op": 182,
+              "target": "net/irisshaders/iris/helpers/StringPair.key()Ljava/lang/String;"
+            },
+            {
+              "offset": 109,
+              "op": 182,
+              "target": "net/irisshaders/iris/helpers/StringPair.value()Ljava/lang/String;"
+            },
+            {
+              "offset": 112,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addMacro(Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 123,
+              "op": 187,
+              "target": "java/lang/RuntimeException"
+            },
+            {
+              "offset": 127,
+              "op": 18,
+              "target": "Unexpected LexerException processing macros"
+            },
+            {
+              "offset": 131,
+              "op": 183,
+              "target": "java/lang/RuntimeException.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 137,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.setListener(Lorg/anarres/cpp/PreprocessorListener;)V"
+            },
+            {
+              "offset": 141,
+              "op": 187,
+              "target": "org/anarres/cpp/StringLexerSource"
+            },
+            {
+              "offset": 147,
+              "op": 183,
+              "target": "org/anarres/cpp/StringLexerSource.<init>(Ljava/lang/String;Z)V"
+            },
+            {
+              "offset": 150,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addInput(Lorg/anarres/cpp/Source;)V"
+            },
+            {
+              "offset": 154,
+              "op": 178,
+              "target": "org/anarres/cpp/Feature.KEEPCOMMENTSLorg/anarres/cpp/Feature;"
+            },
+            {
+              "offset": 157,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addFeature(Lorg/anarres/cpp/Feature;)V"
+            },
+            {
+              "offset": 160,
+              "op": 187,
+              "target": "java/lang/StringBuilder"
+            },
+            {
+              "offset": 164,
+              "op": 183,
+              "target": "java/lang/StringBuilder.<init>()V"
+            },
+            {
+              "offset": 170,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.token()Lorg/anarres/cpp/Token;"
+            },
+            {
+              "offset": 185,
+              "op": 182,
+              "target": "org/anarres/cpp/Token.getType()I"
+            },
+            {
+              "offset": 201,
+              "op": 182,
+              "target": "org/anarres/cpp/Token.getText()Ljava/lang/String;"
+            },
+            {
+              "offset": 204,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 216,
+              "op": 187,
+              "target": "java/lang/RuntimeException"
+            },
+            {
+              "offset": 220,
+              "op": 18,
+              "target": "GLSL source pre-processing failed"
+            },
+            {
+              "offset": 224,
+              "op": 183,
+              "target": "java/lang/RuntimeException.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 230,
+              "op": 18,
+              "target": "\n"
+            },
+            {
+              "offset": 232,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 237,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.collectLines()Ljava/lang/String;"
+            },
+            {
+              "offset": 242,
+              "op": 184,
+              "target": "java/lang/String.valueOf(Ljava/lang/Object;)Ljava/lang/String;"
+            },
+            {
+              "offset": 245,
+              "op": 186,
+              "target": "bootstrap:0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.class",
+      "sha256": "b20a4be4c1a7c8e7ea535dd8b5acdf46c912048311d11e5c14d21b2a93392394",
+      "type": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener",
+      "parent": "org/anarres/cpp/DefaultPreprocessorListener",
+      "fields": [
+        {
+          "key": "VERSION_MARKER",
+          "descriptor": "Ljava/lang/String;"
+        },
+        {
+          "key": "EXTENSION_MARKER",
+          "descriptor": "Ljava/lang/String;"
+        },
+        {
+          "key": "builder",
+          "descriptor": "Ljava/lang/StringBuilder;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "org/anarres/cpp/DefaultPreprocessorListener.<init>()V"
+            },
+            {
+              "offset": 5,
+              "op": 187,
+              "target": "java/lang/StringBuilder"
+            },
+            {
+              "offset": 9,
+              "op": 183,
+              "target": "java/lang/StringBuilder.<init>()V"
+            },
+            {
+              "offset": 12,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.builderLjava/lang/StringBuilder;"
+            }
+          ]
+        },
+        {
+          "key": "handleWarning",
+          "descriptor": "(Lorg/anarres/cpp/Source;IILjava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 18,
+              "target": "#warning IRIS_JCPP_GLSL_VERSION"
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 11,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.builderLjava/lang/StringBuilder;"
+            },
+            {
+              "offset": 16,
+              "op": 18,
+              "target": "#warning IRIS_JCPP_GLSL_VERSION"
+            },
+            {
+              "offset": 18,
+              "op": 18,
+              "target": "#version "
+            },
+            {
+              "offset": 20,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 23,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 28,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.builderLjava/lang/StringBuilder;"
+            },
+            {
+              "offset": 33,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(C)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 42,
+              "op": 18,
+              "target": "#warning IRIS_JCPP_GLSL_EXTENSION"
+            },
+            {
+              "offset": 44,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 51,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.builderLjava/lang/StringBuilder;"
+            },
+            {
+              "offset": 56,
+              "op": 18,
+              "target": "#warning IRIS_JCPP_GLSL_EXTENSION"
+            },
+            {
+              "offset": 58,
+              "op": 18,
+              "target": "#extension "
+            },
+            {
+              "offset": 60,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 63,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 68,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.builderLjava/lang/StringBuilder;"
+            },
+            {
+              "offset": 73,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(C)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 86,
+              "op": 183,
+              "target": "org/anarres/cpp/DefaultPreprocessorListener.handleWarning(Lorg/anarres/cpp/Source;IILjava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "collectLines",
+          "descriptor": "()Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/GlslCollectingListener.builderLjava/lang/StringBuilder;"
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "jcpp": {
+    "file": "META-INF/jars/jcpp-1.4.14.jar",
+    "sha256": "1d115a6fd07ee28db7c33b87c41e912361dd037fa8e5202ccfb4ed264d668d54",
+    "classFile": "org/anarres/cpp/Preprocessor.class",
+    "classSha256": "28fdb09b89c30535a0ecd7f6e685fe7c63017d4d20a29a0ed0d97f6eb23124fb",
+    "expression": {
+      "key": "expr",
+      "descriptor": "(I)J",
+      "operations": [
+        {
+          "offset": 1,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_token()Lorg/anarres/cpp/Token;"
+        },
+        {
+          "offset": 6,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getType()I"
+        },
+        {
+          "offset": 78,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr(I)J"
+        },
+        {
+          "offset": 83,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_token()Lorg/anarres/cpp/Token;"
+        },
+        {
+          "offset": 88,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getType()I"
+        },
+        {
+          "offset": 98,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_untoken(Lorg/anarres/cpp/Token;)V"
+        },
+        {
+          "offset": 103,
+          "op": 187,
+          "target": "java/lang/StringBuilder"
+        },
+        {
+          "offset": 107,
+          "op": 183,
+          "target": "java/lang/StringBuilder.<init>()V"
+        },
+        {
+          "offset": 110,
+          "op": 19,
+          "target": "Missing ) in expression. Got "
+        },
+        {
+          "offset": 113,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 117,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getText()Ljava/lang/String;"
+        },
+        {
+          "offset": 120,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 123,
+          "op": 182,
+          "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 126,
+          "op": 182,
+          "target": "org/anarres/cpp/Preprocessor.error(Lorg/anarres/cpp/Token;Ljava/lang/String;)V"
+        },
+        {
+          "offset": 134,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr(I)J"
+        },
+        {
+          "offset": 137,
+          "op": 20,
+          "target": "undefined"
+        },
+        {
+          "offset": 148,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr(I)J"
+        },
+        {
+          "offset": 168,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr(I)J"
+        },
+        {
+          "offset": 177,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getValue()Ljava/lang/Object;"
+        },
+        {
+          "offset": 187,
+          "op": 182,
+          "target": "org/anarres/cpp/NumericValue.longValue()J"
+        },
+        {
+          "offset": 196,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_char(Lorg/anarres/cpp/Token;)I"
+        },
+        {
+          "offset": 205,
+          "op": 180,
+          "target": "org/anarres/cpp/Preprocessor.warningsLjava/util/Set;"
+        },
+        {
+          "offset": 208,
+          "op": 178,
+          "target": "org/anarres/cpp/Warning.UNDEFLorg/anarres/cpp/Warning;"
+        },
+        {
+          "offset": 211,
+          "op": 185,
+          "target": "java/util/Set.contains(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 221,
+          "op": 187,
+          "target": "java/lang/StringBuilder"
+        },
+        {
+          "offset": 225,
+          "op": 183,
+          "target": "java/lang/StringBuilder.<init>()V"
+        },
+        {
+          "offset": 228,
+          "op": 19,
+          "target": "Undefined token '"
+        },
+        {
+          "offset": 231,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 235,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getText()Ljava/lang/String;"
+        },
+        {
+          "offset": 238,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 241,
+          "op": 19,
+          "target": "' encountered in conditional."
+        },
+        {
+          "offset": 244,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 247,
+          "op": 182,
+          "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 250,
+          "op": 182,
+          "target": "org/anarres/cpp/Preprocessor.warning(Lorg/anarres/cpp/Token;Ljava/lang/String;)V"
+        },
+        {
+          "offset": 260,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_untoken(Lorg/anarres/cpp/Token;)V"
+        },
+        {
+          "offset": 265,
+          "op": 187,
+          "target": "java/lang/StringBuilder"
+        },
+        {
+          "offset": 269,
+          "op": 183,
+          "target": "java/lang/StringBuilder.<init>()V"
+        },
+        {
+          "offset": 272,
+          "op": 19,
+          "target": "Bad token in expression: "
+        },
+        {
+          "offset": 275,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 279,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getText()Ljava/lang/String;"
+        },
+        {
+          "offset": 282,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 285,
+          "op": 182,
+          "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 288,
+          "op": 182,
+          "target": "org/anarres/cpp/Preprocessor.error(Lorg/anarres/cpp/Token;Ljava/lang/String;)V"
+        },
+        {
+          "offset": 294,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_token()Lorg/anarres/cpp/Token;"
+        },
+        {
+          "offset": 302,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_priority(Lorg/anarres/cpp/Token;)I"
+        },
+        {
+          "offset": 321,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_untoken(Lorg/anarres/cpp/Token;)V"
+        },
+        {
+          "offset": 330,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr(I)J"
+        },
+        {
+          "offset": 337,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getType()I"
+        },
+        {
+          "offset": 514,
+          "op": 19,
+          "target": "Division by zero"
+        },
+        {
+          "offset": 517,
+          "op": 182,
+          "target": "org/anarres/cpp/Preprocessor.error(Lorg/anarres/cpp/Token;Ljava/lang/String;)V"
+        },
+        {
+          "offset": 543,
+          "op": 19,
+          "target": "Modulus by zero"
+        },
+        {
+          "offset": 546,
+          "op": 182,
+          "target": "org/anarres/cpp/Preprocessor.error(Lorg/anarres/cpp/Token;Ljava/lang/String;)V"
+        },
+        {
+          "offset": 769,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_token()Lorg/anarres/cpp/Token;"
+        },
+        {
+          "offset": 774,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getType()I"
+        },
+        {
+          "offset": 784,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr_untoken(Lorg/anarres/cpp/Token;)V"
+        },
+        {
+          "offset": 789,
+          "op": 187,
+          "target": "java/lang/StringBuilder"
+        },
+        {
+          "offset": 793,
+          "op": 183,
+          "target": "java/lang/StringBuilder.<init>()V"
+        },
+        {
+          "offset": 796,
+          "op": 19,
+          "target": "Missing : in conditional expression. Got "
+        },
+        {
+          "offset": 799,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 803,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getText()Ljava/lang/String;"
+        },
+        {
+          "offset": 806,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 809,
+          "op": 182,
+          "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 812,
+          "op": 182,
+          "target": "org/anarres/cpp/Preprocessor.error(Lorg/anarres/cpp/Token;Ljava/lang/String;)V"
+        },
+        {
+          "offset": 819,
+          "op": 183,
+          "target": "org/anarres/cpp/Preprocessor.expr(I)J"
+        },
+        {
+          "offset": 844,
+          "op": 187,
+          "target": "java/lang/StringBuilder"
+        },
+        {
+          "offset": 848,
+          "op": 183,
+          "target": "java/lang/StringBuilder.<init>()V"
+        },
+        {
+          "offset": 851,
+          "op": 19,
+          "target": "Unexpected operator "
+        },
+        {
+          "offset": 854,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 859,
+          "op": 182,
+          "target": "org/anarres/cpp/Token.getText()Ljava/lang/String;"
+        },
+        {
+          "offset": 862,
+          "op": 182,
+          "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 865,
+          "op": 182,
+          "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 868,
+          "op": 182,
+          "target": "org/anarres/cpp/Preprocessor.error(Lorg/anarres/cpp/Token;Ljava/lang/String;)V"
+        }
+      ]
+    }
+  },
+  "supportingSource": {
+    "binaryUrl": "https://repo.maven.apache.org/maven2/org/anarres/jcpp/1.4.14/jcpp-1.4.14.jar",
+    "binaryLocal": "outputs/glsl-preprocessor-0.6.58/jcpp-reference.jar",
+    "binarySha256": "e47d785bff4d116bf5223b96aabd57a03498a91bd259b4919ded6c511b47cc8c",
+    "preprocessorClassMatchesPinned": true,
+    "url": "https://repo.maven.apache.org/maven2/org/anarres/jcpp/1.4.14/jcpp-1.4.14-sources.jar",
+    "archiveLocal": "outputs/glsl-preprocessor-0.6.58/jcpp-sources.jar",
+    "archiveSha256": "d7e5689dc4cbbd5ab3ecc0fc791e8e21e0e3f82c14612c34f7be30726f609a0c",
+    "local": "outputs/glsl-preprocessor-0.6.58/Preprocessor.java",
+    "sha256": "4aeafce911e1faa778e7b467fa73ddf0d3f09274013975cdc6b22e73969b861c",
+    "exactIrisReleaseSourceTagEstablished": false
+  },
+  "referenceBehavior": "Pinned Iris installs explicit macros and JCPP-tokenizes GLSL, collecting version/extension directives into a header. Pinned JCPP expr evaluates its RHS before operator selection, including both ternary branches; arithmetic faults in unselected operands remain errors. Source archive corroborates the class bytes; its Maven binary Preprocessor.class equals the pinned nested class.",
+  "implementationScope": "Internal owned SPK1 snapshot -> virtual include expansion -> native bounded GLSL preparation. No automatic acquisition, program translation/linking, resource allocation or production activation.",
+  "unknownPolicy": "Absent conditional context is unknown and aborts; caller must supply a value or known undefined. This stricter guard is not JCPP undefined-as-zero behavior. Version/profile/GL_ES and __VERSION__ derive from explicit shader source; __LINE__/__FILE__ use the diagnostic map. Extension requests never prove support. No invented Minecraft/GPU/OS/driver/options macros.",
+  "subset": {
+    "directives": [
+      "define",
+      "undef",
+      "if",
+      "ifdef",
+      "ifndef",
+      "elif",
+      "else",
+      "endif",
+      "literal version",
+      "literal extension",
+      "limited pragma",
+      "active error rejects",
+      "resolver-generated line"
+    ],
+    "macros": "Object and function macros, argument prescan, rescan and aliases; backslash-spliced logical lines. No recursive expansion.",
+    "operators": [
+      "defined",
+      "!",
+      "~",
+      "unary -",
+      "*",
+      "/",
+      "%",
+      "+",
+      "-",
+      "<<",
+      ">>",
+      "<",
+      "<=",
+      ">",
+      ">=",
+      "==",
+      "!=",
+      "&",
+      "^",
+      "|",
+      "&&",
+      "||",
+      "?:",
+      "parentheses"
+    ],
+    "integers": "Signed 64-bit decimal/hex/octal, eager operand checking, overflow and invalid shifts reject.",
+    "unsupported": [
+      "stringification/token pasting/variadics/recursive macros",
+      "function calls crossing unspliced logical lines",
+      "macro-generated defined and directives",
+      "unsigned/suffixed/floating conditional literals and unary +",
+      "negative shifts and arithmetic overflow",
+      "missing/conditional/nonliteral source version",
+      "active warning/unknown pragmas/unresolved includes",
+      "author-authored source maps (include resolver rejects)",
+      "automatic environment macro discovery or complete Iris/JCPP parity"
+    ]
+  },
+  "limits": {
+    "inputBytes": 8388608,
+    "outputBytes": 8388608,
+    "workUnits": 33554432,
+    "logicalLineBytes": 65536,
+    "tokensPerLine": 8192,
+    "expandedLineBytes": 262144,
+    "macroNames": 512,
+    "macroTextBytes": 131072,
+    "macroBodyTokens": 16384,
+    "macroParameters": 16,
+    "conditionalDepth": 32,
+    "expressionDepth": 32,
+    "macroDepth": 32,
+    "argumentDepth": 32,
+    "extensionRequests": 256
+  },
+  "verificationScope": "15 common integer conditions and function/color macro fixture compared against glslang -E; three ternary selections checked separately by CPU because glslang rejects ternary in #if. Both CPU and glslang reject division by zero in an unselected logical operand. No reference Java executed.",
+  "javaExecuted": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "productionActivated": false,
+  "irisContractComplete": false
+}

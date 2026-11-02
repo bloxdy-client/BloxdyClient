@@ -1,0 +1,1086 @@
+{
+  "contract": 1,
+  "irisArtifact": "1.11.7+26.3-fabric",
+  "artifactSha512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+  "classes": [
+    {
+      "file": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.class",
+      "sha256": "038504b66d2fc065159b15e36996759f6b11ff7e597ea94972108f079faeb571",
+      "type": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor",
+      "parent": "java/lang/Object",
+      "fields": [
+        {
+          "key": "BACKSLASH_MATCHER",
+          "descriptor": "Ljava/util/regex/Pattern;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            }
+          ]
+        },
+        {
+          "key": "preprocessSource",
+          "descriptor": "(Ljava/lang/String;Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;Ljava/lang/Iterable;)Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 18,
+              "target": "#warning IRIS_PASSTHROUGH "
+            },
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 10,
+              "op": 18,
+              "target": "IRIS_PASSTHROUGHBACKSLASH"
+            },
+            {
+              "offset": 12,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 18,
+              "op": 187,
+              "target": "java/lang/RuntimeException"
+            },
+            {
+              "offset": 22,
+              "op": 18,
+              "target": "Some shader author is trying to exploit internal Iris implementation details, stop!"
+            },
+            {
+              "offset": 24,
+              "op": 183,
+              "target": "java/lang/RuntimeException.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 29,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.getBooleanValues(Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;)Ljava/util/List;"
+            },
+            {
+              "offset": 34,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.getStringValues(Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;)Ljava/util/Map;"
+            },
+            {
+              "offset": 39,
+              "op": 187,
+              "target": "org/anarres/cpp/Preprocessor"
+            },
+            {
+              "offset": 43,
+              "op": 183,
+              "target": "org/anarres/cpp/Preprocessor.<init>()V"
+            },
+            {
+              "offset": 49,
+              "op": 185,
+              "target": "java/util/List.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 58,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 68,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 82,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addMacro(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 89,
+              "op": 185,
+              "target": "java/lang/Iterable.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 98,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 108,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 120,
+              "op": 182,
+              "target": "net/irisshaders/iris/helpers/StringPair.value()Ljava/lang/String;"
+            },
+            {
+              "offset": 123,
+              "op": 182,
+              "target": "java/lang/String.isEmpty()Z"
+            },
+            {
+              "offset": 133,
+              "op": 182,
+              "target": "net/irisshaders/iris/helpers/StringPair.key()Ljava/lang/String;"
+            },
+            {
+              "offset": 136,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addMacro(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 146,
+              "op": 182,
+              "target": "net/irisshaders/iris/helpers/StringPair.key()Ljava/lang/String;"
+            },
+            {
+              "offset": 151,
+              "op": 182,
+              "target": "net/irisshaders/iris/helpers/StringPair.value()Ljava/lang/String;"
+            },
+            {
+              "offset": 154,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addMacro(Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 164,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.lambda$preprocessSource$0(Lorg/anarres/cpp/Preprocessor;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 169,
+              "op": 185,
+              "target": "java/util/Map.forEach(Ljava/util/function/BiConsumer;)V"
+            },
+            {
+              "offset": 177,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.process(Lorg/anarres/cpp/Preprocessor;Ljava/lang/String;)Ljava/lang/String;"
+            },
+            {
+              "offset": 184,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.close()V"
+            },
+            {
+              "offset": 194,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.close()V"
+            },
+            {
+              "offset": 206,
+              "op": 182,
+              "target": "java/lang/Throwable.addSuppressed(Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 214,
+              "op": 187,
+              "target": "java/lang/RuntimeException"
+            },
+            {
+              "offset": 218,
+              "op": 18,
+              "target": "Unexpected IOException while processing macros"
+            },
+            {
+              "offset": 222,
+              "op": 183,
+              "target": "java/lang/RuntimeException.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 228,
+              "op": 187,
+              "target": "java/lang/RuntimeException"
+            },
+            {
+              "offset": 232,
+              "op": 18,
+              "target": "Unexpected LexerException processing macros"
+            },
+            {
+              "offset": 236,
+              "op": 183,
+              "target": "java/lang/RuntimeException.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            }
+          ]
+        },
+        {
+          "key": "preprocessSource",
+          "descriptor": "(Ljava/lang/String;Ljava/lang/Iterable;)Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 18,
+              "target": "#warning IRIS_PASSTHROUGH "
+            },
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 9,
+              "op": 187,
+              "target": "java/lang/RuntimeException"
+            },
+            {
+              "offset": 13,
+              "op": 18,
+              "target": "Some shader author is trying to exploit internal Iris implementation details, stop!"
+            },
+            {
+              "offset": 15,
+              "op": 183,
+              "target": "java/lang/RuntimeException.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 19,
+              "op": 187,
+              "target": "org/anarres/cpp/Preprocessor"
+            },
+            {
+              "offset": 23,
+              "op": 183,
+              "target": "org/anarres/cpp/Preprocessor.<init>()V"
+            },
+            {
+              "offset": 28,
+              "op": 185,
+              "target": "java/lang/Iterable.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 35,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 44,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 57,
+              "op": 182,
+              "target": "net/irisshaders/iris/helpers/StringPair.key()Ljava/lang/String;"
+            },
+            {
+              "offset": 62,
+              "op": 182,
+              "target": "net/irisshaders/iris/helpers/StringPair.value()Ljava/lang/String;"
+            },
+            {
+              "offset": 65,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addMacro(Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 75,
+              "op": 178,
+              "target": "net/irisshaders/iris/Iris.loggerLnet/irisshaders/iris/IrisLogging;"
+            },
+            {
+              "offset": 78,
+              "op": 18,
+              "target": "Failed to preprocess property file!"
+            },
+            {
+              "offset": 81,
+              "op": 182,
+              "target": "net/irisshaders/iris/IrisLogging.fatal(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 86,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.process(Lorg/anarres/cpp/Preprocessor;Ljava/lang/String;)Ljava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "process",
+          "descriptor": "(Lorg/anarres/cpp/Preprocessor;Ljava/lang/String;)Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesCommentListener"
+            },
+            {
+              "offset": 5,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesCommentListener.<init>()V"
+            },
+            {
+              "offset": 8,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.setListener(Lorg/anarres/cpp/PreprocessorListener;)V"
+            },
+            {
+              "offset": 11,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener"
+            },
+            {
+              "offset": 15,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener.<init>()V"
+            },
+            {
+              "offset": 21,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.setListener(Lorg/anarres/cpp/PreprocessorListener;)V"
+            },
+            {
+              "offset": 25,
+              "op": 18,
+              "target": "\\R"
+            },
+            {
+              "offset": 27,
+              "op": 182,
+              "target": "java/lang/String.split(Ljava/lang/String;)[Ljava/lang/String;"
+            },
+            {
+              "offset": 30,
+              "op": 184,
+              "target": "java/util/Arrays.stream([Ljava/lang/Object;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 33,
+              "op": 186,
+              "target": "java/lang/String.trim()Ljava/lang/String;"
+            },
+            {
+              "offset": 38,
+              "op": 185,
+              "target": "java/util/stream/Stream.map(Ljava/util/function/Function;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 43,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.lambda$process$0(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 48,
+              "op": 185,
+              "target": "java/util/stream/Stream.filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 53,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.lambda$process$1(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            {
+              "offset": 58,
+              "op": 185,
+              "target": "java/util/stream/Stream.map(Ljava/util/function/Function;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 63,
+              "op": 18,
+              "target": "\n"
+            },
+            {
+              "offset": 65,
+              "op": 184,
+              "target": "java/util/stream/Collectors.joining(Ljava/lang/CharSequence;)Ljava/util/stream/Collector;"
+            },
+            {
+              "offset": 68,
+              "op": 185,
+              "target": "java/util/stream/Stream.collect(Ljava/util/stream/Collector;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 76,
+              "op": 186,
+              "target": "bootstrap:4"
+            },
+            {
+              "offset": 83,
+              "op": 18,
+              "target": "\\"
+            },
+            {
+              "offset": 85,
+              "op": 18,
+              "target": "IRIS_PASSTHROUGHBACKSLASH"
+            },
+            {
+              "offset": 87,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 92,
+              "op": 187,
+              "target": "org/anarres/cpp/StringLexerSource"
+            },
+            {
+              "offset": 98,
+              "op": 183,
+              "target": "org/anarres/cpp/StringLexerSource.<init>(Ljava/lang/String;Z)V"
+            },
+            {
+              "offset": 101,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addInput(Lorg/anarres/cpp/Source;)V"
+            },
+            {
+              "offset": 105,
+              "op": 178,
+              "target": "org/anarres/cpp/Feature.KEEPCOMMENTSLorg/anarres/cpp/Feature;"
+            },
+            {
+              "offset": 108,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addFeature(Lorg/anarres/cpp/Feature;)V"
+            },
+            {
+              "offset": 111,
+              "op": 187,
+              "target": "java/lang/StringBuilder"
+            },
+            {
+              "offset": 115,
+              "op": 183,
+              "target": "java/lang/StringBuilder.<init>()V"
+            },
+            {
+              "offset": 120,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.token()Lorg/anarres/cpp/Token;"
+            },
+            {
+              "offset": 135,
+              "op": 182,
+              "target": "org/anarres/cpp/Token.getType()I"
+            },
+            {
+              "offset": 150,
+              "op": 182,
+              "target": "org/anarres/cpp/Token.getText()Ljava/lang/String;"
+            },
+            {
+              "offset": 153,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 165,
+              "op": 178,
+              "target": "net/irisshaders/iris/Iris.loggerLnet/irisshaders/iris/IrisLogging;"
+            },
+            {
+              "offset": 168,
+              "op": 18,
+              "target": "Properties pre-processing failed"
+            },
+            {
+              "offset": 172,
+              "op": 182,
+              "target": "net/irisshaders/iris/IrisLogging.error(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 176,
+              "op": 182,
+              "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+            },
+            {
+              "offset": 181,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener.collectLines()Ljava/lang/String;"
+            },
+            {
+              "offset": 185,
+              "op": 186,
+              "target": "bootstrap:5"
+            },
+            {
+              "offset": 190,
+              "op": 18,
+              "target": "IRIS_PASSTHROUGHBACKSLASH"
+            },
+            {
+              "offset": 192,
+              "op": 18,
+              "target": "\\"
+            },
+            {
+              "offset": 194,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "getBooleanValues",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;)Ljava/util/List;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 4,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>()V"
+            },
+            {
+              "offset": 9,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/option/ShaderPackOptions.getOptionSet()Lnet/irisshaders/iris/shaderpack/option/OptionSet;"
+            },
+            {
+              "offset": 12,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/option/OptionSet.getBooleanOptions()Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 17,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.lambda$getBooleanValues$0(Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;Ljava/util/List;Ljava/lang/String;Lnet/irisshaders/iris/shaderpack/option/MergedBooleanOption;)V"
+            },
+            {
+              "offset": 22,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.forEach(Ljava/util/function/BiConsumer;)V"
+            }
+          ]
+        },
+        {
+          "key": "getStringValues",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;)Ljava/util/Map;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "java/util/HashMap"
+            },
+            {
+              "offset": 4,
+              "op": 183,
+              "target": "java/util/HashMap.<init>()V"
+            },
+            {
+              "offset": 9,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/option/ShaderPackOptions.getOptionSet()Lnet/irisshaders/iris/shaderpack/option/OptionSet;"
+            },
+            {
+              "offset": 12,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/option/OptionSet.getStringOptions()Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 17,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.lambda$getStringValues$0(Ljava/util/Map;Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;Ljava/lang/String;Lnet/irisshaders/iris/shaderpack/option/MergedStringOption;)V"
+            },
+            {
+              "offset": 22,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.forEach(Ljava/util/function/BiConsumer;)V"
+            }
+          ]
+        },
+        {
+          "key": "lambda$getStringValues$0",
+          "descriptor": "(Ljava/util/Map;Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;Ljava/lang/String;Lnet/irisshaders/iris/shaderpack/option/MergedStringOption;)V",
+          "operations": [
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/option/ShaderPackOptions.getOptionValues()Lnet/irisshaders/iris/shaderpack/option/values/OptionValues;"
+            },
+            {
+              "offset": 7,
+              "op": 185,
+              "target": "net/irisshaders/iris/shaderpack/option/values/OptionValues.getStringValueOrDefault(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            {
+              "offset": 12,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            }
+          ]
+        },
+        {
+          "key": "lambda$getBooleanValues$0",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/option/ShaderPackOptions;Ljava/util/List;Ljava/lang/String;Lnet/irisshaders/iris/shaderpack/option/MergedBooleanOption;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/option/ShaderPackOptions.getOptionValues()Lnet/irisshaders/iris/shaderpack/option/values/OptionValues;"
+            },
+            {
+              "offset": 5,
+              "op": 185,
+              "target": "net/irisshaders/iris/shaderpack/option/values/OptionValues.getBooleanValueOrDefault(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 19,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            }
+          ]
+        },
+        {
+          "key": "lambda$process$1",
+          "descriptor": "(Ljava/lang/String;)Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 19,
+              "target": "#"
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 10,
+              "op": 184,
+              "target": "org/anarres/cpp/PreprocessorCommand.values()[Lorg/anarres/cpp/PreprocessorCommand;"
+            },
+            {
+              "offset": 32,
+              "op": 182,
+              "target": "org/anarres/cpp/PreprocessorCommand.name()Ljava/lang/String;"
+            },
+            {
+              "offset": 35,
+              "op": 19,
+              "target": "PP_"
+            },
+            {
+              "offset": 38,
+              "op": 19,
+              "target": ""
+            },
+            {
+              "offset": 41,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 44,
+              "op": 178,
+              "target": "java/util/Locale.ROOTLjava/util/Locale;"
+            },
+            {
+              "offset": 47,
+              "op": 182,
+              "target": "java/lang/String.toLowerCase(Ljava/util/Locale;)Ljava/lang/String;"
+            },
+            {
+              "offset": 50,
+              "op": 186,
+              "target": "bootstrap:8"
+            },
+            {
+              "offset": 55,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 69,
+              "op": 19,
+              "target": ""
+            },
+            {
+              "offset": 74,
+              "op": 19,
+              "target": "#"
+            },
+            {
+              "offset": 77,
+              "op": 19,
+              "target": ""
+            },
+            {
+              "offset": 80,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "lambda$process$0",
+          "descriptor": "(Ljava/lang/String;)Z",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "java/lang/String.isBlank()Z"
+            }
+          ]
+        },
+        {
+          "key": "lambda$preprocessSource$0",
+          "descriptor": "(Lorg/anarres/cpp/Preprocessor;Ljava/lang/String;Ljava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "org/anarres/cpp/Preprocessor.addMacro(Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 10,
+              "op": 178,
+              "target": "net/irisshaders/iris/Iris.loggerLnet/irisshaders/iris/IrisLogging;"
+            },
+            {
+              "offset": 13,
+              "op": 18,
+              "target": "Failed to preprocess property file!"
+            },
+            {
+              "offset": 16,
+              "op": 182,
+              "target": "net/irisshaders/iris/IrisLogging.fatal(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            }
+          ]
+        },
+        {
+          "key": "<clinit>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 19,
+              "target": "(?<!\\\\\\n)^(?![ \\t]*(#|block\\.\\d*|layer\\.\\d*|item\\.\\d*|entity\\.\\d*|dimension\\.\\d*)).+"
+            },
+            {
+              "offset": 5,
+              "op": 184,
+              "target": "java/util/regex/Pattern.compile(Ljava/lang/String;I)Ljava/util/regex/Pattern;"
+            },
+            {
+              "offset": 8,
+              "op": 179,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.BACKSLASH_MATCHERLjava/util/regex/Pattern;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesCommentListener.class",
+      "sha256": "694045029e636187e61fde28947912dc78c97078a0322de17d811769f8955c32",
+      "type": "net/irisshaders/iris/shaderpack/preprocessor/PropertiesCommentListener",
+      "parent": "org/anarres/cpp/DefaultPreprocessorListener",
+      "fields": [
+        {
+          "key": "UNKNOWN_PREPROCESSOR_DIRECTIVE",
+          "descriptor": "Ljava/lang/String;"
+        },
+        {
+          "key": "NOT_A_WORD",
+          "descriptor": "Ljava/lang/String;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "org/anarres/cpp/DefaultPreprocessorListener.<init>()V"
+            }
+          ]
+        },
+        {
+          "key": "handleError",
+          "descriptor": "(Lorg/anarres/cpp/Source;IILjava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 18,
+              "target": "Unknown preprocessor directive"
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 12,
+              "op": 18,
+              "target": "Preprocessor directive not a word"
+            },
+            {
+              "offset": 14,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 27,
+              "op": 183,
+              "target": "org/anarres/cpp/DefaultPreprocessorListener.handleError(Lorg/anarres/cpp/Source;IILjava/lang/String;)V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener.class",
+      "sha256": "f2c600f6453c51d3978d76b2f8d4d1be0c9f19702177043a934f8a57da877221",
+      "type": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener",
+      "parent": "org/anarres/cpp/DefaultPreprocessorListener",
+      "fields": [
+        {
+          "key": "PROPERTY_MARKER",
+          "descriptor": "Ljava/lang/String;"
+        },
+        {
+          "key": "builder",
+          "descriptor": "Ljava/lang/StringBuilder;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "org/anarres/cpp/DefaultPreprocessorListener.<init>()V"
+            },
+            {
+              "offset": 5,
+              "op": 187,
+              "target": "java/lang/StringBuilder"
+            },
+            {
+              "offset": 9,
+              "op": 183,
+              "target": "java/lang/StringBuilder.<init>()V"
+            },
+            {
+              "offset": 12,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener.builderLjava/lang/StringBuilder;"
+            }
+          ]
+        },
+        {
+          "key": "handleWarning",
+          "descriptor": "(Lorg/anarres/cpp/Source;IILjava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 18,
+              "target": "#warning IRIS_PASSTHROUGH "
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 11,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener.builderLjava/lang/StringBuilder;"
+            },
+            {
+              "offset": 16,
+              "op": 18,
+              "target": "#warning IRIS_PASSTHROUGH "
+            },
+            {
+              "offset": 18,
+              "op": 18,
+              "target": ""
+            },
+            {
+              "offset": 20,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 23,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 28,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener.builderLjava/lang/StringBuilder;"
+            },
+            {
+              "offset": 33,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(C)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 46,
+              "op": 183,
+              "target": "org/anarres/cpp/DefaultPreprocessorListener.handleWarning(Lorg/anarres/cpp/Source;IILjava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "handleError",
+          "descriptor": "(Lorg/anarres/cpp/Source;IILjava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 18,
+              "target": "Unknown preprocessor directive"
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 12,
+              "op": 18,
+              "target": "Preprocessor directive not a word"
+            },
+            {
+              "offset": 14,
+              "op": 182,
+              "target": "java/lang/String.contains(Ljava/lang/CharSequence;)Z"
+            },
+            {
+              "offset": 27,
+              "op": 183,
+              "target": "org/anarres/cpp/DefaultPreprocessorListener.handleError(Lorg/anarres/cpp/Source;IILjava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "collectLines",
+          "descriptor": "()Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/preprocessor/PropertyCollectingListener.builderLjava/lang/StringBuilder;"
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "jcpp": {
+    "file": "META-INF/jars/jcpp-1.4.14.jar",
+    "sha256": "1d115a6fd07ee28db7c33b87c41e912361dd037fa8e5202ccfb4ed264d668d54",
+    "classFile": "org/anarres/cpp/Preprocessor.class",
+    "classSha256": "28fdb09b89c30535a0ecd7f6e685fe7c63017d4d20a29a0ed0d97f6eb23124fb",
+    "addBoolean": {
+      "key": "addMacro",
+      "descriptor": "(Ljava/lang/String;)V",
+      "operations": [
+        {
+          "offset": 2,
+          "op": 18,
+          "target": "1"
+        },
+        {
+          "offset": 4,
+          "op": 182,
+          "target": "org/anarres/cpp/Preprocessor.addMacro(Ljava/lang/String;Ljava/lang/String;)V"
+        }
+      ]
+    }
+  },
+  "supportingPublicSource": {
+    "url": "https://raw.githubusercontent.com/IrisShaders/Iris/671a5c87747d33983d7ed659461a64f46dfcb1f0/common/src/main/java/net/irisshaders/iris/shaderpack/preprocessor/PropertiesPreprocessor.java",
+    "local": "outputs/properties-loader-0.6.56/PropertiesPreprocessor.java",
+    "sha256": "b6b7f9ebefbacc897eece2cd5b3203f4f6a028cd2e98faaa5f334af091aaa1c4",
+    "exactReleaseSourceTagEstablished": false
+  },
+  "sourceBehavior": "Pinned Iris class bytes install explicit macros and run property text through JCPP token processing with backslash protection. The listener does not exempt ordinary property lines from macro expansion. The nested pinned JCPP dependency maps addMacro(name) to literal 1.",
+  "implementationScope": "Internal block.properties preparation into the existing immutable BlockIdMap. No ZIP/filesystem loader, GLSL preprocessor, translated program, production recipe or automatic activation.",
+  "unknownPolicy": "Missing macro context is unknown and aborts preparation. A caller must explicitly supply defined values or known undefined (nullopt). This stricter guard does not claim that JCPP itself treats absent macros as unknown.",
+  "subset": {
+    "directives": [
+      "if",
+      "ifdef",
+      "ifndef",
+      "elif",
+      "else",
+      "endif",
+      "define",
+      "undef"
+    ],
+    "operators": [
+      "defined",
+      "!",
+      "unary +",
+      "unary -",
+      "<",
+      "<=",
+      ">",
+      ">=",
+      "==",
+      "!=",
+      "&&",
+      "||",
+      "parentheses"
+    ],
+    "integerLiterals": [
+      "signed 64-bit range",
+      "decimal",
+      "hexadecimal",
+      "octal"
+    ],
+    "properties": "Defined object macros expand in ordinary key/value identifier tokens. Unknown or known-undefined literal property identifiers remain unchanged. Protected property escapes/pp-numbers and simple strings/comments are not macro names.",
+    "unsupported": [
+      "active includes/imports/pragma/line/error/warning",
+      "function macros",
+      "recursive macros",
+      "generated defined operator",
+      "continued/quoted directives",
+      "multiline comments",
+      "escaped property strings/hash/token pasting",
+      "binary arithmetic/bitwise/shifts/ternary",
+      "integer suffixes/unsigned ranges",
+      "directives/comments inside continued properties"
+    ]
+  },
+  "limits": {
+    "inputBytes": 262144,
+    "outputBytes": 262144,
+    "macroNames": 256,
+    "macroTextBytes": 65536,
+    "trimmedLineBytes": 16384,
+    "expressionTextBytes": 4096,
+    "expandedTokens": 4096,
+    "conditionalDepth": 32,
+    "expressionDepth": 32,
+    "macroDepth": 16,
+    "workUnits": 1048576
+  },
+  "javaExecuted": false,
+  "bundlesExecuted": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "productionActivated": false,
+  "irisContractComplete": false
+}

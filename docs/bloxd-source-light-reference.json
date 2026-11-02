@@ -1,0 +1,557 @@
+{
+  "date": "2026-10-18",
+  "version": "0.6.19",
+  "sourceWorldLightContract": 1,
+  "bundlesExecuted": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "accountsAccessed": false,
+  "sources": [
+    {
+      "file": "public-102.js",
+      "bytes": 22754,
+      "sha256": "2f7022023b0326b04a1b21942d00d23abdc6474dc7c662029881ed1262b3e010",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-110.js",
+      "bytes": 4399780,
+      "sha256": "f1bcacebc50adc9f07905090fc0fb287e12845bc9e67e85e387fd9a7f53b8e5c",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-111.js",
+      "bytes": 44522,
+      "sha256": "7f5f6ee466781b2aad02404dd44569f81e2c1bfc051c0c84c4dfde864e0d9ec6",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-112.js",
+      "bytes": 24019,
+      "sha256": "77fe44fb7f0448ee3f94c5a8808c25aadd62c0e43c7f59c6bd39cb6ec6536710",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-38.js",
+      "bytes": 1683556,
+      "sha256": "8ddca900ae4c9d368c8407b66a85e12d5905ffc8c2c8a4b8ae902d1a450d0d32",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-47.js",
+      "bytes": 19902,
+      "sha256": "9715dea47b31154daf23d0c6d3c302fbf281916a6e87e0962e6038c85e309885",
+      "url": "https://bloxd.io/static/js/q9aot.47.53192280.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-54.js",
+      "bytes": 9771,
+      "sha256": "8a4ec239bdc319cd6ff27357823e17aa3d3a9221040a4710a09541e3455dabf7",
+      "url": "https://bloxd.io/static/js/q9aot.54.0b541162.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-8.js",
+      "bytes": 3984093,
+      "sha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-99.js",
+      "bytes": 6122,
+      "sha256": "343a11ae550c713f3d66f5fed71e0148c39d0f82903866f5b12b393fb3373f55",
+      "url": "https://bloxd.io/static/js/q9aot.99.15ff1f59.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-fa-renderer.js",
+      "bytes": 82271,
+      "sha256": "22b6ec28cd22b1536e05402defdbd3c54911a3d78b3d9abf254e308e6922f6d7",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-main.js",
+      "bytes": 4332081,
+      "sha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "provenance": "recorded public URL and hash"
+    }
+  ],
+  "inventory": [
+    {
+      "file": "public-102.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-110.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-111.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-112.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-38.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-47.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-54.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-8.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [
+          2065865,
+          2065970
+        ],
+        "lightEmission": [
+          177881,
+          180396,
+          1990288,
+          1991261,
+          1991425,
+          1991858,
+          2013972,
+          2016566,
+          2023012,
+          2259676,
+          2260679,
+          2260843,
+          2261276,
+          2273202
+        ]
+      }
+    },
+    {
+      "file": "public-99.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-fa-renderer.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    },
+    {
+      "file": "public-main.js",
+      "terms": {
+        "worldTime": [],
+        "timeOfDay": [],
+        "dayTime": [],
+        "dayDuration": [],
+        "rainStrength": [],
+        "rainIntensity": [],
+        "wetness": [],
+        "weather": [],
+        "precipitation": [],
+        "dayNightSunOpacity": [],
+        "lightEmission": []
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "rendererDefaults",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2619680,
+      "lengthUTF16": 600,
+      "sha256": "11e7286a0818c1506f000dc45cbfd0ff048a3e08be6feb30b2710314d13a6c37"
+    },
+    {
+      "kind": "renderHeldVectorAndSceneCall",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2623660,
+      "lengthUTF16": 950,
+      "sha256": "fb2ce09ad40a095dc715edd7ae234dd2a96aad530c53d9f79f239a91189e4bec"
+    },
+    {
+      "kind": "lightUniformWriterAndPacking",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2462740,
+      "lengthUTF16": 1135,
+      "sha256": "1cc6a69a2ba714eab8aad378b24e6f24582afe79f26593f3a9eafe1dd7bfff65"
+    },
+    {
+      "kind": "lightShaderTransferAndChannels",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2464050,
+      "lengthUTF16": 5750,
+      "sha256": "8787578deff4db893a5983abc7fddf302edb84d58224542131c4b781b090a659"
+    },
+    {
+      "kind": "directionalWriter",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2460380,
+      "lengthUTF16": 2380,
+      "sha256": "199206212ad5dcd77a86eb23888e9df87260f22a2c27c17b0436217a64d74ca9"
+    },
+    {
+      "kind": "lightOverrideUpdates",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2080740,
+      "lengthUTF16": 1250,
+      "sha256": "d291d2865263e008ac36f6bbdc490447304f3b04dc0d741e2642c6360d377385"
+    },
+    {
+      "kind": "heldLightUpdate",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 979850,
+      "lengthUTF16": 1950,
+      "sha256": "dcb8dd1fc64edcfdc9a7384463342bb37b317f5730c81dda54eb6029a52d68f6"
+    },
+    {
+      "kind": "skyDirectionCalculation",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2063680,
+      "lengthUTF16": 1600,
+      "sha256": "9d44375f4c7a66c29c19940f7b4db68e95fc3e27a3793e73ddd7a8e129a8fcd8"
+    },
+    {
+      "kind": "skyDirectionUpdate",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2076940,
+      "lengthUTF16": 1050,
+      "sha256": "61c2c35b92033b80869f12e1fe5ff7015e983fdd3d563bd26918e10c444ce8ab"
+    },
+    {
+      "kind": "skyRuntimeAndEffectClock",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1966500,
+      "lengthUTF16": 1280,
+      "sha256": "cc75e40d33a4e671d720ce5bac03e354be3dbdbb65d1bcf9ffccf5b976c46b32"
+    },
+    {
+      "kind": "dayNightAppearance",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2065274,
+      "lengthUTF16": 5600,
+      "sha256": "9c4ceaa8720e0c29f503d14efb05a918c96a60956daed08ae368a0044c34d143"
+    },
+    {
+      "kind": "emissionApiContract",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 177770,
+      "lengthUTF16": 540,
+      "sha256": "f57c2dd1944951414c58ddf44fc7b2c539c07d6d50c534c63efcf8fe0152502e"
+    },
+    {
+      "kind": "workerEmissionLookup",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1991240,
+      "lengthUTF16": 1410,
+      "sha256": "61e503869953a0de6f25482f5b5a70d6c1446c5c4a1cc0bf00ed35ca6ba9a9c6"
+    },
+    {
+      "kind": "emissionPropagation",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2013945,
+      "lengthUTF16": 1570,
+      "sha256": "4bc828d6ed13abc26d12c7bbea1e23f7d03c96979ef434e48285e3b758c5153a"
+    },
+    {
+      "kind": "workerRegistryInput",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2272320,
+      "lengthUTF16": 1280,
+      "sha256": "ef97ea77d1b040ac630bfd3c459b3d52e0980f0e954330ec2c9f5a8112c6ada3"
+    },
+    {
+      "kind": "vertexPackedRgbSky",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2469030,
+      "lengthUTF16": 1530,
+      "sha256": "dc5cac50c208d82eed30c2436e2e1364251c55dbf6a8ef83df9cc8dbbac7f700"
+    }
+  ],
+  "coverage": [
+    {
+      "candidate": "lighting enabled",
+      "evidence": [
+        "rendererDefaults",
+        "lightOverrideUpdates",
+        "lightUniformWriterAndPacking"
+      ],
+      "unit": "boolean source lighting switch",
+      "timing": "selected ordinary world mesh pre-draw, checked at completed render",
+      "validity": "pinned renderer, current atomic source frame; disabled is known false",
+      "consumer": "GeometryUniform::SourceLightingEnabled",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "sky and ambient RGB",
+      "evidence": [
+        "lightUniformWriterAndPacking",
+        "lightShaderTransferAndChannels",
+        "lightOverrideUpdates"
+      ],
+      "unit": "source RGB shader coefficients, per-channel max with vision floor; no claimed color-space conversion",
+      "timing": "same pre-draw transaction",
+      "validity": "joint finite 0..65504 group, lighting enabled",
+      "consumer": "GeometryUniform::SourceSkyLight / SourceAmbientLight",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "held RGB and range",
+      "evidence": [
+        "heldLightUpdate",
+        "lightUniformWriterAndPacking",
+        "lightShaderTransferAndChannels"
+      ],
+      "unit": "RGB source levels 0..15; rangeOverride in source shader distance metric (cone mode uses pow(distance,.75)); zero selects source max-component range",
+      "timing": "same pre-draw transaction",
+      "validity": "joint held group, lighting enabled; no reconstructed item ID",
+      "consumer": "GeometryUniform::SourceHeldLight",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "held vector and cone",
+      "evidence": [
+        "renderHeldVectorAndSceneCall",
+        "lightShaderTransferAndChannels"
+      ],
+      "unit": "coneCos=0: local render feet XYZ in source blocks; coneCos>0: normalized viewing direction XYZ; W is cone cosine, not position",
+      "timing": "after source renderer updates pY and during actual mesh draw",
+      "validity": "same exact origin/frame; cone direction must have unit length",
+      "consumer": "GeometryUniform::SourceHeldVector",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "sky sun direction",
+      "evidence": [
+        "skyDirectionCalculation",
+        "skyDirectionUpdate",
+        "skyRuntimeAndEffectClock"
+      ],
+      "unit": "world-axis unit direction from Earth sky settings; no daylight timestamp, radiant color or reference view-space sun position",
+      "timing": "same pre-draw transaction",
+      "validity": "actual Tf present and unit length; null remains unknown; runtime fallback QN is deliberately not read",
+      "consumer": "GeometryUniform::SourceSkySunDirection",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "directional illumination",
+      "evidence": [
+        "directionalWriter"
+      ],
+      "unit": "per-material selected directional count, normalized direction times grayscale scaled intensity; enabled state and transform update belong to source writer",
+      "timing": "existing source material path",
+      "validity": "not a unique global astronomical sun; no proven immutable per-draw writer snapshot in this increment",
+      "consumer": "existing bounded native appearance adapter; new global/reference sun consumer remains gated",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "world/day time",
+      "evidence": [
+        "skyRuntimeAndEffectClock",
+        "dayNightAppearance"
+      ],
+      "unit": "runtime time() is performance.now()/1000 % 3600; day/night appearance derives from sky settings",
+      "timing": "effect clock call and option updates, not world tick",
+      "validity": "no proven server/world epoch, day counter, tick rate or synchronized world-clock caller in these bundles",
+      "consumer": "WorldTime remains unknown",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "weather/rain/wetness",
+      "evidence": [],
+      "unit": "unknown",
+      "timing": "no proven observation",
+      "validity": "inventory is limited to eleven pinned bundles; no authoritative weather producer/unit/update chain; absence does not mean clear weather",
+      "consumer": "Weather remains unknown",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "block own emission",
+      "evidence": [
+        "emissionApiContract",
+        "workerEmissionLookup",
+        "emissionPropagation",
+        "workerRegistryInput"
+      ],
+      "unit": "separate RGB nibbles 0..15 indexed by source block; propagated max light is distinct",
+      "timing": "registry updates and source mesher/lighting worker",
+      "validity": "no proven per-exported-primitive/block-registry generation join for greedy/mixed/instanced surfaces; no justified scalar RGB-to-reference emission mapping",
+      "consumer": "OwnEmission / at_midBlock.w remain unknown; no fabricated scalar or Minecraft ID",
+      "referenceEquivalent": false
+    },
+    {
+      "candidate": "vertex light channels",
+      "evidence": [
+        "vertexPackedRgbSky",
+        "lightShaderTransferAndChannels"
+      ],
+      "unit": "RGB nibbles and sky nibble divided by 15, then source spread/transfer",
+      "timing": "existing source vertex/material path",
+      "validity": "existing SourceLightmap/packed-light channel adapter only; no Java lightmap texture or independent scalar block-light evidence",
+      "consumer": "existing source attributes; ReferenceLightmap remains unknown",
+      "referenceEquivalent": false
+    }
+  ],
+  "ownEmissionFollowup": "bloxd-source-emission-reference.json",
+  "referenceRequirementsClosed": [],
+  "irisContractComplete": false
+}

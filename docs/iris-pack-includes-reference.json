@@ -1,0 +1,2026 @@
+{
+  "contract": 1,
+  "irisArtifact": "1.11.7+26.3-fabric",
+  "artifactSha512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+  "classes": [
+    {
+      "file": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.class",
+      "sha256": "a9a551ff836bb05bdc263ebc84723384d13dc370dbf242bc8315601a1f51969d",
+      "type": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath",
+      "parent": "java/lang/Object",
+      "fields": [
+        {
+          "key": "path",
+          "descriptor": "Ljava/lang/String;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "(Ljava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            },
+            {
+              "offset": 6,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "fromAbsolutePath",
+          "descriptor": "(Ljava/lang/String;)Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath"
+            },
+            {
+              "offset": 5,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.normalizeAbsolutePath(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            {
+              "offset": 8,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.<init>(Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "normalizeAbsolutePath",
+          "descriptor": "(Ljava/lang/String;)Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 9,
+              "op": 187,
+              "target": "java/lang/IllegalArgumentException"
+            },
+            {
+              "offset": 14,
+              "op": 186,
+              "target": "bootstrap:0"
+            },
+            {
+              "offset": 19,
+              "op": 183,
+              "target": "java/lang/IllegalArgumentException.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 24,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 26,
+              "op": 184,
+              "target": "java/util/regex/Pattern.quote(Ljava/lang/String;)Ljava/lang/String;"
+            },
+            {
+              "offset": 29,
+              "op": 182,
+              "target": "java/lang/String.split(Ljava/lang/String;)[Ljava/lang/String;"
+            },
+            {
+              "offset": 33,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 37,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>()V"
+            },
+            {
+              "offset": 65,
+              "op": 182,
+              "target": "java/lang/String.isEmpty()Z"
+            },
+            {
+              "offset": 73,
+              "op": 18,
+              "target": "."
+            },
+            {
+              "offset": 75,
+              "op": 182,
+              "target": "java/lang/String.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 86,
+              "op": 18,
+              "target": ".."
+            },
+            {
+              "offset": 88,
+              "op": 182,
+              "target": "java/lang/String.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 95,
+              "op": 185,
+              "target": "java/util/List.isEmpty()Z"
+            },
+            {
+              "offset": 104,
+              "op": 185,
+              "target": "java/util/List.removeLast()Ljava/lang/Object;"
+            },
+            {
+              "offset": 116,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 129,
+              "op": 185,
+              "target": "java/util/List.isEmpty()Z"
+            },
+            {
+              "offset": 137,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 140,
+              "op": 187,
+              "target": "java/lang/StringBuilder"
+            },
+            {
+              "offset": 144,
+              "op": 183,
+              "target": "java/lang/StringBuilder.<init>()V"
+            },
+            {
+              "offset": 149,
+              "op": 185,
+              "target": "java/util/List.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 158,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 168,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 181,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(C)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 188,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 196,
+              "op": 182,
+              "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "parent",
+          "descriptor": "()Ljava/util/Optional;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 4,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 6,
+              "op": 182,
+              "target": "java/lang/String.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 12,
+              "op": 184,
+              "target": "java/util/Optional.empty()Ljava/util/Optional;"
+            },
+            {
+              "offset": 17,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 22,
+              "op": 182,
+              "target": "java/lang/String.lastIndexOf(I)I"
+            },
+            {
+              "offset": 26,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath"
+            },
+            {
+              "offset": 31,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 36,
+              "op": 182,
+              "target": "java/lang/String.substring(II)Ljava/lang/String;"
+            },
+            {
+              "offset": 39,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 42,
+              "op": 184,
+              "target": "java/util/Optional.of(Ljava/lang/Object;)Ljava/util/Optional;"
+            }
+          ]
+        },
+        {
+          "key": "resolve",
+          "descriptor": "(Ljava/lang/String;)Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 10,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.fromAbsolutePath(Ljava/lang/String;)Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;"
+            },
+            {
+              "offset": 15,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 18,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 20,
+              "op": 182,
+              "target": "java/lang/String.endsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 32,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 34,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 50,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 54,
+              "op": 186,
+              "target": "bootstrap:1"
+            },
+            {
+              "offset": 64,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 68,
+              "op": 186,
+              "target": "bootstrap:2"
+            },
+            {
+              "offset": 75,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.fromAbsolutePath(Ljava/lang/String;)Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;"
+            }
+          ]
+        },
+        {
+          "key": "resolved",
+          "descriptor": "(Ljava/nio/file/Path;)Ljava/nio/file/Path;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 4,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 6,
+              "op": 182,
+              "target": "java/lang/String.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 16,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 20,
+              "op": 182,
+              "target": "java/lang/String.substring(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 23,
+              "op": 185,
+              "target": "java/nio/file/Path.resolve(Ljava/lang/String;)Ljava/nio/file/Path;"
+            }
+          ]
+        },
+        {
+          "key": "equals",
+          "descriptor": "(Ljava/lang/Object;)Z",
+          "operations": [
+            {
+              "offset": 12,
+              "op": 182,
+              "target": "java/lang/Object.getClass()Ljava/lang/Class;"
+            },
+            {
+              "offset": 16,
+              "op": 182,
+              "target": "java/lang/Object.getClass()Ljava/lang/Class;"
+            },
+            {
+              "offset": 30,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 34,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 37,
+              "op": 184,
+              "target": "java/util/Objects.equals(Ljava/lang/Object;Ljava/lang/Object;)Z"
+            }
+          ]
+        },
+        {
+          "key": "hashCode",
+          "descriptor": "()I",
+          "operations": [
+            {
+              "offset": 7,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            },
+            {
+              "offset": 11,
+              "op": 184,
+              "target": "java/util/Objects.hash([Ljava/lang/Object;)I"
+            }
+          ]
+        },
+        {
+          "key": "toString",
+          "descriptor": "()Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.getPathString()Ljava/lang/String;"
+            },
+            {
+              "offset": 4,
+              "op": 186,
+              "target": "bootstrap:3"
+            }
+          ]
+        },
+        {
+          "key": "getPathString",
+          "descriptor": "()Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.pathLjava/lang/String;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/include/FileNode.class",
+      "sha256": "a70d17054f8d695ed1ea9f6e1ec56d9e87f71ce4f43e2535136ca047990248ff",
+      "type": "net/irisshaders/iris/shaderpack/include/FileNode",
+      "parent": "java/lang/Object",
+      "fields": [
+        {
+          "key": "path",
+          "descriptor": "Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;"
+        },
+        {
+          "key": "lines",
+          "descriptor": "Lcom/google/common/collect/ImmutableList;"
+        },
+        {
+          "key": "includes",
+          "descriptor": "Lcom/google/common/collect/ImmutableMap;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Lcom/google/common/collect/ImmutableList;Lcom/google/common/collect/ImmutableMap;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            },
+            {
+              "offset": 6,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.pathLnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;"
+            },
+            {
+              "offset": 11,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.linesLcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 16,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.includesLcom/google/common/collect/ImmutableMap;"
+            }
+          ]
+        },
+        {
+          "key": "<init>",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Lcom/google/common/collect/ImmutableList;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            },
+            {
+              "offset": 6,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.pathLnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;"
+            },
+            {
+              "offset": 11,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.linesLcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 15,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.parent()Ljava/util/Optional;"
+            },
+            {
+              "offset": 19,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.lambda$new$0(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;)Ljava/lang/IllegalArgumentException;"
+            },
+            {
+              "offset": 24,
+              "op": 182,
+              "target": "java/util/Optional.orElseThrow(Ljava/util/function/Supplier;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 34,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.findIncludes(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Lcom/google/common/collect/ImmutableList;)Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 37,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.includesLcom/google/common/collect/ImmutableMap;"
+            }
+          ]
+        },
+        {
+          "key": "findIncludes",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Lcom/google/common/collect/ImmutableList;)Lcom/google/common/collect/ImmutableMap;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 184,
+              "target": "com/google/common/collect/ImmutableMap.builder()Lcom/google/common/collect/ImmutableMap$Builder;"
+            },
+            {
+              "offset": 8,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.size()I"
+            },
+            {
+              "offset": 16,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.get(I)Ljava/lang/Object;"
+            },
+            {
+              "offset": 22,
+              "op": 182,
+              "target": "java/lang/String.trim()Ljava/lang/String;"
+            },
+            {
+              "offset": 29,
+              "op": 18,
+              "target": "#include"
+            },
+            {
+              "offset": 31,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 42,
+              "op": 18,
+              "target": "#include "
+            },
+            {
+              "offset": 44,
+              "op": 182,
+              "target": "java/lang/String.length()I"
+            },
+            {
+              "offset": 47,
+              "op": 182,
+              "target": "java/lang/String.substring(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 50,
+              "op": 182,
+              "target": "java/lang/String.trim()Ljava/lang/String;"
+            },
+            {
+              "offset": 57,
+              "op": 18,
+              "target": "\""
+            },
+            {
+              "offset": 59,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 68,
+              "op": 182,
+              "target": "java/lang/String.substring(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 75,
+              "op": 18,
+              "target": "\""
+            },
+            {
+              "offset": 77,
+              "op": 182,
+              "target": "java/lang/String.endsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 88,
+              "op": 182,
+              "target": "java/lang/String.length()I"
+            },
+            {
+              "offset": 93,
+              "op": 182,
+              "target": "java/lang/String.substring(II)Ljava/lang/String;"
+            },
+            {
+              "offset": 100,
+              "op": 184,
+              "target": "java/lang/Integer.valueOf(I)Ljava/lang/Integer;"
+            },
+            {
+              "offset": 106,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.resolve(Ljava/lang/String;)Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;"
+            },
+            {
+              "offset": 109,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap$Builder.put(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;"
+            },
+            {
+              "offset": 120,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap$Builder.build()Lcom/google/common/collect/ImmutableMap;"
+            }
+          ]
+        },
+        {
+          "key": "getPath",
+          "descriptor": "()Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.pathLnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;"
+            }
+          ]
+        },
+        {
+          "key": "getLines",
+          "descriptor": "()Lcom/google/common/collect/ImmutableList;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.linesLcom/google/common/collect/ImmutableList;"
+            }
+          ]
+        },
+        {
+          "key": "getIncludes",
+          "descriptor": "()Lcom/google/common/collect/ImmutableMap;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.includesLcom/google/common/collect/ImmutableMap;"
+            }
+          ]
+        },
+        {
+          "key": "map",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/transform/line/LineTransform;)Lnet/irisshaders/iris/shaderpack/include/FileNode;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 184,
+              "target": "com/google/common/collect/ImmutableList.builder()Lcom/google/common/collect/ImmutableList$Builder;"
+            },
+            {
+              "offset": 7,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.linesLcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 10,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.iterator()Lcom/google/common/collect/UnmodifiableIterator;"
+            },
+            {
+              "offset": 17,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 27,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 41,
+              "op": 185,
+              "target": "net/irisshaders/iris/shaderpack/transform/line/LineTransform.transform(ILjava/lang/String;)Ljava/lang/String;"
+            },
+            {
+              "offset": 49,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.includesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 53,
+              "op": 184,
+              "target": "java/lang/Integer.valueOf(I)Ljava/lang/Integer;"
+            },
+            {
+              "offset": 56,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.containsKey(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 66,
+              "op": 184,
+              "target": "java/util/Objects.equals(Ljava/lang/Object;Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 72,
+              "op": 187,
+              "target": "java/lang/IllegalStateException"
+            },
+            {
+              "offset": 76,
+              "op": 18,
+              "target": "Attempted to modify an #include line in LineTransform."
+            },
+            {
+              "offset": 78,
+              "op": 183,
+              "target": "java/lang/IllegalStateException.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 85,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList$Builder.add(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;"
+            },
+            {
+              "offset": 95,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode"
+            },
+            {
+              "offset": 100,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.pathLnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;"
+            },
+            {
+              "offset": 104,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList$Builder.build()Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 108,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.includesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 111,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.<init>(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Lcom/google/common/collect/ImmutableList;Lcom/google/common/collect/ImmutableMap;)V"
+            }
+          ]
+        },
+        {
+          "key": "lambda$new$0",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;)Ljava/lang/IllegalArgumentException;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "java/lang/IllegalArgumentException"
+            },
+            {
+              "offset": 5,
+              "op": 184,
+              "target": "java/lang/String.valueOf(Ljava/lang/Object;)Ljava/lang/String;"
+            },
+            {
+              "offset": 8,
+              "op": 186,
+              "target": "bootstrap:1"
+            },
+            {
+              "offset": 13,
+              "op": 183,
+              "target": "java/lang/IllegalArgumentException.<init>(Ljava/lang/String;)V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/include/IncludeGraph.class",
+      "sha256": "05ad30ffec10d84b09afc93a6b51f61e10ef859b36579b468c682788c239a64e",
+      "type": "net/irisshaders/iris/shaderpack/include/IncludeGraph",
+      "parent": "java/lang/Object",
+      "fields": [
+        {
+          "key": "nodes",
+          "descriptor": "Lcom/google/common/collect/ImmutableMap;"
+        },
+        {
+          "key": "failures",
+          "descriptor": "Lcom/google/common/collect/ImmutableMap;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "(Lcom/google/common/collect/ImmutableMap;Lcom/google/common/collect/ImmutableMap;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            },
+            {
+              "offset": 6,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.nodesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 11,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.failuresLcom/google/common/collect/ImmutableMap;"
+            }
+          ]
+        },
+        {
+          "key": "<init>",
+          "descriptor": "(Ljava/nio/file/Path;Lcom/google/common/collect/ImmutableList;Z)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            },
+            {
+              "offset": 4,
+              "op": 187,
+              "target": "java/util/HashMap"
+            },
+            {
+              "offset": 8,
+              "op": 183,
+              "target": "java/util/HashMap.<init>()V"
+            },
+            {
+              "offset": 13,
+              "op": 187,
+              "target": "java/util/HashMap"
+            },
+            {
+              "offset": 17,
+              "op": 183,
+              "target": "java/util/HashMap.<init>()V"
+            },
+            {
+              "offset": 22,
+              "op": 187,
+              "target": "java/util/HashMap"
+            },
+            {
+              "offset": 26,
+              "op": 183,
+              "target": "java/util/HashMap.<init>()V"
+            },
+            {
+              "offset": 31,
+              "op": 187,
+              "target": "java/util/HashMap"
+            },
+            {
+              "offset": 35,
+              "op": 183,
+              "target": "java/util/HashMap.<init>()V"
+            },
+            {
+              "offset": 40,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 45,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>(Ljava/util/Collection;)V"
+            },
+            {
+              "offset": 50,
+              "op": 187,
+              "target": "java/util/HashSet"
+            },
+            {
+              "offset": 55,
+              "op": 183,
+              "target": "java/util/HashSet.<init>(Ljava/util/Collection;)V"
+            },
+            {
+              "offset": 62,
+              "op": 185,
+              "target": "java/util/List.isEmpty()Z"
+            },
+            {
+              "offset": 72,
+              "op": 185,
+              "target": "java/util/List.removeLast()Ljava/lang/Object;"
+            },
+            {
+              "offset": 85,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.resolved(Ljava/nio/file/Path;)Ljava/nio/file/Path;"
+            },
+            {
+              "offset": 90,
+              "op": 184,
+              "target": "net/irisshaders/iris/Iris.getIrisConfig()Lnet/irisshaders/iris/config/IrisConfig;"
+            },
+            {
+              "offset": 93,
+              "op": 182,
+              "target": "net/irisshaders/iris/config/IrisConfig.areDebugOptionsEnabled()Z"
+            },
+            {
+              "offset": 105,
+              "op": 185,
+              "target": "java/nio/file/Path.toAbsolutePath()Ljava/nio/file/Path;"
+            },
+            {
+              "offset": 110,
+              "op": 185,
+              "target": "java/nio/file/Path.toString()Ljava/lang/String;"
+            },
+            {
+              "offset": 115,
+              "op": 18,
+              "target": "\\"
+            },
+            {
+              "offset": 117,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 119,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 128,
+              "op": 18,
+              "target": "shaders/"
+            },
+            {
+              "offset": 130,
+              "op": 182,
+              "target": "java/lang/String.lastIndexOf(Ljava/lang/String;)I"
+            },
+            {
+              "offset": 136,
+              "op": 182,
+              "target": "java/lang/String.substring(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 143,
+              "op": 185,
+              "target": "java/nio/file/Path.toFile()Ljava/io/File;"
+            },
+            {
+              "offset": 148,
+              "op": 182,
+              "target": "java/io/File.getCanonicalPath()Ljava/lang/String;"
+            },
+            {
+              "offset": 151,
+              "op": 18,
+              "target": "\\"
+            },
+            {
+              "offset": 153,
+              "op": 18,
+              "target": "/"
+            },
+            {
+              "offset": 155,
+              "op": 182,
+              "target": "java/lang/String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;"
+            },
+            {
+              "offset": 164,
+              "op": 18,
+              "target": "shaders/"
+            },
+            {
+              "offset": 166,
+              "op": 182,
+              "target": "java/lang/String.lastIndexOf(Ljava/lang/String;)I"
+            },
+            {
+              "offset": 172,
+              "op": 182,
+              "target": "java/lang/String.substring(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 181,
+              "op": 182,
+              "target": "java/lang/String.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 187,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/include/FileIncludeException"
+            },
+            {
+              "offset": 193,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.getPathString()Ljava/lang/String;"
+            },
+            {
+              "offset": 198,
+              "op": 186,
+              "target": "bootstrap:0"
+            },
+            {
+              "offset": 203,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/include/FileIncludeException.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 209,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.readFile(Ljava/nio/file/Path;)Ljava/lang/String;"
+            },
+            {
+              "offset": 223,
+              "op": 185,
+              "target": "java/util/Map.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 238,
+              "op": 187,
+              "target": "java/lang/RuntimeException"
+            },
+            {
+              "offset": 244,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.getPathString()Ljava/lang/String;"
+            },
+            {
+              "offset": 247,
+              "op": 186,
+              "target": "bootstrap:1"
+            },
+            {
+              "offset": 254,
+              "op": 183,
+              "target": "java/lang/RuntimeException.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 268,
+              "op": 182,
+              "target": "java/io/IOException.getMessage()Ljava/lang/String;"
+            },
+            {
+              "offset": 271,
+              "op": 186,
+              "target": "bootstrap:2"
+            },
+            {
+              "offset": 278,
+              "op": 18,
+              "target": "file not found"
+            },
+            {
+              "offset": 293,
+              "op": 18,
+              "target": "failed to resolve #include directive"
+            },
+            {
+              "offset": 297,
+              "op": 18,
+              "target": "file not found"
+            },
+            {
+              "offset": 306,
+              "op": 184,
+              "target": "java/lang/String.valueOf(Ljava/lang/Object;)Ljava/lang/String;"
+            },
+            {
+              "offset": 309,
+              "op": 186,
+              "target": "bootstrap:3"
+            },
+            {
+              "offset": 316,
+              "op": 18,
+              "target": "IO error"
+            },
+            {
+              "offset": 324,
+              "op": 185,
+              "target": "java/util/Map.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 332,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.getLines()Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 339,
+              "op": 185,
+              "target": "java/util/Map.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 347,
+              "op": 182,
+              "target": "java/lang/Integer.intValue()I"
+            },
+            {
+              "offset": 350,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.get(I)Ljava/lang/Object;"
+            },
+            {
+              "offset": 356,
+              "op": 182,
+              "target": "java/lang/String.trim()Ljava/lang/String;"
+            },
+            {
+              "offset": 361,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/error/RusticError"
+            },
+            {
+              "offset": 365,
+              "op": 18,
+              "target": "error"
+            },
+            {
+              "offset": 373,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.getPathString()Ljava/lang/String;"
+            },
+            {
+              "offset": 380,
+              "op": 185,
+              "target": "java/util/Map.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 388,
+              "op": 182,
+              "target": "java/lang/Integer.intValue()I"
+            },
+            {
+              "offset": 395,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/error/RusticError.<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V"
+            },
+            {
+              "offset": 406,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 417,
+              "op": 18,
+              "target": "\\R"
+            },
+            {
+              "offset": 419,
+              "op": 182,
+              "target": "java/lang/String.split(Ljava/lang/String;)[Ljava/lang/String;"
+            },
+            {
+              "offset": 422,
+              "op": 184,
+              "target": "com/google/common/collect/ImmutableList.copyOf([Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 427,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode"
+            },
+            {
+              "offset": 435,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.<init>(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Lcom/google/common/collect/ImmutableList;)V"
+            },
+            {
+              "offset": 445,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.getIncludes()Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 448,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.entrySet()Lcom/google/common/collect/ImmutableSet;"
+            },
+            {
+              "offset": 451,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableSet.iterator()Lcom/google/common/collect/UnmodifiableIterator;"
+            },
+            {
+              "offset": 458,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 468,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 480,
+              "op": 185,
+              "target": "java/util/Map$Entry.getKey()Ljava/lang/Object;"
+            },
+            {
+              "offset": 488,
+              "op": 182,
+              "target": "java/lang/Integer.intValue()I"
+            },
+            {
+              "offset": 495,
+              "op": 185,
+              "target": "java/util/Map$Entry.getValue()Ljava/lang/Object;"
+            },
+            {
+              "offset": 509,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 522,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/error/RusticError"
+            },
+            {
+              "offset": 526,
+              "op": 18,
+              "target": "error"
+            },
+            {
+              "offset": 528,
+              "op": 18,
+              "target": "trivial #include cycle detected"
+            },
+            {
+              "offset": 530,
+              "op": 18,
+              "target": "file includes itself"
+            },
+            {
+              "offset": 534,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.getPathString()Ljava/lang/String;"
+            },
+            {
+              "offset": 545,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.get(I)Ljava/lang/Object;"
+            },
+            {
+              "offset": 551,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/error/RusticError.<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V"
+            },
+            {
+              "offset": 554,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 567,
+              "op": 185,
+              "target": "java/util/Set.contains(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 579,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 589,
+              "op": 185,
+              "target": "java/util/Set.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 601,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 613,
+              "op": 184,
+              "target": "java/lang/Integer.valueOf(I)Ljava/lang/Integer;"
+            },
+            {
+              "offset": 616,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 636,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 648,
+              "op": 184,
+              "target": "com/google/common/collect/ImmutableMap.copyOf(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 651,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.nodesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 657,
+              "op": 184,
+              "target": "com/google/common/collect/ImmutableMap.copyOf(Ljava/util/Map;)Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 660,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.failuresLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 664,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.detectCycle()V"
+            }
+          ]
+        },
+        {
+          "key": "readFile",
+          "descriptor": "(Ljava/nio/file/Path;)Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 184,
+              "target": "java/nio/file/Files.readString(Ljava/nio/file/Path;)Ljava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "detectCycle",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 4,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>()V"
+            },
+            {
+              "offset": 8,
+              "op": 187,
+              "target": "java/util/HashSet"
+            },
+            {
+              "offset": 12,
+              "op": 183,
+              "target": "java/util/HashSet.<init>()V"
+            },
+            {
+              "offset": 17,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.nodesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 20,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.keySet()Lcom/google/common/collect/ImmutableSet;"
+            },
+            {
+              "offset": 23,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableSet.iterator()Lcom/google/common/collect/UnmodifiableIterator;"
+            },
+            {
+              "offset": 28,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 37,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 52,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.exploreForCycles(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Ljava/util/List;Ljava/util/Set;)Z"
+            },
+            {
+              "offset": 61,
+              "op": 187,
+              "target": "java/lang/StringBuilder"
+            },
+            {
+              "offset": 65,
+              "op": 183,
+              "target": "java/lang/StringBuilder.<init>()V"
+            },
+            {
+              "offset": 71,
+              "op": 185,
+              "target": "java/util/List.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 80,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 90,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 113,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.nodesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 118,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 131,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.getIncludes()Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 134,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.entrySet()Lcom/google/common/collect/ImmutableSet;"
+            },
+            {
+              "offset": 137,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableSet.iterator()Lcom/google/common/collect/UnmodifiableIterator;"
+            },
+            {
+              "offset": 144,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 154,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 166,
+              "op": 185,
+              "target": "java/util/Map$Entry.getValue()Ljava/lang/Object;"
+            },
+            {
+              "offset": 178,
+              "op": 185,
+              "target": "java/util/Map$Entry.getKey()Ljava/lang/Object;"
+            },
+            {
+              "offset": 186,
+              "op": 182,
+              "target": "java/lang/Integer.intValue()I"
+            },
+            {
+              "offset": 198,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.getLines()Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 205,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.get(I)Ljava/lang/Object;"
+            },
+            {
+              "offset": 217,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 223,
+              "op": 19,
+              "target": "final #include in cycle"
+            },
+            {
+              "offset": 229,
+              "op": 19,
+              "target": "#include involved in cycle"
+            },
+            {
+              "offset": 238,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 246,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/error/RusticError"
+            },
+            {
+              "offset": 250,
+              "op": 18,
+              "target": "error"
+            },
+            {
+              "offset": 252,
+              "op": 19,
+              "target": "#include cycle detected"
+            },
+            {
+              "offset": 259,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.getPathString()Ljava/lang/String;"
+            },
+            {
+              "offset": 266,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/error/RusticError.<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V"
+            },
+            {
+              "offset": 269,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 278,
+              "op": 19,
+              "target": "\n  = "
+            },
+            {
+              "offset": 281,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 284,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/error/RusticError"
+            },
+            {
+              "offset": 288,
+              "op": 19,
+              "target": "note"
+            },
+            {
+              "offset": 291,
+              "op": 19,
+              "target": "cycle involves another file"
+            },
+            {
+              "offset": 298,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/AbsolutePackPath.getPathString()Ljava/lang/String;"
+            },
+            {
+              "offset": 305,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/error/RusticError.<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V"
+            },
+            {
+              "offset": 308,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 321,
+              "op": 19,
+              "target": "  note: #include directives are resolved before any other preprocessor directives, any form of #include guard will not work\n\n  note: other cycles may still exist, only the first detected non-trivial cycle will be reported\n"
+            },
+            {
+              "offset": 324,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 328,
+              "op": 178,
+              "target": "net/irisshaders/iris/Iris.loggerLnet/irisshaders/iris/IrisLogging;"
+            },
+            {
+              "offset": 333,
+              "op": 182,
+              "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+            },
+            {
+              "offset": 336,
+              "op": 182,
+              "target": "net/irisshaders/iris/IrisLogging.error(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 339,
+              "op": 187,
+              "target": "java/lang/IllegalStateException"
+            },
+            {
+              "offset": 343,
+              "op": 19,
+              "target": "Cycle detected in #include graph, see previous messages for details"
+            },
+            {
+              "offset": 346,
+              "op": 183,
+              "target": "java/lang/IllegalStateException.<init>(Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "exploreForCycles",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Ljava/util/List;Ljava/util/Set;)Z",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 185,
+              "target": "java/util/Set.contains(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 12,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 22,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 30,
+              "op": 185,
+              "target": "java/util/Set.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 37,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.nodesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 41,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 47,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.getIncludes()Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 50,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.values()Lcom/google/common/collect/ImmutableCollection;"
+            },
+            {
+              "offset": 53,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableCollection.iterator()Lcom/google/common/collect/UnmodifiableIterator;"
+            },
+            {
+              "offset": 60,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 70,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 81,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.nodesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 86,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.containsKey(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 100,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.exploreForCycles(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Ljava/util/List;Ljava/util/Set;)Z"
+            },
+            {
+              "offset": 112,
+              "op": 185,
+              "target": "java/util/List.removeLast()Ljava/lang/Object;"
+            },
+            {
+              "offset": 120,
+              "op": 185,
+              "target": "java/util/Set.remove(Ljava/lang/Object;)Z"
+            }
+          ]
+        },
+        {
+          "key": "getNodes",
+          "descriptor": "()Lcom/google/common/collect/ImmutableMap;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.nodesLcom/google/common/collect/ImmutableMap;"
+            }
+          ]
+        },
+        {
+          "key": "computeWeaklyConnectedComponents",
+          "descriptor": "()Ljava/util/List;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 184,
+              "target": "java/util/Collections.singletonList(Ljava/lang/Object;)Ljava/util/List;"
+            }
+          ]
+        },
+        {
+          "key": "map",
+          "descriptor": "(Ljava/util/function/Function;)Lnet/irisshaders/iris/shaderpack/include/IncludeGraph;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 184,
+              "target": "com/google/common/collect/ImmutableMap.builder()Lcom/google/common/collect/ImmutableMap$Builder;"
+            },
+            {
+              "offset": 5,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.nodesLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 10,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.lambda$map$0(Lcom/google/common/collect/ImmutableMap$Builder;Ljava/util/function/Function;Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Lnet/irisshaders/iris/shaderpack/include/FileNode;)V"
+            },
+            {
+              "offset": 15,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.forEach(Ljava/util/function/BiConsumer;)V"
+            },
+            {
+              "offset": 18,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph"
+            },
+            {
+              "offset": 23,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap$Builder.build()Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 27,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.failuresLcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 30,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.<init>(Lcom/google/common/collect/ImmutableMap;Lcom/google/common/collect/ImmutableMap;)V"
+            }
+          ]
+        },
+        {
+          "key": "getFailures",
+          "descriptor": "()Lcom/google/common/collect/ImmutableMap;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.failuresLcom/google/common/collect/ImmutableMap;"
+            }
+          ]
+        },
+        {
+          "key": "lambda$map$0",
+          "descriptor": "(Lcom/google/common/collect/ImmutableMap$Builder;Ljava/util/function/Function;Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;Lnet/irisshaders/iris/shaderpack/include/FileNode;)V",
+          "operations": [
+            {
+              "offset": 5,
+              "op": 185,
+              "target": "java/util/function/Function.apply(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 13,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.map(Lnet/irisshaders/iris/shaderpack/transform/line/LineTransform;)Lnet/irisshaders/iris/shaderpack/include/FileNode;"
+            },
+            {
+              "offset": 16,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap$Builder.put(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/include/IncludeProcessor.class",
+      "sha256": "776046bd4ce0eced7cd9d9652aec27344edb28cddab82f7b54091e48d54853ce",
+      "type": "net/irisshaders/iris/shaderpack/include/IncludeProcessor",
+      "parent": "java/lang/Object",
+      "fields": [
+        {
+          "key": "graph",
+          "descriptor": "Lnet/irisshaders/iris/shaderpack/include/IncludeGraph;"
+        },
+        {
+          "key": "cache",
+          "descriptor": "Ljava/util/Map;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/include/IncludeGraph;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            },
+            {
+              "offset": 6,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeProcessor.graphLnet/irisshaders/iris/shaderpack/include/IncludeGraph;"
+            },
+            {
+              "offset": 10,
+              "op": 187,
+              "target": "java/util/HashMap"
+            },
+            {
+              "offset": 14,
+              "op": 183,
+              "target": "java/util/HashMap.<init>()V"
+            },
+            {
+              "offset": 17,
+              "op": 181,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeProcessor.cacheLjava/util/Map;"
+            }
+          ]
+        },
+        {
+          "key": "getIncludedFile",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;)Lcom/google/common/collect/ImmutableList;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeProcessor.cacheLjava/util/Map;"
+            },
+            {
+              "offset": 5,
+              "op": 185,
+              "target": "java/util/Map.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 20,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeProcessor.process(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;)Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 25,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeProcessor.cacheLjava/util/Map;"
+            },
+            {
+              "offset": 30,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            }
+          ]
+        },
+        {
+          "key": "process",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;)Lcom/google/common/collect/ImmutableList;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeProcessor.graphLnet/irisshaders/iris/shaderpack/include/IncludeGraph;"
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeGraph.getNodes()Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 8,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 21,
+              "op": 184,
+              "target": "com/google/common/collect/ImmutableList.builder()Lcom/google/common/collect/ImmutableList$Builder;"
+            },
+            {
+              "offset": 26,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.getLines()Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 32,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/FileNode.getIncludes()Lcom/google/common/collect/ImmutableMap;"
+            },
+            {
+              "offset": 44,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.size()I"
+            },
+            {
+              "offset": 54,
+              "op": 184,
+              "target": "java/lang/Integer.valueOf(I)Ljava/lang/Integer;"
+            },
+            {
+              "offset": 57,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableMap.get(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 74,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/include/IncludeProcessor.getIncludedFile(Lnet/irisshaders/iris/shaderpack/include/AbsolutePackPath;)Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 77,
+              "op": 184,
+              "target": "java/util/Objects.requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 83,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList$Builder.addAll(Ljava/lang/Iterable;)Lcom/google/common/collect/ImmutableList$Builder;"
+            },
+            {
+              "offset": 95,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.get(I)Ljava/lang/Object;"
+            },
+            {
+              "offset": 101,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList$Builder.add(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList$Builder;"
+            },
+            {
+              "offset": 112,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList$Builder.build()Lcom/google/common/collect/ImmutableList;"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nodeLimits": {
+    "archive": 134217728,
+    "entries": 4096,
+    "virtualNodes": 16384,
+    "total": 134217728,
+    "file": 16777216,
+    "text": 1048576,
+    "textTotal": 16777216,
+    "path": 512,
+    "depth": 32,
+    "snapshot": 20971520
+  },
+  "includeLimits": {
+    "snapshotBytes": 20971520,
+    "sourceCount": 4096,
+    "sourceBytes": 1048576,
+    "totalTextBytes": 16777216,
+    "pathBytes": 512,
+    "virtualNodes": 16384,
+    "includeDepth": 32,
+    "includeVisits": 8192,
+    "expandedBytes": 8388608
+  },
+  "referenceBehavior": "FileNode discovers physical quoted includes and resolves pack-relative paths. IncludeGraph detects cycles before all other preprocessing; guards do not hide cycles. IncludeProcessor recursively inserts included lines.",
+  "implementationScope": "Explicit local ZIP/folder to owned text snapshot to native virtual include resolution and existing material preparation. Source IDs/#line are this adapter's diagnostic mapping, not a claim of identical Iris source IDs.",
+  "subset": "Classic stored/deflated single-disk ZIP with validated local/central records and signed/unsigned data descriptors; no extraction. Folder identities rechecked around reads; no filesystem-wide locking claim. Source text is UTF-8 with optional initial BOM normalized; canonical ASCII source paths. Quoted canonical #include lines; root-relative and in-root parent resolution; all dependencies before conditions; repeated includes retained.",
+  "unsupported": [
+    "ZIP64/encryption/alternate Unicode ZIP names/unsupported methods",
+    "archive path/case/file-parent aliases, symlinks, hard links and special files",
+    "unsupported source extensions or non-ASCII source paths",
+    "include macros/angle brackets/trailing comments/continued includes",
+    "includes inside block comments or inline-comment-prefixed directives",
+    "authored #line, included/misplaced/duplicate #version",
+    "GLSL macro expansion, translation, production recipe or automatic activation"
+  ],
+  "javaExecuted": false,
+  "bundlesExecuted": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "productionActivated": false,
+  "irisContractComplete": false
+}

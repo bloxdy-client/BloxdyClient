@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "bloxd-visual-shader",
+      "name": "Bloxd Visual Shader",
+      "version": "5.6.14.2",
+      "kind": "bloxd-mod",
+      "category": "shaders",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [
+        "native-preview"
+      ],
+      "scripts": [
+        {
+          "world": "ISOLATED",
+          "js": [
+            "settings-bridge.js"
+          ],
+          "css": []
+        },
+        {
+          "world": "MAIN",
+          "js": [
+            "bootstrap.js",
+            "runtime.js",
+            "ore-lighting.js",
+            "liquid-shaders.js",
+            "sun-shadows.js",
+            "atmosphere.js",
+            "day-night.js",
+            "dynamic-lighting.js",
+            "shader.js"
+          ],
+          "css": []
+        }
+      ],
+      "compatibility": "launcher-adapter-unverified",
+      "note": "A Bloxd shader mod with its own lighting controls.",
+      "description": "Shadows, water and atmosphere built for Bloxd.",
+      "package": "bloxd-visual-shader-5.6.14.2.bnmod",
+      "sha256": "a0f0e9e2eb90fc7859e986e03ea79e6b3d004afc59fcb70165e50d17d36aa76a",
+      "size": 713896,
+      "source": "Local Bloxd project"
+    },
+    {
+      "id": "bloxd-litematica",
+      "name": "Bloxd Litematica",
+      "version": "0.14.1",
+      "kind": "bloxd-mod",
+      "category": "building",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [
+        "native-preview"
+      ],
+      "scripts": [
+        {
+          "world": "MAIN",
+          "js": [
+            "placement.js",
+            "block-ids.js",
+            "bloxdschem.js",
+            "selection.js",
+            "file-picker.js",
+            "block-names.js",
+            "model.js",
+            "runtime.js",
+            "adapter.js",
+            "geometry.js",
+            "native-frame.js",
+            "foreground.js",
+            "renderer.js",
+            "building.js",
+            "place.js",
+            "litematica.js"
+          ],
+          "css": []
+        }
+      ],
+      "compatibility": "launcher-adapter-unverified",
+      "note": "A schematic mod built for Bloxd.",
+      "description": "Schematic previews, material lists and .bloxdschem tools.",
+      "package": "bloxd-litematica-0.14.1.bnmod",
+      "sha256": "dfef3996a8bea852cacbdf26cf6ead9137a19c140eb08ea12055e32d5913d684",
+      "size": 372736,
+      "source": "Local Bloxd project"
+    },
+    {
+      "id": "bloxd-party-voice",
+      "name": "Bloxd Party Voice",
+      "version": "0.6.1",
+      "kind": "bloxd-mod",
+      "category": "social",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [],
+      "scripts": [
+        {
+          "world": "MAIN",
+          "js": [
+            "runtime.js"
+          ],
+          "css": []
+        },
+        {
+          "world": "ISOLATED",
+          "js": [
+            "voice.js"
+          ],
+          "css": [
+            "voice.css"
+          ]
+        }
+      ],
+      "compatibility": "launcher-adapter-unverified",
+      "note": "Requires an available voice server. You control microphone access.",
+      "description": "Party and lobby voice with device controls and per-player volume.",
+      "package": "bloxd-party-voice-0.6.1.bnmod",
+      "sha256": "b2dbbbe75f6c050daaa44362e3629c1f1f7e493604258dcdbca1cb585ccf3ec1",
+      "size": 73972,
+      "source": "Local Bloxd project"
+    }
+  ]
+}

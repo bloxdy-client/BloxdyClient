@@ -1,0 +1,121 @@
+{
+  "verifiedOn": "2026-10-15",
+  "minecraftVersion": "26.3",
+  "irisVersion": "1.11.7",
+  "modrinthVersion": "vTN4NRGW",
+  "artifactSHA512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+  "artifactExecuted": false,
+  "artifactInstalled": false,
+  "publicSourceCommit": "671a5c87747d33983d7ed659461a64f46dfcb1f0",
+  "publicSourceDeclaredVersion": "1.11.6",
+  "exactReleaseSourceTagEstablished": false,
+  "classInspectionTool": "tools/inspect-iris-reference.cjs",
+  "classFiles": [
+    {
+      "file": "CompositeRenderer.class",
+      "sha256": "e1960b473749d3ca8fd30c7edea3310dff5025c4d169747d5ff2785a9ccead3c"
+    },
+    {
+      "file": "ComputeProgram.class",
+      "sha256": "a858a2c2ab5ea00d6f80566beeef3c37509bd0598a8635c21024c9528caa0dcf"
+    },
+    {
+      "file": "FinalPassRenderer.class",
+      "sha256": "290f9e2dc13dde4f46b2548544650367aad7f0ac34df802c45962a7c8d026829"
+    },
+    {
+      "file": "IrisImages.class",
+      "sha256": "3556a5a7820bb9369c8aa2ee6fde83b319eda27ddd7a4c01d9d9812300621023"
+    },
+    {
+      "file": "IrisRenderingPipeline.class",
+      "sha256": "53a667ae4114da83f10a19246898afb4ca5e2c1599595a53878559cfa03cee88"
+    },
+    {
+      "file": "ProgramArrayId.class",
+      "sha256": "1f7310f675defdffc82fdaff0fd4d9344b1275e7c9abea28b4a1902ac28b2b1c"
+    },
+    {
+      "file": "ProgramId.class",
+      "sha256": "e7916cf9a8a01ebf0ae84f096053018203952360356b8ab4dc3ba1c89f4b1589"
+    },
+    {
+      "file": "ShaderStorageBufferHolder.class",
+      "sha256": "cb55e19a1902f089c9cf6250c8062c3f4838b572c4e08a73fa44ee0c3717cdb8"
+    },
+    {
+      "file": "ShadowRenderer.class",
+      "sha256": "5c41377006e5a341a43c08bd90af927bd577631b3bcb5a8307cbbb171f22857d"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "file": "build.gradle.kts",
+      "sha256": "5f6e1806c18c2f0d0cb7ebf8c0138e44937d3c0b9650616179294c766492f5e8"
+    },
+    {
+      "file": "CompositeRenderer.java",
+      "sha256": "746b7563fd452b242c2f44edf2e7891a6b1436201b89476b0bfbf1af2d62c16f"
+    },
+    {
+      "file": "ComputeProgram.java",
+      "sha256": "75502a7374cc95c19bf84fbe9669f64774b65108d069cd495a1635f02d262055"
+    },
+    {
+      "file": "FinalPassRenderer.java",
+      "sha256": "d09a8caef4c2009cb54713942cc5e6b143c22e0fceb128ecec35ce408148e76c"
+    },
+    {
+      "file": "HandRenderer.java",
+      "sha256": "43c47e738e0e28a7ae0f95533608570f07cf8876a93ee7fa2675847bb48ba312"
+    },
+    {
+      "file": "IrisImages.java",
+      "sha256": "7437aca20e5aa9b0ed22f15c857c56661e7cbc78a04ece7aec543d1ef48879f8"
+    },
+    {
+      "file": "IrisRenderingPipeline.java",
+      "sha256": "71686c9d85f78d8561f81af2aaed98e4b73f0a3345dc8b61c8dc22e3b33a799d"
+    },
+    {
+      "file": "IrisSamplers.java",
+      "sha256": "e2496c3ad9d3425c8217bed0c8bc805bad3754c1a3cdc0970be3f3b5ae9008cc"
+    },
+    {
+      "file": "ProgramArrayId.java",
+      "sha256": "9a406aa1b515f00e726bae3161fa362cc9eb016a6617d35bdebf5645ff42bf2e"
+    },
+    {
+      "file": "ProgramId.java",
+      "sha256": "e99647d0acd39a349ce2803481369c3cfb8816c494097a5dc6085bfdb5b91bbc"
+    },
+    {
+      "file": "ProgramImages.java",
+      "sha256": "1add12ed9c114be08d876375eaa491f3ce2c98599320e833c82454d18b26301a"
+    },
+    {
+      "file": "ProgramSet.java",
+      "sha256": "3edb8450cabd2ff8288f9995daaa05b3e160ccbb8ac5b560164eef22e8eb4873"
+    },
+    {
+      "file": "RenderTargets.java",
+      "sha256": "6a4a33ed3b1b340289fe06cbdaffd2a3e4951d0f06e5367a3f92888737b2cb51"
+    },
+    {
+      "file": "ShaderStorageBuffer.java",
+      "sha256": "66593a5202efda2926731398e0b1e0c4009f7d951ca95409c8d4a81c909082a7"
+    },
+    {
+      "file": "ShaderStorageBufferHolder.java",
+      "sha256": "2079e97a83cd0b61ee40a2231d9dc64634476cccadcbdae11dcb275574000eda"
+    },
+    {
+      "file": "ShadowCompositeRenderer.java",
+      "sha256": "77362b4721a94d3bf64b3e09effbfac16f8e02ef1f1901257650d1495113e1d9"
+    },
+    {
+      "file": "ShadowRenderer.java",
+      "sha256": "a2bee03fe3d2e491e63bdac39fe2ca9416f113d3a8f9f865007b2e50730826fa"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="650" viewBox="0 0 1000 650">
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#122b42"/><stop offset=".7" stop-color="#567789"/><stop offset="1" stop-color="#223840"/></linearGradient><linearGradient id="rock" x2="1" y2=".6"><stop stop-color="#15242e"/><stop offset="1" stop-color="#334a52"/></linearGradient><radialGradient id="light"><stop stop-color="#a1d4e4" stop-opacity=".34"/><stop offset="1" stop-color="#6eaccc" stop-opacity="0"/></radialGradient><pattern id="blocks" width="64" height="32" patternUnits="userSpaceOnUse"><path d="M0 0H64V32H0Z" fill="none" stroke="#aec6c5" stroke-opacity=".06"/><path d="M32 0V32" stroke="#000" stroke-opacity=".12"/></pattern></defs>
+<path fill="url(#sky)" d="M0 0H1000V650H0Z"/><ellipse cx="660" cy="116" rx="400" ry="300" fill="url(#light)"/>
+<path fill="#7795a3" opacity=".2" d="M650 35h80v15h65v20H655v-15h-60V45h55zM490 80h55v18h90v15H480V98h-50V87h60zM55 49h95v17h90v19H42V65h13z"/>
+<path fill="#263a45" d="M0 270h85v-45h62v-45h72v46h35v43h110v73h80v99H0zM1000 182h-59v52h-65v-79h-65v76h-85v91h-73v90h347z"/>
+<path fill="url(#rock)" d="M0 118h89v64h40v47h45v48h55v41h67v67h57v48h96v217H0zM1000 88h-97v96h-30v43h-47v48h-71v42h-49v73h-74v82h-73v178h441z"/>
+<path fill="url(#blocks)" d="M0 118h89v64h40v47h45v48h55v41h67v67h57v48h96v217H0zM1000 88h-97v96h-30v43h-47v48h-71v42h-49v73h-74v82h-73v178h441z"/>
+<path fill="#496953" d="M0 118h89v15H0zM89 182h40v15H89zM129 229h45v15h-45zM174 277h55v13h-55zM903 88h97v15h-97zM873 184h30v13h-30zM826 227h47v13h-47zM755 275h71v14h-71z"/>
+<path fill="#21383b" d="M0 536h146v-34h172v-33h135v-28h194v39h191v44h162v126H0z"/><path fill="#324d43" d="M146 502h172v14H146zM318 469h135v14H318zM453 441h194v14H453zM647 480h191v14H647z"/>
+<path fill="#12272c" d="M0 584h272v-18h477v18h251v66H0z"/>
+<g fill="#315044"><path d="M119 330h14v-75h-14zM96 222h60v50H96zM85 238h83v40H85z"/><path d="M861 379h15v-81h-15zM834 254h71v53h-71zM821 277h96v39h-96z"/></g>
+<g fill="#4ebcb7" opacity=".24"><path d="M97 421h31v27H97zM158 444h23v27h-23zM811 421h24v25h-24zM893 398h34v27h-34z"/></g>
+<path fill="#0b1720" opacity=".28" d="M0 0H1000V650H0Z"/>
+</svg>

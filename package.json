@@ -1,0 +1,29 @@
+{
+  "name": "bloxdy-client",
+  "version": "1.6.0",
+  "description": "Custom bloxd.io launcher for mods and performance tuning",
+  "author": "Bloxdy Client contributors",
+  "license": "MIT",
+  "private": true,
+  "main": "entry.cjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test bridge/tests/*.test.cjs",
+    "test:unit": "node --test bridge/tests/capture-budget.test.cjs bridge/tests/transport.test.cjs bridge/tests/google-auth-popup.test.cjs bridge/tests/frames.test.cjs bridge/tests/presenter.test.cjs",
+    "test:bridge": "electron . --bridge-test",
+    "test:launcher": "node --test launcher/tests/*.test.cjs",
+    "catalog": "node launcher/build-catalog.cjs",
+    "dist:windows": "electron-builder --win nsis portable --x64 --publish never",
+    "build:viewer": "node launcher/build-viewer.cjs"
+  },
+  "devDependencies": {
+    "electron": "44.7.0",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.28.2",
+    "gltf-validator": "2.0.0-dev.3.10",
+    "jsdom": "26.1.0",
+    "pe-library": "0.4.1",
+    "resedit": "1.7.2",
+    "three": "0.186.1"
+  }
+}

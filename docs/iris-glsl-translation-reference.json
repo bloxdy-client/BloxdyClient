@@ -1,0 +1,3249 @@
+{
+  "contract": 1,
+  "irisArtifact": "1.11.7+26.3-fabric",
+  "artifactSha512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+  "classes": [
+    {
+      "file": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.class",
+      "sha256": "56fe400f3a955d27e832b5a0ffa657d69a239e87fc9b4612cc1f777ce507bbf9",
+      "type": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer",
+      "parent": "java/lang/Object",
+      "fields": [
+        {
+          "key": "glTextureMatrix0",
+          "descriptor": "Lio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+        },
+        {
+          "key": "glTextureMatrix1",
+          "descriptor": "Lio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+        },
+        {
+          "key": "glTextureMatrix2",
+          "descriptor": "Lio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+        },
+        {
+          "key": "sampler",
+          "descriptor": "Lio/github/douira/glsl_transformer/ast/query/match/Matcher;"
+        },
+        {
+          "key": "glFragDataI",
+          "descriptor": "Lio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+        },
+        {
+          "key": "fragDataDeclaration",
+          "descriptor": "Lio/github/douira/glsl_transformer/ast/transform/Template;"
+        },
+        {
+          "key": "replaceExpressions",
+          "descriptor": "Ljava/util/List;"
+        },
+        {
+          "key": "replaceIndexes",
+          "descriptor": "Ljava/util/List;"
+        },
+        {
+          "key": "inputDeclarationTemplate",
+          "descriptor": "Lio/github/douira/glsl_transformer/ast/transform/Template;"
+        },
+        {
+          "key": "inputDeclarationTemplateLayout",
+          "descriptor": "Lio/github/douira/glsl_transformer/ast/transform/Template;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "<init>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 183,
+              "target": "java/lang/Object.<init>()V"
+            }
+          ]
+        },
+        {
+          "key": "injectForwardZProjection",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 184,
+              "target": "com/mojang/blaze3d/systems/RenderSystem.getDevice()Lcom/mojang/renderpearl/api/device/GpuDevice;"
+            },
+            {
+              "offset": 5,
+              "op": 185,
+              "target": "com/mojang/renderpearl/api/device/GpuDevice.getDeviceInfo()Lcom/mojang/renderpearl/api/device/DeviceInfo;"
+            },
+            {
+              "offset": 10,
+              "op": 182,
+              "target": "com/mojang/renderpearl/api/device/DeviceInfo.isZZeroToOne()Z"
+            },
+            {
+              "offset": 13,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/DepthTransformer.injectForwardZProjection(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Z)V"
+            }
+          ]
+        },
+        {
+          "key": "transformDepth",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Lio/github/douira/glsl_transformer/ast/query/Root;Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;)V",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "java/util/HashSet"
+            },
+            {
+              "offset": 5,
+              "op": 182,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.getTextureOverrides()Ljava/util/Set;"
+            },
+            {
+              "offset": 8,
+              "op": 183,
+              "target": "java/util/HashSet.<init>(Ljava/util/Collection;)V"
+            },
+            {
+              "offset": 14,
+              "op": 182,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.getTextureStage()Lnet/irisshaders/iris/shaderpack/texture/TextureStage;"
+            },
+            {
+              "offset": 17,
+              "op": 178,
+              "target": "net/irisshaders/iris/shaderpack/texture/TextureStage.GBUFFERS_AND_SHADOWLnet/irisshaders/iris/shaderpack/texture/TextureStage;"
+            },
+            {
+              "offset": 25,
+              "op": 18,
+              "target": "depthtex0"
+            },
+            {
+              "offset": 27,
+              "op": 185,
+              "target": "java/util/Set.contains(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 37,
+              "op": 18,
+              "target": "gdepthtex"
+            },
+            {
+              "offset": 39,
+              "op": 185,
+              "target": "java/util/Set.contains(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 49,
+              "op": 18,
+              "target": "depthtex0"
+            },
+            {
+              "offset": 51,
+              "op": 185,
+              "target": "java/util/Set.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 59,
+              "op": 18,
+              "target": "gdepthtex"
+            },
+            {
+              "offset": 61,
+              "op": 185,
+              "target": "java/util/Set.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 71,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 76,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.nameLjava/lang/String;"
+            },
+            {
+              "offset": 79,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.isShadowPass(Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 82,
+              "op": 184,
+              "target": "com/mojang/blaze3d/systems/RenderSystem.getDevice()Lcom/mojang/renderpearl/api/device/GpuDevice;"
+            },
+            {
+              "offset": 85,
+              "op": 185,
+              "target": "com/mojang/renderpearl/api/device/GpuDevice.getDeviceInfo()Lcom/mojang/renderpearl/api/device/DeviceInfo;"
+            },
+            {
+              "offset": 90,
+              "op": 182,
+              "target": "com/mojang/renderpearl/api/device/DeviceInfo.isZZeroToOne()Z"
+            },
+            {
+              "offset": 95,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/DepthTransformer.transform(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Lio/github/douira/glsl_transformer/ast/query/Root;Lnet/irisshaders/iris/pipeline/transform/PatchShaderType;ZZLjava/util/Set;)V"
+            }
+          ]
+        },
+        {
+          "key": "transformDepthPosition",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Ljava/util/Map;Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 184,
+              "target": "com/mojang/blaze3d/systems/RenderSystem.getDevice()Lcom/mojang/renderpearl/api/device/GpuDevice;"
+            },
+            {
+              "offset": 5,
+              "op": 185,
+              "target": "com/mojang/renderpearl/api/device/GpuDevice.getDeviceInfo()Lcom/mojang/renderpearl/api/device/DeviceInfo;"
+            },
+            {
+              "offset": 10,
+              "op": 182,
+              "target": "com/mojang/renderpearl/api/device/DeviceInfo.isZZeroToOne()Z"
+            },
+            {
+              "offset": 15,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.nameLjava/lang/String;"
+            },
+            {
+              "offset": 18,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.isShadowPass(Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 21,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/DepthTransformer.transformPosition(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Ljava/util/Map;ZZ)V"
+            }
+          ]
+        },
+        {
+          "key": "isShadowPass",
+          "descriptor": "(Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;Ljava/lang/String;)Z",
+          "operations": [
+            {
+              "offset": 13,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/SodiumParameters.shadowZ"
+            },
+            {
+              "offset": 18,
+              "op": 182,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.getTextureStage()Lnet/irisshaders/iris/shaderpack/texture/TextureStage;"
+            },
+            {
+              "offset": 21,
+              "op": 178,
+              "target": "net/irisshaders/iris/shaderpack/texture/TextureStage.GBUFFERS_AND_SHADOWLnet/irisshaders/iris/shaderpack/texture/TextureStage;"
+            },
+            {
+              "offset": 32,
+              "op": 18,
+              "target": "shadow"
+            },
+            {
+              "offset": 34,
+              "op": 182,
+              "target": "java/lang/String.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 41,
+              "op": 18,
+              "target": "shadow_"
+            },
+            {
+              "offset": 43,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 50,
+              "op": 18,
+              "target": "_shadow"
+            },
+            {
+              "offset": 52,
+              "op": 182,
+              "target": "java/lang/String.endsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 59,
+              "op": 18,
+              "target": "dh_shadow_"
+            },
+            {
+              "offset": 61,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            }
+          ]
+        },
+        {
+          "key": "renameFunctionCall",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 6,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.getStream(Ljava/lang/String;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 9,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$renameFunctionCall$0(Lio/github/douira/glsl_transformer/ast/node/Identifier;)Z"
+            },
+            {
+              "offset": 14,
+              "op": 185,
+              "target": "java/util/stream/Stream.filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 20,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$renameFunctionCall$1(Ljava/lang/String;Lio/github/douira/glsl_transformer/ast/node/Identifier;)V"
+            },
+            {
+              "offset": 25,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.process(Ljava/util/stream/Stream;Ljava/util/function/Consumer;)Z"
+            }
+          ]
+        },
+        {
+          "key": "renameAndWrapShadow",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 6,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.getStream(Ljava/lang/String;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 9,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$renameAndWrapShadow$0(Lio/github/douira/glsl_transformer/ast/node/Identifier;)Z"
+            },
+            {
+              "offset": 14,
+              "op": 185,
+              "target": "java/util/stream/Stream.filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 22,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$renameAndWrapShadow$1(Ljava/lang/String;Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/query/Root;Lio/github/douira/glsl_transformer/ast/node/Identifier;)V"
+            },
+            {
+              "offset": 27,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.process(Ljava/util/stream/Stream;Ljava/util/function/Consumer;)Z"
+            }
+          ]
+        },
+        {
+          "key": "patchMultiTexCoord3",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Lio/github/douira/glsl_transformer/ast/query/Root;Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 4,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 7,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.VERTEXLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 14,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 17,
+              "op": 18,
+              "target": "gl_MultiTexCoord3"
+            },
+            {
+              "offset": 19,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.has(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 26,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 29,
+              "op": 18,
+              "target": "mc_midTexCoord"
+            },
+            {
+              "offset": 31,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.has(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 38,
+              "op": 18,
+              "target": "gl_MultiTexCoord3"
+            },
+            {
+              "offset": 40,
+              "op": 18,
+              "target": "mc_midTexCoord"
+            },
+            {
+              "offset": 42,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.rename(Ljava/lang/String;Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 48,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 51,
+              "op": 18,
+              "target": "attribute vec4 mc_midTexCoord;"
+            },
+            {
+              "offset": 53,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "patchIntegerAttribute",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;I)V",
+          "operations": [
+            {
+              "offset": 6,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/util/Type.BOOLLio/github/douira/glsl_transformer/util/Type;"
+            },
+            {
+              "offset": 12,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 16,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.get(Ljava/lang/String;)Ljava/util/Set;"
+            },
+            {
+              "offset": 19,
+              "op": 185,
+              "target": "java/util/Set.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 28,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 38,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 52,
+              "op": 18,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration"
+            },
+            {
+              "offset": 55,
+              "op": 184,
+              "target": "java/util/Objects.requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 59,
+              "op": 186,
+              "target": "java/lang/Class.isInstance(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 64,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getAncestor(IILjava/util/function/Predicate;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 84,
+              "op": 18,
+              "target": "io/github/douira/glsl_transformer/ast/node/external_declaration/DeclarationExternalDeclaration"
+            },
+            {
+              "offset": 87,
+              "op": 184,
+              "target": "java/util/Objects.requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 91,
+              "op": 186,
+              "target": "java/lang/Class.isInstance(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 96,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration.getAncestor(IILjava/util/function/Predicate;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 114,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration.getType()Lio/github/douira/glsl_transformer/ast/node/type/FullySpecifiedType;"
+            },
+            {
+              "offset": 117,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/FullySpecifiedType.getTypeSpecifier()Lio/github/douira/glsl_transformer/ast/node/type/specifier/TypeSpecifier;"
+            },
+            {
+              "offset": 139,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/specifier/BuiltinNumericTypeSpecifier.typeLio/github/douira/glsl_transformer/util/Type;"
+            },
+            {
+              "offset": 146,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/external_declaration/DeclarationExternalDeclaration.detachAndDelete()Z"
+            },
+            {
+              "offset": 152,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration.detachAndDelete()Z"
+            },
+            {
+              "offset": 158,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.detachAndDelete()Z"
+            },
+            {
+              "offset": 170,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/util/Type.BOOLLio/github/douira/glsl_transformer/util/Type;"
+            },
+            {
+              "offset": 182,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.replaceReferenceExpressions(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 185,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$3.$SwitchMap$io$github$douira$glsl_transformer$util$Type[I"
+            },
+            {
+              "offset": 190,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/util/Type.ordinal()I"
+            },
+            {
+              "offset": 243,
+              "op": 186,
+              "target": "bootstrap:5"
+            },
+            {
+              "offset": 254,
+              "op": 186,
+              "target": "bootstrap:6"
+            },
+            {
+              "offset": 269,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.swizzle(Ljava/lang/String;IIZ)Ljava/lang/String;"
+            },
+            {
+              "offset": 272,
+              "op": 186,
+              "target": "bootstrap:7"
+            },
+            {
+              "offset": 287,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.swizzle(Ljava/lang/String;IIZ)Ljava/lang/String;"
+            },
+            {
+              "offset": 290,
+              "op": 186,
+              "target": "bootstrap:8"
+            },
+            {
+              "offset": 305,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.swizzle(Ljava/lang/String;IIZ)Ljava/lang/String;"
+            },
+            {
+              "offset": 308,
+              "op": 186,
+              "target": "bootstrap:9"
+            },
+            {
+              "offset": 323,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.swizzle(Ljava/lang/String;IIZ)Ljava/lang/String;"
+            },
+            {
+              "offset": 326,
+              "op": 186,
+              "target": "bootstrap:10"
+            },
+            {
+              "offset": 341,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.swizzle(Ljava/lang/String;IIZ)Ljava/lang/String;"
+            },
+            {
+              "offset": 344,
+              "op": 186,
+              "target": "bootstrap:11"
+            },
+            {
+              "offset": 359,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.swizzle(Ljava/lang/String;IIZ)Ljava/lang/String;"
+            },
+            {
+              "offset": 362,
+              "op": 186,
+              "target": "bootstrap:12"
+            },
+            {
+              "offset": 370,
+              "op": 187,
+              "target": "java/lang/IllegalStateException"
+            },
+            {
+              "offset": 377,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/util/Type.getCompactName()Ljava/lang/String;"
+            },
+            {
+              "offset": 380,
+              "op": 186,
+              "target": "bootstrap:13"
+            },
+            {
+              "offset": 385,
+              "op": 183,
+              "target": "java/lang/IllegalStateException.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 393,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 398,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 403,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 409,
+              "op": 186,
+              "target": "bootstrap:14"
+            },
+            {
+              "offset": 414,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "swizzle",
+          "descriptor": "(Ljava/lang/String;IIZ)Ljava/lang/String;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "java/lang/StringBuilder"
+            },
+            {
+              "offset": 4,
+              "op": 183,
+              "target": "java/lang/StringBuilder.<init>()V"
+            },
+            {
+              "offset": 25,
+              "op": 19,
+              "target": ", "
+            },
+            {
+              "offset": 28,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 41,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 46,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(C)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 49,
+              "op": 19,
+              "target": "xyzw"
+            },
+            {
+              "offset": 54,
+              "op": 182,
+              "target": "java/lang/String.charAt(I)C"
+            },
+            {
+              "offset": 57,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(C)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 76,
+              "op": 19,
+              "target": "1.0"
+            },
+            {
+              "offset": 82,
+              "op": 19,
+              "target": "1"
+            },
+            {
+              "offset": 85,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 98,
+              "op": 19,
+              "target": "0.0"
+            },
+            {
+              "offset": 104,
+              "op": 19,
+              "target": "0"
+            },
+            {
+              "offset": 107,
+              "op": 182,
+              "target": "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+            },
+            {
+              "offset": 119,
+              "op": 182,
+              "target": "java/lang/StringBuilder.toString()Ljava/lang/String;"
+            }
+          ]
+        },
+        {
+          "key": "replaceMidBlock",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Lio/github/douira/glsl_transformer/ast/query/Root;Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 4,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 7,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.VERTEXLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 14,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 17,
+              "op": 19,
+              "target": "at_midBlock"
+            },
+            {
+              "offset": 20,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.has(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 27,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/util/Type.F32VEC4Lio/github/douira/glsl_transformer/util/Type;"
+            },
+            {
+              "offset": 33,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 36,
+              "op": 19,
+              "target": "at_midBlock"
+            },
+            {
+              "offset": 39,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.get(Ljava/lang/String;)Ljava/util/Set;"
+            },
+            {
+              "offset": 42,
+              "op": 185,
+              "target": "java/util/Set.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 51,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 61,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 75,
+              "op": 18,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration"
+            },
+            {
+              "offset": 78,
+              "op": 184,
+              "target": "java/util/Objects.requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 82,
+              "op": 186,
+              "target": "java/lang/Class.isInstance(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 87,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getAncestor(IILjava/util/function/Predicate;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 107,
+              "op": 18,
+              "target": "io/github/douira/glsl_transformer/ast/node/external_declaration/DeclarationExternalDeclaration"
+            },
+            {
+              "offset": 110,
+              "op": 184,
+              "target": "java/util/Objects.requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 114,
+              "op": 186,
+              "target": "java/lang/Class.isInstance(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 119,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration.getAncestor(IILjava/util/function/Predicate;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 137,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration.getType()Lio/github/douira/glsl_transformer/ast/node/type/FullySpecifiedType;"
+            },
+            {
+              "offset": 140,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/FullySpecifiedType.getTypeSpecifier()Lio/github/douira/glsl_transformer/ast/node/type/specifier/TypeSpecifier;"
+            },
+            {
+              "offset": 162,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/specifier/BuiltinNumericTypeSpecifier.typeLio/github/douira/glsl_transformer/util/Type;"
+            },
+            {
+              "offset": 169,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/external_declaration/DeclarationExternalDeclaration.detachAndDelete()Z"
+            },
+            {
+              "offset": 175,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration.detachAndDelete()Z"
+            },
+            {
+              "offset": 181,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.detachAndDelete()Z"
+            },
+            {
+              "offset": 193,
+              "op": 19,
+              "target": "at_midBlock"
+            },
+            {
+              "offset": 196,
+              "op": 19,
+              "target": "iris_MidBlock"
+            },
+            {
+              "offset": 199,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.replaceReferenceExpressions(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 202,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$3.$SwitchMap$io$github$douira$glsl_transformer$util$Type[I"
+            },
+            {
+              "offset": 207,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/util/Type.ordinal()I"
+            },
+            {
+              "offset": 246,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 249,
+              "op": 19,
+              "target": "float iris_MidBlock = at_midBlock.x * 127.0;"
+            },
+            {
+              "offset": 252,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 260,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 263,
+              "op": 19,
+              "target": "vec2 iris_MidBlock = at_midBlock.xy * 127.0;"
+            },
+            {
+              "offset": 266,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 274,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 277,
+              "op": 19,
+              "target": "vec3 iris_MidBlock = at_midBlock.xyz * 127.0;"
+            },
+            {
+              "offset": 280,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 288,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 291,
+              "op": 19,
+              "target": "vec4 iris_MidBlock = at_midBlock * 127.0;"
+            },
+            {
+              "offset": 294,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 300,
+              "op": 187,
+              "target": "java/lang/IllegalStateException"
+            },
+            {
+              "offset": 306,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/util/Type.getCompactName()Ljava/lang/String;"
+            },
+            {
+              "offset": 309,
+              "op": 186,
+              "target": "bootstrap:15"
+            },
+            {
+              "offset": 314,
+              "op": 183,
+              "target": "java/lang/IllegalStateException.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 320,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 323,
+              "op": 19,
+              "target": "in vec4 at_midBlock;"
+            },
+            {
+              "offset": 326,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "upgradeStorageQualifiers",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Lio/github/douira/glsl_transformer/ast/query/Root;Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.nodeIndexLio/github/douira/glsl_transformer/ast/query/index/NodeIndex;"
+            },
+            {
+              "offset": 4,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier"
+            },
+            {
+              "offset": 7,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/NodeIndex.get(Ljava/lang/Class;)Ljava/util/Set;"
+            },
+            {
+              "offset": 10,
+              "op": 185,
+              "target": "java/util/Set.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 19,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 29,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 41,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier.storageTypeLio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            },
+            {
+              "offset": 44,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType.ATTRIBUTELio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            },
+            {
+              "offset": 52,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType.INLio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            },
+            {
+              "offset": 55,
+              "op": 181,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier.storageTypeLio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            },
+            {
+              "offset": 63,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier.storageTypeLio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            },
+            {
+              "offset": 66,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType.VARYINGLio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            },
+            {
+              "offset": 75,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 78,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 81,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.VERTEXLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 87,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType.OUTLio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            },
+            {
+              "offset": 93,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType.INLio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            },
+            {
+              "offset": 96,
+              "op": 181,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier.storageTypeLio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;"
+            }
+          ]
+        },
+        {
+          "key": "transform",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Lio/github/douira/glsl_transformer/ast/query/Root;Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;Z)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 19,
+              "target": "gl_FogFragCoord"
+            },
+            {
+              "offset": 4,
+              "op": 19,
+              "target": "iris_FogFragCoord"
+            },
+            {
+              "offset": 7,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.rename(Ljava/lang/String;Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 12,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 15,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 18,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.VERTEXLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 26,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 29,
+              "op": 19,
+              "target": "out float iris_FogFragCoord;"
+            },
+            {
+              "offset": 32,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 37,
+              "op": 19,
+              "target": "iris_FogFragCoord = 0.0f;"
+            },
+            {
+              "offset": 40,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.prependMainFunctionBody(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 47,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 50,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 53,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.FRAGMENTLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 61,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 64,
+              "op": 19,
+              "target": "in float iris_FogFragCoord;"
+            },
+            {
+              "offset": 67,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 71,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 74,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 77,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.VERTEXLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 85,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 88,
+              "op": 19,
+              "target": "vec4 iris_FrontColor;"
+            },
+            {
+              "offset": 91,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 95,
+              "op": 19,
+              "target": "gl_FrontColor"
+            },
+            {
+              "offset": 98,
+              "op": 19,
+              "target": "iris_FrontColor"
+            },
+            {
+              "offset": 101,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.rename(Ljava/lang/String;Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 106,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 109,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 112,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.FRAGMENTLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 119,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 122,
+              "op": 19,
+              "target": "gl_FragColor"
+            },
+            {
+              "offset": 125,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.has(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 133,
+              "op": 19,
+              "target": "gl_FragColor"
+            },
+            {
+              "offset": 136,
+              "op": 19,
+              "target": "gl_FragData[0]"
+            },
+            {
+              "offset": 139,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.replaceReferenceExpressions(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 143,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 146,
+              "op": 19,
+              "target": "gl_TexCoord"
+            },
+            {
+              "offset": 149,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.has(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 156,
+              "op": 19,
+              "target": "gl_TexCoord"
+            },
+            {
+              "offset": 159,
+              "op": 19,
+              "target": "irs_texCoords"
+            },
+            {
+              "offset": 162,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.rename(Ljava/lang/String;Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 168,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 171,
+              "op": 19,
+              "target": "in vec4 irs_texCoords[3];"
+            },
+            {
+              "offset": 174,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 178,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 181,
+              "op": 19,
+              "target": "gl_Color"
+            },
+            {
+              "offset": 184,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.has(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 191,
+              "op": 19,
+              "target": "gl_Color"
+            },
+            {
+              "offset": 194,
+              "op": 19,
+              "target": "irs_Color"
+            },
+            {
+              "offset": 197,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.rename(Ljava/lang/String;Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 203,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 206,
+              "op": 19,
+              "target": "in vec4 irs_Color;"
+            },
+            {
+              "offset": 209,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 212,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceExpressionsLjava/util/List;"
+            },
+            {
+              "offset": 215,
+              "op": 185,
+              "target": "java/util/List.clear()V"
+            },
+            {
+              "offset": 220,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceIndexesLjava/util/List;"
+            },
+            {
+              "offset": 223,
+              "op": 185,
+              "target": "java/util/List.clear()V"
+            },
+            {
+              "offset": 228,
+              "op": 187,
+              "target": "java/util/HashSet"
+            },
+            {
+              "offset": 232,
+              "op": 183,
+              "target": "java/util/HashSet.<init>()V"
+            },
+            {
+              "offset": 238,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 241,
+              "op": 19,
+              "target": "gl_FragData"
+            },
+            {
+              "offset": 244,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.get(Ljava/lang/String;)Ljava/util/Set;"
+            },
+            {
+              "offset": 247,
+              "op": 185,
+              "target": "java/util/Set.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 256,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 266,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 278,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/binary/ArrayAccessExpression"
+            },
+            {
+              "offset": 281,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getAncestor(Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 294,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.glFragDataILio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+            },
+            {
+              "offset": 299,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher.matchesExtract(Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)Z"
+            },
+            {
+              "offset": 308,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceExpressionsLjava/util/List;"
+            },
+            {
+              "offset": 313,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 319,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.glFragDataILio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+            },
+            {
+              "offset": 322,
+              "op": 19,
+              "target": "index"
+            },
+            {
+              "offset": 325,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/LiteralExpression"
+            },
+            {
+              "offset": 328,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher.getNodeMatch(Ljava/lang/String;Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 334,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/LiteralExpression.getInteger()J"
+            },
+            {
+              "offset": 339,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceIndexesLjava/util/List;"
+            },
+            {
+              "offset": 344,
+              "op": 184,
+              "target": "java/lang/Long.valueOf(J)Ljava/lang/Long;"
+            },
+            {
+              "offset": 347,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 357,
+              "op": 184,
+              "target": "java/lang/Long.valueOf(J)Ljava/lang/Long;"
+            },
+            {
+              "offset": 360,
+              "op": 185,
+              "target": "java/util/Set.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 374,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceExpressionsLjava/util/List;"
+            },
+            {
+              "offset": 377,
+              "op": 185,
+              "target": "java/util/List.size()I"
+            },
+            {
+              "offset": 385,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceExpressionsLjava/util/List;"
+            },
+            {
+              "offset": 390,
+              "op": 185,
+              "target": "java/util/List.get(I)Ljava/lang/Object;"
+            },
+            {
+              "offset": 398,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/ReferenceExpression"
+            },
+            {
+              "offset": 402,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier"
+            },
+            {
+              "offset": 406,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceIndexesLjava/util/List;"
+            },
+            {
+              "offset": 411,
+              "op": 185,
+              "target": "java/util/List.get(I)Ljava/lang/Object;"
+            },
+            {
+              "offset": 416,
+              "op": 184,
+              "target": "java/lang/String.valueOf(Ljava/lang/Object;)Ljava/lang/String;"
+            },
+            {
+              "offset": 419,
+              "op": 186,
+              "target": "bootstrap:16"
+            },
+            {
+              "offset": 424,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 427,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/ReferenceExpression.<init>(Lio/github/douira/glsl_transformer/ast/node/Identifier;)V"
+            },
+            {
+              "offset": 430,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/Expression.replaceByAndDelete(Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)Z"
+            },
+            {
+              "offset": 442,
+              "op": 185,
+              "target": "java/util/Set.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 451,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 461,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 469,
+              "op": 182,
+              "target": "java/lang/Long.longValue()J"
+            },
+            {
+              "offset": 475,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 478,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.fragDataDeclarationLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 488,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/LiteralExpression"
+            },
+            {
+              "offset": 492,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/util/Type.INT32Lio/github/douira/glsl_transformer/util/Type;"
+            },
+            {
+              "offset": 497,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/LiteralExpression.<init>(Lio/github/douira/glsl_transformer/util/Type;J)V"
+            },
+            {
+              "offset": 503,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier"
+            },
+            {
+              "offset": 509,
+              "op": 186,
+              "target": "bootstrap:16"
+            },
+            {
+              "offset": 514,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 518,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.getInstanceFor(Lio/github/douira/glsl_transformer/ast/query/Root;[Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 524,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.injectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Lio/github/douira/glsl_transformer/ast/node/external_declaration/ExternalDeclaration;)V"
+            },
+            {
+              "offset": 530,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceExpressionsLjava/util/List;"
+            },
+            {
+              "offset": 533,
+              "op": 185,
+              "target": "java/util/List.clear()V"
+            },
+            {
+              "offset": 538,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceIndexesLjava/util/List;"
+            },
+            {
+              "offset": 541,
+              "op": 185,
+              "target": "java/util/List.clear()V"
+            },
+            {
+              "offset": 547,
+              "op": 182,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.getAlphaTest()Lnet/irisshaders/iris/gl/blending/AlphaTest;"
+            },
+            {
+              "offset": 550,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/blending/AlphaTest.ALWAYSLnet/irisshaders/iris/gl/blending/AlphaTest;"
+            },
+            {
+              "offset": 564,
+              "op": 184,
+              "target": "java/lang/Long.valueOf(J)Ljava/lang/Long;"
+            },
+            {
+              "offset": 567,
+              "op": 185,
+              "target": "java/util/Set.contains(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 577,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 580,
+              "op": 19,
+              "target": "uniform float iris_currentAlphaTest;"
+            },
+            {
+              "offset": 583,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 589,
+              "op": 182,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.getAlphaTest()Lnet/irisshaders/iris/gl/blending/AlphaTest;"
+            },
+            {
+              "offset": 592,
+              "op": 19,
+              "target": "iris_FragData0.a"
+            },
+            {
+              "offset": 595,
+              "op": 19,
+              "target": "iris_currentAlphaTest"
+            },
+            {
+              "offset": 598,
+              "op": 19,
+              "target": "\t"
+            },
+            {
+              "offset": 601,
+              "op": 182,
+              "target": "net/irisshaders/iris/gl/blending/AlphaTest.toExpression(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"
+            },
+            {
+              "offset": 604,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.appendMainFunctionBody(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 608,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 611,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 614,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.VERTEXLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 621,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/parameter/Parameters.typeLnet/irisshaders/iris/pipeline/transform/PatchShaderType;"
+            },
+            {
+              "offset": 624,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/PatchShaderType.glShaderTypeLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 627,
+              "op": 178,
+              "target": "net/irisshaders/iris/gl/shader/ShaderType.FRAGMENTLnet/irisshaders/iris/gl/shader/ShaderType;"
+            },
+            {
+              "offset": 637,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.upgradeStorageQualifiers(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Lio/github/douira/glsl_transformer/ast/query/Root;Lnet/irisshaders/iris/pipeline/transform/parameter/Parameters;)V"
+            },
+            {
+              "offset": 640,
+              "op": 19,
+              "target": "gcolor"
+            },
+            {
+              "offset": 644,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.getGtextureRenameTargets(Ljava/lang/String;Lio/github/douira/glsl_transformer/ast/query/Root;)Lnet/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult;"
+            },
+            {
+              "offset": 649,
+              "op": 19,
+              "target": "texture"
+            },
+            {
+              "offset": 653,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.getGtextureRenameTargets(Ljava/lang/String;Lio/github/douira/glsl_transformer/ast/query/Root;)Lnet/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult;"
+            },
+            {
+              "offset": 661,
+              "op": 184,
+              "target": "java/util/stream/Stream.empty()Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 673,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult.samplerDeclarationMemberLio/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember;"
+            },
+            {
+              "offset": 682,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult.targetsLjava/util/stream/Stream;"
+            },
+            {
+              "offset": 685,
+              "op": 184,
+              "target": "java/util/stream/Stream.concat(Ljava/util/stream/Stream;Ljava/util/stream/Stream;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 702,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult.samplerDeclarationMemberLio/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember;"
+            },
+            {
+              "offset": 712,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult.samplerDeclarationMemberLio/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember;"
+            },
+            {
+              "offset": 719,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember.getParent()Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 725,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration.getMembers()Lio/github/douira/glsl_transformer/ast/data/ChildNodeList;"
+            },
+            {
+              "offset": 728,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/data/ChildNodeList.size()I"
+            },
+            {
+              "offset": 737,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult.samplerDeclarationLio/github/douira/glsl_transformer/ast/node/external_declaration/DeclarationExternalDeclaration;"
+            },
+            {
+              "offset": 740,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/external_declaration/DeclarationExternalDeclaration.detachAndDelete()Z"
+            },
+            {
+              "offset": 749,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember.detachAndDelete()Z"
+            },
+            {
+              "offset": 757,
+              "op": 180,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult.targetsLjava/util/stream/Stream;"
+            },
+            {
+              "offset": 760,
+              "op": 184,
+              "target": "java/util/stream/Stream.concat(Ljava/util/stream/Stream;Ljava/util/stream/Stream;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 772,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember.getName()Lio/github/douira/glsl_transformer/ast/node/Identifier;"
+            },
+            {
+              "offset": 775,
+              "op": 19,
+              "target": "gtexture"
+            },
+            {
+              "offset": 778,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.setName(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 784,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$transform$0(Lio/github/douira/glsl_transformer/ast/node/Identifier;)Z"
+            },
+            {
+              "offset": 789,
+              "op": 185,
+              "target": "java/util/stream/Stream.filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 794,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$transform$1(Lio/github/douira/glsl_transformer/ast/node/Identifier;)V"
+            },
+            {
+              "offset": 799,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.process(Ljava/util/stream/Stream;Ljava/util/function/Consumer;)Z"
+            },
+            {
+              "offset": 804,
+              "op": 19,
+              "target": "gl_Fog"
+            },
+            {
+              "offset": 807,
+              "op": 19,
+              "target": "irisInt_Fog"
+            },
+            {
+              "offset": 810,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.rename(Ljava/lang/String;Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 823,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 833,
+              "op": 19,
+              "target": "uniform float iris_FogDensity;"
+            },
+            {
+              "offset": 839,
+              "op": 19,
+              "target": "uniform float iris_FogStart;"
+            },
+            {
+              "offset": 845,
+              "op": 19,
+              "target": "uniform float iris_FogEnd;"
+            },
+            {
+              "offset": 851,
+              "op": 19,
+              "target": "uniform vec4 iris_FogColor;"
+            },
+            {
+              "offset": 857,
+              "op": 19,
+              "target": "struct iris_FogParameters {vec4 color;float density;float start;float end;float scale;};"
+            },
+            {
+              "offset": 863,
+              "op": 19,
+              "target": "iris_FogParameters irisInt_Fog = iris_FogParameters(iris_FogColor, iris_FogDensity, iris_FogStart, iris_FogEnd, 1.0 / (iris_FogEnd - iris_FogStart));"
+            },
+            {
+              "offset": 867,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.parseAndInjectNodes(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;[Ljava/lang/String;)V"
+            },
+            {
+              "offset": 871,
+              "op": 19,
+              "target": "texture2D"
+            },
+            {
+              "offset": 874,
+              "op": 19,
+              "target": "texture"
+            },
+            {
+              "offset": 877,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 881,
+              "op": 19,
+              "target": "texture3D"
+            },
+            {
+              "offset": 884,
+              "op": 19,
+              "target": "texture"
+            },
+            {
+              "offset": 887,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 891,
+              "op": 19,
+              "target": "texture2DLod"
+            },
+            {
+              "offset": 894,
+              "op": 19,
+              "target": "textureLod"
+            },
+            {
+              "offset": 897,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 901,
+              "op": 19,
+              "target": "texture3DLod"
+            },
+            {
+              "offset": 904,
+              "op": 19,
+              "target": "textureLod"
+            },
+            {
+              "offset": 907,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 911,
+              "op": 19,
+              "target": "texture2DProj"
+            },
+            {
+              "offset": 914,
+              "op": 19,
+              "target": "textureProj"
+            },
+            {
+              "offset": 917,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 921,
+              "op": 19,
+              "target": "texture3DProj"
+            },
+            {
+              "offset": 924,
+              "op": 19,
+              "target": "textureProj"
+            },
+            {
+              "offset": 927,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 931,
+              "op": 19,
+              "target": "texture2DGrad"
+            },
+            {
+              "offset": 934,
+              "op": 19,
+              "target": "textureGrad"
+            },
+            {
+              "offset": 937,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 941,
+              "op": 19,
+              "target": "texture2DGradARB"
+            },
+            {
+              "offset": 944,
+              "op": 19,
+              "target": "textureGrad"
+            },
+            {
+              "offset": 947,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 951,
+              "op": 19,
+              "target": "texture3DGrad"
+            },
+            {
+              "offset": 954,
+              "op": 19,
+              "target": "textureGrad"
+            },
+            {
+              "offset": 957,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 961,
+              "op": 19,
+              "target": "texelFetch2D"
+            },
+            {
+              "offset": 964,
+              "op": 19,
+              "target": "texelFetch"
+            },
+            {
+              "offset": 967,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 971,
+              "op": 19,
+              "target": "texelFetch3D"
+            },
+            {
+              "offset": 974,
+              "op": 19,
+              "target": "texelFetch"
+            },
+            {
+              "offset": 977,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 981,
+              "op": 19,
+              "target": "textureSize2D"
+            },
+            {
+              "offset": 984,
+              "op": 19,
+              "target": "textureSize"
+            },
+            {
+              "offset": 987,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameFunctionCall(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 992,
+              "op": 19,
+              "target": "shadow2D"
+            },
+            {
+              "offset": 995,
+              "op": 19,
+              "target": "texture"
+            },
+            {
+              "offset": 998,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameAndWrapShadow(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 1003,
+              "op": 19,
+              "target": "shadow2DLod"
+            },
+            {
+              "offset": 1006,
+              "op": 19,
+              "target": "textureLod"
+            },
+            {
+              "offset": 1009,
+              "op": 184,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.renameAndWrapShadow(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "getGtextureRenameTargets",
+          "descriptor": "(Ljava/lang/String;Lio/github/douira/glsl_transformer/ast/query/Root;)Lnet/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 4,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>()V"
+            },
+            {
+              "offset": 14,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.identifierIndexLio/github/douira/glsl_transformer/ast/query/index/IdentifierIndex;"
+            },
+            {
+              "offset": 18,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/IdentifierIndex.get(Ljava/lang/String;)Ljava/util/Set;"
+            },
+            {
+              "offset": 21,
+              "op": 185,
+              "target": "java/util/Set.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 30,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 40,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 53,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 70,
+              "op": 18,
+              "target": "io/github/douira/glsl_transformer/ast/node/external_declaration/DeclarationExternalDeclaration"
+            },
+            {
+              "offset": 73,
+              "op": 184,
+              "target": "java/util/Objects.requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 77,
+              "op": 186,
+              "target": "java/lang/Class.isInstance(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 82,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getAncestor(IILjava/util/function/Predicate;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 98,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.samplerLio/github/douira/glsl_transformer/ast/query/match/Matcher;"
+            },
+            {
+              "offset": 103,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/Matcher.matchesExtract(Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)Z"
+            },
+            {
+              "offset": 112,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.samplerLio/github/douira/glsl_transformer/ast/query/match/Matcher;"
+            },
+            {
+              "offset": 115,
+              "op": 19,
+              "target": "name*"
+            },
+            {
+              "offset": 118,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember"
+            },
+            {
+              "offset": 121,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/Matcher.getNodeMatch(Ljava/lang/String;Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 127,
+              "op": 18,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration"
+            },
+            {
+              "offset": 129,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember.getAncestor(Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 135,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/TypeAndInitDeclaration.getMembers()Lio/github/douira/glsl_transformer/ast/data/ChildNodeList;"
+            },
+            {
+              "offset": 138,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/data/ChildNodeList.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 145,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 155,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 167,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember.getName()Lio/github/douira/glsl_transformer/ast/node/Identifier;"
+            },
+            {
+              "offset": 170,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getName()Ljava/lang/String;"
+            },
+            {
+              "offset": 174,
+              "op": 182,
+              "target": "java/lang/String.equals(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 198,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember"
+            },
+            {
+              "offset": 201,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getAncestor(Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 210,
+              "op": 185,
+              "target": "java/util/List.removeLast()Ljava/lang/Object;"
+            },
+            {
+              "offset": 227,
+              "op": 187,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult"
+            },
+            {
+              "offset": 235,
+              "op": 185,
+              "target": "java/util/List.stream()Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 240,
+              "op": 183,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$RenameTargetResult.<init>(Lio/github/douira/glsl_transformer/ast/node/external_declaration/DeclarationExternalDeclaration;Lio/github/douira/glsl_transformer/ast/node/declaration/DeclarationMember;Ljava/util/stream/Stream;)V"
+            }
+          ]
+        },
+        {
+          "key": "applyIntelHd4000Workaround",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/query/Root;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 19,
+              "target": "ftransform"
+            },
+            {
+              "offset": 4,
+              "op": 19,
+              "target": "iris_ftransform"
+            },
+            {
+              "offset": 7,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.rename(Ljava/lang/String;Ljava/lang/String;)Z"
+            }
+          ]
+        },
+        {
+          "key": "replaceGlMultiTexCoordBounded",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/query/Root;II)V",
+          "operations": [
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.getPrefixIdentifierIndex()Lio/github/douira/glsl_transformer/ast/query/index/PrefixIdentifierIndex;"
+            },
+            {
+              "offset": 6,
+              "op": 19,
+              "target": "gl_MultiTexCoord"
+            },
+            {
+              "offset": 9,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/PrefixIdentifierIndex.prefixQueryFlat(Ljava/lang/String;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 14,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$replaceGlMultiTexCoordBounded$0(IILio/github/douira/glsl_transformer/ast/node/Identifier;)Z"
+            },
+            {
+              "offset": 19,
+              "op": 185,
+              "target": "java/util/stream/Stream.filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 24,
+              "op": 19,
+              "target": "vec4(0.0, 0.0, 0.0, 1.0)"
+            },
+            {
+              "offset": 27,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.replaceReferenceExpressions(Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Ljava/util/stream/Stream;Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "addIfNotExists",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/query/Root;Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Ljava/lang/String;Lio/github/douira/glsl_transformer/util/Type;Lio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.externalDeclarationIndexLio/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex;"
+            },
+            {
+              "offset": 5,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex.getStream(Ljava/lang/String;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 8,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$addIfNotExists$0(Lio/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex$DeclarationEntry;)Z"
+            },
+            {
+              "offset": 13,
+              "op": 185,
+              "target": "java/util/stream/Stream.noneMatch(Ljava/util/function/Predicate;)Z"
+            },
+            {
+              "offset": 22,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 25,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 35,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier"
+            },
+            {
+              "offset": 41,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier.<init>(Lio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;)V"
+            },
+            {
+              "offset": 47,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/specifier/BuiltinNumericTypeSpecifier"
+            },
+            {
+              "offset": 53,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/specifier/BuiltinNumericTypeSpecifier.<init>(Lio/github/douira/glsl_transformer/util/Type;)V"
+            },
+            {
+              "offset": 59,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier"
+            },
+            {
+              "offset": 64,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 68,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.getInstanceFor(Lio/github/douira/glsl_transformer/ast/query/Root;[Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 74,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.injectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Lio/github/douira/glsl_transformer/ast/node/external_declaration/ExternalDeclaration;)V"
+            }
+          ]
+        },
+        {
+          "key": "addIfNotExists",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/query/Root;Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/node/TranslationUnit;Ljava/lang/String;Lio/github/douira/glsl_transformer/util/Type;Lio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;I)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.externalDeclarationIndexLio/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex;"
+            },
+            {
+              "offset": 5,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex.getStream(Ljava/lang/String;)Ljava/util/stream/Stream;"
+            },
+            {
+              "offset": 8,
+              "op": 186,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.lambda$addIfNotExists$1(Lio/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex$DeclarationEntry;)Z"
+            },
+            {
+              "offset": 13,
+              "op": 185,
+              "target": "java/util/stream/Stream.noneMatch(Ljava/util/function/Predicate;)Z"
+            },
+            {
+              "offset": 22,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint.BEFORE_DECLARATIONSLio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;"
+            },
+            {
+              "offset": 25,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLayoutLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 35,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/LiteralExpression"
+            },
+            {
+              "offset": 39,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/util/Type.INT32Lio/github/douira/glsl_transformer/util/Type;"
+            },
+            {
+              "offset": 45,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/LiteralExpression.<init>(Lio/github/douira/glsl_transformer/util/Type;J)V"
+            },
+            {
+              "offset": 51,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier"
+            },
+            {
+              "offset": 57,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier.<init>(Lio/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier$StorageType;)V"
+            },
+            {
+              "offset": 63,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/specifier/BuiltinNumericTypeSpecifier"
+            },
+            {
+              "offset": 69,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/specifier/BuiltinNumericTypeSpecifier.<init>(Lio/github/douira/glsl_transformer/util/Type;)V"
+            },
+            {
+              "offset": 75,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier"
+            },
+            {
+              "offset": 80,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.<init>(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 84,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.getInstanceFor(Lio/github/douira/glsl_transformer/ast/query/Root;[Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 90,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/TranslationUnit.injectNode(Lio/github/douira/glsl_transformer/ast/transform/ASTInjectionPoint;Lio/github/douira/glsl_transformer/ast/node/external_declaration/ExternalDeclaration;)V"
+            }
+          ]
+        },
+        {
+          "key": "lambda$addIfNotExists$1",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex$DeclarationEntry;)Z",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex$DeclarationEntry.declaration()Lio/github/douira/glsl_transformer/ast/node/external_declaration/ExternalDeclaration;"
+            }
+          ]
+        },
+        {
+          "key": "lambda$addIfNotExists$0",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex$DeclarationEntry;)Z",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/ExternalDeclarationIndex$DeclarationEntry.declaration()Lio/github/douira/glsl_transformer/ast/node/external_declaration/ExternalDeclaration;"
+            }
+          ]
+        },
+        {
+          "key": "lambda$replaceGlMultiTexCoordBounded$0",
+          "descriptor": "(IILio/github/douira/glsl_transformer/ast/node/Identifier;)Z",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getName()Ljava/lang/String;"
+            },
+            {
+              "offset": 4,
+              "op": 19,
+              "target": "gl_MultiTexCoord"
+            },
+            {
+              "offset": 7,
+              "op": 182,
+              "target": "java/lang/String.length()I"
+            },
+            {
+              "offset": 10,
+              "op": 182,
+              "target": "java/lang/String.substring(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 13,
+              "op": 184,
+              "target": "java/lang/Integer.parseInt(Ljava/lang/String;)I"
+            }
+          ]
+        },
+        {
+          "key": "lambda$transform$1",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/node/Identifier;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 19,
+              "target": "gtexture"
+            },
+            {
+              "offset": 4,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.setName(Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "lambda$transform$0",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/node/Identifier;)Z",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getParent()Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            }
+          ]
+        },
+        {
+          "key": "lambda$renameAndWrapShadow$1",
+          "descriptor": "(Ljava/lang/String;Lio/github/douira/glsl_transformer/ast/transform/ASTParser;Lio/github/douira/glsl_transformer/ast/query/Root;Lio/github/douira/glsl_transformer/ast/node/Identifier;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getParent()Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 11,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/unary/FunctionCallExpression.getFunctionName()Lio/github/douira/glsl_transformer/ast/node/Identifier;"
+            },
+            {
+              "offset": 15,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.setName(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 20,
+              "op": 19,
+              "target": "vec4()"
+            },
+            {
+              "offset": 23,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/ASTParser.parseExpression(Lio/github/douira/glsl_transformer/ast/query/Root;Ljava/lang/String;)Lio/github/douira/glsl_transformer/ast/node/expression/Expression;"
+            },
+            {
+              "offset": 35,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/unary/FunctionCallExpression.replaceBy(Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)Z"
+            },
+            {
+              "offset": 41,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/unary/FunctionCallExpression.getParameters()Lio/github/douira/glsl_transformer/ast/data/ChildNodeList;"
+            },
+            {
+              "offset": 46,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/data/ChildNodeList.add(Ljava/lang/Object;)Z"
+            }
+          ]
+        },
+        {
+          "key": "lambda$renameAndWrapShadow$0",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/node/Identifier;)Z",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getParent()Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            }
+          ]
+        },
+        {
+          "key": "lambda$renameFunctionCall$1",
+          "descriptor": "(Ljava/lang/String;Lio/github/douira/glsl_transformer/ast/node/Identifier;)V",
+          "operations": [
+            {
+              "offset": 2,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.setName(Ljava/lang/String;)V"
+            }
+          ]
+        },
+        {
+          "key": "lambda$renameFunctionCall$0",
+          "descriptor": "(Lio/github/douira/glsl_transformer/ast/node/Identifier;)Z",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/node/Identifier.getParent()Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            }
+          ]
+        },
+        {
+          "key": "<clinit>",
+          "descriptor": "()V",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher"
+            },
+            {
+              "offset": 4,
+              "op": 19,
+              "target": "gl_TextureMatrix[0]"
+            },
+            {
+              "offset": 7,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/parser/ParseShape.EXPRESSIONLio/github/douira/glsl_transformer/parser/ParseShape;"
+            },
+            {
+              "offset": 10,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher.<init>(Ljava/lang/String;Lio/github/douira/glsl_transformer/parser/ParseShape;)V"
+            },
+            {
+              "offset": 13,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.glTextureMatrix0Lio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+            },
+            {
+              "offset": 16,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher"
+            },
+            {
+              "offset": 20,
+              "op": 19,
+              "target": "gl_TextureMatrix[1]"
+            },
+            {
+              "offset": 23,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/parser/ParseShape.EXPRESSIONLio/github/douira/glsl_transformer/parser/ParseShape;"
+            },
+            {
+              "offset": 26,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher.<init>(Ljava/lang/String;Lio/github/douira/glsl_transformer/parser/ParseShape;)V"
+            },
+            {
+              "offset": 29,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.glTextureMatrix1Lio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+            },
+            {
+              "offset": 32,
+              "op": 187,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher"
+            },
+            {
+              "offset": 36,
+              "op": 19,
+              "target": "gl_TextureMatrix[2]"
+            },
+            {
+              "offset": 39,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/parser/ParseShape.EXPRESSIONLio/github/douira/glsl_transformer/parser/ParseShape;"
+            },
+            {
+              "offset": 42,
+              "op": 183,
+              "target": "io/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher.<init>(Ljava/lang/String;Lio/github/douira/glsl_transformer/parser/ParseShape;)V"
+            },
+            {
+              "offset": 45,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.glTextureMatrix2Lio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+            },
+            {
+              "offset": 48,
+              "op": 187,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$1"
+            },
+            {
+              "offset": 52,
+              "op": 19,
+              "target": "uniform Type name;"
+            },
+            {
+              "offset": 55,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/parser/ParseShape.EXTERNAL_DECLARATIONLio/github/douira/glsl_transformer/parser/ParseShape;"
+            },
+            {
+              "offset": 58,
+              "op": 183,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$1.<init>(Ljava/lang/String;Lio/github/douira/glsl_transformer/parser/ParseShape;)V"
+            },
+            {
+              "offset": 61,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.samplerLio/github/douira/glsl_transformer/ast/query/match/Matcher;"
+            },
+            {
+              "offset": 64,
+              "op": 187,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$2"
+            },
+            {
+              "offset": 68,
+              "op": 19,
+              "target": "gl_FragData[index]"
+            },
+            {
+              "offset": 71,
+              "op": 178,
+              "target": "io/github/douira/glsl_transformer/parser/ParseShape.EXPRESSIONLio/github/douira/glsl_transformer/parser/ParseShape;"
+            },
+            {
+              "offset": 74,
+              "op": 183,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer$2.<init>(Ljava/lang/String;Lio/github/douira/glsl_transformer/parser/ParseShape;)V"
+            },
+            {
+              "offset": 77,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.glFragDataILio/github/douira/glsl_transformer/ast/query/match/AutoHintedMatcher;"
+            },
+            {
+              "offset": 80,
+              "op": 19,
+              "target": "layout (location = __index) out vec4 __name;"
+            },
+            {
+              "offset": 83,
+              "op": 184,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.withExternalDeclaration(Ljava/lang/String;)Lio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 86,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.fragDataDeclarationLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 89,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 93,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>()V"
+            },
+            {
+              "offset": 96,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceExpressionsLjava/util/List;"
+            },
+            {
+              "offset": 99,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 103,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>()V"
+            },
+            {
+              "offset": 106,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.replaceIndexesLjava/util/List;"
+            },
+            {
+              "offset": 109,
+              "op": 19,
+              "target": "uniform int __name;"
+            },
+            {
+              "offset": 112,
+              "op": 184,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.withExternalDeclaration(Ljava/lang/String;)Lio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 115,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 118,
+              "op": 19,
+              "target": "layout (location = __index) uniform int __name;"
+            },
+            {
+              "offset": 121,
+              "op": 184,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.withExternalDeclaration(Ljava/lang/String;)Lio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 124,
+              "op": 179,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLayoutLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 127,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.fragDataDeclarationLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 130,
+              "op": 19,
+              "target": "__index"
+            },
+            {
+              "offset": 133,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/ReferenceExpression"
+            },
+            {
+              "offset": 136,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markLocalReplacement(Ljava/lang/String;Ljava/lang/Class;)V"
+            },
+            {
+              "offset": 139,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.fragDataDeclarationLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 142,
+              "op": 19,
+              "target": "__name"
+            },
+            {
+              "offset": 145,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markIdentifierReplacement(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 148,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 151,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 154,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.getSourceRoot()Lio/github/douira/glsl_transformer/ast/query/Root;"
+            },
+            {
+              "offset": 157,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.nodeIndexLio/github/douira/glsl_transformer/ast/query/index/NodeIndex;"
+            },
+            {
+              "offset": 160,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier"
+            },
+            {
+              "offset": 163,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/NodeIndex.getOne(Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 166,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markLocalReplacement(Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)V"
+            },
+            {
+              "offset": 169,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 172,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 175,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.getSourceRoot()Lio/github/douira/glsl_transformer/ast/query/Root;"
+            },
+            {
+              "offset": 178,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.nodeIndexLio/github/douira/glsl_transformer/ast/query/index/NodeIndex;"
+            },
+            {
+              "offset": 181,
+              "op": 18,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/specifier/BuiltinNumericTypeSpecifier"
+            },
+            {
+              "offset": 183,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/NodeIndex.getOne(Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 186,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markLocalReplacement(Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)V"
+            },
+            {
+              "offset": 189,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 192,
+              "op": 19,
+              "target": "__name"
+            },
+            {
+              "offset": 195,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markIdentifierReplacement(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 198,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLayoutLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 201,
+              "op": 19,
+              "target": "__index"
+            },
+            {
+              "offset": 204,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/expression/ReferenceExpression"
+            },
+            {
+              "offset": 207,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markLocalReplacement(Ljava/lang/String;Ljava/lang/Class;)V"
+            },
+            {
+              "offset": 210,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLayoutLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 213,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLayoutLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 216,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.getSourceRoot()Lio/github/douira/glsl_transformer/ast/query/Root;"
+            },
+            {
+              "offset": 219,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.nodeIndexLio/github/douira/glsl_transformer/ast/query/index/NodeIndex;"
+            },
+            {
+              "offset": 222,
+              "op": 19,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/qualifier/StorageQualifier"
+            },
+            {
+              "offset": 225,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/NodeIndex.getOne(Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 228,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markLocalReplacement(Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)V"
+            },
+            {
+              "offset": 231,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLayoutLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 234,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLayoutLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 237,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.getSourceRoot()Lio/github/douira/glsl_transformer/ast/query/Root;"
+            },
+            {
+              "offset": 240,
+              "op": 180,
+              "target": "io/github/douira/glsl_transformer/ast/query/Root.nodeIndexLio/github/douira/glsl_transformer/ast/query/index/NodeIndex;"
+            },
+            {
+              "offset": 243,
+              "op": 18,
+              "target": "io/github/douira/glsl_transformer/ast/node/type/specifier/BuiltinNumericTypeSpecifier"
+            },
+            {
+              "offset": 245,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/query/index/NodeIndex.getOne(Ljava/lang/Class;)Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;"
+            },
+            {
+              "offset": 248,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markLocalReplacement(Lio/github/douira/glsl_transformer/ast/node/abstract_node/ASTNode;)V"
+            },
+            {
+              "offset": 251,
+              "op": 178,
+              "target": "net/irisshaders/iris/pipeline/transform/transformer/CommonTransformer.inputDeclarationTemplateLayoutLio/github/douira/glsl_transformer/ast/transform/Template;"
+            },
+            {
+              "offset": 254,
+              "op": 19,
+              "target": "__name"
+            },
+            {
+              "offset": 257,
+              "op": 182,
+              "target": "io/github/douira/glsl_transformer/ast/transform/Template.markIdentifierReplacement(Ljava/lang/String;)V"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "referenceBehavior": "Pinned CommonTransformer changes attribute/varying storage by stage, replaces gl_FragColor with gl_FragData[0], replaces indexed fragment references with explicit location-qualified vec4 outputs, and renames selected texture calls. The full Iris implementation uses AST transformations; this adapter accepts only a much narrower structural subset.",
+  "implementationScope": "Owned SPK1 sources -> virtual includes -> existing GLSL preprocessor -> explicit GLSL 120 vertex/fragment pair -> Core GLSL 330 text and explicit interface/output-location metadata. No shader compilation, resource creation or production activation occurs in this API.",
+  "semantics": "Output locations retain literal indices 0..7, including sparse sets. They are not attachment, colortex or Minecraft semantic IDs. Attribute names have no inferred GPU locations or data producers. Existing source version macros are already resolved from source 120 and are never re-evaluated as target 330.",
+  "supported": {
+    "stages": [
+      "vertex",
+      "fragment"
+    ],
+    "sourceVersion": 120,
+    "targetVersion": 330,
+    "extensionRequests": "Only literal GL_ARB_shader_texture_lod enable/require is preserved before declarations and recorded as a request, not advertised support; no extension macros are inferred.",
+    "qualifiers": {
+      "attribute": "vertex in",
+      "varying": "vertex out / fragment in"
+    },
+    "outputs": [
+      "gl_FragColor -> explicit vec4 location 0",
+      "gl_FragData[canonical single-line literal 0..7] -> matching explicit vec4 location"
+    ],
+    "textureCalls": {
+      "texture2D": "texture",
+      "texture3D": "texture",
+      "texture2DProj": "textureProj",
+      "texture3DProj": "textureProj",
+      "texture2DLod": "textureLod",
+      "texture3DLod": "textureLod"
+    },
+    "interfaces": "Individual non-array float/vector/matrix attributes and varyings; simple typed uniforms. Cross-stage varying and uniform type checks. One main definition per stage.",
+    "builtins": {
+      "vertex": [
+        "gl_Position",
+        "gl_PointSize"
+      ],
+      "fragment": [
+        "gl_FragCoord",
+        "gl_FrontFacing",
+        "gl_FragDepth",
+        "gl_PointCoord"
+      ]
+    }
+  },
+  "rejected": [
+    "other versions/profiles/stages and other extension requests",
+    "structs/user-defined types/interface arrays/blocks or multiple declarators",
+    "unsupported interpolation/precision/layout syntax",
+    "dynamic/compound/multiline/out-of-range output indices",
+    "mixed gl_FragColor/gl_FragData",
+    "reserved generated-name or core texture-name collisions",
+    "legacy texture overloads/prototypes, fields or non-call references",
+    "unresolved fixed-function matrices/vertices/colors/lightmaps/Minecraft semantics",
+    "unsupported shadow/gradient/cube texture renames",
+    "missing/mismatched stage varyings or conflicting uniform types"
+  ],
+  "limits": {
+    "inputBytes": 8388608,
+    "outputBytes": 8388608,
+    "tokens": 131072,
+    "nesting": 64,
+    "globalVariables": 1024,
+    "functionDeclarations": 1024,
+    "interfacesPerKind": 256,
+    "outputLocations": 8
+  },
+  "correctnessBoundary": "Structural translation is not full GLSL type checking, AST parity or proof that arbitrary input is valid GLSL. Original and translated fixtures must pass glslang; a deliberately mistyped included source must retain its mapped diagnostic rejection. Linking/bindings, draw routing, authoritative runtime facts, full translation and image/FPS acceptance remain open.",
+  "javaExecuted": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "productionActivated": false,
+  "irisContractComplete": false
+}

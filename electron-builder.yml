@@ -1,0 +1,100 @@
+appId: io.bloxdnative.launcher
+productName: Bloxdy Client
+asar: true
+afterPack: launcher/pack-game-client.cjs
+afterAllArtifactBuild: launcher/package-update.cjs
+electronDist: node_modules/electron/dist
+directories:
+  output: dist-launcher
+files:
+  - entry.cjs
+  - package.json
+  - launcher/main.cjs
+  - launcher/preload.cjs
+  - launcher/game-preload.cjs
+  - launcher/game-runner.cjs
+  - launcher/paths.cjs
+  - launcher/model.cjs
+  - launcher/store.cjs
+  - launcher/data-files.cjs
+  - launcher/profile-settings.cjs
+  - launcher/mod-host.cjs
+  - launcher/adapters.cjs
+  - launcher/grassify-ui.cjs
+  - launcher/grassify-scene.cjs
+  - launcher/grassify-gpu.cjs
+  - launcher/builtin-mods/grassify.js
+  - launcher/builtin-mods/grassify-runtime.js
+  - launcher/builtin-mods/zoomer.js
+  - launcher/builtin-mods/factory-buffer-reuse.js
+  - launcher/litematica-performance.cjs
+  - launcher/litematica-loading.cjs
+  - launcher/litematica-capture.cjs
+  - launcher/litematica-interaction.cjs
+  - launcher/litematica-menu.cjs
+  - launcher/litematica-placement.cjs
+  - launcher/litematica-direct.cjs
+  - launcher/litematica-models.cjs
+  - launcher/litematica-draco.cjs
+  - launcher/shader-adapter.cjs
+  - launcher/shader-world-adapter.cjs
+  - launcher/shader-performance.cjs
+  - launcher/shader-lifecycle.cjs
+  - launcher/shader-budget.cjs
+  - launcher/shader-chunk-cache.cjs
+  - launcher/accounts.cjs
+  - launcher/crazygames.cjs
+  - launcher/account-capabilities.cjs
+  - launcher/client-observer.cjs
+  - launcher/character-capture.cjs
+  - launcher/character-glb.cjs
+  - launcher/custom-select.js
+  - launcher/textures.cjs
+  - launcher/texture-catalog.cjs
+  - launcher/session-reload.cjs
+  - launcher/pack-permissions.cjs
+  - launcher/minecraft-packs.cjs
+  - launcher/shader-pack-files.cjs
+  - launcher/index.html
+  - launcher/style.css
+  - launcher/ui.js
+  - launcher/assets/**
+  - launcher/catalog/**
+  - bridge/capture-factory.cjs
+  - bridge/transport.cjs
+  - bridge/source-light.cjs
+  - bridge/source-emission.cjs
+  - bridge/source-frame.cjs
+  - bridge/gpu-particles.cjs
+  - bridge/frames.cjs
+  - bridge/presenter.cjs
+  - bridge/google-auth-popup.cjs
+extraResources:
+  - from: launcher/assets/bloxdy-icon.ico
+    to: bloxdy-icon.ico
+  - from: build-launcher/Release/MemoryBudgetRunner.exe
+    to: native/MemoryBudgetRunner.exe
+  - from: build-release/Release/BloxdNative.exe
+    to: native/BloxdNative.exe
+win:
+  icon: launcher/assets/bloxdy-icon.ico
+  target:
+    - nsis
+    - portable
+  signAndEditExecutable: true
+  signExecutable: false
+nsis:
+  include: installer/desktop.nsh
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: false
+  runAfterFinish: false
+  createDesktopShortcut: true
+  shortcutName: Bloxdy Client
+  installerLanguages:
+    - en_US
+  language: '1033'
+  artifactName: Bloxdy-Client-Setup-${version}-x64.exe
+portable:
+  artifactName: Bloxdy-Client-Portable-${version}-x64.exe
+publish: null

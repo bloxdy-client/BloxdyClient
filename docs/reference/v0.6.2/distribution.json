@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-13T17:18:15.367Z",
+  "version": "0.6.2",
+  "sourceFilesCompared": 35,
+  "packagedSourceMatches": true,
+  "nativeResourcesMatch": true,
+  "privateFoldersIncluded": false,
+  "windowsKernelBudgetTestPassed": true,
+  "clientStarted": false,
+  "secondComputerTested": false,
+  "uploaded": false,
+  "signed": false,
+  "artifacts": [
+    {
+      "name": "Bloxdy-Client-Setup-0.6.2-x64.exe",
+      "bytes": 186671707,
+      "sha256": "a891c86e0d59669ef37b6470a9886d505dbba1b781fbf8d63302a20fb123cae0"
+    },
+    {
+      "name": "Bloxdy-Client-Portable-0.6.2-x64.exe",
+      "bytes": 186518903,
+      "sha256": "78e31fa20449fa2bbe53810311c0fd19da43b80518040cb1af87790088072bf3"
+    }
+  ]
+}

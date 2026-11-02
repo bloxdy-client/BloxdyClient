@@ -1,0 +1,504 @@
+{
+  "date": "2026-10-21",
+  "version": "0.6.30",
+  "sourceBlockEmissionContract": 3,
+  "sourceBlockIdentityContract": 1,
+  "sourceBlockMaterialContract": 1,
+  "blockIdentityFollowup": "bloxd-source-block-reference.json",
+  "materialFollowup": "bloxd-source-material-reference.json",
+  "bundlesExecuted": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "accountsAccessed": false,
+  "sources": [
+    {
+      "file": "public-102.js",
+      "bytes": 22754,
+      "sha256": "2f7022023b0326b04a1b21942d00d23abdc6474dc7c662029881ed1262b3e010",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-110.js",
+      "bytes": 4399780,
+      "sha256": "f1bcacebc50adc9f07905090fc0fb287e12845bc9e67e85e387fd9a7f53b8e5c",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-111.js",
+      "bytes": 44522,
+      "sha256": "7f5f6ee466781b2aad02404dd44569f81e2c1bfc051c0c84c4dfde864e0d9ec6",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-112.js",
+      "bytes": 24019,
+      "sha256": "77fe44fb7f0448ee3f94c5a8808c25aadd62c0e43c7f59c6bd39cb6ec6536710",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-38.js",
+      "bytes": 1683556,
+      "sha256": "8ddca900ae4c9d368c8407b66a85e12d5905ffc8c2c8a4b8ae902d1a450d0d32",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-47.js",
+      "bytes": 19902,
+      "sha256": "9715dea47b31154daf23d0c6d3c302fbf281916a6e87e0962e6038c85e309885",
+      "url": "https://bloxd.io/static/js/q9aot.47.53192280.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-54.js",
+      "bytes": 9771,
+      "sha256": "8a4ec239bdc319cd6ff27357823e17aa3d3a9221040a4710a09541e3455dabf7",
+      "url": "https://bloxd.io/static/js/q9aot.54.0b541162.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-8.js",
+      "bytes": 3984093,
+      "sha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-99.js",
+      "bytes": 6122,
+      "sha256": "343a11ae550c713f3d66f5fed71e0148c39d0f82903866f5b12b393fb3373f55",
+      "url": "https://bloxd.io/static/js/q9aot.99.15ff1f59.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-fa-renderer.js",
+      "bytes": 82271,
+      "sha256": "22b6ec28cd22b1536e05402defdbd3c54911a3d78b3d9abf254e308e6922f6d7",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-main.js",
+      "bytes": 4332081,
+      "sha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "provenance": "recorded public URL and hash"
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "declaredRgbUnit",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 177770,
+      "lengthUTF16": 540,
+      "sha256": "f57c2dd1944951414c58ddf44fc7b2c539c07d6d50c534c63efcf8fe0152502e"
+    },
+    {
+      "kind": "metadataExamples",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 1149800,
+      "lengthUTF16": 900,
+      "sha256": "923f894f2a44f9a799fd0b835fc2030c5f345eabb574ee9e91862bc9961a343f"
+    },
+    {
+      "kind": "modelRegistration",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1325830,
+      "lengthUTF16": 480,
+      "sha256": "1b950ede11a33db6523aa4cf878d6cbd7cdcdf9a95fd5f10d181f0cc3a4c4e1d"
+    },
+    {
+      "kind": "terrainRegistration",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1327800,
+      "lengthUTF16": 550,
+      "sha256": "4342a62e75c393fe32aecaf4f54f16b218ebde3ad3a2d87ed73fff638db258ae"
+    },
+    {
+      "kind": "variantReregistration",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1331000,
+      "lengthUTF16": 650,
+      "sha256": "c56f8d8a1f90f65c76608c6b19f8842bcabba7bd770020fe3f0fb6207137c60d"
+    },
+    {
+      "kind": "registryWriter",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1958480,
+      "lengthUTF16": 2670,
+      "sha256": "3e1e4a5912b32d593459e7355619fc0eb8b8b10dd2af05f52cdb396cca229d45"
+    },
+    {
+      "kind": "registryPacking",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2271130,
+      "lengthUTF16": 330,
+      "sha256": "0d00065268c2661c509d8690813d5a5688579f8cd57c428c9e30415495d70c98"
+    },
+    {
+      "kind": "workerRegistrySnapshot",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2272250,
+      "lengthUTF16": 1620,
+      "sha256": "0b02d4a530838fb5ee2a4f04b0c996cd12a4ce27af97a0969f35177d0b365778"
+    },
+    {
+      "kind": "workerDispatch",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2022740,
+      "lengthUTF16": 850,
+      "sha256": "ac61e54979e7cd1ecbffe83f3bf075f75b027879716de1f2fa19e0743f092f6a"
+    },
+    {
+      "kind": "workerOwnVersusPropagated",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1990200,
+      "lengthUTF16": 2160,
+      "sha256": "43c183eafc86455fd04bf6be899bf6e31e2fb74f8ad172c3b97007daeb88c10d"
+    },
+    {
+      "kind": "workerFaceExport",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2026950,
+      "lengthUTF16": 1510,
+      "sha256": "fe0ec422d78ffde147af96daac819bee99efa62ea8cd4b4b1e0edca3fbbcfbc0"
+    },
+    {
+      "kind": "workerCompletion",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2273880,
+      "lengthUTF16": 1140,
+      "sha256": "d68149a0cab72bf92e4162c36e13add0aa748eb4836f9b6b0374e0d2211529f9"
+    },
+    {
+      "kind": "jobDispatch",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2276880,
+      "lengthUTF16": 1845,
+      "sha256": "6417772c01dbe8f5a96b4b88d3344df7242215d80e40975ea808b722f16e53ea"
+    },
+    {
+      "kind": "meshAssignment",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2278723,
+      "lengthUTF16": 3220,
+      "sha256": "243987ff74dd06e655b357fc33aae67202bbfdb8fcfd29d6d4595d52c8b05aa7"
+    },
+    {
+      "kind": "vertexBuilder",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2264611,
+      "lengthUTF16": 6700,
+      "sha256": "3fc555c0e654d886190d5e1d8e5b269ed1d45be49e13f5d52a4229f2fff49d2f"
+    },
+    {
+      "kind": "greedySelection",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2283208,
+      "lengthUTF16": 11000,
+      "sha256": "cbd9feb44a18fd0531b6a406f0cfb95567c4e0e647bdfde7ea1a61d3f14e7cee"
+    },
+    {
+      "kind": "objectInstanceStorage",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1961770,
+      "lengthUTF16": 3000,
+      "sha256": "d1bd20fd5c81c8f5855e78fbc129197f854602540cc1d208e1c83975e2438db6"
+    },
+    {
+      "kind": "objectInstanceSharing",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1964700,
+      "lengthUTF16": 1910,
+      "sha256": "e7daaf192a25067efce4ad6a2f9c3462606de636726af33ba8e39e2350578746"
+    },
+    {
+      "kind": "workerReplyWithBlockCopies",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2026950,
+      "lengthUTF16": 1510,
+      "sha256": "fe0ec422d78ffde147af96daac819bee99efa62ea8cd4b4b1e0edca3fbbcfbc0"
+    },
+    {
+      "kind": "workerInitAndCompleteBoundary",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2273620,
+      "lengthUTF16": 2100,
+      "sha256": "b2618c1b07029dd265a0ed5a6a6f368880bd03d01002eb30a5b8d9c83f98f05a"
+    },
+    {
+      "kind": "centerBlockCopyAndNeighbours",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2286000,
+      "lengthUTF16": 2200,
+      "sha256": "6bc46e02802a249aad01b3a67bbe9b14853f24d371451b38411c696cd159b0a8"
+    },
+    {
+      "kind": "blockArrayPool",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2293990,
+      "lengthUTF16": 550,
+      "sha256": "e6c0fb632a013d15fd68a1e46b9cbe893bced90ab75ff6ab73c238f1f9ebfdd6"
+    },
+    {
+      "kind": "chunkBlockRevision",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1986800,
+      "lengthUTF16": 1200,
+      "sha256": "17c44b9ef0ca74dcc79746aa523a35ad9d1e0833becc7fc10d56f259900cbd4d"
+    },
+    {
+      "kind": "bufferDataRetention",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 1815150,
+      "lengthUTF16": 250,
+      "sha256": "91495739384e766b1ec086c0585b7282f8002d44e1b14a3056594f3abb580ed4"
+    },
+    {
+      "kind": "workerTerrainVertexStride",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1995079,
+      "lengthUTF16": 350,
+      "sha256": "214b0aa57c1a3675875144fd9a4f3bfc7309e40607902c08d75adcc64d0941e2"
+    },
+    {
+      "kind": "instanceLifetimeStorage",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1961768,
+      "lengthUTF16": 2490,
+      "sha256": "f530344ec84274e98823521d8e325708b1adc56405b63c7039ada4683c5bee99"
+    },
+    {
+      "kind": "instanceOwnershipManager",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1964336,
+      "lengthUTF16": 1763,
+      "sha256": "c57aaa691486409aa31eb4964104eee9d4aa92b8dc72b72151627e5ce7080954"
+    },
+    {
+      "kind": "instanceRegistryOverwrite",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1958825,
+      "lengthUTF16": 1063,
+      "sha256": "38199a08e9dd8f8269533b9d3971dfcba7859321a53c74a189e24854374f46e4"
+    },
+    {
+      "kind": "instanceChunkCreateAndReplace",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1986249,
+      "lengthUTF16": 1250,
+      "sha256": "b4d6446f2ba2fd74a37a8e28651b6b51900019f23cfb2db7d042e99c13e7e36e"
+    },
+    {
+      "kind": "instanceChunkEditAndDispose",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1987645,
+      "lengthUTF16": 1714,
+      "sha256": "069c9cae1a0149d6a79b47863ae25bb0334b84a4f8e4d5329009bb7e99a9c480"
+    },
+    {
+      "kind": "instanceMatrixBufferInstall",
+      "file": "public-111.js",
+      "url": null,
+      "bundleSha256": "7f5f6ee466781b2aad02404dd44569f81e2c1bfc051c0c84c4dfde864e0d9ec6",
+      "offsetUTF16": 33326,
+      "lengthUTF16": 2291,
+      "sha256": "b76b50398f1eb8f2e647045e958780582b2190a9974c1f2c94a6c078befd087b"
+    },
+    {
+      "kind": "instanceMatrixBufferUpload",
+      "file": "public-111.js",
+      "url": null,
+      "bundleSha256": "7f5f6ee466781b2aad02404dd44569f81e2c1bfc051c0c84c4dfde864e0d9ec6",
+      "offsetUTF16": 35617,
+      "lengthUTF16": 1353,
+      "sha256": "f5986e094203479e43b8ca3ae34e35d73c45e424c86bbb3e895d7691244c15d1"
+    },
+    {
+      "kind": "instanceLiveCountSetter",
+      "file": "public-111.js",
+      "url": null,
+      "bundleSha256": "7f5f6ee466781b2aad02404dd44569f81e2c1bfc051c0c84c4dfde864e0d9ec6",
+      "offsetUTF16": 32752,
+      "lengthUTF16": 540,
+      "sha256": "cfd16d07064aad72625fe0b3f1cfc6423d464b11dc9dfa1f3bf74b5f7d5baf5e"
+    },
+    {
+      "kind": "genericThinObjectIdentity",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2573780,
+      "lengthUTF16": 1000,
+      "sha256": "deab1a7a6f7ef6afff05c684fc1c03219ccf1f0b9261f00600083fe5506b8430"
+    }
+  ],
+  "coverage": [
+    {
+      "variant": "ordinary terrain, including unit faces",
+      "evidence": [
+        "vertexBuilder",
+        "workerReplyWithBlockCopies",
+        "workerInitAndCompleteBoundary",
+        "jobDispatch",
+        "workerTerrainVertexStride"
+      ],
+      "status": "implemented-bounded",
+      "missing": "Known per face after observed meshingInit and matching job/reply, with exact immutable bytes/indices and validated center-owned cell/register association. Different RGB and known zero may coexist in one group. Boundary-owner cells outside the center, missing initializations, unsupported layouts, mutations or budget excess stay unknown."
+    },
+    {
+      "variant": "greedy faces",
+      "evidence": [
+        "greedySelection",
+        "workerOwnVersusPropagated",
+        "centerBlockCopyAndNeighbours"
+      ],
+      "status": "implemented-bounded",
+      "missing": "Every contributing cell is explicitly checked using mesher face origin, axis, width and height. Only a fully proven uniform rectangle is known. A mixed/ambiguous rectangle remains unknown while adjacent proven faces remain usable. No merge/material/propagated-light heuristic or interpolation."
+    },
+    {
+      "variant": "material groups and compact/submesh remapping",
+      "evidence": [
+        "vertexBuilder",
+        "meshAssignment",
+        "workerTerrainVertexStride"
+      ],
+      "status": "implemented-bounded",
+      "missing": "terrainID joins returned face groups to exact returned storage, never to a block ID. Each exported triangle maps all three distinct vertices through vertexMap to one source face and the exact source index slice. Homogeneous subsets of mixed groups are recovered. Constant RGB/validity per dense index run in actual world/shadow draws; compact-only stand-ins remain unknown."
+    },
+    {
+      "variant": "object/thin instances",
+      "evidence": [
+        "instanceLifetimeStorage",
+        "instanceOwnershipManager",
+        "instanceRegistryOverwrite",
+        "instanceChunkCreateAndReplace",
+        "instanceChunkEditAndDispose",
+        "instanceMatrixBufferInstall",
+        "instanceMatrixBufferUpload",
+        "instanceLiveCountSetter"
+      ],
+      "status": "implemented-bounded",
+      "missing": "Authorized transparent observers join actual Ms block/key/chunk, fresh addingTerrainMesh, the actual native Float32Array.set target/offset and successful matrix/light UO pair. Only complete lifetimes observed from empty storage qualify. Swap/reuse follows source removal semantics; current Pf/registry snapshot, observed registration token, upload bytes/revision and type3/type9 sequences are checked. Registration, chunk replacement, missed ownership, exceptions and budget excess revoke the affected storage. Late attachment, unknown RGB, custom yz deformation and generic Fs/sy object IDs stay unknown. Instance range draws require an explicit program contract excluding unsplit gl_InstanceID dependence."
+    },
+    {
+      "variant": "regular instances and arbitrary explicit blockId attributes",
+      "evidence": [
+        "modelRegistration"
+      ],
+      "status": "unknown",
+      "missing": "No pinned producer proves that a generic sourceMesh or an attribute named blockId/aBlockId carries the source block plus registration generation. A name/ID alone is insufficient."
+    },
+    {
+      "variant": "chunk replacement, light-only update and asynchronous replay",
+      "evidence": [
+        "workerInitAndCompleteBoundary",
+        "jobDispatch",
+        "meshAssignment",
+        "workerRegistrySnapshot",
+        "chunkBlockRevision",
+        "blockArrayPool"
+      ],
+      "status": "implemented-bounded",
+      "missing": "Job identity and immutable copies belong to the observed worker initialization, never to an invented source revision. Installed storage/bytes and exported mesh packet sequence must match; reinitialization, registry mismatch, lost ownership or replacement revoke validity. Light-only replies cannot create a proof. Existing uniform geometry may retain its original proof if its bytes and register values are unchanged."
+    }
+  ],
+  "implementedEmissionVariants": [
+    "observed center-owned faces within mixed terrain groups",
+    "uniform greedy rectangles with adjacent ambiguous faces unknown",
+    "per-triangle/submesh index-remapped exports of mixed groups",
+    "fully observed object-instance storage lifetimes with per-instance RGB"
+  ],
+  "referenceRequirementsClosed": [],
+  "newPacket": {
+    "type": 33,
+    "version": 5
+  },
+  "preservedEmissionPacket": {
+    "type": 33,
+    "version": 1
+  },
+  "preservedEmissionPackets": [
+    {
+      "type": 33,
+      "version": 1
+    },
+    {
+      "type": 33,
+      "version": 2
+    },
+    {
+      "type": 33,
+      "version": 3
+    },
+    {
+      "type": 33,
+      "version": 4
+    }
+  ],
+  "irisContractComplete": false
+}

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src blob:; object-src 'none'; base-uri 'none'">
+ <title>Bloxdy Client</title><link rel="icon" type="image/png" href="assets/bloxdy-icon.png"><link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="black">
+ <header class="titlebar"><div class="brand"><img class="brand-mark" src="assets/bloxdy-icon.png" alt="" aria-hidden="true"><span>BLOXDY <b>CLIENT</b></span></div><div class="titlebar-right"><label class="account-switch"><span id="account-avatar"></span><select id="account-select" aria-label="Active Bloxd account"></select></label><div class="window-controls"><button data-window="minimize" aria-label="Minimize">─</button><button data-window="maximize" aria-label="Maximize">□</button><button data-window="close" aria-label="Close">×</button></div></div></header>
+ <aside class="rail"><nav aria-label="Launcher navigation"><button data-page="play" class="active"><span class="nav-icon" data-icon="play"></span><span>PLAY</span></button><button data-page="profiles"><span class="nav-icon" data-icon="profiles"></span><span>PROFILES</span></button><button data-page="accounts"><span class="nav-icon" data-icon="account"></span><span>ACCOUNTS</span></button><button data-page="settings"><span class="nav-icon" data-icon="settings"></span><span>SETTINGS</span></button></nav><span class="rail-version" aria-label="Launcher version"></span></aside>
+ <main><section id="content"></section></main>
+ <div id="modal" class="modal-layer" hidden></div>
+ <script src="custom-select.js"></script><script src="assets/character-viewer.js"></script><script src="ui.js"></script>
+</body>
+</html>

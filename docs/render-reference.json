@@ -1,0 +1,21 @@
+{
+  "minecraftEdition": "java",
+  "minecraftVersion": "26.3",
+  "irisVersion": "1.11.7",
+  "irisArtifactVersion": "1.11.7+26.3-fabric",
+  "irisReferencePlatform": "fabric",
+  "irisModrinthVersionId": "vTN4NRGW",
+  "referenceBackend": "OpenGL",
+  "verifiedOn": "2026-10-15",
+  "sources": {
+    "minecraft": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3",
+    "irisProject": "https://www.curseforge.com/minecraft/mc-mods/irisshaders",
+    "irisVersion": "https://modrinth.com/mod/iris/version/vTN4NRGW",
+    "irisMetadata": "https://api.modrinth.com/v2/project/iris/version?game_versions=%5B%2226.3%22%5D"
+  },
+  "referenceOnly": true,
+  "irisInstalledByAgent": false,
+  "irisContractComplete": false,
+  "minecraftShaderpackLoaded": false,
+  "liveRenderingVerified": false
+}

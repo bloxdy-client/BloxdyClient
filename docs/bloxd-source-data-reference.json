@@ -1,0 +1,152 @@
+{
+  "at": "2026-10-17T15:30:39.938Z",
+  "reference": "Minecraft Java 26.3 / Iris 1.11.7",
+  "clientsStarted": 0,
+  "accountsAccessed": false,
+  "graphicsContextsCreated": 0,
+  "sources": [
+    {
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "sha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676"
+    },
+    {
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "sha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10"
+    }
+  ],
+  "profile": "q9aot: bY / Lj / hY.le().OI / camera.cI; structural guards required",
+  "contracts": [
+    {
+      "kind": "origin",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1968286,
+      "sha256": "82dcef199df057e330e3b63139f8c3ed9bf4157628049ab25d4ea3c25dc61cb1"
+    },
+    {
+      "kind": "playerEntity",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1968782,
+      "sha256": "c680c37adf4105f7e609285e85f032a733b133b17b9279bb7bb4b057d6a300f8"
+    },
+    {
+      "kind": "positionAccess",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2551973,
+      "sha256": "0a815814533d20b06608833b26e18d4f5221feeb5ece431d823e120f5cfce4c2"
+    },
+    {
+      "kind": "positionWrite",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2167118,
+      "sha256": "71e3b867f03f9c866300d1f5a91265304ae24e7987153015e275c3cb728be2f1"
+    },
+    {
+      "kind": "positionComponent",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2539715,
+      "sha256": "ae7dbba26e16bc9b35d4397a352c28ca9cb38a3f293e0cab807bba7633e5750d"
+    },
+    {
+      "kind": "renderFeetConsumer",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2095358,
+      "sha256": "5d7f266f6b78a96e7db867d4e8a3e9bb5026779459acfeb2f42f15d426d41d88"
+    },
+    {
+      "kind": "eyeRig",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2541696,
+      "sha256": "8e64e03052d60df49d1c460b531ee38726090bb788d83100588de602460606c4"
+    },
+    {
+      "kind": "followRender",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2535671,
+      "sha256": "31da6b5932ef888898c8313f01f9381fc2cb45ce18b8cb74a74d6e5627d31c32"
+    },
+    {
+      "kind": "worldCoordinates",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1972377,
+      "sha256": "04a01100a8f8e4ea0a25ad4e84ba0ad8d93b6333a4fce1e9109f58fd8d2ce19f"
+    },
+    {
+      "kind": "sourceViewBob",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1174651,
+      "sha256": "dabce433e038df4347d834388be0f3e9ebe2de5634faea2ae644ee4e3350383c"
+    },
+    {
+      "kind": "rendererCamera",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2626660,
+      "sha256": "fe74950aa2777072945cb98e62959fab1afc9cd9c0d2705b97ea6b3e9b574729"
+    },
+    {
+      "kind": "sourceFar",
+      "file": "public-8.js",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2623456,
+      "sha256": "4ff0c6d51f365b625eed149e7d750c04584fac42ad12088122f5f1dd91f5471e"
+    },
+    {
+      "kind": "handOverride",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 1578518,
+      "sha256": "ed923c70076e1b2724035c4b239836dcaa67806c7506dcbab3ad89b5a7438278"
+    },
+    {
+      "kind": "handRestore",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 1582129,
+      "sha256": "d2318bee02aec67fd96ca364f3c9e3347fb91cab67a62ff38fd8808558f072d5"
+    },
+    {
+      "kind": "animationClock",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2568064,
+      "sha256": "a26e513c11197a4c5bd27bcc1ebc6c0d3c70849087ba7d188ae121526a1c5192"
+    },
+    {
+      "kind": "sourceFrameId",
+      "file": "public-main.js",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2306629,
+      "sha256": "403c6d3d8d8afd50ea7befa28d27cbf9e20464ec8e86e601df0ef0f48df09389"
+    }
+  ],
+  "referenceHandInputsAvailable": false,
+  "worldTimeWeatherReferenceLightmapAvailable": false
+}

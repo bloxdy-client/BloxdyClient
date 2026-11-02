@@ -1,0 +1,720 @@
+{
+  "contract": 1,
+  "minecraftVersion": "26.3",
+  "irisArtifact": "1.11.7+26.3-fabric",
+  "artifactSha512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+  "executed": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "publicSourceCommit": "671a5c87747d33983d7ed659461a64f46dfcb1f0",
+  "exactReleaseSourceTagEstablished": false,
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/IrisShaders/Iris/671a5c87747d33983d7ed659461a64f46dfcb1f0/common/src/main/java/net/irisshaders/iris/shaderpack/IdMap.java",
+      "local": "outputs/iris-material-reference/IdMap.java",
+      "sha256": "9fa86bdd4efed7e38c80482976e108a6a8011d33b550408efdd50dddfa63fb98"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/IrisShaders/Iris/671a5c87747d33983d7ed659461a64f46dfcb1f0/common/src/main/java/net/irisshaders/iris/shaderpack/materialmap/BlockEntry.java",
+      "local": "outputs/iris-material-reference/BlockEntry.java",
+      "sha256": "1347b6cbe603782051583df2a62d9cbf8e7a2c289f37706ef0ad134a1a52994b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/IrisShaders/Iris/671a5c87747d33983d7ed659461a64f46dfcb1f0/common/src/main/java/net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.java",
+      "local": "outputs/iris-material-reference/BlockMaterialMapping.java",
+      "sha256": "1f3f7c4192858c2ac05913dbd240d1fc1db3bffa691fb97d31afe009cc1a9e1a"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/IrisShaders/Iris/671a5c87747d33983d7ed659461a64f46dfcb1f0/common/src/main/java/net/irisshaders/iris/shaderpack/option/OrderBackedProperties.java",
+      "local": "outputs/iris-material-reference/OrderBackedProperties.java",
+      "sha256": "4aad79dc01b86d01c11463e578922b2658fbb6400a51d3c7646494af739ccee2"
+    }
+  ],
+  "classes": [
+    {
+      "file": "net/irisshaders/iris/shaderpack/IdMap.class",
+      "sha256": "1c3ccc337d5b2261308fba5b0be2ce6731ff1b113afa6f1a60b2f24dc1e8919c",
+      "type": "net/irisshaders/iris/shaderpack/IdMap",
+      "parent": "java/lang/Object",
+      "fields": [
+        {
+          "key": "itemIdMap",
+          "descriptor": "Lit/unimi/dsi/fastutil/objects/Object2IntMap;"
+        },
+        {
+          "key": "entityIdMap",
+          "descriptor": "Lit/unimi/dsi/fastutil/objects/Object2IntMap;"
+        },
+        {
+          "key": "blockTagMap",
+          "descriptor": "Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;"
+        },
+        {
+          "key": "blockPropertiesMap",
+          "descriptor": "Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;"
+        },
+        {
+          "key": "blockRenderTypeMap",
+          "descriptor": "Ljava/util/Map;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "parseBlockMap",
+          "descriptor": "(Ljava/util/Properties;Ljava/lang/String;Ljava/lang/String;Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;)Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap"
+            },
+            {
+              "offset": 4,
+              "op": 183,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap.<init>()V"
+            },
+            {
+              "offset": 9,
+              "op": 187,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap"
+            },
+            {
+              "offset": 13,
+              "op": 183,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap.<init>()V"
+            },
+            {
+              "offset": 18,
+              "op": 187,
+              "target": "net/irisshaders/iris/shaderpack/IdMap$DuplicateTracker"
+            },
+            {
+              "offset": 23,
+              "op": 19,
+              "target": "block entry"
+            },
+            {
+              "offset": 26,
+              "op": 183,
+              "target": "net/irisshaders/iris/shaderpack/IdMap$DuplicateTracker.<init>(Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 40,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/IdMap.lambda$parseBlockMap$0(Ljava/lang/String;Ljava/lang/String;Lnet/irisshaders/iris/shaderpack/IdMap$DuplicateTracker;Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;Ljava/lang/Object;Ljava/lang/Object;)V"
+            },
+            {
+              "offset": 45,
+              "op": 182,
+              "target": "java/util/Properties.forEach(Ljava/util/function/BiConsumer;)V"
+            },
+            {
+              "offset": 50,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/IdMap$DuplicateTracker.reportSummary()V"
+            },
+            {
+              "offset": 56,
+              "op": 182,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap.putAll(Ljava/util/Map;)V"
+            }
+          ]
+        },
+        {
+          "key": "lambda$parseBlockMap$0",
+          "descriptor": "(Ljava/lang/String;Ljava/lang/String;Lnet/irisshaders/iris/shaderpack/IdMap$DuplicateTracker;Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;Ljava/lang/Object;Ljava/lang/Object;)V",
+          "operations": [
+            {
+              "offset": 17,
+              "op": 182,
+              "target": "java/lang/String.startsWith(Ljava/lang/String;)Z"
+            },
+            {
+              "offset": 27,
+              "op": 182,
+              "target": "java/lang/String.length()I"
+            },
+            {
+              "offset": 30,
+              "op": 182,
+              "target": "java/lang/String.substring(I)Ljava/lang/String;"
+            },
+            {
+              "offset": 33,
+              "op": 184,
+              "target": "java/lang/Integer.parseInt(Ljava/lang/String;)I"
+            },
+            {
+              "offset": 43,
+              "op": 178,
+              "target": "net/irisshaders/iris/Iris.loggerLnet/irisshaders/iris/IrisLogging;"
+            },
+            {
+              "offset": 49,
+              "op": 186,
+              "target": "bootstrap:13"
+            },
+            {
+              "offset": 54,
+              "op": 182,
+              "target": "net/irisshaders/iris/IrisLogging.warn(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 58,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 62,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>()V"
+            },
+            {
+              "offset": 67,
+              "op": 187,
+              "target": "java/util/ArrayList"
+            },
+            {
+              "offset": 71,
+              "op": 183,
+              "target": "java/util/ArrayList.<init>()V"
+            },
+            {
+              "offset": 78,
+              "op": 19,
+              "target": "\\s+"
+            },
+            {
+              "offset": 81,
+              "op": 182,
+              "target": "java/lang/String.split(Ljava/lang/String;)[Ljava/lang/String;"
+            },
+            {
+              "offset": 110,
+              "op": 182,
+              "target": "java/lang/String.isEmpty()Z"
+            },
+            {
+              "offset": 121,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockEntry.parse(Ljava/lang/String;)Lnet/irisshaders/iris/shaderpack/materialmap/Entry;"
+            },
+            {
+              "offset": 143,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/IdMap$DuplicateTracker.getUniqueBlockIdentifier(Lnet/irisshaders/iris/shaderpack/materialmap/BlockEntry;)Ljava/lang/String;"
+            },
+            {
+              "offset": 155,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/IdMap$DuplicateTracker.checkAndRecord(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 162,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 190,
+              "op": 185,
+              "target": "java/util/List.add(Ljava/lang/Object;)Z"
+            },
+            {
+              "offset": 201,
+              "op": 178,
+              "target": "net/irisshaders/iris/Iris.loggerLnet/irisshaders/iris/IrisLogging;"
+            },
+            {
+              "offset": 207,
+              "op": 186,
+              "target": "bootstrap:14"
+            },
+            {
+              "offset": 214,
+              "op": 182,
+              "target": "net/irisshaders/iris/IrisLogging.warn(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 228,
+              "op": 184,
+              "target": "java/util/Collections.unmodifiableList(Ljava/util/List;)Ljava/util/List;"
+            },
+            {
+              "offset": 231,
+              "op": 182,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap.put(ILjava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 241,
+              "op": 184,
+              "target": "java/util/Collections.unmodifiableList(Ljava/util/List;)Ljava/util/List;"
+            },
+            {
+              "offset": 244,
+              "op": 182,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap.put(ILjava/lang/Object;)Ljava/lang/Object;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/materialmap/BlockEntry.class",
+      "sha256": "0f827f24a0993487f2d5bac593ffc37242b4899feb8d62f4f70657db50844c19",
+      "type": "net/irisshaders/iris/shaderpack/materialmap/BlockEntry",
+      "parent": "java/lang/Record",
+      "fields": [
+        {
+          "key": "id",
+          "descriptor": "Lnet/irisshaders/iris/shaderpack/materialmap/NamespacedId;"
+        },
+        {
+          "key": "propertyPredicates",
+          "descriptor": "Ljava/util/Map;"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.class",
+      "sha256": "1c04248932b7d7d1c59499f7b459a9fdfc89c544f71d77490aa4f354fffb2d5c",
+      "type": "net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping",
+      "parent": "java/lang/Object",
+      "fields": [],
+      "methods": [
+        {
+          "key": "createBlockStateIdMap",
+          "descriptor": "(Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;Lit/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap;)Lit/unimi/dsi/fastutil/objects/Object2IntMap;",
+          "operations": [
+            {
+              "offset": 0,
+              "op": 187,
+              "target": "it/unimi/dsi/fastutil/objects/Object2IntLinkedOpenHashMap"
+            },
+            {
+              "offset": 4,
+              "op": 183,
+              "target": "it/unimi/dsi/fastutil/objects/Object2IntLinkedOpenHashMap.<init>()V"
+            },
+            {
+              "offset": 10,
+              "op": 185,
+              "target": "it/unimi/dsi/fastutil/objects/Object2IntMap.defaultReturnValue(I)V"
+            },
+            {
+              "offset": 17,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.lambda$createBlockStateIdMap$0(Lit/unimi/dsi/fastutil/objects/Object2IntMap;ILjava/util/List;)V"
+            },
+            {
+              "offset": 22,
+              "op": 182,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap.forEach(Lit/unimi/dsi/fastutil/ints/IntObjectBiConsumer;)V"
+            },
+            {
+              "offset": 27,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.lambda$createBlockStateIdMap$1(Lit/unimi/dsi/fastutil/objects/Object2IntMap;ILjava/util/List;)V"
+            },
+            {
+              "offset": 32,
+              "op": 182,
+              "target": "it/unimi/dsi/fastutil/ints/Int2ObjectLinkedOpenHashMap.forEach(Lit/unimi/dsi/fastutil/ints/IntObjectBiConsumer;)V"
+            }
+          ]
+        },
+        {
+          "key": "addBlockStates",
+          "descriptor": "(Lnet/irisshaders/iris/shaderpack/materialmap/BlockEntry;Lit/unimi/dsi/fastutil/objects/Object2IntMap;I)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockEntry.id()Lnet/irisshaders/iris/shaderpack/materialmap/NamespacedId;"
+            },
+            {
+              "offset": 6,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/NamespacedId.getNamespace()Ljava/lang/String;"
+            },
+            {
+              "offset": 10,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/NamespacedId.getName()Ljava/lang/String;"
+            },
+            {
+              "offset": 13,
+              "op": 184,
+              "target": "net/minecraft/resources/Identifier.fromNamespaceAndPath(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/Identifier;"
+            },
+            {
+              "offset": 23,
+              "op": 187,
+              "target": "java/lang/IllegalStateException"
+            },
+            {
+              "offset": 28,
+              "op": 186,
+              "target": "bootstrap:7"
+            },
+            {
+              "offset": 35,
+              "op": 183,
+              "target": "java/lang/IllegalStateException.<init>(Ljava/lang/String;Ljava/lang/Throwable;)V"
+            },
+            {
+              "offset": 39,
+              "op": 178,
+              "target": "net/minecraft/core/registries/BuiltInRegistries.BLOCKLnet/minecraft/core/DefaultedRegistry;"
+            },
+            {
+              "offset": 44,
+              "op": 185,
+              "target": "net/minecraft/core/DefaultedRegistry.get(Lnet/minecraft/resources/Identifier;)Ljava/util/Optional;"
+            },
+            {
+              "offset": 49,
+              "op": 186,
+              "target": "net/minecraft/core/Holder.value()Ljava/lang/Object;"
+            },
+            {
+              "offset": 54,
+              "op": 182,
+              "target": "java/util/Optional.map(Ljava/util/function/Function;)Ljava/util/Optional;"
+            },
+            {
+              "offset": 57,
+              "op": 178,
+              "target": "net/minecraft/world/level/block/Blocks.AIRLnet/minecraft/world/level/block/Block;"
+            },
+            {
+              "offset": 60,
+              "op": 182,
+              "target": "java/util/Optional.orElse(Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 70,
+              "op": 178,
+              "target": "net/minecraft/world/level/block/Blocks.AIRLnet/minecraft/world/level/block/Block;"
+            },
+            {
+              "offset": 78,
+              "op": 182,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockEntry.propertyPredicates()Ljava/util/Map;"
+            },
+            {
+              "offset": 85,
+              "op": 185,
+              "target": "java/util/Map.isEmpty()Z"
+            },
+            {
+              "offset": 95,
+              "op": 182,
+              "target": "net/minecraft/world/level/block/Block.getStateDefinition()Lnet/minecraft/world/level/block/state/StateDefinition;"
+            },
+            {
+              "offset": 98,
+              "op": 182,
+              "target": "net/minecraft/world/level/block/state/StateDefinition.getPossibleStates()Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 101,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.iterator()Lcom/google/common/collect/UnmodifiableIterator;"
+            },
+            {
+              "offset": 108,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 118,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 132,
+              "op": 185,
+              "target": "it/unimi/dsi/fastutil/objects/Object2IntMap.putIfAbsent(Ljava/lang/Object;I)I"
+            },
+            {
+              "offset": 142,
+              "op": 187,
+              "target": "java/util/LinkedHashMap"
+            },
+            {
+              "offset": 146,
+              "op": 183,
+              "target": "java/util/LinkedHashMap.<init>()V"
+            },
+            {
+              "offset": 153,
+              "op": 182,
+              "target": "net/minecraft/world/level/block/Block.getStateDefinition()Lnet/minecraft/world/level/block/state/StateDefinition;"
+            },
+            {
+              "offset": 167,
+              "op": 186,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.lambda$addBlockStates$0(Lnet/minecraft/world/level/block/state/StateDefinition;ILnet/minecraft/resources/Identifier;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)V"
+            },
+            {
+              "offset": 172,
+              "op": 185,
+              "target": "java/util/Map.forEach(Ljava/util/function/BiConsumer;)V"
+            },
+            {
+              "offset": 179,
+              "op": 182,
+              "target": "net/minecraft/world/level/block/state/StateDefinition.getPossibleStates()Lcom/google/common/collect/ImmutableList;"
+            },
+            {
+              "offset": 182,
+              "op": 182,
+              "target": "com/google/common/collect/ImmutableList.iterator()Lcom/google/common/collect/UnmodifiableIterator;"
+            },
+            {
+              "offset": 189,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 199,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 213,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.checkState(Lnet/minecraft/world/level/block/state/BlockState;Ljava/util/Map;)Z"
+            },
+            {
+              "offset": 223,
+              "op": 185,
+              "target": "it/unimi/dsi/fastutil/objects/Object2IntMap.putIfAbsent(Ljava/lang/Object;I)I"
+            }
+          ]
+        },
+        {
+          "key": "checkState",
+          "descriptor": "(Lnet/minecraft/world/level/block/state/BlockState;Ljava/util/Map;)Z",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 185,
+              "target": "java/util/Map.entrySet()Ljava/util/Set;"
+            },
+            {
+              "offset": 6,
+              "op": 185,
+              "target": "java/util/Set.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 13,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 22,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 32,
+              "op": 185,
+              "target": "java/util/Map$Entry.getKey()Ljava/lang/Object;"
+            },
+            {
+              "offset": 43,
+              "op": 185,
+              "target": "java/util/Map$Entry.getValue()Ljava/lang/Object;"
+            },
+            {
+              "offset": 58,
+              "op": 182,
+              "target": "net/minecraft/world/level/block/state/BlockState.getValue(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;"
+            },
+            {
+              "offset": 61,
+              "op": 182,
+              "target": "net/minecraft/world/level/block/state/properties/Property.getName(Ljava/lang/Comparable;)Ljava/lang/String;"
+            },
+            {
+              "offset": 70,
+              "op": 182,
+              "target": "java/lang/String.equals(Ljava/lang/Object;)Z"
+            }
+          ]
+        },
+        {
+          "key": "lambda$addBlockStates$0",
+          "descriptor": "(Lnet/minecraft/world/level/block/state/StateDefinition;ILnet/minecraft/resources/Identifier;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)V",
+          "operations": [
+            {
+              "offset": 3,
+              "op": 182,
+              "target": "net/minecraft/world/level/block/state/StateDefinition.getProperty(Ljava/lang/String;)Lnet/minecraft/world/level/block/state/properties/Property;"
+            },
+            {
+              "offset": 13,
+              "op": 178,
+              "target": "net/irisshaders/iris/Iris.loggerLnet/irisshaders/iris/IrisLogging;"
+            },
+            {
+              "offset": 17,
+              "op": 186,
+              "target": "bootstrap:10"
+            },
+            {
+              "offset": 22,
+              "op": 182,
+              "target": "net/irisshaders/iris/IrisLogging.warn(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 25,
+              "op": 178,
+              "target": "net/irisshaders/iris/Iris.loggerLnet/irisshaders/iris/IrisLogging;"
+            },
+            {
+              "offset": 29,
+              "op": 184,
+              "target": "java/lang/String.valueOf(Ljava/lang/Object;)Ljava/lang/String;"
+            },
+            {
+              "offset": 34,
+              "op": 186,
+              "target": "bootstrap:11"
+            },
+            {
+              "offset": 39,
+              "op": 182,
+              "target": "net/irisshaders/iris/IrisLogging.warn(Ljava/lang/String;)V"
+            },
+            {
+              "offset": 48,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            }
+          ]
+        },
+        {
+          "key": "lambda$createBlockStateIdMap$1",
+          "descriptor": "(Lit/unimi/dsi/fastutil/objects/Object2IntMap;ILjava/util/List;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 185,
+              "target": "java/util/List.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 8,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 17,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 31,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.addTag(Lnet/irisshaders/iris/shaderpack/materialmap/TagEntry;Lit/unimi/dsi/fastutil/objects/Object2IntMap;I)V"
+            }
+          ]
+        },
+        {
+          "key": "lambda$createBlockStateIdMap$0",
+          "descriptor": "(Lit/unimi/dsi/fastutil/objects/Object2IntMap;ILjava/util/List;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 185,
+              "target": "java/util/List.iterator()Ljava/util/Iterator;"
+            },
+            {
+              "offset": 8,
+              "op": 185,
+              "target": "java/util/Iterator.hasNext()Z"
+            },
+            {
+              "offset": 17,
+              "op": 185,
+              "target": "java/util/Iterator.next()Ljava/lang/Object;"
+            },
+            {
+              "offset": 31,
+              "op": 184,
+              "target": "net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.addBlockStates(Lnet/irisshaders/iris/shaderpack/materialmap/BlockEntry;Lit/unimi/dsi/fastutil/objects/Object2IntMap;I)V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "net/irisshaders/iris/shaderpack/option/OrderBackedProperties.class",
+      "sha256": "9640eae34592593034d1b1316053a3e9c5a3c4449d8700ff090145be5b98a8df",
+      "type": "net/irisshaders/iris/shaderpack/option/OrderBackedProperties",
+      "parent": "java/util/Properties",
+      "fields": [
+        {
+          "key": "backing",
+          "descriptor": "Ljava/util/Map;"
+        }
+      ],
+      "methods": [
+        {
+          "key": "put",
+          "descriptor": "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/option/OrderBackedProperties.backingLjava/util/Map;"
+            },
+            {
+              "offset": 6,
+              "op": 185,
+              "target": "java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            },
+            {
+              "offset": 15,
+              "op": 183,
+              "target": "java/util/Properties.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            }
+          ]
+        },
+        {
+          "key": "forEach",
+          "descriptor": "(Ljava/util/function/BiConsumer;)V",
+          "operations": [
+            {
+              "offset": 1,
+              "op": 180,
+              "target": "net/irisshaders/iris/shaderpack/option/OrderBackedProperties.backingLjava/util/Map;"
+            },
+            {
+              "offset": 5,
+              "op": 185,
+              "target": "java/util/Map.forEach(Ljava/util/function/BiConsumer;)V"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "established": [
+    "Integer.parseInt for block keys",
+    "insertion order in order-backed properties and ID groups",
+    "first matching state mapping via putIfAbsent",
+    "exact String.equals predicate comparison in pinned artifact; no comma splitting",
+    "missing reference property ignored by predicate collector",
+    "unassigned default -1"
+  ],
+  "boundedImplementation": [
+    "explicit preprocessed block.properties input only",
+    "no tag expansion, legacy missing-file fallback, layer overrides, macros, includes or pack filesystem/UI activation",
+    "IDs -1..2147483646 as exact integer draw constants; no mc_Entity float/packed vertex encoding",
+    "canonical name/state coverage from mapping contract1 only"
+  ],
+  "irisContractComplete": false
+}

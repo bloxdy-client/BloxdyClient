@@ -1,0 +1,261 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "bloxd-visual-shader",
+      "name": "Bloxd Visual Shader",
+      "version": "5.6.14.2",
+      "kind": "bloxd-mod",
+      "category": "shaders",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [
+        "native-preview"
+      ],
+      "scripts": [
+        {
+          "world": "ISOLATED",
+          "js": [
+            "settings-bridge.js"
+          ],
+          "css": []
+        },
+        {
+          "world": "MAIN",
+          "js": [
+            "bootstrap.js",
+            "runtime.js",
+            "ore-lighting.js",
+            "liquid-shaders.js",
+            "sun-shadows.js",
+            "atmosphere.js",
+            "day-night.js",
+            "dynamic-lighting.js",
+            "shader.js"
+          ],
+          "css": []
+        }
+      ],
+      "compatibility": "launcher-adapter-unverified",
+      "note": "A Bloxd shader mod with its own lighting controls.",
+      "description": "Shadows, water and atmosphere built for Bloxd.",
+      "package": "bloxd-visual-shader-5.6.14.2.bnmod",
+      "sha256": "a0f0e9e2eb90fc7859e986e03ea79e6b3d004afc59fcb70165e50d17d36aa76a",
+      "size": 713896,
+      "source": "Local Bloxd project"
+    },
+    {
+      "id": "bloxd-litematica",
+      "name": "Bloxd Litematica",
+      "version": "0.14.1",
+      "kind": "bloxd-mod",
+      "category": "building",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [
+        "native-preview"
+      ],
+      "scripts": [
+        {
+          "world": "MAIN",
+          "js": [
+            "placement.js",
+            "block-ids.js",
+            "bloxdschem.js",
+            "selection.js",
+            "file-picker.js",
+            "block-names.js",
+            "model.js",
+            "runtime.js",
+            "adapter.js",
+            "geometry.js",
+            "native-frame.js",
+            "foreground.js",
+            "renderer.js",
+            "building.js",
+            "place.js",
+            "litematica.js"
+          ],
+          "css": []
+        }
+      ],
+      "compatibility": "launcher-adapter-unverified",
+      "note": "A schematic mod built for Bloxd.",
+      "description": "Schematic previews, material lists and .bloxdschem tools.",
+      "package": "bloxd-litematica-0.14.1.bnmod",
+      "sha256": "dfef3996a8bea852cacbdf26cf6ead9137a19c140eb08ea12055e32d5913d684",
+      "size": 372736,
+      "source": "Local Bloxd project"
+    },
+    {
+      "id": "bloxd-party-voice",
+      "name": "Bloxd Party Voice",
+      "version": "0.6.1",
+      "kind": "bloxd-mod",
+      "category": "social",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [],
+      "scripts": [
+        {
+          "world": "MAIN",
+          "js": [
+            "runtime.js"
+          ],
+          "css": []
+        },
+        {
+          "world": "ISOLATED",
+          "js": [
+            "voice.js"
+          ],
+          "css": [
+            "voice.css"
+          ]
+        }
+      ],
+      "compatibility": "launcher-adapter-unverified",
+      "note": "Requires an available voice server. You control microphone access.",
+      "description": "Party and lobby voice with device controls and per-player volume.",
+      "package": "bloxd-party-voice-0.6.1.bnmod",
+      "sha256": "b2dbbbe75f6c050daaa44362e3629c1f1f7e493604258dcdbca1cb585ccf3ec1",
+      "size": 73972,
+      "source": "Local Bloxd project"
+    },
+    {
+      "id": "bloxd-no-ads",
+      "name": "No Ads",
+      "version": "1.0.0",
+      "kind": "bloxd-mod",
+      "category": "utility",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [],
+      "scripts": [
+        {
+          "world": "ISOLATED",
+          "js": [],
+          "css": [
+            "no-ads.css"
+          ]
+        }
+      ],
+      "compatibility": "launcher-dom-tested",
+      "note": "Hides known ad banners and video ad surfaces. Ad timers may still run; live coverage is unverified.",
+      "description": "Hides ad banners, promotions and video ad surfaces, including their click targets.",
+      "package": "bloxd-no-ads-1.0.0.bnmod",
+      "sha256": "41a9e6280bb0101d924e180466578892ade3297dfa8a9907cd0c9d9db79c833a",
+      "size": 2698,
+      "source": "Bloxdy Client"
+    },
+    {
+      "id": "bloxd-grassify",
+      "name": "Grassify",
+      "version": "0.2.0",
+      "kind": "bloxd-mod",
+      "category": "visual",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [
+        "native-preview"
+      ],
+      "scripts": [
+        {
+          "world": "MAIN",
+          "js": [
+            "grassify-runtime.js",
+            "grassify.js"
+          ],
+          "css": []
+        }
+      ],
+      "compatibility": "cpu-dom-tested-live-unverified",
+      "note": "WebGL2 grass in Flat, Round and Realistic styles, adjustable wind and thickness, 5–1000 blades per block, no total blade cap. Configure Grassify in Bloxd Settings. Live verification remains open.",
+      "description": "Dense grass with wind, player and mob bending, color and distance controls. Uses Bloxd WebGL2.",
+      "package": "bloxd-grassify-0.2.0.bnmod",
+      "sha256": "e20f54c7da9034c77590d112a13fc710da22743abf98dbc7f86c75408818587f",
+      "size": 43703,
+      "source": "Bloxdy Client"
+    },
+    {
+      "id": "bloxd-zoomer",
+      "name": "Zoomer",
+      "version": "1.0.1",
+      "kind": "bloxd-mod",
+      "category": "utility",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [],
+      "scripts": [
+        {
+          "world": "MAIN",
+          "js": [
+            "zoomer.js"
+          ],
+          "css": []
+        }
+      ],
+      "compatibility": "cpu-dom-tested-live-unverified",
+      "note": "Camera FOV zoom with configurable wheel steps, look speed and transitions. Live input and visuals remain unverified.",
+      "description": "Hold V to zoom; use the wheel for finer zoom up to 100x and configure camera speed, transitions and indicators in Bloxd Settings.",
+      "package": "bloxd-zoomer-1.0.1.bnmod",
+      "sha256": "4dc49910e11ae370c45708ba3a647834f6176b5b3a84d4051fd7f17464cb5e10",
+      "size": 16396,
+      "source": "Bloxdy Client"
+    },
+    {
+      "id": "bloxd-factory-buffer-reuse",
+      "name": "Factory Buffer Reuse",
+      "version": "1.0.0",
+      "kind": "bloxd-mod",
+      "category": "performance",
+      "requires": [
+        {
+          "id": "bloxd-mod-host",
+          "version": ">=0.1.0"
+        }
+      ],
+      "conflicts": [],
+      "scripts": [
+        {
+          "world": "MAIN",
+          "js": [
+            "factory-buffer-reuse.js"
+          ],
+          "css": []
+        }
+      ],
+      "compatibility": "cpu-dom-tested-live-unverified",
+      "note": "No settings or on-screen text. Exact duplicate upload optimization only; a live FPS improvement is unverified.",
+      "description": "Avoids repeated byte-identical WebGL buffer uploads that can add work near dense Factory 2 machines and belts.",
+      "package": "bloxd-factory-buffer-reuse-1.0.0.bnmod",
+      "sha256": "63646fb6033a663f947449a0ed583f69ce0d8a2bf41e7f7802b7015c94980a01",
+      "size": 5282,
+      "source": "Bloxdy Client"
+    }
+  ]
+}

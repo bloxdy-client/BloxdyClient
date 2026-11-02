@@ -1,0 +1,63 @@
+appId: io.bloxdnative.launcher
+productName: Bloxdy Client
+asar: true
+afterPack: launcher/pack-game-client.cjs
+electronDist: node_modules/electron/dist
+directories:
+  output: dist-launcher
+files:
+  - entry.cjs
+  - package.json
+  - launcher/main.cjs
+  - launcher/preload.cjs
+  - launcher/game-preload.cjs
+  - launcher/game-runner.cjs
+  - launcher/paths.cjs
+  - launcher/model.cjs
+  - launcher/store.cjs
+  - launcher/data-files.cjs
+  - launcher/profile-settings.cjs
+  - launcher/mod-host.cjs
+  - launcher/adapters.cjs
+  - launcher/accounts.cjs
+  - launcher/account-capabilities.cjs
+  - launcher/client-observer.cjs
+  - launcher/character-capture.cjs
+  - launcher/character-glb.cjs
+  - launcher/custom-select.js
+  - launcher/textures.cjs
+  - launcher/texture-catalog.cjs
+  - launcher/minecraft-packs.cjs
+  - launcher/index.html
+  - launcher/style.css
+  - launcher/ui.js
+  - launcher/assets/**
+  - launcher/catalog/**
+  - bridge/capture-factory.cjs
+  - bridge/transport.cjs
+  - bridge/google-auth-popup.cjs
+extraResources:
+  - from: build-launcher/Release/MemoryBudgetRunner.exe
+    to: native/MemoryBudgetRunner.exe
+  - from: build-release/Release/BloxdNative.exe
+    to: native/BloxdNative.exe
+win:
+  target:
+    - nsis
+    - portable
+  signAndEditExecutable: false
+nsis:
+  include: installer/desktop.nsh
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: false
+  runAfterFinish: false
+  createDesktopShortcut: true
+  shortcutName: Bloxdy Client
+  installerLanguages:
+    - en_US
+  language: '1033'
+  artifactName: Bloxdy-Client-Setup-${version}-x64.exe
+portable:
+  artifactName: Bloxdy-Client-Portable-${version}-x64.exe
+publish: null

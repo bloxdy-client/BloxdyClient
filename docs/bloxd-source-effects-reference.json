@@ -1,0 +1,498 @@
+{
+  "date": "2026-10-17",
+  "bundlesExecuted": false,
+  "clientsStarted": 0,
+  "graphicsContextsCreated": 0,
+  "sources": [
+    {
+      "file": "public-102.js",
+      "bytes": 22754,
+      "sha256": "2f7022023b0326b04a1b21942d00d23abdc6474dc7c662029881ed1262b3e010",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-110.js",
+      "bytes": 4399780,
+      "sha256": "f1bcacebc50adc9f07905090fc0fb287e12845bc9e67e85e387fd9a7f53b8e5c",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-111.js",
+      "bytes": 44522,
+      "sha256": "7f5f6ee466781b2aad02404dd44569f81e2c1bfc051c0c84c4dfde864e0d9ec6",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-112.js",
+      "bytes": 24019,
+      "sha256": "77fe44fb7f0448ee3f94c5a8808c25aadd62c0e43c7f59c6bd39cb6ec6536710",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-38.js",
+      "bytes": 1683556,
+      "sha256": "8ddca900ae4c9d368c8407b66a85e12d5905ffc8c2c8a4b8ae902d1a450d0d32",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-47.js",
+      "bytes": 19902,
+      "sha256": "9715dea47b31154daf23d0c6d3c302fbf281916a6e87e0962e6038c85e309885",
+      "url": "https://bloxd.io/static/js/q9aot.47.53192280.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-54.js",
+      "bytes": 9771,
+      "sha256": "8a4ec239bdc319cd6ff27357823e17aa3d3a9221040a4710a09541e3455dabf7",
+      "url": "https://bloxd.io/static/js/q9aot.54.0b541162.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-8.js",
+      "bytes": 3984093,
+      "sha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "url": "https://bloxd.io/static/js/q9aot.8.58833e1a.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-99.js",
+      "bytes": 6122,
+      "sha256": "343a11ae550c713f3d66f5fed71e0148c39d0f82903866f5b12b393fb3373f55",
+      "url": "https://bloxd.io/static/js/q9aot.99.15ff1f59.chunk.js",
+      "provenance": "recorded public URL and hash"
+    },
+    {
+      "file": "public-fa-renderer.js",
+      "bytes": 82271,
+      "sha256": "22b6ec28cd22b1536e05402defdbd3c54911a3d78b3d9abf254e308e6922f6d7",
+      "url": null,
+      "provenance": "local audit file; original URL not recorded"
+    },
+    {
+      "file": "public-main.js",
+      "bytes": 4332081,
+      "sha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "url": "https://bloxd.io/static/js/q9aot.main.ba8dc457.js",
+      "provenance": "recorded public URL and hash"
+    }
+  ],
+  "inventory": [
+    {
+      "file": "public-102.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-110.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [
+          4147035,
+          4171781,
+          4172418,
+          4174753,
+          4175281,
+          4175907,
+          4185168,
+          4186586
+        ],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-111.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-112.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-38.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-47.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-54.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-8.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [
+          2558681
+        ],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": [
+          945933,
+          946004,
+          946072,
+          946128,
+          946187,
+          972737
+        ]
+      }
+    },
+    {
+      "file": "public-99.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-fa-renderer.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [],
+        "cellRef": [],
+        "spriteManagers": [],
+        "spriteTrackname": []
+      }
+    },
+    {
+      "file": "public-main.js",
+      "occurrences": {
+        "GPUParticleSystem": [],
+        "gpuParticles": [],
+        "gpuRenderParticles": [],
+        "gpuUpdateParticles": [],
+        "_sourceBuffer": [],
+        "_targetBuffer": [],
+        "spriteVertexShader": [],
+        "spritePixelShader": [],
+        "SpriteManager": [],
+        "_spriteRenderer": [],
+        "_appendSpriteVertex": [],
+        "invertU": [],
+        "invertV": [
+          1806754,
+          2530879
+        ],
+        "cellRef": [],
+        "spriteManagers": [
+          2360151,
+          2360187,
+          2374345,
+          2374399,
+          2374433,
+          2407169,
+          2407212,
+          2408674,
+          2412660,
+          2416391,
+          2416601,
+          2417290,
+          2417955,
+          2418116,
+          2418159,
+          3246130,
+          3247256,
+          3254453,
+          3254490,
+          3254515,
+          3254542,
+          3256428,
+          3256469,
+          3256502,
+          3256546,
+          3257816,
+          3257877,
+          3285525,
+          3436984,
+          3447480
+        ],
+        "spriteTrackname": [
+          2168096
+        ]
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "gpuLayout",
+      "file": "public-8.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2243742,
+      "lengthUTF16": 408,
+      "sha256": "8d2c4e3c4a2a9281ab04b87baf609a6145732c9c55067cb0a584485a9b635a31"
+    },
+    {
+      "kind": "gpuRingAndEmitter",
+      "file": "public-8.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2244150,
+      "lengthUTF16": 8410,
+      "sha256": "f2ac6b3a272be97438411edd9b587121c94015c0c785c271601bbdb67af69c92"
+    },
+    {
+      "kind": "gpuUniformPacking",
+      "file": "public-8.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2252560,
+      "lengthUTF16": 2044,
+      "sha256": "5f3049744c0e606a435c062de763714ec56819f6f747b5774041543993eaa5d5"
+    },
+    {
+      "kind": "gpuBlend",
+      "file": "public-8.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2256469,
+      "lengthUTF16": 435,
+      "sha256": "cb603f5d9f4c1664c4e2e77096d5f2b0d8b2ff449e98b87e5e6d59d567cf67c1"
+    },
+    {
+      "kind": "gpuShaders",
+      "file": "public-8.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2558671,
+      "lengthUTF16": 7318,
+      "sha256": "2ed276bffc153919ee09df8f7b89126662bfc861b7b1d21133bca73ee4b04c72"
+    },
+    {
+      "kind": "gpuUploadAndDraw",
+      "file": "public-8.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2565989,
+      "lengthUTF16": 4908,
+      "sha256": "6cc05830697edca69f3bf4a7073c1ebe5736158b711cb4aed116c5fdd665bd25"
+    },
+    {
+      "kind": "gpuFactorySelection",
+      "file": "public-8.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 2625657,
+      "lengthUTF16": 192,
+      "sha256": "808c2efddc7e0f6ba86dd92957d97353731ffa93bc539a234e912869a7628fd9"
+    },
+    {
+      "kind": "gpuAppliedDrawState",
+      "file": "public-main.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 1858599,
+      "lengthUTF16": 173,
+      "sha256": "e1368ceb329789888aadcf63bc261c4d68fe216188e4313c1624b933b229c881"
+    },
+    {
+      "kind": "gpuAlphaDepthPolicy",
+      "file": "public-main.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2628523,
+      "lengthUTF16": 466,
+      "sha256": "ee7c223307482b38faf0ba5006e44d2802e7062cb7a719138463da3d4557f34f"
+    },
+    {
+      "kind": "gpuBlendFactors",
+      "file": "public-main.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 1803950,
+      "lengthUTF16": 1435,
+      "sha256": "375aec9d2b406e820c9603b86ca2aa28565e771634b56ae729f5387958e0a18a"
+    },
+    {
+      "kind": "gpuRawShaderOwnership",
+      "file": "public-main.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 1788437,
+      "lengthUTF16": 163,
+      "sha256": "9022c5f86f39e28bdf9b35d981a1fc72192a04309688a1ba512f7f32c3fb2fba"
+    },
+    {
+      "kind": "sourceParticleAndSpriteDispatch",
+      "file": "public-main.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2417264,
+      "lengthUTF16": 1044,
+      "sha256": "8ac62784ae29d9148ec14f85f7d6df73907b89866737645e283376470e45241d"
+    },
+    {
+      "kind": "sourceSpriteStage",
+      "file": "public-main.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2413674,
+      "lengthUTF16": 202,
+      "sha256": "67138ce91b134f06e5742d0ec8779bc34e9c1a505f0e6f097fcf417c932ce9c2"
+    },
+    {
+      "kind": "sourceSpriteStub",
+      "file": "public-main.js",
+      "bundleSha256": "d0a44eaea22751f5b374c8baea4e4e7c89d367b444ebf98ecd0999d32c42a676",
+      "offsetUTF16": 2374299,
+      "lengthUTF16": 152,
+      "sha256": "3abcd6bf978bb85014e54e98b9bf85a658fc60646982c7fe329add65da65c736"
+    },
+    {
+      "kind": "atlasMeshMaterial",
+      "file": "public-8.js",
+      "bundleSha256": "342d391b2defb98ba528bc3473c7dadd354eb64456b938b6ba575695cdd24f10",
+      "offsetUTF16": 1230489,
+      "lengthUTF16": 442,
+      "sha256": "fc8cee36c96eb4733f3ed2d7f1c2daa81c260ead0ab5b4d24afc9e1c1f53b756"
+    }
+  ],
+  "findings": {
+    "gpu": "Active WebGL2 factory selects custom analytic gpuParticles; ring stores spawn inputs, not evaluated current positions/colors. No transform-feedback result or pingpong pages in this implementation.",
+    "sprites": "Audited files contain engine dispatch/stubs and atlas meshes, but no SpriteManager implementation, sprite shader or proven SpriteManager creation path. Inventory absence is limited to these files, not all Bloxd deployments."
+  }
+}
