@@ -1,33 +1,62 @@
 # Bloxdy Client
 
-Bloxdy Client is a Windows launcher for Bloxd.io with profiles, mods, shader
-options, character preview, and an experimental native renderer. The current
-source version is **1.6.0**.
+Bloxdy Client is a Windows launcher for Bloxd.io. It brings profiles, optional
+mods, shader controls, texture selection, and a character preview into one
+desktop app. The current source version is **1.6.0**.
 
-## Project map
+## What it does
 
-| Path | Contents |
+- **Profiles:** Keep selected mods, texture packs, and client settings together.
+- **Mods:** Install and manage supported Bloxdy and Bloxd mods per profile.
+- **Shaders:** Adjust the Bloxdy Visual Shader and try Bloxdy shaderpacks.
+- **Character preview:** Show the player's actual 3D model and textures after
+  the player joins a game; no character screenshot is used.
+- **Native renderer research:** Develop an experimental renderer and Minecraft
+  shaderpack support while retaining the normal renderer as a fallback.
+
+The launcher and installer interface are in English. The current distribution
+target is Windows x64. The native renderer and full shaderpack compatibility
+are still in development; their live appearance and FPS are not guaranteed by
+source checks alone.
+
+## Getting the client
+
+Use an official Bloxdy Client installer or portable release supplied by the
+project owner. This repository is the private development workspace and is not
+an installer download. Do not run files shared by an unofficial source as if
+they were an official release.
+
+Updates use the same visible version number as `package.json`. Release builds
+produce a setup program, a portable program, and a separate updater. Installing
+or starting the client is a user action; development verification does not
+start the client or access a game account.
+
+## Project status and documentation
+
+The [current project context](PROJECT-CONTEXT.md) tracks versions, decisions,
+verification, and open work. Technical detail is grouped under [`docs/`](docs/),
+with older development records under [`docs/history/`](docs/history/).
+
+| Directory | Purpose |
 | --- | --- |
-| `launcher/` | Desktop interface, built-in mods, adapters, and tests |
-| `bridge/` | Game-to-native transport and CPU tests |
-| `src/` | Experimental native renderer and shader loader |
+| `launcher/` | Desktop interface, built-in features, adapters, and tests |
+| `bridge/` | Transport between the game and native components |
+| `src/` | Native renderer and shader loader research |
 | `shaderpacks/` | Bloxdy shaderpack examples |
-| `docs/` | Technical references and archived project history |
+| `installer/` | Windows installer support |
 
-The [current project status](PROJECT-CONTEXT.md) records decisions, versions,
-verification, and remaining work. [Older technical history](docs/history/TECHNICAL-HISTORY-before-1.2.3.md)
-and [archived notes](docs/history/) preserve the earlier development record.
+For approved CPU-only verification, use `node launcher/verify.cjs`,
+`npm run test:launcher`, or `npm run test:unit`. A successful check confirms
+only the tested source behavior. Graphics, controls, account flows, and actual
+performance still need testing by the user in the client.
 
-## Development
+## Use and ownership
 
-The project uses Node.js, Electron, CMake, and Visual Studio build tools on
-Windows. `npm ci` installs JavaScript dependencies. `node launcher/verify.cjs`
-and `npm run test:unit` run CPU-only checks. The root `Build-Launcher.ps1`,
-`Build.ps1`, and `Build-Release.ps1` build native components and packages.
-These checks do not validate live graphics or FPS.
+The source code is private. An official, unmodified client release may be
+installed and used under the [binary use terms](LICENSE). Repository access
+does not grant permission to copy, modify, republish, or redistribute the
+source. Third-party components keep their own license terms. Bloxd.io is a
+separate service and is not owned by this project.
 
-The public repository omits local account data, chat exports, diagnostics,
-build outputs, copied source fixtures, and third-party mod archives. Some
-catalog entries therefore need their original mod packages before a release
-can be packaged. The original Bloxdy Client code is under the [MIT license](LICENSE);
-third-party components keep their own notices.
+An earlier public source revision carried an MIT license. This change does not
+take back permissions already granted for copies obtained under that license.

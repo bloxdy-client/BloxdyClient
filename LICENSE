@@ -1,21 +1,25 @@
-MIT License
+Bloxdy Client - Proprietary Source and Binary Use Terms
 
-Copyright (c) 2026 Bloxdy Client contributors
+Copyright (c) 2026 Bloxdy Client project owner. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Source code
+-----------
+The Bloxdy Client source code in this repository is private. Except for rights
+granted under an earlier license for a copy already received, no permission is
+granted to copy, modify, distribute, sublicense, or publish this source code
+without the project owner's written permission. Access to this repository
+does not itself grant those rights.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Official binary releases
+------------------------
+The project owner permits a recipient of an official, unmodified Bloxdy Client
+binary release supplied with these terms to install and use that release for
+personal use. Copies needed for installation or backup are permitted. The
+recipient may not redistribute, sell, repackage, or publish the client or a
+modified version without the project owner's written permission.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+These terms do not restrict rights that cannot be limited under applicable law
+or rights already granted for an earlier copy under an earlier license.
+Third-party software and assets remain subject to their own licenses and are
+not relicensed by this notice. Bloxd.io and its assets are not owned by this
+project.

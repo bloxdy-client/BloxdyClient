@@ -3,7 +3,7 @@
   "version": "1.6.0",
   "description": "Custom bloxd.io launcher for mods and performance tuning",
   "author": "Bloxdy Client contributors",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "private": true,
   "main": "entry.cjs",
   "scripts": {
