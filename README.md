@@ -1,62 +1,65 @@
 # Bloxdy Client
 
-Bloxdy Client is a Windows launcher for Bloxd.io. It brings profiles, optional
-mods, shader controls, texture selection, and a character preview into one
-desktop app. The current source version is **1.6.0**.
+Bloxdy Client is a Windows launcher for Bloxd.io with profiles, optional mods,
+shader controls, texture selection, and a character preview. This repository
+contains the Bloxdy Client source, experimental native renderer, tests, and
+technical history. The current source version is **1.6.0**.
 
-## What it does
+The project is still in development. About **10 people have tested it** so far;
+that is an approximate tester count, not a public adoption metric. A general
+release is planned after the remaining issues are resolved.
 
-- **Profiles:** Keep selected mods, texture packs, and client settings together.
-- **Mods:** Install and manage supported Bloxdy and Bloxd mods per profile.
-- **Shaders:** Adjust the Bloxdy Visual Shader and try Bloxdy shaderpacks.
-- **Character preview:** Show the player's actual 3D model and textures after
-  the player joins a game; no character screenshot is used.
-- **Native renderer research:** Develop an experimental renderer and Minecraft
-  shaderpack support while retaining the normal renderer as a fallback.
+## Features and current limits
 
-The launcher and installer interface are in English. The current distribution
-target is Windows x64. The native renderer and full shaderpack compatibility
-are still in development; their live appearance and FPS are not guaranteed by
-source checks alone.
+- Profiles keep selected mods, textures, and client settings together.
+- The launcher provides supported mod installation and settings per profile.
+- Shader options and Bloxdy shaderpacks extend the game's visual controls.
+- Character preview uses the player's actual 3D model and textures after a
+  player-initiated game join.
+- An experimental native renderer and shader loader are under development.
+  The normal renderer remains available as a fallback.
 
-## Getting the client
+The native renderer is not complete Minecraft/Iris shaderpack support. Graphics,
+controls, and FPS need live testing by users; CPU and compiler checks cannot
+establish visual correctness or performance in a game session.
 
-Use an official Bloxdy Client installer or portable release supplied by the
-project owner. This repository is the private development workspace and is not
-an installer download. Do not run files shared by an unofficial source as if
-they were an official release.
+## Repository map
 
-Updates use the same visible version number as `package.json`. Release builds
-produce a setup program, a portable program, and a separate updater. Installing
-or starting the client is a user action; development verification does not
-start the client or access a game account.
-
-## Project status and documentation
-
-The [current project context](PROJECT-CONTEXT.md) tracks versions, decisions,
-verification, and open work. Technical detail is grouped under [`docs/`](docs/),
-with older development records under [`docs/history/`](docs/history/).
-
-| Directory | Purpose |
+| Path | Purpose |
 | --- | --- |
-| `launcher/` | Desktop interface, built-in features, adapters, and tests |
-| `bridge/` | Transport between the game and native components |
-| `src/` | Native renderer and shader loader research |
+| `launcher/` | Desktop interface, built-in mods, adapters, and tests |
+| `bridge/` | Game-to-native transport and CPU tests |
+| `src/` | Experimental native renderer and shader loader |
 | `shaderpacks/` | Bloxdy shaderpack examples |
 | `installer/` | Windows installer support |
+| `docs/` | Technical references and historical records |
 
-For approved CPU-only verification, use `node launcher/verify.cjs`,
-`npm run test:launcher`, or `npm run test:unit`. A successful check confirms
-only the tested source behavior. Graphics, controls, account flows, and actual
-performance still need testing by the user in the client.
+The [project context](PROJECT-CONTEXT.md) tracks versions, decisions,
+verification, and unfinished work. Earlier technical notes are kept under
+[`docs/history/`](docs/history/). Please read the [contribution guide](CONTRIBUTING.md)
+before proposing a change.
 
-## Use and ownership
+## Build and verification
 
-The source code is private. An official, unmodified client release may be
-installed and used under the [binary use terms](LICENSE). Repository access
-does not grant permission to copy, modify, republish, or redistribute the
-source. Third-party components keep their own license terms. Bloxd.io is a
-separate service and is not owned by this project.
+Development targets Windows x64 and uses Node.js, Electron, CMake, and Visual
+Studio build tools. Run `npm ci` for JavaScript dependencies. For CPU-only
+checks that use only files in this repository, run `npm run test:public`.
 
-An earlier public source revision carried an MIT license. This change does not
-take back permissions already granted for copies obtained under that license.
+The complete local verification (`node launcher/verify.cjs` and
+`npm run test:launcher`) also uses source-specific test fixtures and mod
+archives that are **not included** here. Packaging an identical client release
+requires those original mod projects and other local build inputs. Until those
+inputs can be redistributed or replaced, this repository is a source and
+development reference rather than a reproducible installer build.
+
+No automated verification starts the client or signs into a game account.
+Client visuals, input behavior, and real FPS remain user-run checks.
+
+## License and third-party material
+
+Original Bloxdy Client source in this repository is available under the
+[MIT license](LICENSE). Third-party components retain their own licenses and
+notices; see [third-party material](docs/THIRD-PARTY.md). This repository excludes
+account data, private chat exports, local diagnostic logs, copied Bloxd source
+fixtures, and third-party mod archives. Bloxd.io is a separate service and is
+not owned by this project.
