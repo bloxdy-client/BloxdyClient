@@ -37,3 +37,9 @@
 *.key
 /profiles/
 /user-data/
+/Start.ps1
+/Start.cmd
+/Start-Launcher.ps1
+/Start-Launcher.cmd
+/Start-Bridge.ps1
+/Start-Bridge.cmd
