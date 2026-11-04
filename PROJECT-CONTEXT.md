@@ -4,6 +4,8 @@ Stand: 2. November 2026. Clientversion **1.6.0**. Die Versionsreihe wurde auf Nu
 
 ## Arbeitsweise
 
+4. November 2026: Englischen GitHub-Einstieg, Issue-/PR-Vorlagen und Beitragsablauf ueberarbeitet; Windows-/Linux-CI nur fuer oeffentliche CPU-Tests ergaenzt. Lokal 24/24 Tests unter Node 24 bestanden; CI unter Node 22 noch separat zu bestaetigen. Keine Clientaenderung oder Starts, Version bleibt 1.6.0. Historische Originaltexte erhalten.
+
 AGENTS.md enthaelt die verbindlichen Regeln. Dokumentation auf Nutzerwunsch knapp halten: kurzer aktueller Stand und notwendige Pruefergebnisse, keine wiederholten README-/Info-/Releaseberichte. Vollstaendige alte Texte wurden unveraendert archiviert und werden nur bei konkretem Bedarf gelesen.
 
 ## EZ-Mods Zoomer und Factory Buffer Reuse

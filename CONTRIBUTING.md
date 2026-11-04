@@ -29,3 +29,22 @@ redistribution rights, generated installers, or local diagnostic files. By
 submitting a contribution, you agree that your original contribution may be
 distributed under this repository's MIT license. Third-party material must
 keep its own license and attribution.
+
+## Development checks
+
+Use Node.js 22 and install the public test dependencies with
+`npm ci --ignore-scripts`. Run `npm run test:public` from the repository root.
+GitHub Actions runs this suite on Windows and Linux; the Linux job checks
+portable CPU code and does not imply Linux client support.
+
+Read [AGENTS.md](AGENTS.md) before running other scripts. Automated agents
+must not launch Electron, the client, installers, or interactive bridge tests,
+or operate game accounts. Any required live checks are performed by the user.
+
+## Reviewing a pull request
+
+Explain the user-visible result, how you verified it, and any remaining limits.
+Keep unrelated formatting changes out of functional fixes. Update an existing
+reference when behavior changes instead of adding another release report.
+Documentation-only changes do not require an installer build. Client releases
+follow the version and packaging rules in AGENTS.md.

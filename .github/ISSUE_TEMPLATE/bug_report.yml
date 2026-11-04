@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a reproducible problem in Bloxdy Client.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: Please write in English when possible. Remove account details, tokens, cookies, and personal paths from attachments.
+  - type: input
+    id: version
+    attributes:
+      label: Client version
+      placeholder: e.g. 1.6.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Windows version; for graphics issues, include GPU and driver version if known.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the selected mods, profile settings, and shader options that affect the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: How was this observed?
+      options:
+        - Live client session operated by me
+        - CPU or static checks only
+        - Other (explain below)
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Additional details
+      description: Add sanitized logs or screenshots. For FPS reports, describe the scene and comparison settings.
