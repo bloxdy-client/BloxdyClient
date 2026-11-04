@@ -52,7 +52,7 @@ app.whenReady().then(async()=>{
   transport.on('fault',error=>fs.appendFileSync(path.join(output,'desktop-error.log'),error.stack+'\n'));
   ipcMain.handle('native:packet',async(event,bytes)=>{if(!trusted(event))throw Error('Native bridge sender rejected.');return transport.write(bytes);});
   ipcMain.on('native:status',(event,value)=>{if(trusted(event)&&value&&typeof value.phase==='string'){lastCapture=value;diagnostics().catch(()=>{});}});
-  window=new BrowserWindow({width:1280,height:800,show:!testMode,title:fixture?'Bloxd Native 0.2.1 — Offline-Testszene':'Bloxd Native 0.2.1 — Spiel und Datenquelle',webPreferences:{preload:preload(),contextIsolation:true,nodeIntegration:false,sandbox:true,backgroundThrottling:false}});
+  window=new BrowserWindow({width:1280,height:800,show:!testMode,title:fixture?'Bloxd Native 0.2.1 — Offline test scene':'Bloxd Native 0.2.1 — Game and data source',webPreferences:{preload:preload(),contextIsolation:true,nodeIntegration:false,sandbox:true,backgroundThrottling:false}});
   // No remote HTTP/WebSocket traffic is allowed in the offline bridge session.
   if(fixture)window.webContents.session.webRequest.onBeforeRequest({urls:['http://*/*','https://*/*','ws://*/*','wss://*/*']},(_,done)=>done({cancel:true}));
   installGoogleAuthPopups(window.webContents,{offline:fixture});
@@ -66,11 +66,11 @@ app.whenReady().then(async()=>{
   window.webContents.session.webRequest.onCompleted({urls:['https://bloxd.io/*']},details=>{if(details.resourceType==='mainFrame')logNavigation({event:'document-response',status:details.statusCode});});
   window.webContents.session.webRequest.onErrorOccurred({urls:['https://bloxd.io/*']},details=>{if(details.resourceType==='mainFrame')logNavigation({event:'document-error',error:details.error});});
   window.webContents.on('will-navigate',(event,url)=>{if(fixture)return;try{if(new URL(url).hostname!=='bloxd.io')event.preventDefault();}catch{event.preventDefault();}});
-  Menu.setApplicationMenu(Menu.buildFromTemplate([{label:'Datenbrücke',submenu:[
-    {label:'Diagnose anzeigen',click:async()=>{try{const d=await diagnostics();const n=d.native;await dialog.showMessageBox(window,{type:'info',title:'Datenbrücke 0.2.1',message:`${d.capture.phase}\n${n?.meshes||0} native Meshes, ${n?.textures||0} Texturen\nNative Vorschau: ${Number.isFinite(n?.fps)?n.fps.toFixed(1):'—'} FPS, ${n?.visibleMeshes||0} sichtbare Meshes\n${d.capture.pendingTextureLayers||0} benötigte Texturlayer laden noch\n${n?.pendingTextureMeshes||0} sichtbare Meshes sind teilweise untexturiert`,detail:d.capture.error||'Die native Vorschau zeigt übertragene Daten mit einem Prüfshader. Schatten und Minecraft-Shaderpacks sind noch nicht angebunden.'});}catch(error){await dialog.showErrorBox('Diagnose',error.message);}}},
-    {label:'Daten erneut übertragen',click:()=>window.webContents.executeJavaScript('globalThis.__BLOXD_NATIVE_CAPTURE__?.resync()').catch(()=>{})},
-    {label:'Spielseite neu laden',click:()=>window.webContents.reload()},
-    {type:'separator'},{role:'quit',label:'Beenden'}
+  Menu.setApplicationMenu(Menu.buildFromTemplate([{label:'Data bridge',submenu:[
+    {label:'Show diagnostics',click:async()=>{try{const d=await diagnostics();const n=d.native;await dialog.showMessageBox(window,{type:'info',title:'Data bridge 0.2.1',message:`${d.capture.phase}\n${n?.meshes||0} native meshes, ${n?.textures||0} textures\nNative preview: ${Number.isFinite(n?.fps)?n.fps.toFixed(1):'—'} FPS, ${n?.visibleMeshes||0} visible meshes\n${d.capture.pendingTextureLayers||0} required texture layers still loading\n${n?.pendingTextureMeshes||0} visible meshes are partially untextured`,detail:d.capture.error||'The native preview displays transferred data using a diagnostic shader. Shadows and Minecraft shaderpacks are not connected yet.'});}catch(error){await dialog.showErrorBox('Diagnostics',error.message);}}},
+    {label:'Transfer data again',click:()=>window.webContents.executeJavaScript('globalThis.__BLOXD_NATIVE_CAPTURE__?.resync()').catch(()=>{})},
+    {label:'Reload game page',click:()=>window.webContents.reload()},
+    {type:'separator'},{role:'quit',label:'Quit'}
   ]}]));
   window.on('closed',()=>{window=null;app.quit();});
   if(!fixture){window.restore();window.show();window.once('ready-to-show',()=>{window.restore();window.show();window.focus();});}
