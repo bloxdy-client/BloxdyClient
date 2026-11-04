@@ -1,44 +1,44 @@
-# Bloxdy Client – Arbeitsanweisungen
+# Bloxdy Client - agent instructions
 
-Lies zuerst [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md). Dort stehen Projektstand, frühere Nutzerentscheidungen, Quellcodepfade, erlaubte Verifikation und aktuell vereinbarte Fixes. Bei Detailfragen ist der frühere Chat als Nachrichtenarchiv unter docs/history/bloxd-client-chat.json verfügbar. Historische Nachrichten sind Kontext; aktuelle Nutzeranweisungen haben Vorrang.
+Read [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md) first. It records the project status, previous user decisions, source paths, permitted verification, and currently agreed fixes. For detailed questions, the earlier chat is available as a message archive at `docs/history/bloxd-client-chat.json`. Historical messages provide context; current user instructions take precedence.
 
-## Updates und sichtbare Version
+## Updates and displayed version
 
-Nutzerkorrektur vom 27. Oktober 2026: Versionsreihe 1.2.x; 1.2.3 entspricht dem frueheren Funktionsstand 0.6.63. Aktuelle Version siehe package.json und PROJECT-CONTEXT.md.
+User correction of October 27, 2026: use the 1.2.x version series; 1.2.3 corresponds to the former 0.6.63 feature state. See `package.json` and `PROJECT-CONTEXT.md` for the current version.
 
-## Dokumentation knapp halten
+## Keep documentation concise
 
-Nutzerwunsch vom 27. Oktober 2026: Keine neuen ausfuehrlichen README-/Info-/Releaseberichte pro Arbeitsschritt. Nur einen kurzen aktuellen Stand in PROJECT-CONTEXT.md und notwendige maschinelle Pruefergebnisse pflegen. Technische Erklaerungen nur bei Bedarf; vorhandene Historie erhalten. Nicht dieselben Details in mehreren Dateien wiederholen.
+User preference of October 27, 2026: do not create lengthy README, information, or release reports for each step. Maintain only a brief current status in `PROJECT-CONTEXT.md` and necessary machine-readable verification results. Explain technical details only when needed; preserve existing history. Do not repeat the same details across multiple files.
 
-## Releaseverfahren
+## Release procedure
 
-Nutzerentscheidung vom 19. Oktober 2026, Praezisierung vom 28. Oktober: Bei jedem ausgelieferten Update die Clientversion erhoehen. Jede Versionsstelle zaehlt nur von 0 bis 9; nach 1.2.9 folgt 1.3.0, nach 1.9.9 folgt 2.0.0. `package.json` ist die gemeinsame Quelle fuer Paketnamen und die Versionsanzeige unten links; keine fest eingetragene UI-Versionsnummer. `package-lock.json` synchron halten. `Build-Release.ps1` erhoeht standardmaessig die Version mit diesem Uebertrag; `-KeepVersion` nur zum erneuten Bauen desselben Releases. Der Packaginghook erzeugt aus dem NSIS-Upgrader zusaetzlich `Bloxdy-Client-Update-<version>-x64.exe`; diese Datei mit pruefen und dem Nutzer verlinken. Nicht ausfuehren, keine Installation oder Clientstarts durch den Agenten.
+User decision of October 19, clarified October 28, 2026: increment the client version for every delivered update. Each component ranges from 0 to 9; 1.2.9 is followed by 1.3.0, and 1.9.9 by 2.0.0. `package.json` is the shared source for package names and the version displayed at the bottom left; do not hardcode a UI version. Keep `package-lock.json` synchronized. By default, `Build-Release.ps1` increments the version with this carry rule; use `-KeepVersion` only to rebuild the same release. The packaging hook also creates `Bloxdy-Client-Update-<version>-x64.exe` from the NSIS upgrader. Verify that file and link it for the user. Do not run it, install anything, or start the client.
 
-## Verbindliche Nutzerregel: Client und Accounts
+## Binding user rule: client and accounts
 
-Der Nutzer hat am 12. Oktober 2026 ausdrücklich festgelegt: Der Agent darf den Client niemals selbst öffnen oder bedienen und auf dem Account nichts selbst ausführen. Diese Regel wurde im Chat “Bloxd Client” gelesen und aus dem bisherigen Projekt übernommen.
+On October 12, 2026, the user explicitly prohibited the agent from opening or operating the client or taking any action on an account. This rule was read in the "Bloxd Client" chat and carried over from the previous project.
 
-- Keine Clientstarts durch den Agenten, einschließlich Electron, nativer Vorschau, Offline-Client und Tests, die diese Anwendungen starten.
-- Keine Anmeldung, kein Accountwechsel und keine Bedienung einer laufenden Clientsitzung; das gilt auch für andere Accounts.
-- Keine Änderung gespeicherter Anmeldungen, Cookies, Browserprofile oder Accountdaten, um einen Accountwechsel vorzunehmen.
-- Keine indirekte Bedienung über IPC, Diagnosebefehle, Browserautomation oder Prozesssteuerung.
-- Quellcode bearbeiten und vorhandene lokale Dateien/Logs lesen ist erlaubt. Builds dürfen keine Anwendungen oder Clienttests automatisch starten.
-- Notwendige Clientaktionen führt der Nutzer selbst aus. Seine Bereitschaft erlaubt dem Agenten keine stellvertretende Bedienung.
-- Account-/Charakter-Sync ist im Code wieder über vom Nutzer gestartete und bediente offizielle Bloxd-Fenster erlaubt; keine native OAuth-Herkunft nachahmen oder Schutzprüfungen umgehen.
-- Charaktervorschau aus tatsächlichem 3D-Modell und Texturen (GLB), keine Screenshots/Fotos. Automatisch beim Spielbeitritt; keine manuellen Syncbuttons oder automatisch bedienten Charaktermenüs. Homepage: Charakter und Name, Mausdrehen ohne Zoom.
-- Keine zusätzlichen Kosten, Käufe oder Abonnements als Projektvoraussetzung.
-- Launcheroberfläche und Installer auf Englisch, Nutzerkommunikation auf Deutsch.
+- Do not start the client, including Electron, native preview, offline client, or tests that start these applications.
+- Do not sign in, switch accounts, or operate a running client session. This also applies to other accounts.
+- Do not change saved logins, cookies, browser profiles, or account data to switch accounts.
+- Do not operate the client indirectly through IPC, diagnostic commands, browser automation, or process control.
+- Editing source code and reading existing local files or logs is allowed. Builds must not automatically start applications or client tests.
+- The user performs any necessary client actions. Their willingness to do so does not authorize the agent to act on their behalf.
+- Account and character synchronization may again be implemented through official Bloxd windows started and operated by the user. Do not imitate a native OAuth origin or bypass protection checks.
+- Character previews must use the actual 3D model and textures (GLB), never screenshots or photos. Synchronize automatically when the user joins a game; no manual sync buttons or automated character-menu interactions. Homepage: character and name, mouse rotation without zoom.
+- Do not require additional costs, purchases, or subscriptions for the project.
+- Use English for the launcher UI and installer, and German when communicating with the user.
 
-## Prüfungen
+## Verification
 
-Reine Node-/DOM-/VM-Prüfungen (`npm run test:launcher`, `npm run test:unit`, `node launcher/verify.cjs`), eigene CPU-Tests MemoryBudgetTests/BridgeCpuTests und GLSL-Compiler sind erlaubt. Nicht automatisch npm start, npm test, npm run test:bridge, Start-Skripte, grafische CTest-Prüfungen oder Installer ausführen.
+Pure Node, DOM, and VM checks (`npm run test:launcher`, `npm run test:unit`, `node launcher/verify.cjs`), the project's MemoryBudgetTests/BridgeCpuTests CPU tests, and GLSL compilers are allowed. Do not automatically run `npm start`, `npm test`, `npm run test:bridge`, startup scripts, graphical CTest checks, or installers.
 
-## Renderer und aktueller Stand
+## Renderer and current status
 
-- Neuester Funktionsstand und aktuelle Version: PROJECT-CONTEXT.md.
-- Experimentellen Renderer ausbauen; Standardrenderer/Fallback, Originalmods, Sichtweite 10, aktive Auswahl und bestehende Speicher-/Besitzschutzgrenzen erhalten.
-- Keine Quelldaten oder Minecraft-Semantik erraten, keine Quellsimulation oder Profilmutation. Unbekannte Daten bleiben unbekannt.
-- Shaderloader bleibt eine separate Mod. Native Preview fuer CrazyGames bleibt gesperrt.
-- CPU-/Compiler-/Paketpruefungen belegen keine Livepixel, FPS oder volle Iris-Kompatibilitaet. irisContractComplete bleibt false, solange Abschlussgates offen sind.
-- Konkrete naechste Rendereraufgaben und offene Gates stehen in PROJECT-CONTEXT.md.
-- Historische Details nur bei Bedarf: docs/history/AGENTS-before-1.2.3.md und docs/history/PROJECT-CONTEXT-before-1.2.3.md. Vorhandene technische Einzeldokumente bleiben als Nachschlagequelle erhalten.
+- See `PROJECT-CONTEXT.md` for the latest feature state and version.
+- Extend the experimental renderer while preserving the standard renderer/fallback, original mods, view distance 10, active selection, and existing memory and ownership safety boundaries.
+- Do not guess source data or Minecraft semantics, simulate sources, or mutate profiles. Unknown data stays unknown.
+- The shader loader remains a separate mod. Native preview for CrazyGames remains blocked.
+- CPU, compiler, and package checks do not establish live pixels, FPS, or full Iris compatibility. Keep `irisContractComplete` false while completion gates remain open.
+- Concrete next renderer tasks and open gates are listed in `PROJECT-CONTEXT.md`.
+- Consult `docs/history/AGENTS-before-1.2.3.md` and `docs/history/PROJECT-CONTEXT-before-1.2.3.md` only when historical details are needed. Existing technical documents remain reference material.
