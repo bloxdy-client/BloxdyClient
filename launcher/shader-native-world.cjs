@@ -84,6 +84,11 @@ function patchNativeWorldSource(source,fields=['controls','held','armour','light
  if(source.includes('var<uniform> bvfxWorld: BvfxWorldParameters'))return source;
  for(const name of fields){
   const expression=new RegExp('fn\\s+pack_bvfxWorld_'+name+'\\s*\\(\\s*\\)\\s*->\\s*vec4f\\s*\\{\\s*return\\s+vec4f\\(0(?:\\.0)?\\);\\s*\\}');
+  // The compiler's runtime module omits unreachable neutral helpers, unlike
+  // its standalone validation module. Fields used only by our post-compile
+  // cloud/leaf extension need no helper there; both use bvfxWorld directly.
+  // Still reject a retained helper whose signature/body changed.
+  if(!new RegExp('\\bpack_bvfxWorld_'+name+'\\b').test(source))continue;
   if(!expression.test(source))throw Error('Native world parameter contract changed: '+name);
   source=source.replace(expression,`fn pack_bvfxWorld_${name}() -> vec4f { return bvfxWorld.${name}; }`);
  }

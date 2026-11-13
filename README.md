@@ -12,11 +12,11 @@
 Bloxdy Client is a Windows launcher for Bloxd.io with profiles, optional mods,
 shader controls, texture selection, and a character preview. This repository
 contains the Bloxdy Client source, experimental native renderer, tests, and
-technical history. The current source version is **1.9.9**.
+technical history. The current source version is **2.0.0**.
 
 **[Download the Windows installer](https://github.com/bloxdy-client/BloxdyClient/releases/latest/download/BloxdyClient-Installer-x64.exe)**
 
-Install 1.9.9 once. The installed Windows launcher checks for updates while idle,
+Install the current version once. The installed Windows launcher checks for updates while idle,
 downloads new versions automatically, and installs a ready update when you close
 the launcher. Update downloads pause while a game or account window is open.
 
@@ -102,7 +102,7 @@ development reference rather than a reproducible installer build.
 
 The public CPU checks do not start the client or sign into a game account.
 Client visuals, input behavior, installation, and real automatic-update acceptance
-remain user-run checks. The delivered 1.9.9 package passed 869 local pure checks
+remain user-run checks. The delivered 2.0.0 package passed 870 local pure checks
 and a 376-file package comparison; this is separate from the reproducible public suite.
 
 The repository also contains interactive bridge tests. Those are separate

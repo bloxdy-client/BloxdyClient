@@ -10,6 +10,13 @@ function installNativeShaderBridge(root,helpers){
  const source=helpers.source(),files=[{path:'bloxdy-client.wgsl',source}];
  const options=()=>({...helpers.options(settings),direction:environment?.atmosphere?.sunDirection?.()||null});
  function status(text){message=text;report?.(text);}
+ function failure(error){
+  const detail=String(error?.message||error).replace(/[\u0000-\u001f]+/g,' ').slice(0,1200);
+  status('Native shadows unavailable: '+detail);
+  // Compiler diagnostics contain our shader/ABI messages only. Keep one
+  // bounded line in the existing log instead of hiding it behind the modal.
+  root.console?.error('[Bloxdy native shaders] '+detail);
+ }
  function replace(owner,key,value){const before=Object.getOwnPropertyDescriptor(owner,key);if(before&&!before.writable&&!before.set)throw Error('Native extension point is read-only: '+key);owner[key]=value;undo.push(()=>{if(owner[key]!==value)return;if(before)Object.defineProperty(owner,key,before);else delete owner[key];});}
  async function compile(){
   if(compiled)return compiled;
@@ -31,7 +38,7 @@ function installNativeShaderBridge(root,helpers){
    }
    compiled={status:'active',pack:{name:'Bloxdy Client shaders',variants:result.variants,keepCircleShadows:false}};
    status('Bloxdy native shaders prepared');return compiled;
-  })().catch(error=>{status('Native shadows unavailable: '+error.message);throw error;});
+  })().catch(error=>{failure(error);throw error;});
   return compilePromise;
  }
  function preparePage(Class){
@@ -66,7 +73,7 @@ function installNativeShaderBridge(root,helpers){
      try{
       shadows=helpers.attach(native,options,helpers.patch);
       if(helpers.effects){if(!environment)throw Error('Native atmosphere has not been initialized');effects=await helpers.effects(native,settings,environment.atmosphere,environment);}
-     }catch(error){effects?.dispose();shadows?.dispose(true);record.dispose?.();throw error;}
+     }catch(error){failure(error);effects?.dispose();shadows?.dispose(true);record.dispose?.();throw error;}
      const adapter={dispose(lost=false){effects?.dispose();shadows.dispose(lost);},diagnostics:()=>({...shadows.diagnostics(),effects:effects?.diagnostics()||null})};adapters.add(adapter);
      if(typeof record.dispose==='function'){const dispose=record.dispose;replace(record,'dispose',function(...args){adapter.dispose(true);adapters.delete(adapter);return dispose.apply(this,args);});}
      native.gpuDevice.lost.then(()=>{adapter.dispose(true);adapters.delete(adapter);if(!stopped)status('Native shadow device lost');});
