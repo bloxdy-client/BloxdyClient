@@ -4,8 +4,7 @@ const fs=require('node:fs'),path=require('node:path');const {hash}=require('./st
 const root=path.resolve(__dirname,'..'),workspace=path.resolve(root,process.argv[2]||process.env.BLOXDY_MOD_SOURCE_ROOT||'..'),catalog=path.join(__dirname,'catalog');
 const sources=[
   {id:'bloxd-visual-shader',folder:'Bloxd-Shader-OperaGX',category:'shaders',description:'Shadows, water and atmosphere built for Bloxd.',conflicts:['native-preview'],note:'A Bloxd shader mod with its own lighting controls.'},
-  {id:'bloxd-litematica',folder:'Bloxd-Litematica',category:'building',description:'Schematic previews, material lists and .bloxdschem tools.',conflicts:['native-preview'],note:'A schematic mod built for Bloxd.'},
-  {id:'bloxd-party-voice',folder:'Bloxd-Party-Voice/extension',category:'social',description:'Party and lobby voice with device controls and per-player volume.',conflicts:[],note:'Requires an available voice server. You control microphone access.'}
+  {id:'bloxd-litematica',folder:'Bloxd-Litematica',category:'building',description:'Schematic previews, material lists and .bloxdschem tools.',conflicts:['native-preview'],note:'A schematic mod built for Bloxd.'}
 ];
 for(const source of sources)if(!fs.existsSync(path.join(workspace,source.folder,'manifest.json')))throw Error('Mod sources not found. Use npm run catalog -- <source-root> or BLOXDY_MOD_SOURCE_ROOT. Current root: '+workspace);
 fs.mkdirSync(catalog,{recursive:true});

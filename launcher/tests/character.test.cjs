@@ -3,7 +3,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os'),vm=require('node:vm'),{encodeCharacter,validateCharacter}=require('../character-glb.cjs'),capture=require('../character-capture.cjs'),fixture=require('./character-fixture.cjs'),{Store}=require('../store.cjs');
 test('Saved GLB contains genuine independent 3D parts and passes the Khronos validator',async()=>{const bytes=new Uint8Array(encodeCharacter([fixture.triangle,{...fixture.triangle,name:'Fixture hat',positions:[0,2,0,1,2,0,0,3,0]}]));const validated=validateCharacter(bytes);assert.equal(validated.parts,2);assert.equal(validated.vertices,6);const report=await require('gltf-validator').validateBytes(bytes,{maxIssues:100});assert.equal(report.issues.numErrors,0,JSON.stringify(report.issues.messages));});
 test('GLB rejects non-finite vertices, invalid triangles and external texture references',()=>{assert.throws(()=>validateCharacter(encodeCharacter([{...fixture.triangle,positions:[NaN,0,0,1,0,0,0,1,0]}])),/Non-finite/);assert.throws(()=>validateCharacter(encodeCharacter([{...fixture.triangle,indices:[0,1,8]}])),/out of bounds/);const original=validateCharacter(fixture.model());const j=original.json;j.images.push({uri:'https://evil.invalid/image.png'});const raw=Buffer.from(JSON.stringify(j)),len=(raw.length+3)&~3,bin=original.bytes.subarray(28+original.bytes.readUInt32LE(12)),b=Buffer.alloc(28+len+bin.length);b.writeUInt32LE(0x46546c67,0);b.writeUInt32LE(2,4);b.writeUInt32LE(b.length,8);b.writeUInt32LE(len,12);b.writeUInt32LE(0x4e4f534a,16);b.fill(32,20,20+len);raw.copy(b,20);b.writeUInt32LE(bin.length,20+len);b.writeUInt32LE(0x004e4942,24+len);bin.copy(b,28+len);assert.throws(()=>validateCharacter(b),/External character image/);});
-test('Model storage is per-account, preserves unchanged models and invalidates changed cosmetics',t=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'bloxd-character-unit-'));t.after(()=>{assert.ok(root.startsWith(path.join(os.tmpdir(),'bloxd-character-unit-')));fs.rmSync(root,{recursive:true,force:true});});const s=new Store(root,path.join(__dirname,'../catalog')),id=s.account().id;s.updateAccount(id,{...fixture.metadata,token:'SECRET'});s.saveCharacter(id,fixture.metadata,fixture.model());assert.equal(s.snapshot().accounts[0].character.format,'glb');assert.deepEqual(s.readCharacter(id),Buffer.from(fixture.model()));assert.doesNotMatch(fs.readFileSync(s.file,'utf8'),/SECRET|base64|positions/);s.updateAccount(id,fixture.metadata);assert.ok(s.account().character);s.addAccount('google');assert.throws(()=>s.readCharacter(s.account().id),/Sync/);s.updateAccount(id,{...fixture.metadata,cosmetics:{skin:'different'}});assert.equal(s.account(id).character,undefined);assert.throws(()=>s.saveCharacter(id,fixture.metadata,fixture.model()),/does not match/);});
+test('Model storage is per-account, preserves saved models through cosmetic metadata changes',t=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'bloxd-character-unit-'));t.after(()=>{assert.ok(root.startsWith(path.join(os.tmpdir(),'bloxd-character-unit-')));fs.rmSync(root,{recursive:true,force:true});});const s=new Store(root,path.join(__dirname,'../catalog')),id=s.account().id;s.updateAccount(id,{...fixture.metadata,token:'SECRET'});s.saveCharacter(id,fixture.metadata,fixture.model());assert.equal(s.snapshot().accounts[0].character.format,'glb');assert.deepEqual(s.readCharacter(id),Buffer.from(fixture.model()));assert.doesNotMatch(fs.readFileSync(s.file,'utf8'),/SECRET|base64|positions/);s.updateAccount(id,fixture.metadata);assert.ok(s.account().character);s.addAccount('google');assert.throws(()=>s.readCharacter(s.account().id),/Sync/);s.updateAccount(id,{...fixture.metadata,cosmetics:{skin:'different'}});assert.ok(s.account(id).character);s.updateAccount(id,{...fixture.metadata,username:'Another account'});assert.equal(s.account(id).character,undefined);assert.throws(()=>s.saveCharacter(id,fixture.metadata,fixture.model()),/does not match/);});
 test('Real preview rig export follows only its body parts and worn attachments',()=>{const r=fixture.rig(),c=capture(encodeCharacter);const unrelated={name:'World terrain'};r.data.thinInstMgr.thinMeshes.push({getMesh:()=>unrelated});const attached={name:'Fixture hat',getVerticesData:r.mesh.getVerticesData,NJ:r.mesh.NJ,getWorldMatrix:()=>fixture.identity,getChildren:()=>[]};r.node.attachedTransformNodes.push(attached);const records=c.records(r.data);assert.equal(records.length,2);assert.ok(!records.some(x=>x.mesh===unrelated));r.node.qy=false;assert.throws(()=>c.records(r.data),/not ready/);});
 test('Exporter bakes nonuniform rig transforms, inverse-transpose normals and glTF handedness',()=>{const r=fixture.rig(),c=capture(encodeCharacter);const p=c.bake({mesh:r.mesh,world:[2,0,0,0,0,3,0,0,0,0,4,0,5,6,7,1]});assert.deepEqual(Array.from(p.positions),[5,6,-7,7,6,-7,5,9,-7]);assert.deepEqual(Array.from(p.normals),[0,0,-1,0,0,-1,0,0,-1]);assert.deepEqual(Array.from(p.indices),[0,2,1]);});
 test('Try-on props are rejected and texture export composites actual clothing atlas layers',async()=>{const r=fixture.rig(),draws=[],requests=[],closed=[],sandbox=vm.createContext({Uint8Array,Uint32Array,Float32Array,ArrayBuffer,TextEncoder,URL,AbortSignal,setTimeout,clearTimeout,location:{href:'https://bloxd.io/',origin:'https://bloxd.io'},fetch:async(url,options)=>{requests.push({url,options});return {ok:true,blob:async()=>({size:fixture.png.length})};},createImageBitmap:async()=>({width:4,height:4,close(){closed.push(true);}}),document:{createElement:()=>({getContext:()=>({drawImage(...args){draws.push(args);}}),toBlob:fn=>fn({arrayBuffer:async()=>fixture.png.buffer.slice(fixture.png.byteOffset,fixture.png.byteOffset+fixture.png.byteLength)})})}});sandbox.encode=encodeCharacter;sandbox.r=r;vm.runInContext(`globalThis.capture=(${capture.toString()})(encode)`,sandbox);r.canvas.__reactFiber$unit.memoizedProps.forcedCosmetics={hat:'unworn'};assert.throws(()=>sandbox.capture.preview(r.canvas),/trying on/);r.canvas.__reactFiber$unit.memoizedProps.forcedCosmetics={};r.mesh.material.diffuseTexture={url:'/textures/charSkins/fixture.png',_invertY:false,isReady:()=>true};r.mesh.material._pluginManager={_plugins:[]};r.mesh.material.pluginManager={_plugins:[{numLayers:2,atlasWidth:2,atlasHeight:2,getClassName:()=> 'LifeformMaterialPlugin'}]};r.thin.strides.aAtlasIdx1=4;r.variation.get=(_id,kind)=>kind==='aAtlasIdx1'?[0,3,0,0]:[1];const bytes=await sandbox.capture.exportModel(r.canvas);const file=validateCharacter(bytes);assert.equal(file.json.images.length,1);assert.equal(draws.length,2);assert.deepEqual(draws[0].slice(1,5),[2,2,2,2]);assert.deepEqual(draws[1].slice(1,5),[0,0,2,2]);assert.equal(requests[0].options.credentials,'omit');assert.equal(closed.length,1);});
@@ -161,4 +161,66 @@ test('Automatic join sync rechecks the current metadata provider and reports inc
 test('Observer reports early missing readiness and re-publishes the same wait after account metadata clears it',()=>{
  const f=observerFixture();f.f.signatureError=true;f.scan();const before=f.statuses.length;f.api.singletons.clientSidePartyStateManager.userContext.getPlayerCosmetics=()=>({hat:'new-fixture'});f.scan();assert.equal(f.statuses.length,before+1);assert.equal(f.statuses.at(-1).message,'Synthetic incomplete geometry');
  const statuses=[],sandbox={Date,setInterval:()=>1,clearInterval(){},addEventListener(){},__BLOXD_MOD_HOST__:{observeDefinitions:()=>()=>{},engine:()=>null},bloxdLauncherClient:{characterStatus:value=>statuses.push(value)},factory:()=>({})};vm.runInNewContext(`(${require('../client-observer.cjs').toString()})({action:'game'},factory)`,sandbox);assert.equal(statuses[0].message,'Waiting for Bloxd to initialize.');
+});
+
+test('Current Lite model indices and Babylon geometry indices export body and attachments without minified getters',async()=>{
+ for(const backend of ['lite','babylon']){
+  const f=modernRig(),r=f.r,indices=r.mesh.NJ();delete r.mesh.NJ;
+  if(backend==='lite')r.mesh.model={indexData:indices};else r.mesh.geometry={_indices:indices};
+  const attached={...r.mesh,name:'Fixture current hat',getWorldMatrix:()=>fixture.identity,getChildren:()=>[]};
+  r.node.attachedTransformNodes.push(attached);
+  const c=capture(encodeCharacter),before=c.signature(c.world(f.api)),file=validateCharacter(await c.exportWorld(f.api));
+  assert.equal(file.parts,2);assert.equal(file.vertices,6);
+  assert.equal(c.signature(c.world(f.api)),before,'export does not alter source geometry');
+  delete r.mesh.model;delete r.mesh.geometry;
+  await assert.rejects(c.exportWorld(f.api),/Unsupported character geometry/,'missing indices are never invented');
+ }
+});
+
+test('Character exporter refuses truncated, fractional and out-of-range source indices',()=>{
+ const r=fixture.rig(),c=capture(encodeCharacter);delete r.mesh.NJ;
+ for(const indices of [[0,1],[0,1,3],[0,1,-1],[0,1,.5]]){
+  r.mesh.model={indexData:indices};assert.throws(()=>c.bake({mesh:r.mesh,world:fixture.identity}),/Unsupported character geometry/);
+ }
+});
+
+function liteMaterialFixture(){
+ const source=require('./character-material-fixture.cjs');
+ const native=vm.runInNewContext(`(()=>{let cT=0;const hz={combine:2},Xz=new WeakMap,dz={X:mirror=>Xz.get(mirror)};${source.materialClass};${source.mirrorClass};${source.link};return {Model:Hz,Mirror:Pz,link:az};})()`);
+ native.Texture=vm.runInNewContext(`(()=>{const Xz=[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];${source.textureClass};return nz;})()`);
+ native.create=()=>{const model=new native.Model('Player material'),mirror=new native.Mirror('Player mirror',{getUniqueId:()=>9});native.link(model,mirror);return {model,mirror};};return native;
+}
+
+test('Original Lite material mirrors export actual Lifeform/Armour textures through joined GLB capture',async()=>{
+ const native=liteMaterialFixture();
+ for(const kind of ['Lifeform','Armour']){
+  const f=modernRig(),{model,mirror}=native.create(),draws=[];
+  model.lifeform=true;model.features.push({feature:{className:kind+'MaterialPlugin'},state:kind==='Lifeform'?{numLayers:2,atlasWidth:4,atlasHeight:2}:{numTexturesInAtlas:4},active:true});
+  model.diffuseTexture=new native.Texture('2d',{kind:'url',url:'/textures/charSkins/lite-atlas.png'},{invertY:null});
+  f.r.mesh.material=mirror;f.r.thin.strides.aAtlasIdx1=4;f.r.thin.strides.aArmourTint=4;
+  f.r.variation.get=(_id,key)=>key==='aAtlasIdx1'?[2,5,0,0]:key==='aArmourTint'?[.25,.5,.75,3]:[1];
+  const sandbox=vm.createContext({Uint8Array,Uint32Array,Float32Array,ArrayBuffer,TextEncoder,URL,AbortSignal,setTimeout,clearTimeout,location:{href:'https://bloxd.io/',origin:'https://bloxd.io'},fetch:async()=>({ok:true,blob:async()=>({size:fixture.png.length})}),createImageBitmap:async()=>({width:16,height:8,close(){}}),document:{createElement:()=>({getContext:()=>({drawImage(...args){draws.push(args.slice(1));}}),toBlob:fn=>fn({arrayBuffer:async()=>fixture.png.buffer.slice(fixture.png.byteOffset,fixture.png.byteOffset+fixture.png.byteLength)})})},encode:encodeCharacter});
+  vm.runInContext(`globalThis.capture=(${capture.toString()})(encode)`,sandbox);
+  const before=JSON.stringify(model,(key,value)=>key==='mirror'?undefined:value),bytes=await sandbox.capture.exportWorld(f.api),file=validateCharacter(bytes);
+  assert.equal(mirror.diffuseTexture,undefined,'source mirror deliberately has no texture property');assert.equal(mirror.pluginManager,undefined);
+  assert.equal(file.json.images.length,1);assert.ok(file.json.materials[0].pbrMetallicRoughness.baseColorTexture);
+  assert.deepEqual(draws,kind==='Lifeform'?[[4,4,4,4,0,0,4,4],[8,0,4,4,0,0,4,4]]:[[8,0,4,8,0,0,4,8]]);
+  if(kind==='Armour')assert.deepEqual(file.json.materials[0].pbrMetallicRoughness.baseColorFactor.slice(0,3),[.25,.5,.75]);
+  assert.equal(JSON.stringify(model,(key,value)=>key==='mirror'?undefined:value),before);
+  const report=await require('gltf-validator').validateBytes(new Uint8Array(bytes),{maxIssues:20});assert.equal(report.issues.numErrors,0);
+  const signature=sandbox.capture.signature(sandbox.capture.world(f.api));model.diffuseTexture.source.url='/textures/charSkins/new-lite-atlas.png';assert.notEqual(sandbox.capture.signature(sandbox.capture.world(f.api)),signature);
+  model.diffuseTexture=null;await assert.rejects(sandbox.capture.exportWorld(f.api),/texture is not ready/);
+ }
+});
+
+test('Original Lite mirrors preserve typed RGB/alpha and reject missing or foreign material models',async()=>{
+ const native=liteMaterialFixture(),f=modernRig(),{model,mirror}=native.create();f.r.mesh.material=mirror;model.diffuseColor.set([.25,.5,.75]);model.alpha=.8;
+ const c=capture(encodeCharacter),file=validateCharacter(await c.exportWorld(f.api));assert.deepEqual(file.json.materials[0].pbrMetallicRoughness.baseColorFactor,[.25,.5,.75,.8]);
+ model.mirror={};await assert.rejects(c.exportWorld(f.api),/material model is not ready/);
+ f.r.mesh.material={getClassName:()=> 'LiteMaterial',model:null};await assert.rejects(c.exportWorld(f.api),/material model is not ready/);
+ f.r.mesh.material=null;f.r.mesh.getClassName=()=> 'LiteMesh';await assert.rejects(c.exportWorld(f.api),/material is not ready/);
+});
+
+test('Homepage sync uses one existing unforced PlayerPreview and rejects try-on or ambiguous previews',()=>{
+ const r=fixture.rig();const sandbox={document:{querySelectorAll:()=>[r.canvas]}};vm.runInNewContext('globalThis.c=('+capture.toString()+')()',sandbox);assert.equal(sandbox.c.home().canvas,r.canvas);assert.ok(sandbox.c.signature(sandbox.c.home()));r.canvas.__reactFiber$unit.memoizedProps.forcedCosmetics={hat:'try-on'};assert.throws(()=>sandbox.c.home(),/homepage/);r.canvas.__reactFiber$unit.memoizedProps.forcedCosmetics={};sandbox.document.querySelectorAll=()=>[r.canvas,fixture.rig().canvas];assert.throws(()=>sandbox.c.home(),/homepage/);
 });

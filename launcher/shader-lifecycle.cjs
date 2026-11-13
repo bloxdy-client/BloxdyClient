@@ -25,6 +25,15 @@ function bindSkyMasterVariant(material,record){
 function syncMasterShaderMaterials(scene){
   for(const material of scene?.materials || []){
     if(!material || typeof material.onBindObservable?.add!=='function')continue;
+    // UI, protection overlays, particles and hit flashes must keep their native
+    // effect keys. New temporary materials used to dirty/recompile the scene.
+    const name=String(material.name || '');
+    if(/camScreen|overlay|flash|highlight|selection|particle|gui|(?:^|[-_])ui(?:$|[-_])|damage|hurt|impact/i.test(name))continue;
+    const owned=waterMaterialBindings.has(material)||entityLightMaterialBindings.has(material)
+      || name==='base-terrain'||/^terrain-/.test(name)||/^skybox$/i.test(name)
+      || material.getClassName?.()==='SkyMaterial'
+      || (material.pluginManager?._plugins || []).some(p=>/EntityLight|Lifeform/.test(p?.getClassName?.()||''));
+    if(!owned)continue;
     let record=shaderMasterBindings.get(material);
     if(!record){
       record={enabled:null,frozen:Boolean(material.isFrozen || material.checkReadyOnlyOnce)};
@@ -32,6 +41,7 @@ function syncMasterShaderMaterials(scene){
       if(material.getClassName?.()==='SkyMaterial' && typeof material.isReadyForSubMesh==='function')bindSkyMasterVariant(material,record);
       const resolve=material.customShaderNameResolve;
       material.customShaderNameResolve=function(...args){
+        if(/camScreen|overlay|flash|highlight|selection|particle|gui|damage|hurt|impact/i.test(String(this.name||'')))return args[0];
         const name=resolve?resolve.apply(this,args):args[0],defines=args[4];
         masterShaderDefines(defines);
         return name;
@@ -67,11 +77,30 @@ function recordShaderFrame(now){
   const gap=now-shaderFrameHistory.last;shaderFrameHistory.last=now;
   shaderFrameHistory.draws.native=runtime.nativeDraws||0;shaderFrameHistory.draws.patched=runtime.patchedDraws||0;
   runtime.nativeDraws=runtime.patchedDraws=0;
-  if(!(gap>0 && gap<1000) || document.hidden)return;
+  if(!(gap>0 && gap<5000) || document.hidden)return;
   shaderBudget.sample(gap);
   shaderFrameHistory.values[shaderFrameHistory.next]=gap;
   shaderFrameHistory.next=(shaderFrameHistory.next+1)%120;
   shaderFrameHistory.count=Math.min(120,shaderFrameHistory.count+1);
+  // Two small local log records remove the need for a manual F9 capture.
+  // Whitelist performance data; never serialize a scene, profile or account.
+  if(!state.enabled)return;
+  if(!Number.isFinite(shaderFrameHistory.firstSampleAt))shaderFrameHistory.firstSampleAt=now;
+  const reports=shaderFrameHistory.automaticReports||0;
+  if(reports>=2 || shaderFrameHistory.count<60 || now-shaderFrameHistory.firstSampleAt<(reports?60000:15000))return;
+  shaderFrameHistory.automaticReports=reports+1;
+  try{
+    const times=shaderFrameHistory.values.subarray(0,shaderFrameHistory.count);
+    const gpu=PAGE.__BVFX_GPU_TIMER__?.diagnostics?.();
+    console.info('[BVFX performance] '+JSON.stringify({schema:'shader-performance-v1',
+      scope:'Callback cadence and CPU wall time, not presented FPS. GPU time covers the scene.',
+      frames:times.length,callbackFps:1000*times.length/times.reduce((a,b)=>a+b,0),worstCallbackMs:Math.max(...times),
+      draws:shaderFrameHistory.draws,cpuWallMs:shaderBudget.cpuWall(),
+      pendingLiquidChunks:pendingWaterGeometry.size,liquidChunks:waterMeshRecords.size,
+      pendingLiquidKinds:pendingLiquidKinds.size,pendingUnderwater:pendingUnderwaterMasks.size,
+      shadowReady:Boolean(sun?.ready),shadowResolution:sun?.resolutionInfo||null,
+      sky:atmosphere?.skyDiagnostics?.()||null,gpu:gpu?{samples:gpu.samples,averageMs:gpu.sceneAverageMs,maxMs:gpu.sceneMaxMs}:null}));
+  }catch{/* Optional logging cannot interrupt a scene callback. */}
 }
 function shaderDiagnostics(){
   const noa=getNoaRuntime(),scene=getScene(noa),gl=shaderObservedContext || scene?._engine?._gl || scene?.getEngine?.()?._gl;
@@ -92,7 +121,7 @@ function shaderDiagnostics(){
     lighting:runtime.lighting,error:runtime.error,compiledPrograms:runtime.programs,
     adaptiveQuality:shaderBudget.limits(),authoredShadows:{resolution:2**state.sunResolutionExponent,rate:state.sunFrameRate,
       smoothing:Boolean(state.sunSmoothing ?? (Number(state.sunSoftness)>0))},
-    renderScale:null,chunkShadowCache:sun?.chunkCacheDiagnostics || null,
+    renderScale:null,renderStateCache:gl?PAGE.__BVFX_RENDER_STATE__?.(gl)?.diagnostics()||null:null,chunkShadowCache:sun?.chunkCacheDiagnostics || null,
     cpuWallMs:shaderBudget.cpuWall(),cpuWallScope:'Main-thread wall time, including driver waits; nested phases overlap. Not GPU timing.',
     shadows:{enabled:state.enabled && state.sunShadowEnabled,ready:Boolean(sun?.ready),resolution:sun?.resolutionInfo || null,
       passes:sun?.shadowDiagnostics || null},sky:gl?atmosphere?.skyDiagnostics?.(gl) || null:null};

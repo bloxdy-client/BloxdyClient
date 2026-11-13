@@ -21,9 +21,9 @@
     const noa=matches[0]?.noa||fallback,layout=matches[0]?.layout||(noa&&globalThis.__GRASSIFY_LAYOUT__?.(noa));
     if(!noa)throw Error('Waiting for Bloxd world engine');
     if(!layout?.scene)throw Error('Waiting for Bloxd scene');
-    // Bloxd Lite submits its own meshes and bypasses scene.render(). Our
-    // Babylon-owned meshes would exist but never be drawn there.
-    if(layout.renderer?.tP)throw Error('Grassify needs WebGL2. Rejoin the world to apply it.');
+    // Lite needs our native vertex adapter; preparing a field without a
+    // compatible draw path must never be reported as visible grass.
+    if(layout.renderer?.tP&&!globalThis.__BVFX_NATIVE_GRASS_FACTORY__)throw Error('Grassify needs WebGL2. Rejoin the world to apply it.');
     if(!layout.scene.activeCamera)throw Error('Waiting for Bloxd camera');
     if(!layout.world)throw Error('Waiting for Bloxd world reader');
     if(!layout.originKey||noa[layout.originKey]?.length!==3||!Array.from(noa[layout.originKey]).every(Number.isFinite))throw Error('Waiting for Bloxd world origin');
@@ -31,7 +31,7 @@
     const scene=layout.scene,gl=(scene.getEngine?.()||scene._engine)?._gl;
     const origin=()=>{const o=layout.originKey&&noa[layout.originKey];return o?.length===3&&Array.from(o).every(Number.isFinite)?o:[0,0,0];};
     return {scene,gl,layout,noa,origin,
-      camera(){const p=scene.activeCamera?.globalPosition||scene.activeCamera?.position,o=origin();return p&&[p.x,p.y,p.z].every(Number.isFinite)?[p.x+o[0],p.y+o[1],p.z+o[2]]:null;},
+      camera(){const native=globalThis.__BVFX_NATIVE_GRASS_CAMERA__?.(scene);if(native)return native;const p=scene.activeCamera?.globalPosition||scene.activeCamera?.position,o=origin();return p&&[p.x,p.y,p.z].every(Number.isFinite)?[p.x+o[0],p.y+o[1],p.z+o[2]]:null;},
       read(x,y,z){const w=layout.world;try{return w.loaded(x,y,z)?w.owner[w.method](x,y,z):null;}catch{return null;}},
       grass(id){try{return id>0&&engine.getBloxd()?.getItemName?.(id)==='Grass Block';}catch{return false;}},
       cover(id){
@@ -154,7 +154,9 @@
   function mount(){
     for(const menu of document.querySelectorAll('.SettingsMenu')){
       const sidebar=menu.querySelector('.MenuSideBarSection')||menu.querySelector('.MenuSideBarBody'),right=menu.querySelector('.SettingsMenuRight');
-      if(!sidebar||!right||menu.querySelector('[data-grassify-category]'))continue;
+      if(!sidebar||!right)continue;
+      const existing=menu.querySelector('[data-grassify-category]');if(existing&&sidebar.contains(existing)&&right.querySelector('.grassify-page'))continue;
+      existing?.remove();menu.querySelector('.grassify-page')?.remove();menu.classList.remove('grassify-selected');
       const tab=element('div','MenuSideBarBodyTab');tab.dataset.grassifyCategory='true';tab.tabIndex=0;tab.setAttribute('role','tab');tab.setAttribute('aria-selected','false');tab.setAttribute('aria-controls','grassify-settings-page');
       const icon=element('div','MenuSideBarBodyTabIcon');icon.innerHTML='<svg class="svg-inline--fa" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path fill="currentColor" d="M11 22C11 13 7 7 2 5c3 4 4 10 4 17h5zm2 0h5c0-6 1-11 4-15-5 2-9 7-9 15zm-1-8c-1-5-1-9 1-13 2 5 2 8-1 13z"/></svg>';tab.append(icon,element('div','','Grassify'));
       const page=element('div','SettingsMenuRightInner grassify-page');page.id='grassify-settings-page';page.setAttribute('role','tabpanel');page.setAttribute('aria-label','Grassify');

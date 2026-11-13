@@ -6,6 +6,7 @@ const {liquidUploadSchema}=require('../shader-world-adapter.cjs');
 const fixture=name=>fs.readFileSync(path.join(__dirname,'fixtures',name),'utf8');
 
 function liquidFixture(existing=false,meshKey='eK',materialName='terrain-alpha-19',performance='quality'){
+  const nativeUpload=require('./shader-quad-upload-fixture.cjs').nativeQuadUpload();
   let now=0;
   const shader=shaderRuntime({enabled:true,waterEnabled:true,lavaEnabled:true,waterStyle:'wavey',lavaStyle:'wavey',waterPhysics:true,lavaPhysics:true},
     {performance:{now:()=>now}});
@@ -14,7 +15,8 @@ function liquidFixture(existing=false,meshKey='eK',materialName='terrain-alpha-1
   const chunk={pos:[0,0,0],eK:[],lK:'0_0_0',i:0,k:0,qK:true};
   if(meshKey!=='eK'){chunk[meshKey]=chunk.eK;delete chunk.eK;}
   class Mesh {
-    constructor(){this.data={};this.metadata={noa_chunk_terrain_mesh:true};this.position={x:0,y:0,z:0};this.material=material;}
+    constructor(){this.data={};this.metadata={noa_chunk_terrain_mesh:true};this.position={x:0,y:0,z:0};this.material=material;this.geometry=nativeUpload.geometry();this._geometry=this.geometry;}
+    uQ(){return nativeUpload.engine;}
     setVerticesData(key,data){this.data[key]=data;}
     getVerticesData(key){return this.data[key];}
     getTotalVertices(){return this.data.position.length/3;}
@@ -23,12 +25,13 @@ function liquidFixture(existing=false,meshKey='eK',materialName='terrain-alpha-1
     isDisposed(){return false;}
   }
   const builder={assignMeshData(mesh,data){
+    mesh.packedBytes=new Uint8Array(data.vertices).slice();
     const unpacked=shader.unpackLiquidGeometry(data);
     for(const [key,field] of [['position','positions'],['normal','normals'],['color','colors'],['uv','uvs'],['texAtlasIndices','indicesAcrossAtlasArr']])
       mesh.setVerticesData(key,unpacked[field]);
-    mesh.setVerticesData('aPackedLightLevels',data.JK);
+    mesh.setVerticesData('aPackedLightLevels',data.JK??data.Uf);
     if(data.quadEdgeData)mesh.setVerticesData('aQuadEdge',data.quadEdgeData);
-    mesh._geometry={_indices:data.indices};
+    nativeUpload.bind(mesh,unpacked.positions.length/3,data.indices.length);
   }};
   const methods=fixture('native-chunk-upload-2026-10-12.txt').replaceAll('.eK','.'+meshKey);
   const manager=vm.runInNewContext('({'+methods.replace('\nassignLightOnlyData',',\nassignLightOnlyData')+'})',
@@ -69,8 +72,87 @@ function liquidFixture(existing=false,meshKey='eK',materialName='terrain-alpha-1
   assert(record,'current chunk upload must remain registered for 3D preparation');
   shader.flushWaterGeometry(16);
   return {shader,chunk,manager,scene,noa,native,component,mesh:chunk[meshKey][0],clock:value=>{now=value;},
-    reads,overrideBlocks:value=>blockOverride=value};
+    reads,nativeUpload,overrideBlocks:value=>blockOverride=value};
 }
+
+test('Mixed lava/water terrain remains valid under the actual shared native quad index buffer',()=>{
+  const {mesh,shader,native}=liquidFixture();
+  const count=mesh.getTotalVertices(),indices=mesh.geometry._indices;
+  assert.equal(count%4,0,'every surface cell has four consecutive native vertices');
+  assert.equal(indices.length,count/4*6);
+  assert(Array.from(indices).every(i=>i<count),'native indices must never read into another face or past the vertex buffer');
+  for(let triangle=0;triangle<indices.length;triangle+=3){
+    const ids=Array.from(indices.slice(triangle,triangle+3));assert.equal(new Set(ids.map(i=>Math.floor(i/4))).size,1,'triangles cannot bridge distinct surface cells');
+    const y=ids.map(i=>mesh.data.position[i*3+1]);assert.equal(Math.max(...y),Math.min(...y));
+  }
+  const original=shader.unpackLiquidGeometry(native);
+  for(const [attribute,field,stride]of [['position','positions',3],['normal','normals',3],['color','colors',4],['uv','uvs',2],['texAtlasIndices','indicesAcrossAtlasArr',1]])
+    assert.deepEqual(Array.from(mesh.data[attribute].slice(-4*stride)),Array.from(original[field].slice(-4*stride)),'ordinary terrain attributes stay exact: '+attribute);
+  assert.deepEqual(Array.from(mesh.data.aPackedLightLevels.slice(-4)),Array.from(native.JK.slice(-4)));
+});
+
+test('Mixed lava uploads preserve both native material-flag bytes and all solid packed vertex bytes',()=>{
+ const {shader,chunk,mesh,native}=liquidFixture(),bytes=new Uint8Array(native.vertices);
+ for(let vertex=0;vertex<12;vertex++){bytes[vertex*32+15]=0x83;bytes[vertex*32+19]=0xa6;}
+ shader.applyWaterGeometry(shader.waterMeshRecords.get(chunk));
+ for(let vertex=0;vertex<mesh.packedBytes.length/32;vertex++){
+  assert.equal(mesh.packedBytes[vertex*32+15],0x83,'upper flags survive tessellation');
+  assert.equal(mesh.packedBytes[vertex*32+19],0xa6,'lower flags are discrete, never interpolated alpha');
+ }
+ assert.deepEqual(mesh.packedBytes.slice(-128),bytes.slice(-128),'ordinary terrain retains every byte');
+});
+
+test('Disabled wave styles cannot continuously requeue already prepared liquid chunks',()=>{
+ const {shader,chunk,noa,clock}=liquidFixture();shader.state.waterEnabled=false;shader.state.lavaEnabled=false;
+ const record=shader.waterMeshRecords.get(chunk);shader.applyWaterGeometry(record);
+ assert.equal(record.active,false);const mappings=record.mappings;
+ for(let i=1;i<=4;i++){clock(i*1000);shader.maintainWaterGeometry(noa);shader.flushWaterGeometry(64);}
+ assert.equal(record.mappings,mappings,'an unchanged disabled style does no repeated geometry preparation');
+});
+
+test('The saved native in-place rewrite keeps the subdivided chunk on its canonical index buffer',()=>{
+  const {mesh,nativeUpload}=liquidFixture(),count=mesh.getTotalVertices(),bytes=new ArrayBuffer(count*32),lights=new Float32Array(count).fill(0x7123),updates=[];
+  const wrapper={updateDirectly:value=>updates.push(value.byteLength)};
+  const vertex={byteStride:32,isUpdatable:()=>true,getBuffer:()=>({Ui:bytes.byteLength}),getWrapperBuffer:()=>wrapper};
+  const light={isUpdatable:()=>true,getBuffer:()=>({Ui:lights.byteLength}),updateDirectly:value=>updates.push(value.byteLength)};
+  mesh.getVertexBuffer=kind=>kind==='aPackedLightLevels'?light:vertex;mesh._createGlobalSubMesh=()=>{};
+  const ignored=new Uint32Array(count/4*6).fill(0xffffffff);
+  assert.equal(nativeUpload.rewriteChunkBuffers.call({},mesh,bytes,32,count,ignored,lights),true);
+  assert.equal(mesh.geometry._indices.length,count/4*6);assert(Array.from(mesh.geometry._indices).every(index=>index<count));
+  assert.equal(updates.length,2,'native packed vertex and light uploads both execute');
+});
+
+test('Native face orientations retain triangle area and winding after wave tessellation',()=>{
+  const shader=shaderRuntime(),native=require('./shader-quad-upload-fixture.cjs').nativeQuadUpload();
+  const area=(positions,indices)=>{const sum=[0,0,0];for(let i=0;i<indices.length;i+=3){const points=Array.from(indices.slice(i,i+3),index=>Array.from(positions.slice(index*3,index*3+3))),a=points[1].map((v,j)=>v-points[0][j]),b=points[2].map((v,j)=>v-points[0][j]);sum[0]+=a[1]*b[2]-a[2]*b[1];sum[1]+=a[2]*b[0]-a[0]*b[2];sum[2]+=a[0]*b[1]-a[1]*b[0];}return sum;};
+  for(let face=0;face<6;face++)for(let diagonal=0;diagonal<2;diagonal++){
+    const positions=new Float32Array([0,1,0,2,1,0,2,1,2,0,1,2]),normals=new Float32Array([0,1,0,0,1,0,0,1,0,0,1,0]);
+    native.orient(positions,0,3,face,diagonal);
+    const indices=native.fill(new Uint32Array(6),1),before=positions.slice();
+    const built=shader.subdivideWaterData({positions,normals,indices},()=>true,()=>true,.5);assert(built);
+    const actual=native.fill(new Uint32Array(built.data.positions.length/3/4*6),built.data.positions.length/3/4);
+    assert.deepEqual(Array.from(built.data.indices),Array.from(actual));
+    assert.deepEqual(area(built.data.positions,actual),area(positions,indices));assert.deepEqual(positions,before,'native input is never mutated');
+  }
+});
+
+test('Disabled liquids keep their native faces and switching both effects Off restores the complete native chunk',()=>{
+  const {shader,chunk,noa,mesh}=liquidFixture();const record=shader.waterMeshRecords.get(chunk),before=shader.waterGeometrySignature(noa);
+  shader.state.waterEnabled=false;assert.notEqual(shader.waterGeometrySignature(noa),before);shader.applyWaterGeometry(record);
+  assert.equal(mesh.getTotalVertices(),72,'four native water vertices, 64 lava vertices and four stone vertices');
+  const next=shader.waterGeometrySignature(noa);shader.state.lavaEnabled=false;assert.notEqual(shader.waterGeometrySignature(noa),next);shader.applyWaterGeometry(record);
+  assert.equal(mesh.getTotalVertices(),12);assert.equal(mesh.geometry._indices.length,18);
+  shader.state.waterEnabled=true;shader.applyWaterGeometry(record);assert.equal(mesh.getTotalVertices(),72);
+  assert(Array.from(mesh.geometry._indices).every(i=>i<mesh.getTotalVertices()));
+});
+
+test('Unsupported liquid topology, incomplete attributes and invalid spacing return native geometry without mutation',()=>{
+  const {subdivideWaterData}=shaderRuntime(),make=()=>({positions:new Float32Array([0,1,0,1,1,0,1,1,1,0,1,1]),normals:new Float32Array([0,1,0,0,1,0,0,1,0,0,1,0]),indices:new Uint32Array([0,1,2,0,2,3])});
+  for(const change of [d=>{d.indices[0]=4;},d=>{d.normals=new Float32Array(3);},d=>{d.uvs=new Float32Array(3);},d=>{d.positions[0]=NaN;}]){
+    const data=make();change(data);const before=structuredClone(data);assert.equal(subdivideWaterData(data,()=>true),null);assert.deepEqual(data,before);
+  }
+  for(const spacing of [0,-1,Infinity,NaN])assert.equal(subdivideWaterData(make(),()=>true,null,spacing),null);
+});
 
 test('Liquid preparation reads each cached voxel once and refreshes all values on the next upload',()=>{
   const {shader,chunk,mesh,reads,overrideBlocks}=liquidFixture();
@@ -95,7 +177,7 @@ test('Native chunk edits remain synchronous while optional wave preparation is q
 
 test('Shader Off restores native geometry and bypasses future liquid preparation',()=>{
   const {shader,manager,chunk,noa,native,mesh,reads}=liquidFixture();
-  assert.equal(mesh.getTotalVertices(),54);shader.state.enabled=false;
+  assert.equal(mesh.getTotalVertices(),132);shader.state.enabled=false;
   shader.maintainWaterGeometry(noa);shader.flushWaterGeometry(32);
   assert.equal(mesh.getTotalVertices(),12);assert.equal(shader.waterMeshRecords.size,0);
   reads.clear();manager.assignMeshDataToChunk(chunk,[native]);shader.maintainWaterGeometry(noa);shader.flushWaterGeometry(48);
@@ -106,7 +188,7 @@ test('Shader Off restores native geometry and bypasses future liquid preparation
   assert.equal(mesh.data.aBvfxWaterEdge.length,72,'inactive compiled attributes must still cover every native vertex');
   manager.assignMeshDataToChunk(chunk,[native]);
   shader.state.enabled=true;shader.maintainWaterGeometry(noa);shader.flushWaterGeometry(64);
-  assert.equal(mesh.getTotalVertices(),54,'re-enabling safely adopts existing native chunks');
+  assert.equal(mesh.getTotalVertices(),132,'re-enabling safely adopts existing native chunks');
 });
 
 test('Today\'s native mesh builder exposes exact packed-light and chunk-label fields',()=>{
@@ -126,29 +208,60 @@ test('Today\'s native mesh builder exposes exact packed-light and chunk-label fi
 test('Current packed chunk uploads gain 3D water/lava vertices and stable lava texture identity',()=>{
   for(const key of ['eK','renamedMeshes']){
     const {mesh}=liquidFixture(false,key);
-    assert.equal(mesh.getTotalVertices(),54); // 25 water, 25 lava, 4 ordinary block.
+    assert.equal(mesh.getTotalVertices(),132); // 16 water quads, 16 lava quads, one ordinary face.
     const kinds=mesh.data.aBvfxLiquidKind;
-    assert(kinds.slice(0,25).every(x=>x===1));assert(kinds.slice(25,50).every(x=>x===2));
-    assert(kinds.slice(50).every(x=>x===3),'shared animated atlas zero must not paint stone as lava');
-    assert(mesh.data.aBvfxWaterEdge[12*3]>0,'water interior must move vertically');
-    assert(mesh.data.aBvfxWaterEdge[37*3]>0,'lava interior must move vertically');
+    assert(kinds.slice(0,64).every(x=>x===1));assert(kinds.slice(64,128).every(x=>x===2));
+    assert(kinds.slice(128).every(x=>x===3),'shared animated atlas zero must not paint stone as lava');
+    assert(mesh.data.aBvfxWaterEdge[22*3]>0,'water interior must move vertically');
+    assert(mesh.data.aBvfxWaterEdge[86*3]>0,'lava interior must move vertically');
     assert.equal(mesh.data.aBvfxWaterEdge[0],0,'shore stays attached to the bank');
-    assert.equal(mesh.data.aPackedLightLevels.length,54);
+    assert.equal(mesh.data.aPackedLightLevels.length,132);
   }
+});
+
+test('Generated live-upload wrapper expands the current Uint16 light field before lava interpolation and keeps light-only updates',()=>{
+ const {shader,manager,chunk,mesh,native}=liquidFixture(),current=require('./fixtures/shader-face-groups-2026-11-12.json');
+ manager.meshBuilder.assignMeshData.toString=()=>current.meshBuilder;
+ const entry={...native,Uf:new Uint16Array(12).fill(0x7123)};delete entry.JK;
+ manager.assignMeshDataToChunk(chunk,[entry]);
+ const record=shader.waterMeshRecords.get(chunk);
+ assert(record.native[0].Uf instanceof Float32Array,'the generated wrapper must retain the field the native builder actually reads');
+ assert(entry.Uf instanceof Uint16Array,'native worker input stays untouched');
+ shader.flushWaterGeometry(16);assert.equal(mesh.getTotalVertices(),132);
+ assert(mesh.data.aPackedLightLevels.every(v=>v===0x7123));
+ assert(manager.assignLightOnlyData(chunk,[new Uint16Array(12).fill(0x8234)]));
+ assert(mesh.data.aPackedLightLevels.every(v=>v===0x8234));
+ shader.state.waterStyle='flat';shader.state.lavaStyle='flat';shader.applyWaterGeometry(record);
+ assert.equal(mesh.getTotalVertices(),12);assert(mesh.data.aPackedLightLevels.every(v=>v===0x8234));
+});
+
+test('Current native material access keeps 200 solid chunks out of liquid preparation without voxel reads',()=>{
+ const {shader,manager,chunk,mesh,native,reads}=liquidFixture(false,'eK','terrain-textured-19');
+ const current=require('./fixtures/shader-face-groups-2026-11-12.json');let discoveries=0;
+ manager.meshBuilder.assignMeshData.toString=()=>{discoveries++;return current.meshBuilder;};
+ manager.terrainMatManager={Ef:()=>mesh.material};
+ manager.YK.Fn.iY=()=>{};
+ const solid={...native,Uf:new Uint16Array(12).fill(0x7123),vertices:native.vertices.slice(0)};delete solid.JK;
+ const bytes=new DataView(solid.vertices);for(let i=0;i<12;i++)bytes.setFloat32(i*32+28,41,true);
+ reads.clear();manager.assignMeshDataToChunk(chunk,[solid]);
+ for(let i=0;i<200;i++)manager.assignMeshDataToChunk({...chunk,eK:[],pos:[(i+1)*16,0,0]},[solid]);
+ assert.equal(shader.waterMeshRecords.size,0,'ordinary chunks must not wait in a recurring liquid-work queue');
+ assert.equal(reads.size,0,'solid uploads do not traverse the voxel world');
+ assert.equal(discoveries,1,'recover the exact native accessor once per builder');
 });
 
 test('Balanced liquid meshes retain waves and voxel identity using fewer vertices than Quality',()=>{
   const balanced=liquidFixture(false,'eK','terrain-alpha-19','balanced'),quality=liquidFixture();
-  assert.equal(balanced.mesh.getTotalVertices(),22);assert.equal(quality.mesh.getTotalVertices(),54);
-  assert(balanced.mesh.data.aBvfxLiquidKind.slice(0,9).every(x=>x===1));
-  assert(balanced.mesh.data.aBvfxLiquidKind.slice(9,18).every(x=>x===2));
+  assert.equal(balanced.mesh.getTotalVertices(),36);assert.equal(quality.mesh.getTotalVertices(),132);
+  assert(balanced.mesh.data.aBvfxLiquidKind.slice(0,16).every(x=>x===1));
+  assert(balanced.mesh.data.aBvfxLiquidKind.slice(16,32).every(x=>x===2));
   assert(balanced.mesh.data.aBvfxWaterEdge.some(x=>x>0));
-  assert.equal(balanced.mesh.data.aPackedLightLevels.length,22);
+  assert.equal(balanced.mesh.data.aPackedLightLevels.length,36);
 });
 
 test('Already loaded liquid chunks are adopted with native packed lighting and safe style rebuilds',()=>{
   const {shader,chunk,noa,manager,mesh}=liquidFixture(true);
-  assert.equal(mesh.getTotalVertices(),54);
+  assert.equal(mesh.getTotalVertices(),132);
   assert(manager.assignLightOnlyData(chunk,[new Float32Array(12).fill(0x7123)]));
   assert(mesh.data.aPackedLightLevels.every(value=>value===0x7123));
   shader.state.waterStyle='flat';shader.state.lavaStyle='flat';shader.maintainWaterGeometry(noa);
@@ -156,7 +269,7 @@ test('Already loaded liquid chunks are adopted with native packed lighting and s
   assert.equal(mesh.getTotalVertices(),12);assert(mesh.data.aPackedLightLevels.every(value=>value===0x7123));
   assert.equal(mesh.data.aBvfxLiquidKind[4],2,'custom lava texture remains available in flat mode');
   shader.state.waterStyle='wavey';shader.state.lavaStyle='wavey';shader.maintainWaterGeometry(noa);
-  shader.applyWaterGeometry(shader.waterMeshRecords.get(chunk));assert.equal(mesh.getTotalVertices(),54);
+  shader.applyWaterGeometry(shader.waterMeshRecords.get(chunk));assert.equal(mesh.getTotalVertices(),132);
   const signature=shader.waterGeometrySignature(noa);shader.state.lavaPhysics=false;
   assert.notEqual(shader.waterGeometrySignature(noa),signature);
 });
@@ -164,8 +277,8 @@ test('Already loaded liquid chunks are adopted with native packed lighting and s
 test('Opaque animated atlas zero gets a liquid shader before frame metadata arrives; stone keeps its native identity',()=>{
   const {shader,mesh,noa,chunk}=liquidFixture(true,'eK','terrain-textured-19');
   assert.equal(shader.waterShaderState.count,0);assert.equal(shader.lavaShaderState.count,0);
-  assert.equal(mesh.getTotalVertices(),54);assert.equal(mesh.data.aBvfxLiquidKind[25],2);
-  assert.equal(mesh.data.aBvfxLiquidKind[50],3);
+  assert.equal(mesh.getTotalVertices(),132);assert.equal(mesh.data.aBvfxLiquidKind[64],2);
+  assert.equal(mesh.data.aBvfxLiquidKind[128],3);
   const attributes=[],defines={toString:()=>''};
   mesh.material.customShaderNameResolve('default',[],[],[],defines,attributes);
   assert(defines.toString().includes('#define BVFX_WATER_GEOMETRY'));

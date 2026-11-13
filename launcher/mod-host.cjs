@@ -11,8 +11,16 @@ module.exports=function installModHost(profile){
     // the actual singleton object; it never changes the game or its exports.
     else if(!engine&&descriptor?.get&&/^\(\)=>[\w$]+$/.test(String(descriptor.get)))queueMicrotask(()=>{
       if(stopped||engine)return;
-      try{const value=descriptor.get(),fields=Object.getOwnPropertyDescriptors(value||{});
-        if(!['itemsClient','blocksClient','bloxd','connectedWebsocketUrl','pointerLockWrapper'].every(name=>fields[name]&&'value'in fields[name]))return;
+      try{const value=descriptor.get();
+        if(!value || typeof value!=='object' || Array.isArray(value))return;
+        // Public builds split network/pointer state out of the singleton.
+        // Match either observed schema using own data fields only. Do not
+        // enumerate unrelated exported arrays, typed arrays or huge tables.
+        const owns=name=>{const field=Object.getOwnPropertyDescriptor(value,name);return field&&'value'in field;};
+        if(!['itemsClient','blocksClient','bloxd'].every(owns))return;
+        const legacy=['connectedWebsocketUrl','pointerLockWrapper'].every(owns);
+        const split=['nonBlocksClient','localPlayerPickActionHelper','drawCallDebugEntries'].every(owns);
+        if(!legacy&&!split)return;
         publishEngine(Object.freeze({singletons:value,getBloxd:()=>value.bloxd}));
       }catch{/* TDZ and unrelated exports are not an engine. */}
     });

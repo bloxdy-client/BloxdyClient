@@ -1,0 +1,231 @@
+{
+  "1.6.9": {
+    "bugs": [
+      "Shaders and Litematica are currently unusable."
+    ]
+  },
+  "1.6.5": {
+    "added": [
+      "Native-style Zoomer settings with adjustable wheel smoothing and updated defaults."
+    ],
+    "fixed": [
+      "Zoom transitions finish at the configured time, including high magnification."
+    ]
+  },
+  "1.6.4": {
+    "fixed": [
+      "Updated 3D character texture and armour-color synchronization. Join a world to refresh previously saved models."
+    ]
+  },
+  "1.6.3": {
+    "fixed": [
+      "Connected Zoomer to the camera used by the current Bloxd renderers."
+    ]
+  },
+  "1.6.2": {
+    "fixed": [
+      "Page-load errors show a connection screen with Retry and F5 instead of a blank window."
+    ]
+  },
+  "1.6.1": {
+    "fixed": [
+      "Zoom preserves normal field-of-view changes and resets on focus loss.",
+      "Updated character geometry capture for current game models."
+    ]
+  },
+  "1.6.0": {
+    "fixed": [
+      "Releasing V restores the normal camera; wheel steps accumulate correctly."
+    ],
+    "added": [
+      "Zoom magnification can reach 100×."
+    ]
+  },
+  "1.5.9": {
+    "added": [
+      "Zoomer: hold V, wheel magnification, look-speed and transition controls.",
+      "Factory Buffer Reuse: skips identical graphics uploads. FPS gains unmeasured."
+    ]
+  },
+  "1.5.8": {
+    "fixed": [
+      "Separated hard-shadow and smoothed-shadow variants to address shadow switching issues."
+    ],
+    "bugs": [
+      "Reported severe lag with shadow smoothing disabled; live resolution unconfirmed."
+    ]
+  },
+  "1.5.7": {
+    "fixed": [
+      "Reworked shadow refresh scheduling and cache updates."
+    ],
+    "bugs": [
+      "Shader lag and graphical glitches remained under investigation."
+    ]
+  },
+  "1.5.6": {
+    "fixed": [
+      "Account portraits center the visible head and accessories instead of transparent model areas."
+    ]
+  },
+  "1.5.5": {
+    "fixed": [
+      "Larger account portraits with improved head and accessory centering."
+    ]
+  },
+  "1.5.4": {
+    "fixed": [
+      "Account head previews retain their layout while loading and recognize accessory prefixes."
+    ]
+  },
+  "1.5.3": {
+    "fixed": [
+      "Removed automatic image-quality reduction. Reused unchanged terrain and shadow data."
+    ],
+    "bugs": [
+      "Shader performance and appearance still required in-game verification."
+    ]
+  },
+  "1.5.2": {
+    "added": [
+      "Adaptive shader quality, later removed in 1.5.3."
+    ]
+  },
+  "1.5.1": {
+    "fixed": [
+      "Turning shaders off restores native effects and lighting."
+    ],
+    "added": [
+      "F9 shader diagnostics."
+    ]
+  },
+  "1.5.0": {
+    "fixed": [
+      "Updated shader terrain, liquid and lighting integration for current Bloxd sources."
+    ],
+    "bugs": [
+      "Shaders were reported glitchy and unplayable; visible fixes remained unverified."
+    ]
+  },
+  "1.4.9": {
+    "fixed": [
+      "Grass contact follows one smooth deformation per player or mob and gradually recovers."
+    ]
+  },
+  "1.4.8": {
+    "fixed": [
+      "Grass contact takes priority over wind and reacts beneath stationary entities."
+    ]
+  },
+  "1.4.7": {
+    "fixed": [
+      "Smoother grass contact trails, updated player-foot positions, and improved thin-plant handling."
+    ]
+  },
+  "1.4.6": {
+    "added": [
+      "GPU grass wind and contact animation with support for compatible thin plants."
+    ]
+  },
+  "1.4.5": {
+    "fixed": [
+      "Reduced grass grid patterns and corrected Realistic-style custom colors."
+    ]
+  },
+  "1.4.4": {
+    "fixed": [
+      "Registered custom grass with the native scene selection. Visible behavior required user verification."
+    ]
+  },
+  "1.4.3": {
+    "added": [
+      "Flat, Round and Realistic grass; density up to 1000 blades per block and adjustable wind."
+    ]
+  },
+  "1.4.2": {
+    "added": [
+      "Grass thickness, greater density, and grouped terrain tiles without a fixed total blade cap."
+    ]
+  },
+  "1.4.1": {
+    "fixed": [
+      "Grassify selects the supported WebGL2 renderer and explains when rejoining is required."
+    ]
+  },
+  "1.4.0": {
+    "fixed": [
+      "Updated Shader and Litematica engine detection and native settings styling."
+    ],
+    "bugs": [
+      "Live shader and schematic rendering remained unverified."
+    ]
+  },
+  "1.3.9": {
+    "added": [
+      "Experimental native renderer work on two-pass resource ownership and cleanup. Production support remained incomplete."
+    ]
+  },
+  "1.3.7": {
+    "fixed": [
+      "Handles the known English Skip AD dialog and muted media inside recognized ad containers."
+    ]
+  },
+  "1.3.6": {
+    "fixed": [
+      "Grassify engine detection also recognizes engines inside the client."
+    ]
+  },
+  "1.3.5": {
+    "added": [
+      "Earlier Grassify engine and settings integration."
+    ]
+  },
+  "1.3.3": {
+    "added": [
+      "3D head portraits on account cards."
+    ],
+    "fixed": [
+      "Newly installed mods activate in the selected profile."
+    ]
+  },
+  "1.3.2": {
+    "fixed": [
+      "Windows updates refresh the icon used by existing shortcuts."
+    ]
+  },
+  "1.3.1": {
+    "added": [
+      "New Bloxdy mascot icon across the launcher, game window and Windows installers."
+    ]
+  },
+  "1.3.0": {
+    "fixed": [
+      "Corrected the historical 1.2.10 version label to 1.3.0."
+    ]
+  },
+  "1.2.10": {
+    "fixed": [
+      "Historical label for the Grassify update subsequently delivered as 1.3.0."
+    ]
+  },
+  "1.2.9": {
+    "fixed": [
+      "Grassify settings updated to match native Bloxd controls."
+    ]
+  },
+  "1.2.8": {
+    "added": [
+      "Grassify with configurable grass, color, wind, render distance and contact behavior."
+    ]
+  },
+  "1.2.3": {
+    "added": [
+      "Version-series correction: the former 0.6.63 feature state continued as 1.2.3."
+    ]
+  },
+  "0.6.63": {
+    "added": [
+      "Experimental internal shader-loader uniform uploads. Full shaderpack compatibility remained incomplete."
+    ]
+  }
+}

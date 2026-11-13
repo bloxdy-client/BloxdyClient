@@ -9,6 +9,11 @@ function createChunkShadowCache(){
     && a.material===b.material && same(a.textures,b.textures) && same(a.world,b.world) && same(a.rect,b.rect);
   return {
     clear(){maps.clear();},has:key=>maps.has(key),
+    needsAnimation(key,revision){
+      for(const caster of maps.get(key)?.snapshot?.values()||[])
+        if(caster.animationData && revision(caster.animationData)!==caster.animationValue)return true;
+      return false;
+    },
     plan(key,projection,size,casters,force=false){
       const previous=maps.get(key),snapshot=new Map(casters.map(c=>[c.mesh,c]));
       let full=force || !previous || previous.size!==size || !same(previous.projection,projection) || casters.some(c=>c.unsafe);
@@ -71,7 +76,33 @@ function renderChunkPass(passMatrix,fbo,size,coverageRadius,items,clearDepth=tru
     if(mesh.isDisposed?.())continue;
     if(casterRejection(mesh,false))continue;
     if(!mesh.metadata?.noa_chunk_terrain_mesh){
-      casters.push({mesh,unsafe:true,entry});continue;
+      // Static object batches (trees, rocks, furniture) used to invalidate
+      // every terrain map merely by existing. Snapshot their actual enabled
+      // transforms and cutout state, including changes made in-place.
+      const mask=cutoutSource(gl,mesh),data=mask===false?null:geometry(gl,mesh,mask?.kind),wm=world(mesh);
+      if(!data?.staticReady||!data.bounds?.every(Number.isFinite)||!wm?.every(Number.isFinite)){
+        casters.push({mesh,unsafe:true,entry});continue;
+      }
+      const batch=registry.batches.get(mesh),thin=mesh._thinInstanceDataStorage;
+      const instances=shadowBatchMatrices(batch,mesh),snapshot=Array.from(wm);
+      let rect=null,unsafe=false;
+      const include=transform=>{
+        if(!transform.every(Number.isFinite)){unsafe=true;return;}
+        const bounds=projectShadowBounds(data.bounds,transform,passMatrix,size);
+        if(bounds===undefined){unsafe=true;return;}if(!bounds)return;
+        rect=rect?[Math.min(rect[0],bounds[0]),Math.min(rect[1],bounds[1]),Math.max(rect[2],bounds[2]),Math.max(rect[3],bounds[3])]:bounds;
+        snapshot.push(...transform);
+      };
+      if(instances){
+        const count=Math.min(batch?.numEnabled??thin?.instancesCount??0,Math.floor(instances.length/16));
+        for(let i=0;i<count;i++)include(multiply(wm,instances,undefined,i*16));
+      }else include(wm);
+      const animationValue=root.__BVFX_SURFACES__?.leafGeometryRevision(data)||0;
+      casters.push({mesh,entry,rect,unsafe,world:snapshot,revision:String(terrainRevisions.get(mesh)||0)+':'+animationValue,
+        animationData:data,animationValue,
+        geometry:data.positions,indices:data.indexSource,material:mesh.material,
+        textures:[mask?.cutoff,...(mask?.layers?.flatMap(layer=>[layer.texture,layer.first,layer.count])||[])]});
+      continue;
     }
     const frame=terrainFrame(mesh),sphere=frame.bounds;
     if(sphere?.centerWorld && Number.isFinite(sphere.radiusWorld)){
@@ -85,16 +116,17 @@ function renderChunkPass(passMatrix,fbo,size,coverageRadius,items,clearDepth=tru
     const rect=projectShadowBounds(data.bounds,frame.wm,passMatrix,size);
     if(rect===undefined){pending=true;break;}
     casters.push({mesh,entry,rect,world:Array.from(frame.wm),revision:terrainRevisions.get(mesh.sourceMesh || mesh)||0,
+      animationData:data,animationValue:root.__BVFX_SURFACES__?.leafGeometryRevision(data)||0,
       geometry:data.positions,indices:data.indexSource,material:mesh.material,
       textures:frame.mask?.layers?.map(layer=>layer.texture) || []});
   }
-  if(pending){chunkRegions.clear();return renderFullPass(passMatrix,fbo,size,coverageRadius,items,clearDepth);}
+  if(pending){chunkRegions.clear();return {...renderFullPass(passMatrix,fbo,size,coverageRadius,items,clearDepth),retainedProjection:retain};}
   const plan=chunkRegions.plan(kind,passMatrix,size,casters,!retain);
   if(plan.full){
     const result=renderFullPass(passMatrix,fbo,size,coverageRadius,items,clearDepth);
     if(result.updated && !result.pending)chunkRegions.commit(plan);
     else if(!items.length)chunkRegions.clear();
-    return result;
+    return {...result,retainedProjection:retain};
   }
   const result={count:resources[kind==='far'?'farCount':kind+'Count']||0,drawCalls:0,input:items.length,rejected:{},updated:true,pending:false,retainedProjection:true};
   if(plan.region){
@@ -126,7 +158,11 @@ function adaptChunkShadows(name,source){
   const schedulingStart=source.indexOf('      if((staticChanged || cycle) && !changed) {');
   const schedulingEnd=source.indexOf('      // Keep the own first-person shadow',schedulingStart);
   if(schedulingStart<0 || schedulingEnd<0)throw Error('Shadow cascade scheduling mismatch.');
-  source=source.slice(0,schedulingStart)+`      const scheduled=scheduleShadowCascades(resources,now,q.interval,
+  source=source.slice(0,schedulingStart)+`      const leafRevision=data=>root.__BVFX_SURFACES__?.leafGeometryRevision(data)||0;
+      farDue=farDue||chunkRegions.needsAnimation('far',leafRevision);
+      localDue=localDue||chunkRegions.needsAnimation('local',leafRevision);
+      detailDue=detailDue||chunkRegions.needsAnimation('detail',leafRevision);
+      const scheduled=scheduleShadowCascades(resources,now,q.interval,
         {far:farDue,local:localDue,detail:detailDue},changed);
       farDue=scheduled.far;localDue=scheduled.local;detailDue=scheduled.detail;
 `+source.slice(schedulingEnd);

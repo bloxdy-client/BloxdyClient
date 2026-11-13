@@ -1,7 +1,8 @@
 'use strict';
 // Serialized into MAIN. Only the mod's own material, attributes and uniforms.
 function installGrassGpu(material,onError){
-  if(!('customShaderNameResolve' in material)||!material.onBindObservable?.add||!material.onBindObservable?.remove)return null;
+  const nativeFactory=globalThis.__BVFX_NATIVE_GRASS_FACTORY__;
+  if(!(nativeFactory&&material?.model)&&(!('customShaderNameResolve' in material)||!material.onBindObservable?.add||!material.onBindObservable?.remove))return null;
   const previousError=material.onError;material.onError=(_effect,message)=>{if(!disposed)onError(Error('Grass shader failed: '+String(message).slice(0,300)));};
   const tiles=new WeakMap(),current=new Float32Array(128),previous=new Float32Array(128),weights=new Float32Array(128);
   const tracks=new Map();let frameTime=null;
@@ -53,6 +54,9 @@ vec2 gDirection=mix(vec2(cos(grassShape.y*31.4),sin(grassShape.y*31.4)),gBend/ma
 positionUpdated.xz+=mix(gBend*gFlex,gDirection*gArcX,gArcMix);
 positionUpdated.y+=mix(-gDrop*gFlex,gArcY-grassRoot.w*gF,gArcMix);
 `;
+  if(nativeFactory&&material.model){const native=nativeFactory(material,{frame,contacts:()=>contacts,snapshot:()=>({phase,wind,now})},onError);
+    if(native){const release=native.dispose;native.dispose=()=>{if(disposed)return;disposed=true;release();material.onError=previousError;contacts=[];tracks.clear();};}return native;
+  }
   material.customShaderNameResolve=(name,uniforms,_buffers,_samplers,defines,attributes,options)=>{
     if(disposed)return name;
     // Defines participate in native effect caching; never reuse another material's shader.

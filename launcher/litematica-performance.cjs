@@ -157,6 +157,6 @@ ${maintenance}
   edit("'captureUV','outlineWidth'", "'captureUV','depthEpsilon','outlineWidth'");
   edit('gl.uniform4fv(uniform.captureUV,target.captureUV);', 'gl.uniform4fv(uniform.captureUV,target.captureUV);gl.uniform1f(uniform.depthEpsilon,target.bits===16?2/65535:target.bits===32?4/16777216:2/16777215);');
  }
- return adaptLitematicaDirect(name,adaptLitematicaPlacement(name,source));
+ return require('./litematica-native-adapter.cjs').adaptNativeLitematica(name,adaptLitematicaDirect(name,adaptLitematicaPlacement(name,source)));
 }
 module.exports={adaptLitematicaPerformance};

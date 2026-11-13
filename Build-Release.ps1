@@ -26,10 +26,11 @@ try {
     }
     $releaseVersion = (Get-Content -LiteralPath (Join-Path $PSScriptRoot 'package.json') -Raw | ConvertFrom-Json).version
     & (Join-Path $PSScriptRoot 'Build-Launcher.ps1')
-    & (Join-Path $PSScriptRoot 'Build.ps1') -BuildDirectory (Join-Path $PSScriptRoot 'build-release')
     & npm.cmd run build:viewer
     if ($LASTEXITCODE -ne 0) { throw '3D-Viewer-Build fehlgeschlagen.' }
     & npm.cmd run dist:windows -- "--config.directories.output=dist-bloxdy-v$releaseVersion"
     if ($LASTEXITCODE -ne 0) { throw 'Windows-Paketierung fehlgeschlagen.' }
+    & node (Join-Path $PSScriptRoot 'launcher/release-update.cjs') "dist-bloxdy-v$releaseVersion"
+    if ($LASTEXITCODE -ne 0) { throw 'Update-Metadaten konnten nicht erstellt werden.' }
 } finally { Pop-Location }
 # Builds and packages only; never launches the installer, launcher or game.

@@ -21,6 +21,7 @@
 /sites/*.tar
 /sites/**/dist/
 /sites/
+/website/dist/
 /launcher/catalog/*.bnmod
 /launcher/assets/texture-packs/
 /launcher/assets/draco/
@@ -43,3 +44,12 @@
 /Start-Launcher.cmd
 /Start-Bridge.ps1
 /Start-Bridge.cmd
+
+/website/.dev.vars
+/website/.wrangler/
+/.codex/
+/.impeccable/
+/DESIGN.md
+/PRODUCT.md
+/website/assets/*.png
+/website/assets/*.jpg

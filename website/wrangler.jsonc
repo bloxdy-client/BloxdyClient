@@ -1,0 +1,9 @@
+{
+  "name": "rsfire",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-05",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  }
+}

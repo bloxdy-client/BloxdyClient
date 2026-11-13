@@ -10,9 +10,11 @@ const {adaptChunkShadows}=require('./shader-chunk-cache.cjs');
 const originals={
   'bootstrap.js':'0330ee87a8605390031c48d6cdfe14df3e30a71ea5dbf14bf02a2563897026f9',
   'runtime.js':'4ed84a1d415de43cbc74548139c7a6a2c02f9aee8c54f62be39ca9921df820c1',
+  'liquid-shaders.js':'a794da3d6b9000ea2f246a6e1aa8ebe995fe5eb0d7ec40e64692565215e68534',
   'ore-lighting.js':'700a0ff8af8d269de8b9b1d1e50b8995968880027a74fce514dd1d46226b0dd4',
   'shader.js':'918218a4e71f9e235f17c43e1780b743f280e4c63ad538ecc2f471d28164df22',
   'atmosphere.js':'a5ab14188c5cd4b90539f06d772f231a8f80bcd54354736803a84497712c1aae',
+  'day-night.js':'c98bf8bfd40bb70b18753cc3f497a312b975cce8535e4faa050197eb15e40cc1',
   'sun-shadows.js':'97780a398dcb5e549ef516fda9dc1ada527c0535cdc2262939876834bde98a85'
 };
 // Serialized at document start. All shader effects share one allocation per
@@ -379,6 +381,6 @@ function adaptShader(name,source){
     }
     function readGeometry(gl, mesh, maskKind=null) {`);
   }
-  return adaptChunkShadows(name,adaptShaderBudget(name,adaptShaderLifecycle(name,adaptShaderPerformance(name,adaptWorldShader(name,source)))));
+  return require('./shader-rebuild.cjs').rebuildShader(name,adaptChunkShadows(name,adaptShaderBudget(name,adaptShaderLifecycle(name,adaptShaderPerformance(name,adaptWorldShader(name,source))))));
 }
 module.exports={adaptShader,installShaderSamplers};

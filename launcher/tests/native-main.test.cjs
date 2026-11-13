@@ -18,40 +18,6 @@ async function harness(action='game',renderer='native-preview'){
     }};
   vm.runInNewContext(fs.readFileSync(path.join(dir,'main.cjs'),'utf8'),sandbox);await new Promise(resolve=>setImmediate(resolve));return {ipc,windows,transports,dialogs,writes,intervals};
 }
-test('native game requests embedded output and only its own main frame can fetch native pixels',async()=>{
-  const h=await harness(),window=h.windows[0];assert.equal(h.transports.length,1);assert.equal(h.transports[0].options.embedded,true);
-  const frame=h.ipc.get('native:frame'),own={sender:window.webContents,senderFrame:window.webContents.mainFrame};assert.equal(frame(own,7).sequence,8);
-  assert.throws(()=>frame({sender:window.webContents,senderFrame:{url:'https://bloxd.io'}},7),/not active/);assert.throws(()=>frame({sender:{},senderFrame:window.webContents.mainFrame},7),/not active/);
-});
-test('account-only windows never create native output or expose pixels',async()=>{
-  const h=await harness('account');assert.equal(h.transports.length,0);assert.throws(()=>h.ipc.get('native:frame')({sender:h.windows[0].webContents,senderFrame:h.windows[0].webContents.mainFrame},null),/not active/);
-});
-
-test('standard Bloxd mode never constructs the experimental native transport or exposes native pixels',async()=>{
-  const h=await harness('game','standard');assert.equal(h.transports.length,0);assert.throws(()=>h.ipc.get('native:frame')({sender:h.windows[0].webContents,senderFrame:h.windows[0].webContents.mainFrame},null),/not active/);
-});
-test('native diagnostics persist only bounded render fields and ignore unrelated page data',async()=>{
-  const h=await harness(),window=h.windows[0],send=h.ipc.get('native:status'),own={sender:window.webContents,senderFrame:window.webContents.mainFrame};
-  send(own,{phase:'streaming',meshes:10,error:'x'.repeat(300),source:{bodyText:'PRIVATE'},nativeReady:false,sourceDrawsSuppressed:false,activeMeshes:14,pendingMeshes:4,unsupportedMeshes:1,fallbackReason:'x'.repeat(300),presentation:{phase:'presenting',frames:4,token:'PRIVATE'}});
-  assert.equal(h.transports[0].captureStatus.meshes,10);assert.equal(h.transports[0].captureStatus.error.length,200);assert.equal(h.transports[0].captureStatus.presentation.frames,4);assert.doesNotMatch(JSON.stringify(h.transports[0].captureStatus),/PRIVATE/);
-  assert.equal(h.transports[0].captureStatus.nativeReady,false);assert.equal(h.transports[0].captureStatus.sourceDrawsSuppressed,false);assert.equal(h.transports[0].captureStatus.unsupportedMeshes,1);assert.equal(h.transports[0].captureStatus.fallbackReason.length,200);
-  send({sender:{},senderFrame:window.webContents.mainFrame},{phase:'error',meshes:99});assert.equal(h.transports[0].captureStatus.meshes,10);
-});
-
-test('F8 and saved F9 samples distinguish source cadence from a paused native renderer',async()=>{
-  const h=await harness(),window=h.windows[0],own={sender:window.webContents,senderFrame:window.webContents.mainFrame};
-  h.transports[0].status={fps:0};h.ipc.get('native:status')(own,{phase:'streaming',sourceFPS:72.5,sourceDrawsSuppressed:false,importEnabled:false,tickMs:.2,pendingMeshes:612,presentation:{phase:'source-fallback',frames:0}});
-  for(const fn of h.intervals)fn();window.webContents.emit('before-input-event',{preventDefault(){}},{type:'keyDown',key:'F8'});
-  assert.match(h.dialogs.at(-1).detail,/Renderer: source-fallback/);assert.match(h.dialogs.at(-1).detail,/Source engine FPS: 72\.5/);assert.doesNotMatch(h.dialogs.at(-1).detail,/Native render FPS/);
-  window.webContents.emit('before-input-event',{preventDefault(){}},{type:'keyDown',key:'F9'});
-  const saved=JSON.parse(h.writes.filter(w=>w.file.endsWith('client-updates.json.tmp')).at(-1).value).benchmark.samples.at(-1);
-  assert.equal(saved.nativeFPS,null);assert.equal(saved.renderer.sourceFPS,72.5);assert.equal(saved.renderer.mode,'source-fallback');assert.equal(saved.renderer.importEnabled,false);
-});
-
-test('F8 native FPS requires actual presentation ownership and invalid source FPS stays unavailable',async()=>{
-  const h=await harness(),window=h.windows[0],own={sender:window.webContents,senderFrame:window.webContents.mainFrame},send=h.ipc.get('native:status');
-  h.transports[0].status={fps:59.5};send(own,{phase:'streaming',sourceFPS:Infinity,sourceDrawsSuppressed:false,presentation:{phase:'source-fallback'}});
-  window.webContents.emit('before-input-event',{preventDefault(){}},{type:'keyDown',key:'F8'});assert.match(h.dialogs.at(-1).detail,/Source engine FPS: unavailable/);
-  send(own,{phase:'streaming',sourceFPS:72.5,sourceDrawsSuppressed:true,presentation:{phase:'presenting'}});
-  window.webContents.emit('before-input-event',{preventDefault(){}},{type:'keyDown',key:'F8'});assert.match(h.dialogs.at(-1).detail,/Native render FPS: 59\.5/);
+for(const renderer of ['standard','native-preview'])test(`Standard client uses Bloxd even for saved ${renderer} profiles`,async()=>{
+ const h=await harness('game',renderer),w=h.windows[0],own={sender:w.webContents,senderFrame:w.webContents.mainFrame};assert.equal(h.transports.length,0);assert.equal(w.webContents.mainFrame.url,'https://bloxd.io/?siteUsed=desktopMicrosoftStore');assert.throws(()=>h.ipc.get('native:frame')(own,null),/not active/);assert.throws(()=>h.ipc.get('native:packet')(own,new Uint8Array()),/not active/);h.ipc.get('native:status')(own,{phase:'streaming',sourceDrawsSuppressed:true});assert.equal(h.writes.some(x=>x.file.endsWith('capture-status.json')),false);
 });

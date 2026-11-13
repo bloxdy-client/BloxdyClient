@@ -1,0 +1,61 @@
+{
+  "planned": [
+    {
+      "id": 2,
+      "title": "Fix Shaders",
+      "status": "planned",
+      "tentative": false
+    },
+    {
+      "id": 3,
+      "title": "Fix Litematica",
+      "status": "planned",
+      "tentative": false
+    },
+    {
+      "id": 4,
+      "title": "Fix smaller issues across the client and mods",
+      "status": "planned",
+      "tentative": false
+    },
+    {
+      "id": 6,
+      "title": "Bloxd SMP mod",
+      "status": "planned",
+      "tentative": false
+    },
+    {
+      "id": 7,
+      "title": "Waypoints mod",
+      "status": "planned",
+      "tentative": false
+    },
+    {
+      "id": 9,
+      "title": "Rendering mod",
+      "status": "planned",
+      "tentative": false
+    },
+    {
+      "id": 10,
+      "title": "Text/chat features and customizable Bloxd notifications",
+      "status": "planned",
+      "tentative": false
+    },
+    {
+      "id": 11,
+      "title": "Performance update",
+      "status": "planned",
+      "tentative": true
+    }
+  ],
+  "completed": [
+    {
+      "id": 1,
+      "title": "Finish the website",
+      "status": "finished",
+      "tentative": false,
+      "completedDate": "2026-11-06"
+    }
+  ]
+}

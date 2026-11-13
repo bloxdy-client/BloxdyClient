@@ -2,7 +2,6 @@ appId: io.bloxdnative.launcher
 productName: Bloxdy Client
 asar: true
 afterPack: launcher/pack-game-client.cjs
-afterAllArtifactBuild: launcher/package-update.cjs
 electronDist: node_modules/electron/dist
 directories:
   output: dist-launcher
@@ -10,20 +9,25 @@ files:
   - entry.cjs
   - package.json
   - launcher/main.cjs
+  - launcher/auto-update.cjs
   - launcher/preload.cjs
   - launcher/game-preload.cjs
   - launcher/game-runner.cjs
+  - launcher/crash-reports.cjs
+  - launcher/game-load-error.cjs
   - launcher/paths.cjs
   - launcher/model.cjs
   - launcher/store.cjs
   - launcher/data-files.cjs
   - launcher/profile-settings.cjs
   - launcher/mod-host.cjs
+  - launcher/settings-navigation.cjs
   - launcher/adapters.cjs
   - launcher/grassify-ui.cjs
   - launcher/grassify-scene.cjs
   - launcher/grassify-gpu.cjs
   - launcher/builtin-mods/grassify.js
+  - launcher/builtin-mods/grassify-native.js
   - launcher/builtin-mods/grassify-runtime.js
   - launcher/builtin-mods/zoomer.js
   - launcher/builtin-mods/factory-buffer-reuse.js
@@ -34,9 +38,35 @@ files:
   - launcher/litematica-menu.cjs
   - launcher/litematica-placement.cjs
   - launcher/litematica-direct.cjs
+  - launcher/litematica-native-adapter.cjs
+  - launcher/builtin-mods/litematica-native.js
   - launcher/litematica-models.cjs
   - launcher/litematica-draco.cjs
   - launcher/shader-adapter.cjs
+  - launcher/shader-rebuild.cjs
+  - launcher/shader-kernel.cjs
+  - launcher/shader-render-state.cjs
+  - launcher/shader-ray-adapter.cjs
+  - launcher/shader-native-adapter.cjs
+  - launcher/shader-native-shadows.cjs
+  - launcher/shader-native-world.cjs
+  - launcher/shader-native-fog.cjs
+  - launcher/shader-native-geometry.cjs
+  - launcher/shader-native-liquid-job.cjs
+  - launcher/shader-native-liquids.cjs
+  - launcher/builtin-mods/shader-native-liquids.js
+  - launcher/builtin-mods/shader-native-world.js
+  - launcher/builtin-mods/shader-native.js
+  - launcher/builtin-mods/shader-native-effects.js
+  - launcher/builtin-mods/shader-native-post.js
+  - launcher/shader-ray-native.cjs
+  - launcher/shader-ray-glsl.cjs
+  - launcher/builtin-mods/shader-rays.js
+  - launcher/builtin-mods/shader-atmosphere.js
+  - launcher/builtin-mods/shader-clouds.js
+  - launcher/builtin-mods/shader-liquids.js
+  - launcher/builtin-mods/shader-surfaces.js
+  - launcher/builtin-mods/shader-post.js
   - launcher/shader-world-adapter.cjs
   - launcher/shader-performance.cjs
   - launcher/shader-lifecycle.cjs
@@ -53,7 +83,6 @@ files:
   - launcher/texture-catalog.cjs
   - launcher/session-reload.cjs
   - launcher/pack-permissions.cjs
-  - launcher/minecraft-packs.cjs
   - launcher/shader-pack-files.cjs
   - launcher/index.html
   - launcher/style.css
@@ -61,7 +90,6 @@ files:
   - launcher/assets/**
   - launcher/catalog/**
   - bridge/capture-factory.cjs
-  - bridge/transport.cjs
   - bridge/source-light.cjs
   - bridge/source-emission.cjs
   - bridge/source-frame.cjs
@@ -74,16 +102,14 @@ extraResources:
     to: bloxdy-icon.ico
   - from: build-launcher/Release/MemoryBudgetRunner.exe
     to: native/MemoryBudgetRunner.exe
-  - from: build-release/Release/BloxdNative.exe
-    to: native/BloxdNative.exe
 win:
   icon: launcher/assets/bloxdy-icon.ico
   target:
     - nsis
-    - portable
   signAndEditExecutable: true
   signExecutable: false
 nsis:
+  differentialPackage: false
   include: installer/desktop.nsh
   oneClick: false
   perMachine: false
@@ -94,7 +120,7 @@ nsis:
   installerLanguages:
     - en_US
   language: '1033'
-  artifactName: Bloxdy-Client-Setup-${version}-x64.exe
-portable:
-  artifactName: Bloxdy-Client-Portable-${version}-x64.exe
-publish: null
+  artifactName: Bloxdy-Client-Update-${version}-x64.exe
+publish:
+  provider: generic
+  url: https://github.com/bloxdy-client/BloxdyClient/releases/latest/download

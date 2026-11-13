@@ -12,7 +12,13 @@ User preference of October 27, 2026: do not create lengthy README, information, 
 
 ## Release procedure
 
-User decision of October 19, clarified October 28, 2026: increment the client version for every delivered update. Each component ranges from 0 to 9; 1.2.9 is followed by 1.3.0, and 1.9.9 by 2.0.0. `package.json` is the shared source for package names and the version displayed at the bottom left; do not hardcode a UI version. Keep `package-lock.json` synchronized. By default, `Build-Release.ps1` increments the version with this carry rule; use `-KeepVersion` only to rebuild the same release. The packaging hook also creates `Bloxdy-Client-Update-<version>-x64.exe` from the NSIS upgrader. Verify that file and link it for the user. Do not run it, install anything, or start the client.
+User decision of October 19, clarified October 28, 2026: increment the client version for every delivered update. Each component ranges from 0 to 9; 1.2.9 is followed by 1.3.0, and 1.9.9 by 2.0.0. `package.json` is the shared source for package names and the version displayed at the bottom left; do not hardcode a UI version. Keep `package-lock.json` synchronized. By default, `Build-Release.ps1` increments the version with this carry rule; use `-KeepVersion` only to rebuild the same release. As requested on November 4, 2026, build only `Bloxdy-Client-Update-<version>-x64.exe` directly with NSIS; no Setup, Portable, duplicate installer copy, or differential blockmap. Keep required runtime files and the `win-unpacked` intermediate for package verification. Do not rebuild a release just for build-policy/documentation changes. Verify that file and link it for the user. Do not run it, install anything, or start the client.
+
+## Download website
+
+November 13, 2026: Windows installations from 1.9.9 include automatic updates. `Build-Release.ps1` produces the single existing updater/installer EXE plus `latest.yml`; no second installer or blockmap. After all checks, publish explicitly with `node launcher/publish-release.cjs dist-bloxdy-v<version>`: it uploads only the verified EXE (public name `BloxdyClient-Installer-x64.exe`) and manifest to `bloxdy-client/BloxdyClient`, then marks the complete release latest. Never publish the source tree or overwrite an existing release. The website's permanent installer link follows the latest release. Version entries retain notes/search and have no download buttons. The user publishes Cloudflare themselves (November 6 decision); provide the normal `website/dist` folder, never a ZIP or an unsolicited deployment.
+
+November 5, 2026: update the website only when the user explicitly requests a website update; include the current verified download file. The official website is https://rsfire.bloxdyclient.workers.dev (Cloudflare Worker `rsfire`), not the old Sites page. Source: `website/dev-log.json` and `website/build.cjs`; build with `node website/build.cjs`, then upload `website/dist/index.html` to the existing Worker's static-file deployment. Keep dated, user-facing Fixed/Added/Bugs entries without code; record every new client/mod feature, and label unknown historical introduction dates honestly. Use a direct downloadable release asset, never a Google Drive viewing page. The user signs into Cloudflare themselves if needed. Website updates are separate from Build-Release.ps1.
 
 ## Binding user rule: client and accounts
 
@@ -32,6 +38,10 @@ On October 12, 2026, the user explicitly prohibited the agent from opening or op
 ## Verification
 
 Pure Node, DOM, and VM checks (`npm run test:launcher`, `npm run test:unit`, `node launcher/verify.cjs`), the project's MemoryBudgetTests/BridgeCpuTests CPU tests, and GLSL compilers are allowed. Do not automatically run `npm start`, `npm test`, `npm run test:bridge`, startup scripts, graphical CTest checks, or installers.
+
+## Current product scope
+
+November 5, 2026: Focus on the standard client and existing normal mods only. Remove EZ/Premium selection and EZ tags, native renderer selection and Minecraft-pack downloads. Keep renderer sources and private backups locally for future Premium development. This supersedes earlier instructions to actively extend the experimental renderer. Performance layer and tentative ads/pricing are deferred.
 
 ## Renderer and current status
 

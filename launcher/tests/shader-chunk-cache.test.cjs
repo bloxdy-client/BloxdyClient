@@ -1,6 +1,17 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
 const {createChunkShadowCache,projectShadowBounds}=require('../shader-chunk-cache.cjs');
+
+test('Retained maps refresh known animated foliage without invalidating non-leaf casters',()=>{
+ const cache=createChunkShadowCache(),data={},projection=new Float32Array(16),mesh={};
+ let revision='wind:0';const read=value=>value===data?revision:0;
+ const caster={mesh,rect:[1,1,4,4],revision,animationData:data,animationValue:revision};
+ cache.commit(cache.plan('far',projection,64,[caster]));
+ assert.equal(cache.needsAnimation('far',read),false);revision='wind:1';assert.equal(cache.needsAnimation('far',read),true);
+ const changed={...caster,revision,animationValue:revision};const plan=cache.plan('far',projection,64,[changed]);
+ assert.equal(plan.full,false);assert.deepEqual(plan.region,[1,1,4,4]);cache.commit(plan);
+ assert.equal(cache.needsAnimation('far',read),false);assert.equal(cache.needsAnimation('missing',read),false);
+});
 const identity=()=>[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];
 const caster=(rect,depth=.5)=>({mesh:{},rect,depth,revision:1,geometry:{},indices:{},material:{},textures:[]});
 function paint(image,size,plan){

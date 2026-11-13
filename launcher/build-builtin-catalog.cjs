@@ -12,7 +12,7 @@ function buildBuiltinCatalog(catalog){
   const grassBytes=Buffer.from(JSON.stringify({schema:1,manifest:grassManifest,files:grassFiles})),grassFilename=`${grassManifest.id}-${grassManifest.version}.bnmod`;
   fs.writeFileSync(path.join(catalog,grassFilename),grassBytes);
   const extras=[
-    {id:'bloxd-zoomer',name:'Zoomer',version:'1.0.1',category:'utility',file:'zoomer.js',description:'Hold V to zoom; use the wheel for finer zoom up to 100x and configure camera speed, transitions and indicators in Bloxd Settings.',note:'Camera FOV zoom with configurable wheel steps, look speed and transitions. Live input and visuals remain unverified.'},
+    {id:'bloxd-zoomer',name:'Zoomer',version:'1.0.6',category:'utility',file:'zoomer.js',description:'Hold V to zoom; use the wheel for finer zoom up to 100x and configure camera speed, transitions and indicators in Bloxd Settings.',note:'Camera FOV zoom with configurable wheel steps, look speed and transitions. Live input and visuals remain unverified.'},
     {id:'bloxd-factory-buffer-reuse',name:'Factory Buffer Reuse',version:'1.0.0',category:'performance',file:'factory-buffer-reuse.js',description:'Avoids repeated byte-identical WebGL buffer uploads that can add work near dense Factory 2 machines and belts.',note:'No settings or on-screen text. Exact duplicate upload optimization only; a live FPS improvement is unverified.'}
   ].map(item=>{
     const manifest={id:item.id,name:item.name,version:item.version,kind:'bloxd-mod',category:item.category,requires:[{id:'bloxd-mod-host',version:'>=0.1.0'}],conflicts:[],scripts:[{world:'MAIN',js:[item.file],css:[]}],compatibility:'cpu-dom-tested-live-unverified',note:item.note};

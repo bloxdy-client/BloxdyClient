@@ -5,7 +5,9 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {managedSource}=require('../adapters.cjs');
 const pack=JSON.parse(fs.readFileSync(path.join(__dirname,'../catalog/bloxd-visual-shader-5.6.14.2.bnmod')));
 function shaderRuntime(settings={},globals={}){
-  const stored=new Map([['bloxd-engine-voxel-shadows:settings:v2',JSON.stringify({visualDefaultsRevision:1,sliderModel:'normalized-v2',...settings})]]);
+  // The historical shadow-map regressions explicitly exercise the retained
+  // reference implementation. New ray tests select the shipped default.
+  const stored=new Map([['bloxd-engine-voxel-shadows:settings:v2',JSON.stringify({visualDefaultsRevision:1,sliderModel:'normalized-v2',shadowEngine:'reference-maps',...settings})]]);
   const context=vm.createContext({location:{hostname:'bloxd.io',origin:'https://bloxd.io'},
     document:{readyState:'loading',querySelector:()=>null,addEventListener(){}},
     localStorage:{getItem:key=>stored.get(key)||null,setItem:(key,value)=>stored.set(key,value)},
@@ -17,8 +19,9 @@ function shaderRuntime(settings={},globals={}){
   for(const file of pack.files.filter(f=>f.path!=='settings-bridge.js')){
     let source=managedSource(pack.manifest.id,file.path,Buffer.from(file.data,'base64').toString());
     if(file.path==='shader.js'){
+      if(globals.__BVFX_NATIVE_REQUESTED__===true)vm.runInContext('const __testConnect=__BVFX_NATIVE_SHADOWS__.connectEffects;__BVFX_NATIVE_SHADOWS__.connectEffects=function(value){globalThis.__testNativeEnvironment=value;return __testConnect.call(this,value);};',context);
       const index=source.lastIndexOf('})();');
-      source=source.slice(0,index)+'PAGE.__shaderTest={patchTerrainShader,patchLiquidVertexShader,bindOreLookup,state,oreShaderState,runtime,sun,atmosphere,maintainWaterGeometry,applyWaterGeometry,flushWaterGeometry,waterChunkMeshes,waterGeometrySignature,waterMeshRecords,getWaterWorld,updateWaterPhysics,waterRipples,waterRippleUniforms,workerLightingData,updateOreGlow,installMeshingHook,meshingWorkers,changeShaderSetting,unpackLiquidGeometry,waterShaderState,lavaShaderState,bindWaterMaterials,bindWaterClock,recordShaderFrame,syncMasterShaderMaterials,refreezePatchedMaterial,maintainVoxelLighting,periodicMaintenance,root:PAGE};\n'+source.slice(index);
+      source=source.slice(0,index)+'PAGE.__shaderTest={surfaces,installShaderSettings,selectShaderCategory,syncUi,patchTerrainShader,patchLiquidVertexShader,bindOreLookup,state,oreShaderState,runtime,sun,atmosphere,maintainWaterGeometry,applyWaterGeometry,flushWaterGeometry,waterChunkMeshes,waterGeometrySignature,waterMeshRecords,getWaterWorld,updateWaterPhysics,waterRipples,waterRippleUniforms,workerLightingData,updateOreGlow,installMeshingHook,meshingWorkers,changeShaderSetting,unpackLiquidGeometry,subdivideWaterData,waterShaderState,lavaShaderState,bindWaterMaterials,bindWaterClock,recordShaderFrame,syncMasterShaderMaterials,refreezePatchedMaterial,maintainVoxelLighting,periodicMaintenance,root:PAGE};\n'+source.slice(index);
     }
     vm.runInContext(source,context,{filename:file.path});
   }
@@ -75,7 +78,7 @@ function nativeLiquidPrograms(runtime,kind){
   return {vertex:runtime.patchLiquidVertexShader(pair.vertex),fragment:runtime.sun.patch(runtime.patchTerrainShader(fragment))};
 }
 module.exports.nativeLiquidPrograms=nativeLiquidPrograms;
-function hookedNativePrograms(kind){
+function hookedNativePrograms(kind,settings={}){
   class SourceSink {
     constructor(){this.canvas={addEventListener(){}};}
     shaderSource(shader,source){shader.source=source;}
@@ -83,11 +86,13 @@ function hookedNativePrograms(kind){
     attachShader(){}linkProgram(){}getProgramParameter(){return true;}
     useProgram(){}uniform1f(){}drawArrays(){}drawElements(){}
   }
-  shaderRuntime({}, {WebGL2RenderingContext:SourceSink});
+  shaderRuntime(settings, {WebGL2RenderingContext:SourceSink});
   const native=nativeLiquidPrograms({patchLiquidVertexShader:s=>s,patchTerrainShader:s=>s,sun:{patch:s=>s}},kind);
   const gl=new SourceSink(),programs={};
   for(const [stage,source]of Object.entries(native)){
-    const shader={};gl.shaderSource(shader,source.replace('#version 300 es','#version 300 es\n#define BVFX_MASTER_ACTIVE'));
+    const shader={};let input=source.replace('#version 300 es','#version 300 es\n#define BVFX_MASTER_ACTIVE');
+    if(stage==='vertex')input=input.replace('#define BVFX_WATER_GEOMETRY','#define BVFX_TERRAIN_UNDERWATER\n#define BVFX_WATER_GEOMETRY').replace('in vec3 position;','in vec3 position;in highp float texAtlasIndices;');
+    gl.shaderSource(shader,input);
     programs[stage]=shader.source;
   }
   return programs;

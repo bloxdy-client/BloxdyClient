@@ -4,11 +4,11 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),vm=require('node:vm'),{JSDOM}=require('jsdom');
 const {Store}=require('../store.cjs'),{generate}=require('../game-preload.cjs');
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
-async function startup(t,{failScript=false,includeMods=true,modIds=null}={}){
+async function startup(t,{failScript=false,includeMods=true,modIds=null,performance=null}={}){
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'bloxdy-preload-unit-')),store=new Store(root,path.join(__dirname,'../catalog'));
  t.after(()=>{assert.ok(root.startsWith(path.join(os.tmpdir(),'bloxdy-preload-unit-')));fs.rmSync(root,{recursive:true,force:true});});
  const ids=modIds||(includeMods?['bloxd-visual-shader','bloxd-litematica']:[]);for(const id of ids)store.install(id);
- store.saveProfile({...store.profile(),enabledMods:ids});
+ store.saveProfile({...store.profile(),enabledMods:ids,...(performance?{performance}:{})});
  const mods=store.snapshot().plan.modules;
  const code=fs.readFileSync(generate(store,store.profile(),mods,path.join(root,'generated'),{texture:{metaData:{id:'default2',version:1}}}),'utf8');
  const dom=new JSDOM('<!doctype html><html><head></head><body></body></html>',{url:'https://bloxd.io/',runScripts:'outside-only'}),w=dom.window,errors=[],sent=[],characters=[],timers=new Map(),receivers=new Map();let timer=0;
@@ -58,14 +58,37 @@ test('Renamed engine exports connect both real mod adapters, with no document, g
  await tick();const engine=w.__BLOXD_MOD_HOST__.engine();assert.ok(engine);assert.equal(w.__BLM_ADAPTER__.connect().scene,w.fixtureScene);
  // The actual shader closure receives the same facade as Litematica.
  assert.equal(w.__BLOXD_MOD_HOST__.status().observers.includes('shader-runtime'),false);
- assert.deepEqual(h.errors,[]);assert.equal(w.location.search,'?renderer=webgl2');
+ assert.deepEqual(h.errors,[]);assert.equal(w.location.search,'?renderer=lite&client=js');assert.equal(w.__BVFX_NATIVE_REQUESTED__,true);
+});
+
+test('Current public singleton source connects the generated shader and Litematica preloads to the same scene',async t=>{
+ const h=await startup(t,{performance:'quality'}),w=h.w,fixture=require('./fixtures/engine-singletons-2026-11-11.json');
+ w.eval(`globalThis.nativeExports={};const define=id=>{throw Error('Unexpected dependency: '+id);};define.d=(target,entries)=>{for(const [key,get]of Object.entries(entries))Object.defineProperty(target,key,{get,enumerable:true});};(${fixture.code})({},nativeExports,define);`);
+ await tick();assert.equal(w.__BLOXD_MOD_HOST__.status().engineReady,true);
+ w.eval(`globalThis.fixtureScene={meshes:[{name:'observed terrain'}],materials:[],activeCamera:{position:{x:1,y:2,z:3}},onBeforeRenderObservable:{add(){}},getTransformMatrix(){return {m:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]};}};
+ class Engine{constructor(){this.origin=[0,0,0];this.container={querySelector(){return null;}};this.inputs={};this.entities={};this.render={scene:fixtureScene};}}
+ nativeExports.l.Tp=new Engine();`);
+ assert.equal(w.__BLOXD_MOD_HOST__.engine().singletons,w.nativeExports.l);
+ assert.equal(w.__BLM_ADAPTER__.connect().scene,w.fixtureScene);
+ const diagnostic=w.__BVFX_INSTANCE__.diagnostics();assert.equal(diagnostic.lighting,'captured');assert.equal(diagnostic.meshes,1);assert.equal(diagnostic.enabled,true);assert.equal(diagnostic.shadows.enabled,true);
+ assert.equal(w.__BLOXD_MOD_HOST__.status().observers.includes('shader-runtime'),false);assert.deepEqual(h.errors,[]);
+});
+
+test('The official client selector honors the mod URL before a WASM rollout can bypass JavaScript hooks',()=>{
+ const {selectModRenderer}=require('../game-preload.cjs'),fixture=require('./fixtures/engine-singletons-2026-11-11.json');
+ const location={href:'https://bloxd.io/?client=wasm&siteUsed=desktopMicrosoftStore#lobby'},history={replaceState(_state,_title,url){location.href=url;}};
+ vm.runInNewContext('('+selectModRenderer.toString()+')()',{URL,location,history});const url=new URL(location.href);
+ const exports={},define=()=>({b:1});define.d=(target,entries)=>{for(const [key,get]of Object.entries(entries))Object.defineProperty(target,key,{get});};
+ vm.runInNewContext('('+fixture.clientSelectionCode+')({},exports,define)',{URL,URLSearchParams,exports,define,window:{location:url,__bloxdWasmClientShare:100,localStorage:{getItem:()=> '0',setItem(){throw Error('Unexpected profile write');}}}});
+ assert.equal(exports.e(url.search),'js');assert.equal(exports.h,false,'actual official selector chooses the JavaScript client even at 100 percent WASM rollout');
+ assert.equal(url.searchParams.get('renderer'),'webgl2');assert.equal(url.hash,'#lobby');assert.equal(url.searchParams.get('siteUsed'),'desktopMicrosoftStore');
 });
 
 test('Only WebGL mods select the official URL backend and preserve portal/game query parameters without storage writes',()=>{
  const {selectModRenderer}=require('../game-preload.cjs');
  for(const href of ['https://bloxd.io/?siteUsed=desktopMicrosoftStore#lobby','https://bloxd.io/?siteUsed=crazygames&renderer=lite&other=kept']){
   const writes=[],location={href},history={state:{keep:1},replaceState(state,_title,url){writes.push({state,url});location.href=url;}};
-  vm.runInNewContext('('+selectModRenderer.toString()+')()',{URL,location,history});const url=new URL(location.href);assert.equal(url.searchParams.get('renderer'),'webgl2');assert.equal(url.searchParams.get('siteUsed'),new URL(href).searchParams.get('siteUsed'));assert.equal(url.hash,new URL(href).hash);assert.equal(writes.length,1);assert.equal(writes[0].state,history.state);
+  vm.runInNewContext('('+selectModRenderer.toString()+')()',{URL,location,history});const url=new URL(location.href);assert.equal(url.searchParams.get('renderer'),'webgl2');assert.equal(url.searchParams.get('client'),'js');assert.equal(url.searchParams.get('siteUsed'),new URL(href).searchParams.get('siteUsed'));assert.equal(url.hash,new URL(href).hash);assert.equal(writes.length,1);assert.equal(writes[0].state,history.state);
   vm.runInNewContext('('+selectModRenderer.toString()+')()',{URL,location,history});assert.equal(writes.length,1);
  }
  for(const href of ['https://bloxd.io/auth-callback/google','https://www.crazygames.com/game/bloxdhop-io'])vm.runInNewContext('('+selectModRenderer.toString()+')()',{URL,location:{href},history:{replaceState(){throw Error('Unexpected URL change');}}});
@@ -74,9 +97,16 @@ test('Only WebGL mods select the official URL backend and preserve portal/game q
 test('Grassify alone selects WebGL2 before loading its runtime',async t=>{
  const h=await startup(t,{modIds:['bloxd-grassify']});
  const report=h.sent.find(s=>s.channel==='client:startup').value;
- assert.equal(h.w.location.search,'?renderer=webgl2');
+ assert.equal(h.w.location.search,'?renderer=webgl2&client=js');
  assert.ok(report.loaded.indexOf('launcher:mod-renderer')<report.loaded.indexOf('bloxd-grassify:grassify-runtime.js'));
  assert.equal(report.errors.length,0);
+});
+
+test('Our shader selects official Lite before all combined mod scripts without storing a pack or renderer choice',async t=>{
+ const h=await startup(t,{modIds:['bloxd-visual-shader','bloxd-grassify','bloxd-litematica']}),w=h.w,report=h.sent.find(s=>s.channel==='client:startup').value;
+ assert.equal(w.location.search,'?renderer=lite&client=js');assert.equal(w.__BVFX_NATIVE_REQUESTED__,true);assert.equal(w.__BVFX_RENDER_BACKEND__,'Bloxd WebGPU (Lite)');
+ for(const name of ['bloxd-visual-shader:bootstrap.js','bloxd-grassify:grassify-runtime.js','bloxd-litematica:litematica.js'])assert(report.loaded.indexOf('launcher:mod-renderer')<report.loaded.indexOf(name),name);
+ assert.equal(report.errors.length,0);assert.equal(w.__BVFX_NATIVE_SHADOWS__.shadowDiagnostics.externalPack,false);assert.equal(w.localStorage.getItem('renderer'),null);assert.equal(w.localStorage.getItem('shaderPack'),null);assert.deepEqual(h.errors,[]);
 });
 
 test('Shader sliders and buttons use current native chrome and retain pointer/keyboard controls',async t=>{

@@ -1,6 +1,6 @@
 {
   "name": "bloxdy-client",
-  "version": "1.6.0",
+  "version": "1.9.9",
   "description": "Custom bloxd.io launcher for mods and performance tuning",
   "author": "Bloxdy Client contributors",
   "license": "MIT",
@@ -10,12 +10,13 @@
     "start": "electron .",
     "test": "node --test bridge/tests/*.test.cjs",
     "test:unit": "node --test bridge/tests/capture-budget.test.cjs bridge/tests/transport.test.cjs bridge/tests/google-auth-popup.test.cjs bridge/tests/frames.test.cjs bridge/tests/presenter.test.cjs",
-    "test:public": "node --test bridge/tests/transport.test.cjs bridge/tests/google-auth-popup.test.cjs bridge/tests/frames.test.cjs bridge/tests/presenter.test.cjs",
+    "test:public": "node --test bridge/tests/transport.test.cjs bridge/tests/google-auth-popup.test.cjs bridge/tests/frames.test.cjs bridge/tests/presenter.test.cjs launcher/tests/auto-update.test.cjs launcher/tests/release-update.test.cjs",
     "test:bridge": "electron . --bridge-test",
     "test:launcher": "node --test launcher/tests/*.test.cjs",
     "catalog": "node launcher/build-catalog.cjs",
-    "dist:windows": "electron-builder --win nsis portable --x64 --publish never",
-    "build:viewer": "node launcher/build-viewer.cjs"
+    "dist:windows": "electron-builder --win nsis --x64 --publish never",
+    "build:viewer": "node launcher/build-viewer.cjs",
+    "dist:linux": "electron-builder --config electron-builder-linux.yml --linux tar.gz --x64 --publish never"
   },
   "devDependencies": {
     "electron": "44.7.0",
@@ -26,5 +27,8 @@
     "pe-library": "0.4.1",
     "resedit": "1.7.2",
     "three": "0.186.1"
+  },
+  "dependencies": {
+    "electron-updater": "6.8.11"
   }
 }

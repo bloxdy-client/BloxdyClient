@@ -12,23 +12,31 @@
 Bloxdy Client is a Windows launcher for Bloxd.io with profiles, optional mods,
 shader controls, texture selection, and a character preview. This repository
 contains the Bloxdy Client source, experimental native renderer, tests, and
-technical history. The current source version is **1.6.0**.
+technical history. The current source version is **1.9.9**.
 
-The project is still in development. About **10 people have tested it** so far;
-that is an approximate tester count, not a public adoption metric. A general
-release is planned after the remaining issues are resolved.
+**[Download the Windows installer](https://github.com/bloxdy-client/BloxdyClient/releases/latest/download/BloxdyClient-Installer-x64.exe)**
+
+Install 1.9.9 once. The installed Windows launcher checks for updates while idle,
+downloads new versions automatically, and installs a ready update when you close
+the launcher. Update downloads pause while a game or account window is open.
 
 ## Features and current limits
 
 - Profiles keep selected mods, textures, and client settings together.
 - The launcher provides supported mod installation and settings per profile.
-- Shader options and Bloxdy shaderpacks extend the game's visual controls.
+- Built-in shaders use Bloxd's original WebGPU shadow pipeline, with separate
+  block and entity switches, shadow strength, and visibility distance.
+- Sky, clouds, water, lava, fog, bloom, equipment lighting, and leaf motion
+  remain part of the shader controls. Shaders and Litematica are experimental;
+  visual correctness, compatibility, and real FPS still need in-game testing.
 - Character preview uses the player's actual 3D model and textures after a
   player-initiated game join.
-- An experimental native renderer and shader loader are under development.
-  The normal renderer remains available as a fallback.
+- The standard client includes Zoomer, Grassify, No Ads, Factory Buffer Reuse,
+  Litematica, and shader controls. Profiles retain their individual settings.
+- Crash reports remain local until you explicitly submit one from the launcher.
 
-The native renderer is not complete Minecraft/Iris shaderpack support. Graphics,
+The separate experimental renderer sources are retained for future development;
+the standard launcher does not offer Minecraft/Iris renderer selection. Graphics,
 controls, and FPS need live testing by users; CPU and compiler checks cannot
 establish visual correctness or performance in a game session.
 
@@ -41,6 +49,7 @@ establish visual correctness or performance in a game session.
 | `src/` | Experimental native renderer and shader loader |
 | `shaderpacks/` | Bloxdy shaderpack examples |
 | `installer/` | Windows installer support |
+| `website/` | Static website source and release notes |
 | `docs/` | Technical references and historical records |
 
 The [project context](PROJECT-CONTEXT.md) tracks versions, decisions,
@@ -50,13 +59,14 @@ before proposing a change.
 
 ## Getting started
 
-Bloxdy Client currently targets **Windows x64**. Linux and ChromeOS builds are
-not available from this repository.
+Bloxdy Client's primary release targets **Windows x64**. A separate Linux preview
+configuration is present; Windows automatic updates and memory-budget enforcement
+do not apply to that preview. ChromeOS support is not provided.
 
-The project is being tested with a small group. There is no general release
-announcement yet. When a release is made available, use the files linked by
-the maintainers in [GitHub Releases](https://github.com/bloxdy-client/BloxdyClient/releases).
-Source ZIP downloads are development files, not Windows installers.
+Use the installer linked above or [GitHub Releases](https://github.com/bloxdy-client/BloxdyClient/releases).
+Older installations need the 1.9.9 installer once to enable automatic updates.
+Source ZIP downloads are development files, not Windows installers. The website
+version history contains release notes; its central download links to the installer.
 
 Already testing a build? Include its version when
 [reporting a bug](https://github.com/bloxdy-client/BloxdyClient/issues/new/choose).
@@ -79,15 +89,21 @@ Use Node.js 22 for the public checks. `--ignore-scripts` skips dependency
 installation hooks, including the Electron binary download; this is enough
 for the public CPU tests. A normal `npm ci` is needed for full local development.
 
+The public suite includes update-lifecycle and release-metadata checks using
+mocked services. It never starts an installer or performs a real update.
+
 The complete local verification (`node launcher/verify.cjs` and
 `npm run test:launcher`) also uses source-specific test fixtures and mod
 archives that are **not included** here. Packaging an identical client release
-requires those original mod projects and other local build inputs. Until those
+requires those original mod projects and other local build inputs. Website
+screenshots and third-party showcase images are also excluded. Until those
 inputs can be redistributed or replaced, this repository is a source and
 development reference rather than a reproducible installer build.
 
 The public CPU checks do not start the client or sign into a game account.
-Client visuals, input behavior, and real FPS remain user-run checks.
+Client visuals, input behavior, installation, and real automatic-update acceptance
+remain user-run checks. The delivered 1.9.9 package passed 869 local pure checks
+and a 376-file package comparison; this is separate from the reproducible public suite.
 
 The repository also contains interactive bridge tests. Those are separate
 from the public checks above. Contributors and automation must follow the

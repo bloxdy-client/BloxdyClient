@@ -1,8 +1,9 @@
 # Contributing to Bloxdy Client
 
 Bloxdy Client is in active development. Small, focused fixes with a clear
-reproduction or test are especially useful. A general beta has not launched;
-please do not recruit new testers or promote a release on the project's behalf.
+reproduction or test are especially useful. Windows installers are published in
+GitHub Releases; please do not make release or compatibility claims on the
+project's behalf.
 
 ## Before opening an issue
 
@@ -20,7 +21,8 @@ please do not recruit new testers or promote a release on the project's behalf.
 1. Open an issue or describe the problem in a pull request.
 2. Keep the change scoped and explain the behavior it changes.
 3. Run `npm run test:public`. The fuller local checks require original
-   source fixtures and mod projects that are not redistributed here.
+   source fixtures and mod projects that are not redistributed here. Public
+   updater tests use mocked services and do not install or publish anything.
 4. Add a test when it demonstrates a real regression or contract. Label live
    behavior as unverified until a user checks it in the client.
 

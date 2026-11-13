@@ -1,0 +1,516 @@
+{
+  "release": {
+    "version": "1.9.9",
+    "date": "2026-11-13",
+    "file": "BloxdyClient-Installer-x64.exe",
+    "url": "https://github.com/bloxdy-client/BloxdyClient/releases/latest/download/BloxdyClient-Installer-x64.exe"
+  },
+  "fixed": [
+    {
+      "date": "2026-11-13",
+      "version": "1.9.9",
+      "title": "Fixes",
+      "items": [
+        "Corrected the Windows game executable description so Task Manager shows BloxdyClient."
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "version": "1.9.5",
+      "title": "Fixes",
+      "items": [
+        "Addressed intermittent sky flicker when rebinding completed cloud effects."
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "version": "1.9.4",
+      "title": "Fixes",
+      "items": [
+        "Stopped ordinary solid chunks entering liquid preparation and refined clouds and glare."
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "version": "1.9.3",
+      "title": "Fixes",
+      "items": [
+        "Repaired missing terrain around liquid chunks and retained light-only updates."
+      ]
+    },
+    {
+      "date": "2026-11-11",
+      "version": "1.9.2",
+      "title": "Fixes",
+      "items": [
+        "Restored earlier sky and flare behavior and reused completed atmospheric lighting."
+      ]
+    },
+    {
+      "date": "2026-11-11",
+      "version": "1.9.1",
+      "title": "Fixes",
+      "items": [
+        "Restored shader and schematic integration after changes in the game."
+      ]
+    },
+    {
+      "date": "2026-11-11",
+      "version": "1.9.0",
+      "title": "Fixes",
+      "items": [
+        "Reduced repeated cloud-shadow work and refined solar glare and flare."
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "version": "1.8.7",
+      "title": "Fixes",
+      "items": [
+        "Fixed identified black-sky and bloom-copy failures and retained valid camera observations."
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "version": "1.8.6",
+      "title": "Fixes",
+      "items": [
+        "Repaired space-sky objects, first-person shadows and liquid texture details."
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "version": "1.8.5",
+      "title": "Fixes",
+      "items": [
+        "Kept custom skies clear of distance fog and improved Golden Hour clouds and sunlight."
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "version": "1.8.3",
+      "title": "Fixes",
+      "items": [
+        "Repaired distorted lava geometry and retained Flat, Wavey and Off behavior."
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "version": "1.8.2",
+      "title": "Fixes",
+      "items": [
+        "Improved player, equipment and orbit-view shadows, and leaf-lighting updates."
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "version": "1.8.1",
+      "title": "Fixes",
+      "items": [
+        "Improved shadow-edge filtering and preserved sky selection without unnecessary redraws."
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "version": "1.8.0",
+      "title": "Fixes",
+      "items": [
+        "Restored the preceding shader behavior after the 1.7.9 regression."
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "version": "1.7.9",
+      "title": "Fixes",
+      "items": [
+        "Adjusted shadow sampling and solar effects."
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "version": "1.7.8",
+      "title": "Fixes",
+      "items": [
+        "Improved shadow transitions and player shadows."
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "version": "1.7.6",
+      "title": "Fixes",
+      "items": [
+        "Preserved saved 3D characters during profile changes and initial sign-in."
+      ],
+      "historical": true,
+      "note": "Introduction date not recorded; documented on November 13, 2026."
+    },
+    {
+      "date": "2026-11-06",
+      "version": "1.7.5",
+      "title": "Homepage and profile chooser",
+      "items": [
+        "Placed profile details and shortcuts directly above the profile chooser with a small gap.",
+        "Simplified the memory value to GB only.",
+        "Refined dropdown spacing and selection states, replacing the small profile arrow with a menu icon."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.7.4",
+      "title": "Selection and homepage layout",
+      "items": [
+        "Moved profile information and shortcuts further down on Home.",
+        "Added gold outlines and full-row mouse and keyboard selection for profiles and accounts.",
+        "Replaced the three window-control symbols with matching centered icons."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.7.3",
+      "title": "Standard client and visual cleanup",
+      "items": [
+        "Unified the normal mod catalog as Mods, removing EZ tags and the Premium switch.",
+        "Removed experimental Minecraft renderer selection and Minecraft shader-pack downloads from the standard client.",
+        "Matched the rounded profile chooser and Play button, strengthened the title and removed content dividers.",
+        "Added individual gold mod icons."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.7.2",
+      "title": "Homepage layout",
+      "items": [
+        "Moved the Bloxdy Client title to the top of the home panel.",
+        "Aligned profile details and gave Edit profile and Browse mods matching buttons."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.7.1",
+      "title": "Launcher controls",
+      "items": [
+        "Made dropdowns more compact and aligned menus with the complete field.",
+        "Removed the Play without mods button."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.6.9",
+      "title": "Launcher",
+      "items": [
+        "Removed the description beneath the launcher title."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.6.8",
+      "title": "Zoomer settings spacing",
+      "items": [
+        "Each setting now has its own bordered box with the same gaps as Bloxd settings."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.6.7",
+      "title": "Mod settings navigation",
+      "items": [
+        "Switching categories clears the previous selection.",
+        "Mod settings reopen without an empty page.",
+        "Smooth wheel timing is disabled when smoothing is off."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.6.7",
+      "title": "Party Voice removed",
+      "items": [
+        "Party Voice and its microphone access have been removed."
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "version": "1.6.4–1.6.5",
+      "title": "Zoom and character updates",
+      "items": [
+        "Zoom transitions finish on time; instant wheel changes no longer bounce back.",
+        "Updated character textures and armour colors. Join a world to refresh an old white model."
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "version": "1.6.1–1.6.3",
+      "title": "Camera connection and loading errors",
+      "items": [
+        "Updated Zoomer for the current game cameras.",
+        "Zoom resets when the game loses focus.",
+        "Failed page loads show Retry instead of a blank window."
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "version": "1.6.0",
+      "title": "Zoom release and mouse wheel",
+      "items": [
+        "Releasing V restores normal zoom; small wheel movements are recognized."
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "version": "1.5.4–1.5.6",
+      "title": "Account portraits",
+      "items": [
+        "Improved head size, accessories, and centering."
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "version": "1.4.3–1.4.9",
+      "title": "Grassify improvements",
+      "items": [
+        "Reduced gaps and grid patterns; corrected custom colors.",
+        "Improved wind and player/mob contact bending."
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "version": "1.3.7",
+      "title": "No Ads",
+      "items": [
+        "Handles the known English Skip AD dialog and mutes recognized ad media."
+      ]
+    }
+  ],
+  "added": [
+    {
+      "date": "2026-11-13",
+      "version": "1.9.9",
+      "title": "New features",
+      "items": [
+        "Added automatic update downloads while the launcher is idle and installation when it closes.",
+        "Existing users install this version once; future releases no longer need manual downloads."
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "version": "1.9.8",
+      "title": "New features",
+      "items": [
+        "Connected built-in shaders to Bloxd native shadows, with separate block and entity switches, strength and distance.",
+        "Integrated water, lava, fog, entity lighting, sky effects, Grassify and schematic previews with the native renderer."
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "version": "1.9.7",
+      "title": "New features",
+      "items": [
+        "Changed shadow rendering and removed obsolete shadow-map controls."
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "version": "1.9.6",
+      "title": "New features",
+      "items": [
+        "Added distinct block-cloud styles and refined cloud shapes and solar optics."
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "version": "1.9.5",
+      "title": "New features",
+      "items": [
+        "Adjusted sun size and made flare reflections smaller and softer."
+      ]
+    },
+    {
+      "date": "2026-11-11",
+      "version": "1.8.9",
+      "title": "New features",
+      "items": [
+        "Introduced volume clouds, sunlight through cloud openings and shared cloud shadows."
+      ]
+    },
+    {
+      "date": "2026-11-11",
+      "version": "1.8.8",
+      "title": "New features",
+      "items": [
+        "Enlarged the sun and refined lens flare and cloud transmission."
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "version": "1.8.4",
+      "title": "New features",
+      "items": [
+        "Added saved crash reports, a homepage notice, log copying and user-triggered support submission."
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "version": "1.7.8",
+      "title": "New features",
+      "items": [
+        "Removed block and liquid reflections, retained leaf motion and simplified Bloxd lighting controls."
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "version": "1.7.7",
+      "title": "New features",
+      "items": [
+        "Introduced revised cloud and liquid effects, GPU bloom and additional reflection controls."
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "version": "1.7.6",
+      "title": "New features",
+      "items": [
+        "Added a finite character departure animation, improved profile selection and removed the character dust effect."
+      ],
+      "historical": true,
+      "note": "Introduction date not recorded; documented on November 13, 2026."
+    },
+    {
+      "date": "2026-11-06",
+      "version": "1.7.5",
+      "title": "Profile identity and character effects",
+      "items": [
+        "Choose from 50 profile icons and a custom icon color in profile settings.",
+        "Show your chosen icon in profile pictures, beside the Home profile name and in the profile content header.",
+        "Added subtle gold dust behind the 3D character that responds to character rotation.",
+        "The character and gold dust grow slightly on hover, with reduced-motion support."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.7.1",
+      "title": "Homepage and performance",
+      "items": [
+        "Gold Bloxdy heading with selected profile details and direct edit/mod actions.",
+        "On-demand launcher RAM and CPU readings, profile memory budget, system RAM and diagnostic shortcuts."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.7.0",
+      "title": "Launcher redesign",
+      "items": [
+        "Website-inspired black, cream and gold palette with Manrope typography and glass primary buttons.",
+        "Updated navigation, profiles, accounts, settings and mod browser."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.6.9",
+      "title": "Installation guide",
+      "items": [
+        "Windows installation steps with screenshots at the bottom of this page."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "version": "1.6.7",
+      "title": "Zoom text",
+      "items": [
+        "Show percentage and multiplier separately, together, or hide both.",
+        "Adjust text size, X/Y position, and color. Uses the game font without a background.",
+        "Removed the visible-width display; added direct Windows downloads."
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "version": "1.6.6",
+      "title": "Linux preview",
+      "items": [
+        "Experimental Ubuntu 26.04 x64 build with EZ Mods and an optional installer.",
+        "Standard renderer only; no Premium downloads, Windows memory limit, or autostart."
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "version": "1.6.5",
+      "title": "Zoomer controls",
+      "items": [
+        "Adjust default/max zoom up to 100×, look speed, wheel steps, and separate in/out times.",
+        "Optional smooth wheel zoom with a 0–1 second transition."
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "version": "1.5.9–1.6.0",
+      "title": "Zoomer and Factory Buffer Reuse",
+      "items": [
+        "Hold V to zoom and use the wheel to change magnification.",
+        "Factory Buffer Reuse avoids duplicate graphics uploads; FPS gains are unmeasured."
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "version": "1.4.2–1.4.9",
+      "title": "Grassify options",
+      "items": [
+        "Flat, Round, and Realistic styles; color, thickness, distance, and wind controls.",
+        "5–1000 blades per block, height 0.1–3 blocks, with wind and player/mob bending."
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "version": "1.2.8",
+      "title": "Grassify",
+      "items": [
+        "Optional grass with wind, color, distance, and contact controls."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Existing features",
+      "note": "Existing features; original introduction dates are unknown.",
+      "items": [
+        "Profiles with separate mods, settings, textures, and saved account sessions.",
+        "Memory presets and Windows RAM limits; Standard and experimental native renderers.",
+        "Launcher themes, Windows autostart, minimize-on-play, and performance measurements.",
+        "Automatic 3D character sync, homepage rotation, and account-head portraits.",
+        "Texture selection, pack downloads/library, and No Ads.",
+        "Litematica: schematic selection, import/export, library, previews, materials, layers, and placement tools. Currently unusable.",
+        "Shaders: shadows, sky, water/lava, fog, bloom, lighting, effects, presets, and custom shaders. Currently unusable."
+      ],
+      "historical": true
+    }
+  ],
+  "bugs": [
+    {
+      "date": "2026-11-13",
+      "version": "1.9.9",
+      "title": "Known limitations",
+      "items": [
+        "Shaders and Litematica are experimental; visuals and compatibility are still being tested."
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "version": "1.9.8",
+      "title": "Known limitations",
+      "items": [
+        "Shader visuals and mod compatibility still require in-game verification."
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "version": "1.7.9",
+      "title": "Known limitations",
+      "items": [
+        "Later reported to cause severe lag and worse shadows; these changes were reverted in 1.8.0."
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Shaders and Litematica",
+      "items": [
+        "Both mods are currently unusable."
+      ]
+    }
+  ]
+}

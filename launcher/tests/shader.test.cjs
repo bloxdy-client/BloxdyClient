@@ -17,94 +17,7 @@ function factory(name,settings,internals=''){
   vm.runInContext(code,context);
   return {clock,root,api:root[name==='sun-shadows.js'?'__BVFX_CREATE_SUN__':'__BVFX_CREATE_ATMOSPHERE__'](settings,()=>{})};
 }
-function fakeGl(){
-  let id=0,active=1000,program=null,drawFbo=null,readFbo=null,vao=null,array=null,viewport=[0,0,800,600];
-  const textures=new Map(),samplers=new Map(),caps=new Set(),values=new Map(),events=new Map(),calls=[],allocations=new Map();
-  const gl={calls,allocations,events,canvas:{addEventListener:(key,fn)=>events.set(key,fn)}};
-  const constants=`ACTIVE_TEXTURE TEXTURE_2D TEXTURE_3D TEXTURE_2D_ARRAY TEXTURE_BINDING_2D TEXTURE_BINDING_3D TEXTURE_BINDING_2D_ARRAY
-    TEXTURE_MIN_FILTER TEXTURE_MAG_FILTER TEXTURE_COMPARE_MODE TEXTURE_COMPARE_FUNC COMPARE_REF_TO_TEXTURE LEQUAL NEAREST LINEAR
-    TEXTURE_WRAP_S TEXTURE_WRAP_T CLAMP_TO_EDGE DEPTH_COMPONENT24 DEPTH_COMPONENT UNSIGNED_INT UNSIGNED_BYTE RGBA8 RGBA
-    CURRENT_PROGRAM VERTEX_ARRAY_BINDING ARRAY_BUFFER ARRAY_BUFFER_BINDING ELEMENT_ARRAY_BUFFER ELEMENT_ARRAY_BUFFER_BINDING
-    DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER_BINDING READ_FRAMEBUFFER READ_FRAMEBUFFER_BINDING FRAMEBUFFER FRAMEBUFFER_COMPLETE DEPTH_ATTACHMENT
-    COLOR_ATTACHMENT0 DEPTH_BUFFER_BIT COLOR_WRITEMASK DEPTH_WRITEMASK DEPTH_FUNC DEPTH_CLEAR_VALUE DEPTH_RANGE
-    POLYGON_OFFSET_FACTOR POLYGON_OFFSET_UNITS POLYGON_OFFSET_FILL RASTERIZER_DISCARD STENCIL_TEST DEPTH_TEST CULL_FACE BLEND SCISSOR_TEST SCISSOR_BOX
-    MAX_TEXTURE_SIZE MAX_VIEWPORT_DIMS MAX_TEXTURE_IMAGE_UNITS SAMPLER_BINDING VIEWPORT RENDERER NO_ERROR NONE
-    VERTEX_SHADER FRAGMENT_SHADER COMPILE_STATUS LINK_STATUS ACTIVE_UNIFORMS ACTIVE_ATTRIBUTES ACTIVE_UNIFORM_BLOCKS
-    PIXEL_UNPACK_BUFFER PIXEL_UNPACK_BUFFER_BINDING UNPACK_ALIGNMENT UNPACK_ROW_LENGTH UNPACK_IMAGE_HEIGHT UNPACK_SKIP_ROWS UNPACK_SKIP_PIXELS UNPACK_SKIP_IMAGES
-    UNPACK_FLIP_Y_WEBGL UNPACK_PREMULTIPLY_ALPHA_WEBGL FLOAT STATIC_DRAW DYNAMIC_DRAW TRIANGLES LESS
-    SAMPLER_2D SAMPLER_CUBE SAMPLER_3D SAMPLER_2D_ARRAY SAMPLER_2D_SHADOW SHADER_TYPE TEXTURE_CUBE_MAP TEXTURE_BINDING_CUBE_MAP
-    FLOAT_VEC2 FLOAT_VEC3 FLOAT_VEC4 FLOAT_MAT4 TRANSFORM_FEEDBACK_ACTIVE TRANSFORM_FEEDBACK_PAUSED`.split(/\s+/).filter(Boolean);
-  constants.forEach((name,i)=>gl[name]=i+1);gl.TEXTURE0=1000;
-  const key=target=>active+':'+target;
-  gl.getParameter=p=>{
-    if(p===gl.ACTIVE_TEXTURE)return active;if(p===gl.CURRENT_PROGRAM)return program;
-    if(p===gl.TEXTURE_BINDING_2D)return textures.get(key(gl.TEXTURE_2D))||null;
-    if(p===gl.TEXTURE_BINDING_3D)return textures.get(key(gl.TEXTURE_3D))||null;
-    if(p===gl.TEXTURE_BINDING_2D_ARRAY)return textures.get(key(gl.TEXTURE_2D_ARRAY))||null;
-    if(p===gl.TEXTURE_BINDING_CUBE_MAP)return textures.get(key(gl.TEXTURE_CUBE_MAP))||null;
-    if(p===gl.SAMPLER_BINDING)return samplers.get(active-gl.TEXTURE0)||null;
-    if(p===gl.DRAW_FRAMEBUFFER_BINDING)return drawFbo;if(p===gl.READ_FRAMEBUFFER_BINDING)return readFbo;
-    if(p===gl.ARRAY_BUFFER_BINDING)return array;if(p===gl.VERTEX_ARRAY_BINDING)return vao;
-    if(p===gl.VIEWPORT)return viewport;if(p===gl.MAX_TEXTURE_IMAGE_UNITS)return 16;
-    if(p===gl.SCISSOR_BOX)return values.get(p)||[0,0,800,600];
-    if(p===gl.MAX_TEXTURE_SIZE)return 4096;if(p===gl.MAX_VIEWPORT_DIMS)return [4096,4096];
-    if(p===gl.COLOR_WRITEMASK)return [true,true,true,true];if(p===gl.DEPTH_RANGE)return [0,1];
-    if(p===gl.RENDERER)return 'CPU mock';return values.get(p)??0;
-  };
-  gl.activeTexture=v=>active=v;gl.bindTexture=(target,t)=>textures.set(key(target),t);
-  gl.bindSampler=(unit,sampler)=>samplers.set(unit,sampler);
-  gl.useProgram=p=>program=p;gl.bindVertexArray=v=>vao=v;
-  gl.bindBuffer=(target,buffer)=>{if(target===gl.ARRAY_BUFFER)array=buffer;else values.set(target,buffer);};
-  gl.bindFramebuffer=(target,f)=>{if(target!==gl.READ_FRAMEBUFFER)drawFbo=f;if(target!==gl.DRAW_FRAMEBUFFER)readFbo=f;};
-  gl.viewport=(...v)=>viewport=v;gl.enable=cap=>caps.add(cap);gl.disable=cap=>caps.delete(cap);gl.isEnabled=cap=>caps.has(cap);
-  gl.scissor=(...v)=>{values.set(gl.SCISSOR_BOX,v);calls.push(['scissor',...v]);};
-  for(const type of ['Texture','Framebuffer','Buffer','VertexArray','Shader','Program'])gl['create'+type]=()=>({type,id:++id});
-  for(const type of ['Texture','Framebuffer','Buffer','VertexArray','Shader','Program'])gl['delete'+type]=object=>calls.push(['delete'+type,object]);
-  for(const name of ['texParameteri','framebufferTexture2D','drawBuffers','readBuffer','shaderSource','compileShader','attachShader','linkProgram',
-    'enableVertexAttribArray','disableVertexAttribArray','vertexAttribPointer','vertexAttribDivisor','depthRange','polygonOffset','depthFunc','depthMask','colorMask','clearDepth',
-    'bufferData','bindAttribLocation'])gl[name]=(...args)=>calls.push([name,...args]);
-  gl.texImage2D=(...args)=>{const texture=textures.get(key(gl.TEXTURE_2D));allocations.set(texture,args);calls.push(['texImage2D',texture,...args]);};
-  gl.pixelStorei=(field,value)=>values.set(field,value);
-  gl.clear=()=>calls.push(['clear',drawFbo]);
-  for(const name of ['drawElements','drawArrays','drawElementsInstanced','drawArraysInstanced'])gl[name]=()=>calls.push(['draw',drawFbo,program]);
-  gl.getError=()=>gl.NO_ERROR;gl.isContextLost=()=>false;gl.getExtension=()=>null;
-  gl.checkFramebufferStatus=()=>gl.FRAMEBUFFER_COMPLETE;
-  gl.getProgramParameter=(p,key)=>key===gl.LINK_STATUS?true:key===gl.ACTIVE_UNIFORMS?(p.uniforms?.length||0):0;
-  gl.getShaderParameter=(shader,key)=>key===gl.SHADER_TYPE?shader.stage:true;
-  gl.getActiveUniform=(p,index)=>p.uniforms[index];
-  gl.getUniformLocation=(p,name)=>p.strict && !p.uniforms.some(u=>u.name===name)?null:{program:p,name};
-  gl.getUniform=(p,loc)=>p.values?.get(loc.name)??0;
-  for(const name of ['uniform1f','uniform1i','uniform1iv','uniform1fv','uniform2f','uniform3f','uniform4f','uniform2fv','uniform3fv','uniform4fv','uniformMatrix4fv'])
-    gl[name]=(loc,...v)=>{if(loc){assert.equal(loc.program,program,'Uniform belongs to current program');let value=name==='uniformMatrix4fv'?Array.from(v[1]):v.length===1?v[0]:v;if((name==='uniform1iv'||name==='uniform1fv') && value.length===1)value=value[0];values.set(loc.name,value);loc.program.values??=new Map();loc.program.values.set(loc.name,value);}};
-  gl.createShader=stage=>({stage,id:++id});gl.shaderSource=(shader,text)=>shader.source=text;
-  gl.getShaderSource=shader=>shader.source;gl.attachShader=(p,shader)=>{p.shaders??=[];p.shaders.push(shader);};
-  gl.getAttachedShaders=p=>p.shaders||[];
-  const typeNames={float:gl.FLOAT,vec2:gl.FLOAT_VEC2,vec3:gl.FLOAT_VEC3,vec4:gl.FLOAT_VEC4,mat4:gl.FLOAT_MAT4,
-    sampler2D:gl.SAMPLER_2D,samplerCube:gl.SAMPLER_CUBE,sampler3D:gl.SAMPLER_3D,sampler2DShadow:gl.SAMPLER_2D_SHADOW,sampler2DArray:gl.SAMPLER_2D_ARRAY};
-  gl.linkProgram=p=>{p.uniforms=[];p.strict=true;const seen=new Set();for(const shader of p.shaders||[])
-    for(const match of shader.source.matchAll(/\buniform\s+(?:(?:lowp|mediump|highp)\s+)?(\w+)\s+(\w+)\s*;/g)){
-      if(seen.has(match[2]))continue;seen.add(match[2]);p.uniforms.push({name:match[2],type:typeNames[match[1]],size:1});}};
-  gl.uniforms=(p,definitions)=>{p.uniforms=definitions.map(([name,type,size=1])=>({name,type:gl[type],size}));return p;};
-  gl.sunProgram=()=>gl.uniforms(gl.createProgram(),['Map','NearMap','LocalMap','DetailMap'].map(key=>['uBvfxSun'+key,'SAMPLER_2D_SHADOW']));
-  gl.skyProgram=()=>gl.uniforms(gl.createProgram(),[['uBvfxAtmoSkyCache','SAMPLER_2D']]);
-  gl.texImage3D=(...args)=>{const texture=textures.get(key(gl.TEXTURE_3D));allocations.set(texture,args);calls.push(['texImage3D',texture,...args]);};
-  gl.framebufferTexture2D=(_target,attachment,_type,texture)=>{drawFbo.attachments??=new Map();drawFbo.attachments.set(attachment,texture);};
-  const targets=new Map([[gl.SAMPLER_2D,gl.TEXTURE_2D],[gl.SAMPLER_CUBE,gl.TEXTURE_CUBE_MAP],
-    [gl.SAMPLER_3D,gl.TEXTURE_3D],[gl.SAMPLER_2D_ARRAY,gl.TEXTURE_2D_ARRAY],[gl.SAMPLER_2D_SHADOW,gl.TEXTURE_2D]]);
-  gl.validateDraw=()=>{
-    const occupied=new Map();for(const uniform of program.uniforms||[]){
-      const target=targets.get(uniform.type);if(target===undefined)continue;
-      const unit=program.values?.get(uniform.name)??0;
-      if(occupied.has(unit))assert.equal(occupied.get(unit),uniform.type,'Conflicting sampler types on unit '+unit);
-      occupied.set(unit,uniform.type);
-      const texture=textures.get((gl.TEXTURE0+unit)+':'+target);
-      assert.ok(texture && allocations.has(texture),'Complete sampler '+uniform.name);
-      for(const attachment of drawFbo?.attachments?.values()||[])assert.notEqual(texture,attachment,'Read/write framebuffer feedback: '+uniform.name);
-    }
-  };
-  for(const name of ['drawElements','drawArrays','drawElementsInstanced','drawArraysInstanced'])gl[name]=()=>{gl.validateDraw();calls.push(['draw',drawFbo,program]);};
-  gl.uniformValues=values;gl.boundTextures=textures;return gl;
-}
+const {fakeGl}=require('./shader-gl-fixture.cjs');
 function mesh({terrain=true}={}){
   const geometry={_indices:new Uint32Array([0,1,2])};
   return {name:terrain?'chunk':'mob',metadata:terrain?{noa_chunk_terrain_mesh:true}:{},noa_in_dynamic_list:!terrain,
@@ -120,6 +33,140 @@ function sunSetup(meshes){
   fixture.api.attach(scene,{});gl.useProgram(gl.sunProgram());fixture.api.bind(gl,fixture.api.locations(gl,gl.getParameter(gl.CURRENT_PROGRAM)),0);
   return {...fixture,gl,scene,settings};
 }
+
+test('Native player/mob variations cast from batch.matrices and interleaved skin attributes without disabled slots',()=>{
+  const {nativeVariation}=require('./shader-instance-fixture.cjs'),actor=mesh({terrain:false});
+  actor.name='BodyMesh';actor.noa_in_dynamic_list=false;
+  const terrain=mesh(),f=sunSetup([terrain,actor]),texture=f.gl.createTexture(),arrayTexture=f.gl.createTexture();f.gl.bindTexture(f.gl.TEXTURE_2D,texture);
+  f.gl.isTexture=value=>value===texture||value===arrayTexture;
+  f.gl.texImage2D(f.gl.TEXTURE_2D,0,f.gl.RGBA8,1,1,0,f.gl.RGBA,f.gl.UNSIGNED_BYTE,new Uint8Array([255,255,255,255]));
+  f.gl.bindTexture(f.gl.TEXTURE_2D_ARRAY,arrayTexture);f.gl.texImage3D(f.gl.TEXTURE_2D_ARRAY,0,f.gl.RGBA8,1,1,2,0,f.gl.RGBA,f.gl.UNSIGNED_BYTE,null);
+  terrain.material={needAlphaTesting:()=>true,pluginManager:{_plugins:[{useWebGL2:true,textureAtlases:[{_texture:{_webGLTexture:arrayTexture}}],imagesPerAtlas:[2]}]}};
+  terrain.getVerticesData=kind=>kind==='position'?new Float32Array([0,0,0,1,0,0,0,1,0]):kind==='uv'?new Float32Array([0,0,1,0,0,1]):kind==='texAtlasIndices'?new Float32Array([1,1,1]):null;
+  const surfaces=shaderRuntime({wavyLeaves:true}).surfaces;surfaces.updateMetadata({1:{id:1,name:'Oak Leaves',atlasIndex:1}},new Map());f.root.__BVFX_SURFACES__=surfaces;
+  let leafAttribute=false,actorsDrawn=0;const enable=f.gl.enableVertexAttribArray,disable=f.gl.disableVertexAttribArray,validate=f.gl.validateDraw;
+  f.gl.enableVertexAttribArray=index=>{if(index===6)leafAttribute=true;enable(index);};f.gl.disableVertexAttribArray=index=>{if(index===6)leafAttribute=false;disable(index);};
+  f.gl.validateDraw=()=>{
+    validate();const p=f.gl.getParameter(f.gl.CURRENT_PROGRAM);
+    if(p.uniforms?.some(u=>u.name==='maskTexture')&&p.uniforms.some(u=>u.name==='uBvfxSurfaceAtlas'))assert.notEqual(p.values.get('maskTexture'),p.values.get('uBvfxSurfaceAtlas'),'skin/cutout and leaf samplers must occupy distinct units');
+    if(p.uniforms?.some(u=>u.name==='lifeformAtlasSize')){actorsDrawn++;assert.equal(leafAttribute,false,'actors cannot inherit the terrain leaf attribute');}
+  };
+  actor.material={needAlphaTesting:()=>true,diffuseTexture:{_texture:{_webGLTexture:texture}},pluginManager:{_plugins:[{atlasWidth:64,atlasHeight:64,numLayers:2}]}};
+  const positionBuffer={isUpdatable:()=>false};actor.getVertexBuffer=()=>positionBuffer;
+  actor.getVerticesData=kind=>kind==='position'?new Float32Array([0,0,0,1,0,0,0,1,0]):kind==='uv'?new Float32Array([0,0,1,0,0,1]):null;
+  const matrices=new Float32Array(3*16);for(let slot=0;slot<3;slot++){matrices.set(identity(),slot*16);matrices[slot*16+12]=slot*2;}
+  const {variation,group}=nativeVariation(actor,matrices,2),manager={thinMeshes:[group],objectData:{}};
+  assert.equal(variation.getMesh,undefined,'the native variation exposes .mesh, not a getMesh method');
+  assert.deepEqual(Array.from(variation.get(100,'aAtlasIdx1')),[11,12,13,14]);
+  f.gl.activeTexture(f.gl.TEXTURE0+15);f.api.attach(f.scene,{renderer:{scene:f.scene,manager}});f.api.render();
+  assert.equal(f.api.shadowDiagnostics.moving?.count,2,f.api.diagnostic+' '+JSON.stringify(f.api.shadowDiagnostics.moving));
+  assert(actorsDrawn>0);
+  assert(f.api.shadowDiagnostics.moving.drawCalls>0,f.api.diagnostic);
+  const atlas=f.gl.calls.filter(c=>c[0]==='bufferData'&&c[2]?.length===16).at(-1)?.[2];
+  assert.deepEqual(Array.from(atlas||[]),[11,12,13,14,21,22,23,24,31,32,33,34,41,42,43,44]);
+  variation.batch.matrices[12]=5;f.clock.now=60;f.api.render();
+  const uploaded=f.gl.calls.filter(c=>c[0]==='bufferData'&&c[2]?.length===32).at(-1)?.[2];assert.equal(uploaded?.[12],5,'moving poses are read live');
+});
+
+test('Full repairs in retained projections cannot reset the approach distance and strand the sharp cascade',()=>{
+  const terrain=mesh(),object=mesh({terrain:false});object.name='objectRock';object.noa_in_dynamic_list=false;object.metadata={noa_object_base_mesh:true};
+  const f=sunSetup([terrain,object]);Object.assign(f.settings,{sunRange:80,entityShadows:false});f.api.render();
+  const p=f.gl.sunProgram(),loc=f.api.locations(f.gl,p),read=()=>{f.gl.useProgram(p);f.api.bind(f.gl,loc,f.clock.now);return f.gl.uniformValues.get('uBvfxSunDetailMatrix').slice();};
+  const initial=read();
+  for(let step=1;step<=18;step++){f.scene.activeCamera.position.x=step;f.clock.now=step*60;f.api.invalidateTerrain([terrain]);f.api.render();}
+  assert.notDeepEqual(read(),initial,'small walking steps must accumulate until the high-resolution projection follows');
+});
+
+test('Orbit view keeps close terrain on the live player and moving shadows use the requested close density',()=>{
+  const f=sunSetup([mesh()]),position={xQi:new Float64Array([0,0,0])};
+  Object.assign(f.settings,{sunRange:80,sunResolutionExponent:11,entityShadows:true});
+  f.scene.activeCamera.position={x:100,y:50,z:100};
+  f.api.attach(f.scene,{hf:1,entities:{getState:(_id,name)=>name==='position'?position:null},renderer:{scene:f.scene}});f.api.render();
+  const p=f.gl.sunProgram(),loc=f.api.locations(f.gl,p),read=()=>{f.gl.useProgram(p);f.api.bind(f.gl,loc,f.clock.now);return f.gl.uniformValues.get('uBvfxSunDetailMatrix').slice();};
+  const before=read();assert.equal(Math.abs(before[12])+Math.abs(before[13]),0);
+  assert.equal(f.api.resolutionInfo.detail,2048);assert.equal(f.api.resolutionInfo.moving,4096);
+  position.xQi[0]=10;f.clock.now=100;f.api.render();assert.notDeepEqual(read(),before);
+  assert.equal([...f.gl.allocations.values()].filter(a=>a[2]===f.gl.DEPTH_COMPONENT24&&a[3]>1).length,4,'reuse four maps, without another entity pass');
+});
+
+test('Static object batches no longer force full terrain-map redraws, including in-place instance edits',()=>{
+ const {nativeVariation}=require('./shader-instance-fixture.cjs'),terrain=mesh(),tree=mesh({terrain:false});
+ tree.name='objectOak';tree.metadata={noa_object_base_mesh:true};tree.noa_in_dynamic_list=false;tree.getVertexBuffer=()=>({isUpdatable:()=>false});
+ const matrices=identity(),{variation,group}=nativeVariation(tree,matrices,1),manager={thinMeshes:[group],objectData:{}};
+ // Keep a stable native vertex-buffer identity, as the real immutable batch does.
+ const buffer=tree.getVertexBuffer();tree.getVertexBuffer=()=>buffer;
+ const f=sunSetup([terrain,tree]);f.settings.sunRange=16;f.settings.entityShadows=false;
+ f.api.attach(f.scene,{renderer:{scene:f.scene,manager}});f.api.render();
+ const full=f.api.chunkCacheDiagnostics.fullPasses;
+ f.clock.now=60;f.api.invalidateTerrain([terrain]);f.api.render();
+ assert.equal(f.api.chunkCacheDiagnostics.fullPasses,full,'a static tree batch must not poison the cache');
+ assert(f.api.chunkCacheDiagnostics.partialPasses>0);
+ const partial=f.api.chunkCacheDiagnostics.partialPasses;
+ variation.batch.matrices[12]=2;f.clock.now=120;f.api.invalidateTerrain([terrain]);f.api.render();
+ assert(f.api.chunkCacheDiagnostics.partialPasses>partial,'an in-place native transform is included in the repair');
+});
+
+test('An explicitly selected 8K detail map allocates on capable hardware without adding maps or enlarging the others',()=>{
+ const f=sunSetup([mesh()]);f.settings.sunResolutionExponent=13;f.settings.sunRange=80;
+ const get=f.gl.getParameter;f.gl.getParameter=key=>key===f.gl.MAX_TEXTURE_SIZE?8192:key===f.gl.MAX_VIEWPORT_DIMS?[8192,8192]:get(key);
+ f.api.render();assert.equal(f.api.resolutionInfo.detail,8192);assert.equal(f.api.resolutionInfo.moving,4096);
+ const maps=[...f.gl.allocations.values()].filter(a=>a[2]===f.gl.DEPTH_COMPONENT24&&a[3]>1);
+ assert.equal(maps.length,4);assert.equal(maps.filter(a=>a[3]===8192).length,1);
+ assert(maps.reduce((n,a)=>n+a[3]*a[4]*4,0)<=352*1024*1024);
+});
+
+test('Every rendered cascade remains sample-complete as raw depth, including the primary map and Off fallback',()=>{
+  for(const sunRange of [16,48,100]){
+    const f=sunSetup([mesh(),mesh({terrain:false})]);f.settings.sunRange=sunRange;
+    const p=f.gl.sunProgram();f.gl.useProgram(p);const loc=f.api.locations(f.gl,p);
+    for(const enabled of [true,false,true]){
+      f.settings.enabled=enabled;f.clock.now+=60;f.api.render();f.gl.useProgram(p);
+      f.api.bind(f.gl,loc,f.clock.now);f.gl.validateDraw();
+    }
+  }
+});
+
+test('Production cascade projections light an unobstructed plane and retain a one-block caster in a CPU ray reference',()=>{
+  const dot=(a,b)=>a.reduce((n,v,i)=>n+v*b[i],0),project=(m,p)=>[0,1,2].map(i=>(m[i]*p[0]+m[i+4]*p[1]+m[i+8]*p[2]+m[i+12])*.5+.5);
+  const read=(m,uv,box)=>{
+    const rows=[0,1,2].map(i=>[m[i],m[i+4],m[i+8]]),clip=[uv[0]*2-1,uv[1]*2-1,0];
+    const origin=[0,1,2].map(i=>rows.reduce((n,row,j)=>n+row[i]*(clip[j]-m[j+12])/dot(row,row),0));
+    const direction=rows[2].map(v=>-v/Math.hypot(...rows[2]));
+    let hit=-origin[1]/direction[1];
+    if(box){let enter=-Infinity,exit=Infinity;
+      for(let i=0;i<3;i++){const lo=i===1?0:-.5,hi=i===1?2:.5;
+        if(Math.abs(direction[i])<1e-9){if(origin[i]<lo||origin[i]>hi){enter=Infinity;exit=-Infinity;break;}continue;}
+        const a=(lo-origin[i])/direction[i],b=(hi-origin[i])/direction[i];enter=Math.max(enter,Math.min(a,b));exit=Math.min(exit,Math.max(a,b));}
+      if(enter<=exit)hit=Math.max(hit,exit);
+    }
+    const p=origin.map((v,i)=>v+direction[i]*hit),z=project(m,p)[2];
+    return Math.round(z*0xffffff)/0xffffff;
+  };
+  const sample=(m,texel,bias,position,box,smooth)=>{
+    const p=project(m,position),rows=[0,1,2].map(i=>[m[i],m[i+4],m[i+8]]),normal=[0,1,0];
+    const transformed=rows.map(row=>dot(normal,row)/dot(row,row)),gradient=transformed.slice(0,2).map(v=>Math.max(-4,Math.min(4,-v/transformed[2])));
+    const compare=uv=>{const reference=p[2]+dot(gradient,uv.map((v,i)=>v-p[i]))-bias;
+      return reference<=read(m,uv,box)?1:0;};
+    if(!smooth)return compare(p.slice(0,2).map(v=>(Math.floor(v/texel)+.5)*texel));
+    const base=p.slice(0,2).map(v=>Math.floor(v/texel-.5)),weight=p.slice(0,2).map((v,i)=>v/texel-.5-base[i]);
+    let visibility=0;for(let x=0;x<2;x++)for(let y=0;y<2;y++)visibility+=compare([(base[0]+x+.5)*texel,(base[1]+y+.5)*texel])*(x?weight[0]:1-weight[0])*(y?weight[1]:1-weight[1]);
+    return visibility;
+  };
+  for(const exponent of [8,10,12])for(const azimuth of [0,45,135,270])for(const elevation of [8,35,80]){
+    const f=sunSetup([mesh()]);Object.assign(f.settings,{sunRange:100,sunResolutionExponent:exponent,entityShadows:false,sunAzimuth:azimuth,sunElevation:elevation});
+    f.api.render();const p=f.gl.sunProgram();f.gl.useProgram(p);f.api.bind(f.gl,f.api.locations(f.gl,p),1);f.gl.validateDraw();
+    const direction=f.gl.uniformValues.get('uBvfxSunDirection'),shadow=[-direction[0]/direction[1],0,-direction[2]/direction[1]];
+    for(const kind of ['','Local','Detail']){
+      const m=f.gl.uniformValues.get('uBvfxSun'+kind+'Matrix'),texel=f.gl.uniformValues.get('uBvfxSun'+kind+'Texel');assert(m);
+      const bias=f.gl.uniformValues.get('uBvfxSun'+kind+'Bias')*(1+2*(1-direction[1]))+.000002;
+      for(const smooth of [false,true]){
+        for(let x=-8;x<=8;x+=2)for(let z=-8;z<=8;z+=2)assert(Math.abs(sample(m,texel,bias,[x,0,z],false,smooth)-1)<1e-7,'empty floor stays lit across every cascade');
+        assert.equal(sample(m,texel,bias,[8,0,8],true,smooth),1,'the caster does not darken unrelated ground');
+        if(kind==='Detail')assert(sample(m,texel,bias,shadow,true,smooth)<.01,'one-block-wide occluder retains its cast shadow');
+      }
+    }
+  }
+});
 test('Shader fixes guard original bytes and every generated module compiles',()=>{
   for(const f of pack.files)new vm.Script(source(f.path),{filename:f.path});
   assert.throws(()=>managedSource('bloxd-visual-shader','sun-shadows.js',original('sun-shadows.js')+'\n'),/does not match/);
@@ -165,63 +212,36 @@ test('All launcher defaults enable bloom, glowing ores and custom skies; explici
 test('Golden Hour selects Cumulus and runtime defaults preserve explicit atmosphere Off',()=>{
   const code=source('shader.js'),start=code.indexOf('  const PRESETS ='),end=code.indexOf('  const storedState=loadSettings();');
   const context=vm.createContext({localStorage:{getItem:()=>JSON.stringify({visualDefaultsRevision:1,sliderModel:'normalized-v2',atmosphereEnabled:false})}});
-  vm.runInContext("const STORAGE_KEY='synthetic';\n"+code.slice(start,end)+'\nglobalThis.result={DEFAULTS,SKY_STYLES,loaded:loadSettings()};',context);
+  vm.runInContext("const STORAGE_KEY='synthetic',PAGE=globalThis;\n"+code.slice(start,end)+'\nglobalThis.result={DEFAULTS,SKY_STYLES,loaded:loadSettings()};',context);
   assert.equal(context.result.SKY_STYLES.golden.cloudType,'current');assert.equal(context.result.DEFAULTS.atmosphereEnabled,true);
   assert.equal(context.result.loaded.atmosphereEnabled,false);
 });
 
-test('High shadow settings keep close detail while bounding four depth maps and the resolution UI',()=>{
+test('Retained reference maps keep bounded close detail; the current UI omits map resolution',()=>{
   const settings={enabled:true,sunShadowEnabled:true,entityShadows:true,sunResolutionExponent:14,sunRange:160,sunQuality:100};
   const f=factory('sun-shadows.js',settings,'quality'),q=f.api.quality();
-  assert.equal(q.detailSize,4096);assert.ok(q.size<=2048);assert.ok(q.localSize<=2048);
+  assert.equal(q.detailSize,8192);assert.ok(q.size<=2048);assert.ok(q.localSize<=2048);
   const {gl}=sunSetup([mesh()]);const scene=sceneFor(gl,[mesh()]);
   f.api.attach(scene,{});gl.useProgram(gl.sunProgram());f.api.bind(gl,f.api.locations(gl,gl.getParameter(gl.CURRENT_PROGRAM)),0);
   f.api.render();
   const maps=[...gl.allocations.values()].filter(args=>args[2]===gl.DEPTH_COMPONENT24 && args[3]>1);
-  assert.equal(maps.length,4);assert.ok(maps.reduce((bytes,args)=>bytes+args[3]*args[4]*4,0)<=112*1024*1024);
-  assert.match(source('shader.js'),/\['sunResolutionExponent', 'Shadow resolution', 5, 12,/);
-  const runtime=shaderRuntime({sunResolutionExponent:14});assert.equal(runtime.state.sunResolutionExponent,12);
+  assert.equal(maps.length,4);assert.ok(maps.reduce((bytes,args)=>bytes+args[3]*args[4]*4,0)<=160*1024*1024);
+  assert.doesNotMatch(source('shader.js'),/\['sunResolutionExponent', 'Shadow resolution', 5, 13,/);
+  const runtime=shaderRuntime({sunResolutionExponent:14});assert.equal(runtime.state.sunResolutionExponent,13);
   assert.equal(shaderRuntime({sunQuality:100}).state.sunResolutionExponent,12,'legacy quality-only settings use the same bound');
 });
-test('Native sky Off still binds a complete 2D cache sampler and restores draw state',()=>{
+test('Analytic sky toggles return to native without allocating textures or offscreen passes',()=>{
   const settings={enabled:true,atmosphereEnabled:false,cloudCover:0,cloudType:'current',skyStyle:'clear'};
-  const {api}=factory('atmosphere.js',settings),gl=fakeGl(),program=gl.skyProgram();gl.useProgram(program);
-  const loc=api.locations(gl,program,gl.getUniformLocation);loc.volume=null;
-  api.bind(gl,loc,gl);const previous=gl.getParameter(gl.ACTIVE_TEXTURE),restore=api.bindVolume(gl,loc,program);
-  const texture=gl.boundTextures.get((gl.TEXTURE0+loc.skyUnit)+':'+gl.TEXTURE_2D);
-  assert.ok(texture);assert.equal(gl.allocations.get(texture)[3],1);
-  assert.equal(gl.uniformValues.get('uBvfxAtmoActive'),0);assert.equal(gl.uniformValues.get('uBvfxAtmoCacheReady'),0);
-  let draws=0;api.drawSky(gl,loc,()=>{draws++;},[]);assert.equal(draws,1);assert.equal(gl.getParameter(gl.ACTIVE_TEXTURE),previous);
-  restore();assert.equal(gl.boundTextures.get((gl.TEXTURE0+loc.skyUnit)+':'+gl.TEXTURE_2D),null);
-  settings.atmosphereEnabled=true;api.bind(gl,loc,gl);assert.equal(gl.uniformValues.get('uBvfxAtmoActive'),1);
-  settings.atmosphereEnabled=false;api.bind(gl,loc,gl);assert.equal(gl.uniformValues.get('uBvfxAtmoActive'),0);
-});
-test('Custom sky cache draws never sample their attached render target; every style toggles back to native',()=>{
-  const settings={enabled:true,atmosphereEnabled:true,cloudCover:0,cloudType:'current',skyStyle:'clear',sunAzimuth:135,sunElevation:35};
-  const {api,root}=factory('atmosphere.js',settings,'skyCaches'),gl=fakeGl();
-  root.__BLOXD_MOD_HOST__={profile:{performance:'balanced'}};gl.viewport(0,0,1920,1080);
-  const p=gl.createProgram(),vert=gl.createShader(gl.VERTEX_SHADER),frag=gl.createShader(gl.FRAGMENT_SHADER);
-  gl.shaderSource(vert,'#version 300 es\nprecision highp float;layout(location=0)in vec3 position;out highp vec3 vPositionW;void main(){vPositionW=position;gl_Position=vec4(position,1.0);}');
-  gl.shaderSource(frag,api.patchSky('#version 300 es\n#define BVFX_SKYBOX\nprecision highp float;uniform samplerCube reflectionSampler;uniform vec4 vEyePosition;in highp vec3 vPositionW;out vec4 color;void main(){color=texture(reflectionSampler,normalize(vPositionW-vEyePosition.xyz));}'));
-  gl.attachShader(p,vert);gl.attachShader(p,frag);gl.linkProgram(p);gl.useProgram(p);
-  const cube=gl.createTexture();gl.bindTexture(gl.TEXTURE_CUBE_MAP,cube);gl.allocations.set(cube,['complete native cubemap']);
-  const loc=api.locations(gl,p,gl.getUniformLocation);
-  for(const style of ['clear','golden','moonlit','milkyway','blackhole','andromeda']){
-    settings.skyStyle=style;
-    for(const on of [true,false,true]){
-      settings.atmosphereEnabled=on;api.bind(gl,loc,gl);const restore=api.bindVolume(gl,loc,p);
-      const before=gl.calls.filter(c=>c[0]==='draw').length;api.drawSky(gl,loc,gl.drawArrays,[]);
-      assert.equal(loc.cacheError,undefined,loc.cacheError);assert.ok(gl.calls.filter(c=>c[0]==='draw').length>before);
-      if(on){const cache=api.skyCaches.get(gl);assert.ok(cache.drawWidth<=(style==='clear'||style==='golden'||style==='moonlit'?640:960));}
-      assert.equal(gl.getParameter(gl.CURRENT_PROGRAM),p);assert.equal(gl.getParameter(gl.DRAW_FRAMEBUFFER_BINDING),null);
-      restore?.();
-    }
+  const {api}=factory('atmosphere.js',settings),gl=fakeGl(),program=gl.createProgram();gl.useProgram(program);
+  const loc=api.locations(gl,program,gl.getUniformLocation);
+  for(const style of ['clear','golden','moonlit','milkyway','blackhole','andromeda'])for(const on of [true,false,true]){
+    settings.skyStyle=style;settings.atmosphereEnabled=on;api.bind(gl,loc,gl);
+    assert.equal(gl.uniformValues.get('uBvfxAtmoActive'),on?1:0);
+    api.drawSky(gl,loc,gl.drawArrays,[]);assert.equal(gl.getParameter(gl.CURRENT_PROGRAM),program);
   }
-  assert.ok(api.skyDiagnostics(gl).renders>0);
-  root.__BLOXD_MOD_HOST__.profile.performance='quality';settings.skyStyle='clear';settings.atmosphereEnabled=true;
-  api.bind(gl,loc,gl);const restore=api.bindVolume(gl,loc,p);api.drawSky(gl,loc,gl.drawArrays,[]);restore?.();
-  assert.equal(api.skyCaches.get(gl).drawWidth,960);assert.equal(api.skyCaches.get(gl).drawHeight,540);
+  assert.equal(gl.allocations.size,0);assert.equal(api.skyDiagnostics().offscreenPasses,0);
 });
+
 test('Combined terrain/liquid samplers allocate distinct units and follow native reassignments',()=>{
   const gl=fakeGl(),root={};const revisions=new WeakMap();root.__BVFX_GL_STATE__=()=>({programRevisions:revisions,markSampler(){}});installShaderSamplers(root);
   const p=gl.uniforms(gl.createProgram(),[['terrainAtlas','SAMPLER_2D_ARRAY'],['environment','SAMPLER_CUBE'],['uBvfxOreAtlasLookup','SAMPLER_2D'],
@@ -235,15 +255,11 @@ test('Combined terrain/liquid samplers allocate distinct units and follow native
   assert.equal(new Set(units.values()).size,units.size);assert.equal(root.__BVFX_SAMPLER_UNITS__(gl,p),units);
 });
 
-test('Sky variant consumes observed uniform uploads without synchronous driver reads',()=>{
-  const {api,root}=factory('atmosphere.js',{},'copySkyUniforms'),gl=fakeGl(),program=gl.createProgram(),target=gl.createProgram();
-  const from={},to={program:target,name:'nativeSun'},entry={revision:1,valueRevision:1,value:new Float32Array([.1,.2,.3])};
-  root.__BVFX_GL_STATE__=()=>({watchUniform:()=>entry});gl.getUniform=()=>{throw Error('Unexpected synchronous uniform read');};
-  const variant={uniforms:[{from,to,type:gl.FLOAT_VEC3,size:1}],attributes:[],blocks:[],revision:0};gl.useProgram(target);
-  api.copySkyUniforms(gl,program,variant);assert.deepEqual(Array.from(target.values.get('nativeSun')),Array.from(entry.value));
-  entry.revision++;entry.valueRevision++;entry.value=new Float32Array([.4,.5,.6]);
-  api.copySkyUniforms(gl,program,variant);assert.deepEqual(Array.from(target.values.get('nativeSun')),Array.from(entry.value));
-  assert.deepEqual({...entry.capture},{method:'uniform3fv',size:1});
+test('Analytic sky uniform uploads never read native uniforms or the viewport',()=>{
+  const {api}=factory('atmosphere.js',{enabled:true,atmosphereEnabled:true,skyStyle:'clear'}),gl=fakeGl(),p=gl.createProgram();gl.useProgram(p);
+  gl.getUniform=()=>{throw Error('Unexpected readback');};gl.getParameter=()=>{throw Error('Unexpected driver query');};
+  api.bind(gl,api.locations(gl,p,gl.getUniformLocation),gl);
+  assert.equal(gl.uniformValues.get('uBvfxAtmoActive'),1);
 });
 
 test('Native sampler changes reuse reflection, while relinks rediscover the complete layout',()=>{
@@ -480,7 +496,9 @@ test('Actual document-start pipeline patches water and lava and keeps their in-g
   for(const kind of ['water','lava']){
     const program=liquidPrograms(runtime,kind);assert.match(program.vertex,/bvfxVertexWaterHeight/);
     assert.match(program.fragment,/bvfxLiquidSurfacePosition/);assert.match(program.fragment,/uBvfxSunMap/);
-    assert.match(program.fragment,/uBvfxOreAtlasLookup/);assert.match(program.fragment,/uBvfxAtmoCloudVolume/);
+    assert.match(program.fragment,/uBvfxOreAtlasLookup/);assert.match(program.fragment,/bvfxCloudGroundShadow/);assert.doesNotMatch(program.fragment,/bvfxLavaNoise3|sampler2DShadow|bvfxSkyColour|bvfxSpaceHole/);
+    assert.match(program.fragment,/sampler2D uBvfxAtmoGroundImage/,'cloud shadows sample the retained world-space tile');
+    assert.doesNotMatch(program.fragment,/sampler3D uBvfxAtmoVolume|bvfxVolumeDensity/,'liquid fragments never integrate cloud density');
   }
 });
 test('Ore, atmosphere and shadow binding functions coexist in the actual water/lava pipeline',()=>{
@@ -494,6 +512,7 @@ test('Ore, atmosphere and shadow binding functions coexist in the actual water/l
     for(const on of [false,true,false,true]){
       runtime.state.oreGlowEnabled=on;runtime.state.atmosphereEnabled=on;runtime.state.sunShadowEnabled=on;runtime.state.cloudCover=0;
       runtime.sun.bind(gl,shadow,1);runtime.sun.refresh();runtime.sun.render();
+      runtime.root.__BVFX_SURFACES__.bind(gl,runtime.root.__BVFX_SURFACES__.locations(gl,p),gl,undefined,on?1:0);
       const restoreOre=runtime.bindOreLookup(gl,ore,p),restoreAtmosphere=runtime.atmosphere.bindVolume(gl,atmosphere,p),restoreShadow=runtime.sun.bind(gl,shadow,2);
       gl.validateDraw();assert.equal(gl.uniformValues.get('uBvfxSunActive'),on?1:0,runtime.sun.diagnostic);
       restoreShadow?.();restoreAtmosphere?.();restoreOre?.();

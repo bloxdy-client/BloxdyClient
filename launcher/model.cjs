@@ -2,7 +2,7 @@
 const ID=/^(?!(?:constructor|prototype)$)[a-z][a-z0-9-]{1,63}$/;
 const VERSION=/^\d+(?:\.\d+){1,3}$/;
 const CORE={id:'bloxd-mod-host',version:'0.1.0',builtin:true};
-const RENDERERS=['standard','native-preview'];
+const RENDERERS=process.platform==='linux'?['standard']:['standard','native-preview'];
 function clone(value){return JSON.parse(JSON.stringify(value));}
 function compare(a,b){if(!VERSION.test(a)||!VERSION.test(b))throw Error('Invalid version number.');const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<4;++i){const d=(x[i]||0)-(y[i]||0);if(d)return Math.sign(d);}return 0;}
 function satisfies(version,range){const match=/^(>=|<=|>|<|=)?(\d+(?:\.\d+){1,3})$/.exec(range);if(!match)throw Error('Unsupported version requirement.');const d=compare(version,match[2]);return ({'>=':d>=0,'<=':d<=0,'>':d>0,'<':d<0,'=':d===0})[match[1]||'='];}
@@ -19,6 +19,8 @@ function validateProfile(p){
   if(new Set(p.enabledMods).size!==p.enabledMods.length)throw Error('A mod is enabled more than once.');
   if(!['economy','balanced','quality'].includes(p.performance))throw Error('Invalid performance preset.');
   if(!Number.isInteger(p.ramGB)||p.ramGB<1||p.ramGB>32)throw Error('The memory budget must be between 1 and 32 GB.');
+  if(p.icon!==undefined&&(typeof p.icon!=='string'||! /^[a-z]{2,20}$/.test(p.icon)))throw Error('Invalid profile icon.');
+  if(p.iconColor!==undefined&&(typeof p.iconColor!=='string'||!/^#[0-9a-f]{6}$/i.test(p.iconColor)))throw Error('Invalid profile icon color.');
   return clone(p);
 }
 function plan(profile,installed){

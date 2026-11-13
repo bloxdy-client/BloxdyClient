@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path');const {managedSource}=require('./adapters.cjs');
-const host=require('./mod-host.cjs'),capture=require('../bridge/capture-factory.cjs');
-const presenter=require('../bridge/presenter.cjs');
+const host=require('./mod-host.cjs'),capture=process.platform==='linux'?null:require('../bridge/capture-factory.cjs');
+const presenter=process.platform==='linux'?null:require('../bridge/presenter.cjs');
 const {prepare,installProfileStorage}=require('./profile-settings.cjs');
 const observer=require('./client-observer.cjs'),{install:installTextures}=require('./textures.cjs');
 const characterCapture=require('./character-capture.cjs'),{encodeCharacter}=require('./character-glb.cjs');
@@ -23,13 +23,15 @@ function muteAdMedia(){
   const start=()=>{scan(document.documentElement);const observer=new MutationObserver(records=>{for(const record of records)for(const node of record.addedNodes)scan(node);});observer.observe(document.documentElement,{childList:true,subtree:true});addEventListener('pagehide',()=>observer.disconnect(),{once:true});};
   if(document.documentElement)start();else document.addEventListener('DOMContentLoaded',start,{once:true});
 }
-// These mods need Bloxd's WebGL scene. Select Bloxd's official backend
-// URL option before its scripts run, including an authorized portal frame.
+// Select Bloxd's official JavaScript backend before scripts run. The shader
+// mod uses original Lite shadows; Litematica/Grassify also retain WebGL alone.
 // Do not overwrite the user's persisted renderer, game settings or accounts.
-function selectModRenderer(){
+function selectModRenderer(nativeShaders=false){
   const url=new URL(location.href);
   if(url.protocol!=='https:'||url.hostname!=='bloxd.io'||url.pathname!=='/')return;
-  url.searchParams.set('renderer','webgl2');
+  globalThis.__BVFX_NATIVE_REQUESTED__=nativeShaders===true;
+  url.searchParams.set('renderer',nativeShaders?'lite':'webgl2');
+  url.searchParams.set('client','js');
   if(url.href!==location.href)history.replaceState(history.state,'',url.href);
 }
 function generate(store,profile,modules,folder,options={}){
@@ -44,8 +46,9 @@ function generate(store,profile,modules,folder,options={}){
   if(modules.some(m=>m.id==='bloxd-visual-shader'))code+=`ipcRenderer.on('client:shader-diagnostics-request',()=>{try{const text=contextBridge.executeInMainWorld({func:function(){try{return JSON.stringify(globalThis.__BVFX_INSTANCE__?.diagnostics?.()||{unavailable:true});}catch(error){return JSON.stringify({error:String(error?.message||error).slice(0,200)});}},args:[]});if(typeof text==='string'&&text.length<=65536)ipcRenderer.send('client:shader-diagnostics',text);}catch(error){ipcRenderer.send('client:shader-diagnostics',JSON.stringify({error:String(error?.message||error).slice(0,200)}));}});\n`;
   if(modules.some(m=>m.id==='bloxd-litematica'))code+=`ipcRenderer.on('client:litematica-diagnostics-request',()=>{try{const text=contextBridge.executeInMainWorld({func:function(){try{return JSON.stringify(globalThis.__BLOXD_LITEMATICA__?.diagnostics?.(true)||{unavailable:true});}catch(error){return JSON.stringify({error:String(error?.message||error).slice(0,200)});}},args:[]});if(typeof text==='string'&&text.length<=65536)ipcRenderer.send('client:litematica-diagnostics',text);}catch(error){ipcRenderer.send('client:litematica-diagnostics',JSON.stringify({error:String(error?.message||error).slice(0,200)}));}});\n`;
   const stage=(name,body)=>`runStage(${JSON.stringify(name)},()=>{${body}});\n`;
-  if(modules.some(m=>['bloxd-visual-shader','bloxd-litematica','bloxd-grassify'].includes(m.id)))code+=stage('launcher:mod-renderer',`contextBridge.executeInMainWorld({func:${selectModRenderer.toString()},args:[]});`);
+  if(modules.some(m=>['bloxd-visual-shader','bloxd-litematica','bloxd-grassify'].includes(m.id)))code+=stage('launcher:mod-renderer',`contextBridge.executeInMainWorld({func:${selectModRenderer.toString()},args:[${modules.some(m=>m.id==='bloxd-visual-shader')}]});`);
   code+=stage('launcher:host',`contextBridge.executeInMainWorld({func:${host.toString()},args:[${JSON.stringify(config)}]});`);
+  if(modules.length)code+=stage('launcher:settings-navigation',`contextBridge.executeInMainWorld({func:${require('./settings-navigation.cjs').toString()},args:[]});`);
   code+=stage('launcher:character',`contextBridge.exposeInMainWorld('bloxdLauncherClient',{account:value=>ipcRenderer.send('client:account',value),character:value=>ipcRenderer.invoke('client:character',value),characterStatus:value=>ipcRenderer.send('client:character-status',value),texture:value=>ipcRenderer.send('client:texture',value)});contextBridge.executeInMainWorld({func:function(options){(${observer.toString()})(options,${characterCapture.toString()},${encodeCharacter.toString()});},args:[${JSON.stringify({action:options.action||'game',platform:options.embedded?'crazygames':'bloxd'})}]});`);
   if(options.texture)code+=stage('launcher:textures',`contextBridge.executeInMainWorld({func:${installTextures.toString()},args:[${JSON.stringify(options.texture)},${JSON.stringify({key:options.textureKey||profile.id})}]});`);
   if(modules.length)code+=stage('launcher:storage',`contextBridge.exposeInMainWorld('__BLOXD_PROFILE_SAVE__',{save:(id,value)=>ipcRenderer.invoke('mods:set',{id,value})});contextBridge.executeInMainWorld({func:${installProfileStorage.toString()},args:[${JSON.stringify(seed)}]});`);

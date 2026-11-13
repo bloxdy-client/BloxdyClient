@@ -19,8 +19,9 @@ test('A user closing during startup cancels the wait without a 45-second deadlin
  const f=harness(t),started=f.runner.start();f.status('closed');f.poll();await assert.rejects(started,/closed before showing/);assert.equal(f.closed.length,1);assert.equal(f.intervals.size,0);assert.equal(f.timeouts.size,0);assert.equal(f.child.killed,undefined);
 });
 test('Process exit remains a close fallback when no window marker can be written',async t=>{
- const f=harness(t);await visible(f);f.child.emit('exit',1);assert.equal(f.closed.length,1);assert.equal(f.closed[0].code,1);assert.equal(f.intervals.size,0);
+ const f=harness(t);await visible(f);f.child.emit('exit',1);assert.equal(f.closed.length,0);assert.equal(f.intervals.size,0);[...f.timeouts][0].fn();assert.equal(f.closed.length,1);assert.equal(f.closed[0].code,1);
 });
+test('Final stderr after exit is captured before the close notification, including its signal',async t=>{const f=harness(t);await visible(f);f.child.emit('exit',null,'SIGKILL');f.child.stderr.emit('data',Buffer.from('Final native error token=HIDDEN'));f.child.emit('close',null,'SIGKILL');assert.equal(f.closed.length,1);assert.equal(f.closed[0].signal,'SIGKILL');const log=fs.readFileSync(path.join(f.runner.output,'runner-error.log'),'utf8');assert.match(log,/Final native error/);assert.doesNotMatch(log,/HIDDEN/);assert.equal(f.timeouts.size,0);});
 test('Spawn errors reject startup and release all lifecycle observers',async t=>{
  const f=harness(t),started=f.runner.start();f.child.emit('error',Error('Synthetic spawn failure'));await assert.rejects(started,/Synthetic spawn failure/);assert.equal(f.closed.length,1);assert.equal(f.intervals.size,0);assert.equal(f.timeouts.size,0);
 });

@@ -39,15 +39,6 @@
         "place.js": "6ed02cbe8b35cdc624a00dab28d613749a1d468429ed015be4c663ac1b10bc1d",
         "litematica.js": "b3413bf085cd311bec16ea509c721e83202bec7b627e9fc92e116e0b338b8092"
       }
-    },
-    "bloxd-party-voice": {
-      "version": "0.6.1",
-      "packageSha256": "b2dbbbe75f6c050daaa44362e3629c1f1f7e493604258dcdbca1cb585ccf3ec1",
-      "files": {
-        "runtime.js": "289b14fa0ce5011b04fe9ee0e4d09c808eddfedf3f6fc7cc5f60500f8bb5a930",
-        "voice.js": "e0b4e9fc0bc31116cd061b6b8b9deee002c7968b45d464b4836f529d1e356fba",
-        "voice.css": "52c03dd9a48ed7616ce06d0b4eb562f2dfd85f6ca4d7afd7004046e65d9ab47e"
-      }
     }
   }
 }

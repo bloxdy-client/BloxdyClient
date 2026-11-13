@@ -26,8 +26,35 @@ function liquidUploadSchema(manager){
   // light with a null-coalescing expression before create/rewriteChunkBuffers.
   // Recover those exact fields; never infer a light array from its length.
   const nativeLight=parameter && (source.match(new RegExp('null\\s*!==\\s*\\([\\w$]+\\s*=\\s*'+parameter+'\\.([\\w$]+)\\)'))?.[1]
-    || source.match(new RegExp(parameter+'\\.([\\w$]+)\\s*\\?\\?'))?.[1]);
+    || source.match(new RegExp(parameter+'\\.([\\w$]+)\\s*\\?\\?'))?.[1]
+    || source.match(new RegExp(parameter+'\\.([\\w$]+)\\s*\\?\\s*\\(0,[\\w$]+\\.[\\w$]+\\)\\('+parameter+'\\.\\1\\)'))?.[1]);
   return {light:light || nativeLight,label:label?.length===1?label[0]:null};
+}
+function remapLiquidFaceGroups(groups,plans){
+  // Current native terrain stores nine quad boundaries (six face groups and
+  // two repeated prefix groups), then six bounds. Its culler draws 6*range.
+  // Tessellation changes those boundaries, even for untouched solid sides.
+  if(groups?.length!==15 || groups[0]!==0 || groups[8]!==plans.length)return null;
+  for(let i=0;i<9;i++)if(!Number.isInteger(groups[i]) || groups[i]<0
+      || groups[i]>plans.length || i>0 && groups[i]<groups[i-1])return null;
+  const offsets=new Uint32Array(plans.length+1);
+  for(let i=0;i<plans.length;i++)offsets[i+1]=offsets[i]+plans[i][0]*plans[i][1];
+  const result=groups.slice();
+  for(let i=0;i<9;i++)result[i]=offsets[groups[i]];
+  return result;
+}
+function resolveTerrainMaterial(manager,id){
+  const materials=manager?.terrainMatManager;
+  if(!materials)return null;
+  const direct=materials._terrainIDtoMatObject?.[id];if(direct)return direct;
+  const source=manager.meshBuilder?.assignMeshData;
+  let known=terrainMaterialLookups.get(manager);
+  if(!known || known.source!==source){
+    const method=String(source||'').match(/this\.terrainMatManager\.([\w$]+)\(/)?.[1];
+    known={source,method};terrainMaterialLookups.set(manager,known);
+  }
+  const get=materials[known.method] || materials.Iq || materials.Kz || materials.dM || materials.NG || materials.me || materials.dE || materials.xB;
+  return typeof get==='function'?get.call(materials,id):null;
 }
 function seedExistingLiquidGeometry(manager,noa){
   if(!state.enabled)return;
@@ -88,6 +115,7 @@ function seedExistingLiquidGeometry(manager,noa){
       const lightField=schema.light;
       if(lights?.length!==count || !lightField){complete=false;break;}
       const data={vertices,usesAtlas,indices:new Uint32Array(indices),terrainID:Number(terrainID)};
+      if(part._noaFaceGroups)data.faceGroups=part._noaFaceGroups.slice();
       const labelField=schema.label || String(manager.meshBuilder?.assignMeshData || '').match(/indices:[\w$]+,([\w$]+):[\w$]+,terrainID:/)?.[1] || 'lK';
       data[labelField]=chunk[labelField];
       if(lightField && lights?.length===count)data[lightField]=new Float32Array(lights);
@@ -115,6 +143,15 @@ function adaptWorldShader(name,source){
     edit('}};break;',`},chunkAt(x,y,z){const coords=value[lookup[1]](x,y,z);return value[lookup[2]][lookup[3]](...coords);}};break;`);
   }
   if(name==='shader.js'){
+    edit('  function chunkMayContainLiquid(', '  const terrainMaterialLookups=new WeakMap();\n  '+resolveTerrainMaterial.toString()+'\n\n  function chunkMayContainLiquid(');
+    edit(`const materials=manager.terrainMatManager;
+      const material=materials?._terrainIDtoMatObject?.[data.terrainID]
+        || (materials?.Iq || materials?.Kz || materials?.dM || materials?.NG
+          || materials?.me || materials?.dE || materials?.xB)?.call(materials,data.terrainID);`,
+      'const material=resolveTerrainMaterial(manager,data.terrainID);');
+    edit('const materials=record.manager.terrainMatManager;\n      const material=materials?._terrainIDtoMatObject?.[data.terrainID] || (materials?.Iq || materials?.Kz || materials?.dM || materials?.NG || materials?.me || materials?.dE || materials?.xB)?.call(materials,data.terrainID);',
+      'const material=resolveTerrainMaterial(record.manager,data.terrainID);');
+    edit('  function subdivideWaterData(', '  '+remapLiquidFaceGroups.toString()+'\n\n  function subdivideWaterData(');
     edit('  function applyWaterGeometry(record) {','  '+cacheLiquidBlockReads.toString()+'\n\n  function applyWaterGeometry(record) {');
     const start=source.indexOf('  function applyWaterGeometry(record) {');
     const prefix=source.slice(0,start);let preparation=source.slice(start);
@@ -171,6 +208,12 @@ function adaptWorldShader(name,source){
     const deferredEnd=source.indexOf('        // New streamed chunks',deferredStart);
     if(deferredStart<0 || deferredEnd<0)throw Error('Liquid upload ordering mismatch.');
     source=source.slice(0,deferredStart)+source.slice(deferredEnd);
+    // The current worker sends Uint16 light levels. The geometry interpolator
+    // uses Float32 arrays; retain the exact field read by the native builder.
+    edit('        const record={chunk,manager,assign,native:entries,active:false,mappings:[],', `        const lightField=mayContainLiquid?liquidUploadSchema(manager).light:null;
+        if(mayContainLiquid && lightField)entries=entries.map(data=>data[lightField] && !(data[lightField] instanceof Float32Array)
+          ? {...data,[lightField]:new Float32Array(data[lightField])}:data);
+        const record={chunk,manager,assign,native:entries,active:false,mappings:[],`);
     edit('        // New streamed chunks retain the bounded background preparation path.', '        // Commit native geometry before scheduling optional visual work.');
     edit('        const previousRecord=waterMeshRecords.get(chunk);',`        if(!state.enabled){waterMeshRecords.delete(chunk);pendingWaterGeometry.delete(chunk);
           return uploadNativeWaterGeometry({chunk,manager,assign,native:entries});}`);
@@ -186,4 +229,4 @@ function adaptWorldShader(name,source){
   }
   return source;
 }
-module.exports={adaptWorldShader,liquidUploadSchema};
+module.exports={adaptWorldShader,liquidUploadSchema,remapLiquidFaceGroups};

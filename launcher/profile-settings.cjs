@@ -5,8 +5,7 @@ function defaults(performance){
   const economy=performance==='economy',quality=performance==='quality';
   return {
     'bloxd-visual-shader':{[SHADER_KEY]:{enabled:true,preset:'custom',sliderModel:'normalized-v2',visualDefaultsRevision:1,waterStyle:economy?'flat':'wavey',waterPhysics:!economy,bloomEnabled:true,bloom:.20,oreGlowEnabled:true,oreGlowStrength:.5,oreBlockStrength:.5,oreSurfaceBrightness:.5,atmosphereEnabled:true,skyStyle:'clear',cloudType:'current',shadowEnabled:!economy,sunShadowEnabled:quality,entityShadows:!economy,sunRange:quality?80:48,sunResolutionExponent:quality?11:10,sunQuality:quality?20:10}},
-    'bloxd-litematica':{[LITEMATICA_KEY]:{distance:economy?64:quality?192:128,maxRender:economy?32768:quality?262144:131072}},
-    'bloxd-party-voice':{bpvPrefs:{enabled:true,server:'ws://127.0.0.1:8787/signal',muted:true,deafened:false}}
+    'bloxd-litematica':{[LITEMATICA_KEY]:{distance:economy?64:quality?192:128,maxRender:economy?32768:quality?262144:131072}}
   };
 }
 function prepare(store,profile,modules){const initial=defaults(profile.performance),seed={};for(const m of modules){const saved=store.storage(profile.id,m.id);seed[m.id]={...(initial[m.id]||{}),...saved};if(m.id==='bloxd-visual-shader')seed[m.id][SHADER_KEY]={...initial[m.id][SHADER_KEY],...saved[SHADER_KEY]};}return seed;}

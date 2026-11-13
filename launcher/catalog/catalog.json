@@ -96,45 +96,6 @@
       "source": "Local Bloxd project"
     },
     {
-      "id": "bloxd-party-voice",
-      "name": "Bloxd Party Voice",
-      "version": "0.6.1",
-      "kind": "bloxd-mod",
-      "category": "social",
-      "requires": [
-        {
-          "id": "bloxd-mod-host",
-          "version": ">=0.1.0"
-        }
-      ],
-      "conflicts": [],
-      "scripts": [
-        {
-          "world": "MAIN",
-          "js": [
-            "runtime.js"
-          ],
-          "css": []
-        },
-        {
-          "world": "ISOLATED",
-          "js": [
-            "voice.js"
-          ],
-          "css": [
-            "voice.css"
-          ]
-        }
-      ],
-      "compatibility": "launcher-adapter-unverified",
-      "note": "Requires an available voice server. You control microphone access.",
-      "description": "Party and lobby voice with device controls and per-player volume.",
-      "package": "bloxd-party-voice-0.6.1.bnmod",
-      "sha256": "b2dbbbe75f6c050daaa44362e3629c1f1f7e493604258dcdbca1cb585ccf3ec1",
-      "size": 73972,
-      "source": "Local Bloxd project"
-    },
-    {
       "id": "bloxd-no-ads",
       "name": "No Ads",
       "version": "1.0.0",
@@ -193,14 +154,14 @@
       "note": "WebGL2 grass in Flat, Round and Realistic styles, adjustable wind and thickness, 5–1000 blades per block, no total blade cap. Configure Grassify in Bloxd Settings. Live verification remains open.",
       "description": "Dense grass with wind, player and mob bending, color and distance controls. Uses Bloxd WebGL2.",
       "package": "bloxd-grassify-0.2.0.bnmod",
-      "sha256": "e20f54c7da9034c77590d112a13fc710da22743abf98dbc7f86c75408818587f",
-      "size": 43703,
+      "sha256": "ad6e25924f73bd50279571413bd7362dc4fb3d2b4e18fa3c0cc2da82f4cc09cb",
+      "size": 44003,
       "source": "Bloxdy Client"
     },
     {
       "id": "bloxd-zoomer",
       "name": "Zoomer",
-      "version": "1.0.1",
+      "version": "1.0.6",
       "kind": "bloxd-mod",
       "category": "utility",
       "requires": [
@@ -222,9 +183,9 @@
       "compatibility": "cpu-dom-tested-live-unverified",
       "note": "Camera FOV zoom with configurable wheel steps, look speed and transitions. Live input and visuals remain unverified.",
       "description": "Hold V to zoom; use the wheel for finer zoom up to 100x and configure camera speed, transitions and indicators in Bloxd Settings.",
-      "package": "bloxd-zoomer-1.0.1.bnmod",
-      "sha256": "4dc49910e11ae370c45708ba3a647834f6176b5b3a84d4051fd7f17464cb5e10",
-      "size": 16396,
+      "package": "bloxd-zoomer-1.0.6.bnmod",
+      "sha256": "30403ba766b0044e7671f344e6262613e640d8ecccb6343bd11dc452f03628b3",
+      "size": 27384,
       "source": "Bloxdy Client"
     },
     {

@@ -15,13 +15,6 @@ function managedSource(id,name,source){
   }
   if(id==='bloxd-visual-shader')source=adaptShader(name,source);
   if(id==='bloxd-litematica')source=adaptLitematicaPerformance(name,source);
-  // Adapt only the launcher copy's discovery hook. Original project files and
-  // PC/Safari/Firefox voice releases remain byte-for-byte unchanged.
-  if(id==='bloxd-party-voice'&&name==='runtime.js'){
-    source=replace(source,'const native = Object.defineProperty;',"let releaseDefinitionObserver = null; const native = target => target;",id);
-    source=replace(source,'function restore() { if (Object.defineProperty === capture) Object.defineProperty = native; }','function restore() { releaseDefinitionObserver?.(); }',id);
-    source=replace(source,'Object.defineProperty = capture;',"releaseDefinitionObserver = globalThis.__BLOXD_MOD_HOST__.observeDefinitions('voice-runtime', capture);",id);
-  }
   if(id==='bloxd-litematica'&&name==='adapter.js'){
     source=replace(source,'const native = Object.defineProperty;',"let releaseDefinitionObserver = null; const native = target => target;",id);
     source=replace(source,'captured && texturePack && app && menus && pub && popup && Object.defineProperty === wrapped) Object.defineProperty = native','captured && texturePack && app && menus && pub && popup) releaseDefinitionObserver?.()',id);

@@ -3,6 +3,19 @@
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm');
 const {shaderRuntime,liquidPrograms}=require('./shader-runtime-fixture.cjs');
 function observable(){const callbacks=new Set();return {add:fn=>{callbacks.add(fn);return fn;},remove:fn=>callbacks.delete(fn),emit:value=>{for(const fn of [...callbacks])fn(value);}};}
+test('Automatic performance records are bounded, local and contain only whitelisted timing/queue data',()=>{
+ const messages=[],r=shaderRuntime({enabled:true},{console:{...console,info:message=>messages.push(message)}});
+ r.root.__BLOXD_MOD_HOST__.profile.privateAccountName='PRIVATE_ACCOUNT_SENTINEL';
+ for(let i=0;i<10000;i++)r.recordShaderFrame(i*16.667);
+ assert.equal(messages.length,2);
+ for(const message of messages){
+  assert(message.startsWith('[BVFX performance] '));assert(!message.includes('PRIVATE_ACCOUNT_SENTINEL'));
+  const sample=JSON.parse(message.slice('[BVFX performance] '.length));
+  assert.equal(sample.schema,'shader-performance-v1');assert(sample.callbackFps>59&&sample.callbackFps<61);
+  assert.equal(sample.frames,120);assert.match(sample.scope,/not presented FPS/);
+  assert(!('renderer' in sample));assert(!('profile' in sample));assert(!('account' in sample));
+ }
+});
 test('Master Off compiles unmodified native sources and draws without mod uniform or sampler lookups',()=>{
   class GL {
     constructor(){this.canvas={addEventListener(){}};this.reads=0;this.writes=0;this.draws=0;}
@@ -70,7 +83,7 @@ test('Master Off restores the original native voxel-lighting flag and stops peri
 test('Shader frame diagnostics remain bounded, exclude long pauses and contain no account state',()=>{
   const shader=shaderRuntime();shader.recordShaderFrame(0);
   for(let i=1;i<=400;i++)shader.recordShaderFrame(i*20);
-  shader.recordShaderFrame(10000);
+  shader.recordShaderFrame(14000);
   const report=shader.root.__BVFX_INSTANCE__.diagnostics();
   assert.equal(report.frames,120);assert.equal(report.fps,50);assert.equal(report.worstFrameMs,20);
   assert.equal(report.renderer,null);assert.equal(report.version,null);
