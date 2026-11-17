@@ -26,7 +26,9 @@ The official website is https://rsfire.bloxdyclient.workers.dev.
 - **Explore a Bloxd SMP market mod**. Show observed average item prices and improve market search, if reliable data is available.
 - **Explore mining assistance**. Investigate automatic mining and tool switching for suitable blocks.
 - **Explore greater render distance**. Assess feasibility and performance before implementation.
+- **Explore waypoints**. Investigate a simple way to save and find places in supported worlds.
 - **Customize the in-game UI**. Explore visibility, position and size controls for individual elements.
+- **Explore a Minecraft-inspired Bloxd homepage** (under consideration). Study a familiar layout while keeping the client identity and controls clear.
 - **Save texture and shader pack choices**. Make it easier to reuse selected packs.
 - **Improve the Bloxd coding assistant**. Replace the current assistant with a faster, more capable option.
 - **Respond to mod requests and bug reports**. Consider ideas from users and testers for new and existing mods.
@@ -43,7 +45,8 @@ The official website is https://rsfire.bloxdyclient.workers.dev.
 - **Keep versions and release notes current**. Publish verified releases and clear records of fixes, additions and known issues.
 - **Connect the Discord community**. Add a Discord link when available and share roadmap updates through a dedicated webhook once configured.
 - **Consider a custom domain** (under consideration). Investigate bloxdyclient.com without changing the current official address yet.
-- **Grow the tester community**. Invite feedback and feature ideas, and make the project easier to discover.
+- **Grow the tester community**. Invite feedback and feature ideas, make the project easier to discover, and work toward a larger Discord community.
+- **Reach more players** (under consideration). Explore creator outreach and other ways to share the project.
 
 The [release history](https://rsfire.bloxdyclient.workers.dev/versions) records shipped changes separately.
 
